@@ -1,0 +1,717 @@
+{
+ "note": "post-hoc audit; rows of results/test_nl_rows.jsonl (run 6), replayed with the frozen software",
+ "n_false_impossibility": 23,
+ "replay_matches_all": true,
+ "by_argument_kind": {
+  "initial_sample": 21,
+  "optimum_or_other": 2
+ },
+ "first_sample_with_misread_cap": 21,
+ "first_sample_cap_equals_stated_tolerance": 19,
+ "per_reader": {
+  "final_neural_scratch_s0": 6,
+  "final_neural_scratch_s1": 11,
+  "final_neural_scratch_s2": 6
+ },
+ "misread_field_counts": {
+  "objective.peak_cap": 21,
+  "initial.E": 12,
+  "objective.tolerance": 16,
+  "deterministic.V": 12,
+  "time.Ts": 4,
+  "objective.deadline": 3,
+  "objective.mse_target": 1
+ },
+ "rows": [
+  {
+   "id": "test-00218",
+   "reader": "final_neural_scratch_s0",
+   "author": "author1",
+   "category": "complete_hard",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.0297 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.0509, 0.0509], so for any estimate one admissible velocity lies at least 0.0509 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.peak_cap": [
+     0.0297,
+     null
+    ],
+    "initial.E": [
+     [
+      0.00028199999999999997,
+      0.0509
+     ],
+     [
+      0.000282,
+      0.0509
+     ]
+    ]
+   }
+  },
+  {
+   "id": "test-00230",
+   "reader": "final_neural_scratch_s0",
+   "author": "author2",
+   "category": "missing_V",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.0244 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.8, 0.8], so for any estimate one admissible velocity lies at least 0.8 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.0244
+    ],
+    "objective.peak_cap": [
+     0.0244,
+     null
+    ],
+    "initial.E": [
+     [
+      0.004059999999999999,
+      0.8
+     ],
+     [
+      0.00406,
+      0.8
+     ]
+    ],
+    "deterministic.V": [
+     null,
+     3.88e-05
+    ]
+   }
+  },
+  {
+   "id": "test-00124",
+   "reader": "final_neural_scratch_s0",
+   "author": "author2",
+   "category": "both_hard",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.129 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.224, 0.224], so for any estimate one admissible velocity lies at least 0.224 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": false,
+   "misread_fields": {
+    "objective.peak_cap": [
+     0.129,
+     null
+    ],
+    "deterministic.V": [
+     null,
+     3.27e-05
+    ]
+   }
+  },
+  {
+   "id": "test-00265",
+   "reader": "final_neural_scratch_s0",
+   "author": "author2",
+   "category": "missing_Ts",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.0247 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.337, 0.337], so for any estimate one admissible velocity lies at least 0.337 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     0.559,
+     0.0247
+    ],
+    "objective.peak_cap": [
+     0.0247,
+     null
+    ],
+    "initial.E": [
+     [
+      0.00028399999999999996,
+      0.337
+     ],
+     [
+      0.000284,
+      0.337
+     ]
+    ],
+    "time.Ts": [
+     null,
+     0.002
+    ]
+   }
+  },
+  {
+   "id": "test-00030",
+   "reader": "final_neural_scratch_s0",
+   "author": "author2",
+   "category": "range_V_ok",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.0214 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.893, 0.893], so for any estimate one admissible velocity lies at least 0.893 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.0214
+    ],
+    "objective.peak_cap": [
+     0.0214,
+     null
+    ],
+    "deterministic.V": [
+     null,
+     3.58e-05
+    ]
+   }
+  },
+  {
+   "id": "test-00274",
+   "reader": "final_neural_scratch_s0",
+   "author": "author2",
+   "category": "complete_hard",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.00447 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.406, 0.406], so for any estimate one admissible velocity lies at least 0.406 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.00447
+    ],
+    "objective.peak_cap": [
+     0.00447,
+     null
+    ]
+   }
+  },
+  {
+   "id": "test-00466",
+   "reader": "final_neural_scratch_s1",
+   "author": "author1",
+   "category": "range_V_ok",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.00598 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-0.0667, 0.0667], so for any estimate one admissible velocity lies at least 0.0667 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.00598
+    ],
+    "objective.peak_cap": [
+     0.00598,
+     null
+    ],
+    "initial.E": [
+     [
+      0.00024,
+      0.06670000000000001
+     ],
+     [
+      0.00024,
+      0.0667
+     ]
+    ],
+    "deterministic.V": [
+     null,
+     3.46e-06
+    ]
+   }
+  },
+  {
+   "id": "test-00079",
+   "reader": "final_neural_scratch_s1",
+   "author": "author1",
+   "category": "missing_objective",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.309 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-1.38, 1.38], so for any estimate one admissible velocity lies at least 1.38 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.309
+    ],
+    "objective.peak_cap": [
+     0.309,
+     null
+    ]
+   }
+  },
+  {
+   "id": "test-00554",
+   "reader": "final_neural_scratch_s1",
+   "author": "author2",
+   "category": "missing_E2_deadline",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.247 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1.4, 1.4], so for any estimate one admissible velocity lies at least 1.4 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.peak_cap": [
+     0.247,
+     null
+    ]
+   }
+  },
+  {
+   "id": "test-00193",
+   "reader": "final_neural_scratch_s1",
+   "author": "author2",
+   "category": "range_Ts",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.0105 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.118, 0.118], so for any estimate one admissible velocity lies at least 0.118 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.0105
+    ],
+    "objective.peak_cap": [
+     0.0105,
+     null
+    ],
+    "initial.E": [
+     [
+      1.5399999999999998e-05,
+      0.11800000000000001
+     ],
+     [
+      1.54e-05,
+      0.118
+     ]
+    ]
+   }
+  },
+  {
+   "id": "test-00581",
+   "reader": "final_neural_scratch_s1",
+   "author": "author2",
+   "category": "missing_V",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.00657 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-0.121, 0.121], so for any estimate one admissible velocity lies at least 0.121 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.00657
+    ],
+    "objective.peak_cap": [
+     0.00657,
+     null
+    ],
+    "deterministic.V": [
+     null,
+     4.96e-06
+    ]
+   }
+  },
+  {
+   "id": "test-00265",
+   "reader": "final_neural_scratch_s1",
+   "author": "author2",
+   "category": "missing_Ts",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.0247 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.337, 0.337], so for any estimate one admissible velocity lies at least 0.337 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.0247
+    ],
+    "objective.peak_cap": [
+     0.0247,
+     null
+    ],
+    "initial.E": [
+     [
+      0.00028399999999999996,
+      0.337
+     ],
+     [
+      0.000284,
+      0.337
+     ]
+    ],
+    "time.Ts": [
+     null,
+     0.002
+    ]
+   }
+  },
+  {
+   "id": "test-00450",
+   "reader": "final_neural_scratch_s1",
+   "author": "author2",
+   "category": "complete_mse_bound",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "optimum_or_other",
+   "argument": "the optimal (time-varying) Kalman filter attains the minimum mean-square error over any linear estimator of the same data under the stated model (lmmse) at every sample; its error variance at every sample from t = 0.00025 s on (covariance iterated to convergence; the limit is included) reaches 9.09973e-05 > 2.16225e-07, so any linear estimator exceeds the requested level at that sample as well",
+   "cap_read_where_none_was_stated": false,
+   "cap_equals_stated_tolerance": false,
+   "misread_fields": {
+    "objective.deadline": [
+     0.00025,
+     null
+    ],
+    "objective.mse_target": [
+     2.16225e-07,
+     2.1622500000000002e-07
+    ],
+    "initial.E": [
+     [
+      0.0,
+      0.06709999999999999
+     ],
+     [
+      0.0012,
+      0.0671
+     ]
+    ]
+   }
+  },
+  {
+   "id": "test-00066",
+   "reader": "final_neural_scratch_s1",
+   "author": "author2",
+   "category": "harmless_no_init_ultimate",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.00554 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.336, 0.336], so for any estimate one admissible velocity lies at least 0.336 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.00554
+    ],
+    "objective.peak_cap": [
+     0.00554,
+     null
+    ],
+    "initial.E": [
+     [
+      0.0,
+      0.336
+     ],
+     null
+    ]
+   }
+  },
+  {
+   "id": "test-00429",
+   "reader": "final_neural_scratch_s1",
+   "author": "author2",
+   "category": "range_V_ok",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.236 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-2.06, 2.06], so for any estimate one admissible velocity lies at least 2.06 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.236
+    ],
+    "objective.peak_cap": [
+     0.236,
+     null
+    ],
+    "deterministic.V": [
+     null,
+     0.000144
+    ]
+   }
+  },
+  {
+   "id": "test-00274",
+   "reader": "final_neural_scratch_s1",
+   "author": "author2",
+   "category": "complete_hard",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.00447 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.406, 0.406], so for any estimate one admissible velocity lies at least 0.406 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.00447
+    ],
+    "objective.deadline": [
+     null,
+     0.394
+    ],
+    "objective.peak_cap": [
+     0.00447,
+     null
+    ],
+    "initial.E": [
+     [
+      1.3099999999999998e-05,
+      0.406
+     ],
+     [
+      0.000615,
+      0.406
+     ]
+    ],
+    "deterministic.V": [
+     null,
+     1.31e-05
+    ],
+    "time.Ts": [
+     null,
+     0.001
+    ]
+   }
+  },
+  {
+   "id": "test-00403",
+   "reader": "final_neural_scratch_s1",
+   "author": "author2",
+   "category": "missing_Ts",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.096 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1.23, 1.23], so for any estimate one admissible velocity lies at least 1.23 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.peak_cap": [
+     0.096,
+     null
+    ],
+    "deterministic.V": [
+     null,
+     0.000104
+    ]
+   }
+  },
+  {
+   "id": "test-00218",
+   "reader": "final_neural_scratch_s2",
+   "author": "author1",
+   "category": "complete_hard",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.0297 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-0.0509, 0.0509], so for any estimate one admissible velocity lies at least 0.0509 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.0297
+    ],
+    "objective.peak_cap": [
+     0.0297,
+     null
+    ],
+    "initial.E": [
+     [
+      0.00028199999999999997,
+      0.0509
+     ],
+     [
+      0.000282,
+      0.0509
+     ]
+    ]
+   }
+  },
+  {
+   "id": "test-00466",
+   "reader": "final_neural_scratch_s2",
+   "author": "author1",
+   "category": "range_V_ok",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.00598 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-0.0667, 0.0667], so for any estimate one admissible velocity lies at least 0.0667 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.00598
+    ],
+    "objective.peak_cap": [
+     0.00598,
+     null
+    ],
+    "initial.E": [
+     [
+      0.00024,
+      0.06670000000000001
+     ],
+     [
+      0.00024,
+      0.0667
+     ]
+    ],
+    "deterministic.V": [
+     null,
+     3.46e-06
+    ]
+   }
+  },
+  {
+   "id": "test-00347",
+   "reader": "final_neural_scratch_s2",
+   "author": "author2",
+   "category": "rms_not_bound",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "optimum_or_other",
+   "argument": "no causal estimator of the velocity can keep the worst-case error below 2 sqrt(D V) = 0.0495205 at the sample t = 0.16325 s, which the requested tolerance 0.00498 covers: two admissible signals rest at x1 = 0, u = 0 and then separate with accelerations +-0.607 for 4 sqrt(V/D) = 0.163165 s; their measurements coincide within |v| <= 0.00101 and their velocities differ by 4 sqrt(D V) at that sample (the stated travel, speed and input ranges and the initial-error bounds admit both)",
+   "cap_read_where_none_was_stated": false,
+   "cap_equals_stated_tolerance": false,
+   "misread_fields": {
+    "initial.E": [
+     [
+      0.0,
+      0.0242
+     ],
+     [
+      0.00101,
+      0.0242
+     ]
+    ],
+    "deterministic.V": [
+     0.00101,
+     2.63e-06
+    ]
+   }
+  },
+  {
+   "id": "test-00124",
+   "reader": "final_neural_scratch_s2",
+   "author": "author2",
+   "category": "both_hard",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.129 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.224, 0.224], so for any estimate one admissible velocity lies at least 0.224 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": false,
+   "misread_fields": {
+    "objective.peak_cap": [
+     0.129,
+     null
+    ],
+    "deterministic.V": [
+     null,
+     3.27e-05
+    ]
+   }
+  },
+  {
+   "id": "test-00030",
+   "reader": "final_neural_scratch_s2",
+   "author": "author2",
+   "category": "range_V_ok",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.0214 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.893, 0.893], so for any estimate one admissible velocity lies at least 0.893 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.0214
+    ],
+    "objective.peak_cap": [
+     0.0214,
+     null
+    ],
+    "deterministic.V": [
+     null,
+     3.58e-05
+    ]
+   }
+  },
+  {
+   "id": "test-00274",
+   "reader": "final_neural_scratch_s2",
+   "author": "author2",
+   "category": "complete_hard",
+   "stored_disposition": "PROVED_IMPOSSIBLE",
+   "replayed_disposition": "PROVED_IMPOSSIBLE",
+   "replay_matches": true,
+   "argument_kind": "initial_sample",
+   "argument": "no estimator can keep the velocity error within the requested transient cap 0.00447 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound admits every velocity in [-0.406, 0.406], so for any estimate one admissible velocity lies at least 0.406 away",
+   "cap_read_where_none_was_stated": true,
+   "cap_equals_stated_tolerance": true,
+   "misread_fields": {
+    "objective.tolerance": [
+     null,
+     0.00447
+    ],
+    "objective.deadline": [
+     null,
+     0.394
+    ],
+    "objective.peak_cap": [
+     0.00447,
+     null
+    ],
+    "time.Ts": [
+     null,
+     0.001
+    ]
+   }
+  }
+ ]
+}

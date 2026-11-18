@@ -1,0 +1,31 @@
+Tue Nov 17 17:17:58 UTC 2026
+== exp_fidelity
+wrote results/fidelity.json
+{'kalman_max_estimate_diff': 2.2455967326560612e-14, 'kalman_max_cov_diff': 6.465938895416912e-15, 'kalman_max_discretisation_diff': 1.2575341702873929e-15, 'kalman_max_steady_gain_diff': 1.0542659386183824e-09, 'n_kalman_cases': 21, 'hgo_max_rel_diff': 8.658078549394451e-14, 'n_hgo_cases': 20, 'hgo_certificate_below_float': 0} {'attained_error': 0.06992988542695877, 'exact_worst_case': 0.06992988542698038, 'ratio': 0.999999999999691, 'note': 'piecewise-constant disturbance on 64 sub-intervals per sample (lower bound, O(1/64^2))'} {'max_rel_diff_sampled_vs_closed_form_after_10ms': 7.064335924956405e-05, 'Ts': 2e-06, 'max_rel_diff_closed_form_vs_quadrature': 5.5590829013347415e-15}
+exp_fidelity done in 61 s
+== exp_linear_stochastic
+wrote results/linear_stochastic.json
+gaussian {'claim_type': 'mmse', 'empirical_over_reported_variance': [0.9431704891629322, 0.9882352100479871, 1.0032704188209929, 1.0136462947680416], 'mean_nees': 3.9406678525260204, 'mean_nis': 1.9972331193722932, 'coverage_2sigma_target': 0.9542231075697211, 'independent_reference_run0': {'max_estimate_diff': 6.661338147750939e-15, 'max_cov_diff_rel': 2.1119585227504792e-16}}
+bounded {'claim_type': 'lmmse', 'empirical_over_reported_variance': [1.010095677752098, 0.9808370226559714, 0.9950333086289518, 0.9729279347448546], 'mean_nees': 3.974395216111664, 'mean_nis': 1.9963347257210393, 'coverage_2sigma_target': 0.9586454183266933, 'independent_reference_run0': {'max_estimate_diff': 5.88418203051333e-15, 'max_cov_diff_rel': 2.1119585227504792e-16}}
+exp_linear_stochastic done in 92 s
+== exp_joint
+selected: high_gain_observer eps 0.0013662239172349876 claim: |error| <= 0.119688 at every sample instant t_k >= 0.1 s for every admissible initial error, measurement error and disturbance
+wrote results/joint.json
+{'envelope_violations': 0, 'simulated_post_deadline_max': 0.06917020249645045, 'conservatism_post_deadline': 1.730331999842484, 'max_abs_velocity': 2.9125171793618834}
+{'observer': (0.03648289192069287, 0.06081210312417973, 0, 61.553805563517344), 'filtered_difference': (0.03450924323114354, 0.0861263065644986, 0, 28.87619566033293), 'state_feedback': (0.03454863563225839, 0.0, 0, 5.924734994058726)}
+exp_joint done in 108 s
+== exp_common_domain
+smallest mean-square error                    -> RELEASE                kalman_filter None
+mean-square error below a level               -> RELEASE                kalman_filter {'kalman_filter': 6.35413546028303e-05, 'high_gain_observer': 6.606951151825739e-05}
+error within r with probability 0.9           -> RELEASE                kalman_filter None
+guaranteed error limit after the deadline     -> RELEASE                high_gain_observer {'high_gain_observer': 0.056629712317189225, 'kalman_filter': 0.060263449280189396}
+guaranteed ultimate error limit               -> RELEASE                high_gain_observer {'high_gain_observer': 0.05662962963020315, 'kalman_filter': 0.06001848737370706}
+guaranteed limit below the two-signal limit   -> PROVED_IMPOSSIBLE      None None
+wrote results/common_domain.json
+{'mse_preferred': 'kalman_steady_state', 'hard_bound_preferred': 'hgo_worst_case_tuned', 'mse_ratio_hgo_worstcase_tuned_over_kalman': 1.3398098585112916, 'worst_case_ratio_kalman_over_hgo': 1.0641666152680984}
+kalman_time_varying {'mse_steady': 6.4e-05, 'mse_at_deadline': 6.4e-05, 'worst_case_at_deadline': 0.060011, 'worst_case_post_deadline_max_evaluated': 0.060018, 'worst_case_peak_evaluated': 3.0} {'mse_steady_empirical': 6.366903402678354e-05, 'max_abs_error_post_deadline': 0.03267138112849155, 'max_abs_error_overall': 2.9935740125268397, 'rmse_at_deadline': 0.007561309109903834}
+kalman_steady_state {'mse_steady': 6.4e-05, 'mse_at_deadline': 6.4e-05, 'worst_case_at_deadline': 0.060095, 'worst_case_post_deadline_max_evaluated': 0.060263, 'worst_case_peak_evaluated': 3.010094, 'certified_post_deadline': 0.060263, 'certified_ultimate': 0.060018, 'certified_peak': 3.010094, 'independent_worst_case_at_deadline': 0.060095, 'independent_mse_steady': 6.4e-05} {'mse_steady_empirical': 6.366903402678629e-05, 'max_abs_error_post_deadline': 0.03267138109226142, 'max_abs_error_overall': 2.9935740125268397, 'rmse_at_deadline': 0.007563185413758309}
+hgo_worst_case_tuned {'mse_steady': 8.5e-05, 'mse_at_deadline': 8.5e-05, 'worst_case_at_deadline': 0.05663, 'worst_case_post_deadline_max_evaluated': 0.05663, 'worst_case_peak_evaluated': 3.022222, 'certified_post_deadline': 0.05663, 'certified_ultimate': 0.05663, 'certified_peak': 3.022222, 'independent_worst_case_at_deadline': 0.05663, 'independent_mse_steady': 8.5e-05} {'mse_steady_empirical': 8.541277401837733e-05, 'max_abs_error_post_deadline': 0.035296114103418375, 'max_abs_error_overall': 2.9935740125268397, 'rmse_at_deadline': 0.009194032229145234}
+hgo_mse_tuned {'mse_steady': 6.6e-05, 'mse_at_deadline': 6.6e-05, 'worst_case_at_deadline': 0.060738, 'worst_case_post_deadline_max_evaluated': 0.060738, 'worst_case_peak_evaluated': 3.011954, 'certified_post_deadline': 0.060738, 'certified_ultimate': 0.060705, 'certified_peak': 3.011954, 'independent_worst_case_at_deadline': 0.060738, 'independent_mse_steady': 6.6e-05} {'mse_steady_empirical': 6.631086835112936e-05, 'max_abs_error_post_deadline': 0.033639742754372426, 'max_abs_error_overall': 2.9935740125268397, 'rmse_at_deadline': 0.007747886600130658}
+exp_common_domain done in 12 s
+Tue Nov 17 17:22:31 UTC 2026

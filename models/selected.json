@@ -1,0 +1,15 @@
+{
+ "kind": "neural",
+ "id": "final_neural_scratch_s0",
+ "path": "final_neural_scratch_s0/reader.pt",
+ "sha256": "fae22153f9276de708286576d1b0aabdaf69776c335ec0058094891ecdbeb331",
+ "architecture": "neural_scratch",
+ "vectors": null,
+ "n_trainable_parameters": 113620,
+ "rule": "seed 0 of the selected architecture (pre-declared)",
+ "numpy_export": "final_neural_scratch_s0/reader_numpy.npz",
+ "numpy_sha256": {
+  "reader_numpy.npz": "19f17b4a1371305c8441950965a4d8d5199535a4608d42dfe04e741a0a18869d",
+  "reader_numpy.json": "8cc29a02732c881bfaaeaa16e03e27a41a4decf658f6e5ff8c1d740f5c41f0b1"
+ }
+}

@@ -1,0 +1,9 @@
+# Core (specialists, coordinator, interface, linear reader, tests, figures).  Versions are those of the build machine.
+numpy==2.5.3
+scipy==1.18.1
+mpmath==1.3.0
+gmpy2==2.3.2        # optional accelerator for mpmath; the code runs without it (slower certificates)
+sympy==1.14.0
+scikit-learn==1.9.1
+matplotlib==3.11.2
+pytest==9.1.1

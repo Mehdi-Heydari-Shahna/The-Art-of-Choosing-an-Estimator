@@ -1,0 +1,1198 @@
+{
+ "label": "previous",
+ "code_tree": "prev_rev2",
+ "code_digest": "e084930266acba106c79206fb0edd6986318b3fee8b62257caf833f491e02c48",
+ "package_version": "1.0.0",
+ "coordinator_version": "1.0.0",
+ "interface": "heros.api.solve(**arguments)",
+ "cases": [
+  {
+   "file": "01a_declared_irregular_no_timestamps.json",
+   "sha256": "4f4da48fca472782ec0b84791e92bafa1cee2cae5fe4d02c360d32d15c554266",
+   "arguments": [
+    "spec",
+    "u",
+    "y"
+   ],
+   "decision": {
+    "disposition": "RELEASE",
+    "selected": "high_gain_observer",
+    "display": "Verified design released.",
+    "claim": "|error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+    "claim_value": 0.0,
+    "explanations": [
+     "high_gain_observer selected for objective 'hard_bound': |error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+     "kalman_filter was not selected: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "3ae4b000803d2636",
+    "disposition": "RELEASE",
+    "selected": "high_gain_observer",
+    "qualifying": [
+     "high_gain_observer"
+    ],
+    "explanations": [
+     "high_gain_observer selected for objective 'hard_bound': |error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+     "kalman_filter was not selected: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ],
+    "harmless": [],
+    "question": null,
+    "all_needs": [],
+    "claim": {
+     "type": "hard_bound",
+     "statement": "|error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+     "value": 0.0,
+     "conditions": [
+      "plant in second-order chain form with measured first state",
+      "|measurement error| <= 0",
+      "|x2' - nominal model| <= 0 on each sample interval (D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories)",
+      "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E",
+      "applied input held constant on each sample interval",
+      "observer updated every 0.001 s with the stated binary gains; the bound is the exact worst case of this recursion in exact arithmetic (Proposition 1), certified from above by interval arithmetic; rounding of the float64 implementation is not included"
+     ],
+     "uncertainty": "deterministic error envelope"
+    },
+    "config": {
+     "method": "high_gain_observer",
+     "version": "1.0.0",
+     "pattern": [
+      2.0,
+      1.0
+     ],
+     "Ts": 0.001,
+     "V": 0.0,
+     "D": 0.0,
+     "D_detail": {
+      "how": "supplied total-disturbance bound used as stated",
+      "supplied_D": 0.0,
+      "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories"
+     },
+     "target": 1,
+     "init": {
+      "policy": "given",
+      "x0_hat": [
+       0.0,
+       1.0
+      ],
+      "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+     },
+     "E_eff": [
+      0.0,
+      0.0
+     ],
+     "eps": 0.0003000000000000001,
+     "domain": {},
+     "f0": "0",
+     "params": {},
+     "form": "current",
+     "M": [
+      0.9987273661986602,
+      929.924647106835
+     ],
+     "pole": 0.03567399334725242,
+     "continuous_gains": [
+      6666.666666666665,
+      11111111.111111104
+     ]
+    },
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {
+     "kalman_filter": {
+      "method": "kalman_filter",
+      "status": "not_applicable",
+      "reasons": [
+       "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     },
+     "high_gain_observer": {
+      "method": "high_gain_observer",
+      "status": "qualifies",
+      "reasons": [],
+      "needs": [],
+      "config": {
+       "method": "high_gain_observer",
+       "version": "1.0.0",
+       "pattern": [
+        2.0,
+        1.0
+       ],
+       "Ts": 0.001,
+       "V": 0.0,
+       "D": 0.0,
+       "D_detail": {
+        "how": "supplied total-disturbance bound used as stated",
+        "supplied_D": 0.0,
+        "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories"
+       },
+       "target": 1,
+       "init": {
+        "policy": "given",
+        "x0_hat": [
+         0.0,
+         1.0
+        ],
+        "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+       },
+       "E_eff": [
+        0.0,
+        0.0
+       ],
+       "eps": 0.0003000000000000001,
+       "domain": {},
+       "f0": "0",
+       "params": {},
+       "form": "current",
+       "M": [
+        0.9987273661986602,
+        929.924647106835
+       ],
+       "pole": 0.03567399334725242,
+       "continuous_gains": [
+        6666.666666666665,
+        11111111.111111104
+       ]
+      },
+      "claim": {
+       "type": "hard_bound",
+       "statement": "|error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+       "value": 0.0,
+       "conditions": [
+        "plant in second-order chain form with measured first state",
+        "|measurement error| <= 0",
+        "|x2' - nominal model| <= 0 on each sample interval (D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories)",
+        "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E",
+        "applied input held constant on each sample interval",
+        "observer updated every 0.001 s with the stated binary gains; the bound is the exact worst case of this recursion in exact arithmetic (Proposition 1), certified from above by interval arithmetic; rounding of the float64 implementation is not included"
+       ],
+       "uncertainty": "deterministic error envelope"
+      },
+      "metrics": {
+       "Ts": 0.001,
+       "D": 0.0,
+       "V": 0.0,
+       "E_eff": [
+        0.0,
+        0.0
+       ],
+       "init": "box",
+       "window": [
+        0,
+        3
+       ],
+       "lower_limit_velocity": 0.0,
+       "worst_case": {
+        "stable": true,
+        "spectral_radius_float": 0.03567400138604398,
+        "form": "current",
+        "T": 0.001,
+        "M": [
+         0.9987273661986602,
+         929.924647106835
+        ],
+        "k_deadline": 0,
+        "k_end": 3,
+        "init": "box",
+        "m": 4,
+        "q_upper": 0.16905079558089,
+        "N_max": 180,
+        "prec": 329,
+        "peak_upper": 0.0,
+        "post_deadline_upper": 0.0,
+        "ultimate_lower": 0.0,
+        "ultimate_upper": 0.0,
+        "W_at_deadline_upper": 0.0,
+        "tail_upper": 0.0
+       },
+       "hard_bound_value": 0.0
+      },
+      "limits": [
+       "guarantee at the sample instants only; inter-sample error is not covered",
+       "no closed-loop stability claim; no statistical claim",
+       "continuous-time source theorems are not invoked for the sampled implementation: the bound is the exact worst case of the implemented recursion"
+      ],
+      "harmless": [],
+      "impossibility": null,
+      "checks": [
+       {
+        "name": "interval certificate of the sampled error envelope",
+        "passed": true,
+        "detail": {
+         "post_deadline_upper": 0.0,
+         "peak_upper": 0.0,
+         "ultimate_upper": 0.0,
+         "q_upper": 0.16905079558089,
+         "m": 4,
+         "N_max": 180,
+         "prec": 329
+        }
+       }
+      ]
+     }
+    },
+    "impossibility": null,
+    "accepted_choices": [],
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "limits": [
+     "guarantee at the sample instants only; inter-sample error is not covered",
+     "no closed-loop stability claim; no statistical claim",
+     "continuous-time source theorems are not invoked for the sampled implementation: the bound is the exact worst case of the implemented recursion"
+    ],
+    "checks": [
+     {
+      "name": "interval certificate of the sampled error envelope",
+      "passed": true,
+      "detail": {
+       "post_deadline_upper": 0.0,
+       "peak_upper": 0.0,
+       "ultimate_upper": 0.0,
+       "q_upper": 0.16905079558089,
+       "m": 4,
+       "N_max": 180,
+       "prec": 329
+      }
+     }
+    ],
+    "display": "Verified design released."
+   },
+   "timing": null,
+   "estimate_check": {
+    "first_scored_sample": 0,
+    "n_estimates": 3,
+    "max_velocity_error": 0.929924647106835,
+    "at_sample": 1,
+    "claim_value": 0.0,
+    "claim_covers_error_on_this_record": false
+   },
+   "same_outcome_as_review_record": true
+  },
+  {
+   "file": "01b_same_record_supplied_timestamps.json",
+   "sha256": "c6a5c3133b4cac5b9af2783da57fc0c6352fa1e7ecb27b517d13dc4169903593",
+   "arguments": [
+    "spec",
+    "t",
+    "u",
+    "y"
+   ],
+   "decision": {
+    "disposition": "OUT_OF_SCOPE",
+    "selected": null,
+    "display": "The data are not sampled at a fixed period; no fixed-period certificate applies.",
+    "explanations": [
+     "the recorded sampling intervals are not uniform: they range from 0.001 s to 0.002 s (largest deviation between samples 0 and 1); a certificate for one fixed period does not apply"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "3ae4b000803d2636",
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "accepted_choices": [],
+    "disposition": "OUT_OF_SCOPE",
+    "selected": null,
+    "qualifying": [],
+    "claim": null,
+    "config": null,
+    "question": null,
+    "all_needs": [],
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {},
+    "impossibility": null,
+    "harmless": [],
+    "explanations": [
+     "the recorded sampling intervals are not uniform: they range from 0.001 s to 0.002 s (largest deviation between samples 0 and 1); a certificate for one fixed period does not apply"
+    ],
+    "issues": [
+     {
+      "code": "irregular_sampling",
+      "path": "time.Ts",
+      "message": "the recorded sampling intervals are not uniform: they range from 0.001 s to 0.002 s (largest deviation between samples 0 and 1); a certificate for one fixed period does not apply"
+     }
+    ],
+    "withdrawn_release": {
+     "selected": "high_gain_observer",
+     "claim": "|error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance"
+    },
+    "display": "The data are not sampled at a fixed period; no fixed-period certificate applies."
+   },
+   "timing": {
+    "ok": false,
+    "code": "irregular_sampling",
+    "n": 3,
+    "Ts_stated": 0.001,
+    "dt_min": 0.001,
+    "dt_max": 0.002,
+    "dt_median": 0.0015,
+    "t0": 0.0,
+    "message": "the recorded sampling intervals are not uniform: they range from 0.001 s to 0.002 s (largest deviation between samples 0 and 1); a certificate for one fixed period does not apply"
+   },
+   "same_outcome_as_review_record": true
+  },
+  {
+   "file": "01c_exact_timestamps_within_acceptance_tolerance.json",
+   "sha256": "41f8ceb1238d18a03ff501fc60acee1f5e57d56712299b730da0a9d0a71c4d19",
+   "arguments": [
+    "spec",
+    "t",
+    "u",
+    "y"
+   ],
+   "decision": {
+    "disposition": "RELEASE",
+    "selected": "high_gain_observer",
+    "display": "Verified design released.",
+    "claim": "|error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+    "claim_value": 0.0,
+    "explanations": [
+     "high_gain_observer selected for objective 'hard_bound': |error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+     "kalman_filter was not selected: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "053b6c99b630cdfa",
+    "disposition": "RELEASE",
+    "selected": "high_gain_observer",
+    "qualifying": [
+     "high_gain_observer"
+    ],
+    "explanations": [
+     "high_gain_observer selected for objective 'hard_bound': |error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+     "kalman_filter was not selected: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ],
+    "harmless": [],
+    "question": null,
+    "all_needs": [],
+    "claim": {
+     "type": "hard_bound",
+     "statement": "|error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+     "value": 0.0,
+     "conditions": [
+      "plant in second-order chain form with measured first state",
+      "|measurement error| <= 0",
+      "|x2' - nominal model| <= 0 on each sample interval (D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories)",
+      "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E",
+      "applied input held constant on each sample interval",
+      "observer updated every 0.001 s with the stated binary gains; the bound is the exact worst case of this recursion in exact arithmetic (Proposition 1), certified from above by interval arithmetic; rounding of the float64 implementation is not included"
+     ],
+     "uncertainty": "deterministic error envelope"
+    },
+    "config": {
+     "method": "high_gain_observer",
+     "version": "1.0.0",
+     "pattern": [
+      2.0,
+      1.0
+     ],
+     "Ts": 0.001,
+     "V": 0.0,
+     "D": 0.0,
+     "D_detail": {
+      "how": "supplied total-disturbance bound used as stated",
+      "supplied_D": 0.0,
+      "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories"
+     },
+     "target": 1,
+     "init": {
+      "policy": "given",
+      "x0_hat": [
+       0.0,
+       1.0
+      ],
+      "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+     },
+     "E_eff": [
+      0.0,
+      0.0
+     ],
+     "eps": 0.0003000000000000001,
+     "domain": {},
+     "f0": "0",
+     "params": {},
+     "form": "current",
+     "M": [
+      0.9987273661986602,
+      929.924647106835
+     ],
+     "pole": 0.03567399334725242,
+     "continuous_gains": [
+      6666.666666666665,
+      11111111.111111104
+     ]
+    },
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {
+     "kalman_filter": {
+      "method": "kalman_filter",
+      "status": "not_applicable",
+      "reasons": [
+       "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     },
+     "high_gain_observer": {
+      "method": "high_gain_observer",
+      "status": "qualifies",
+      "reasons": [],
+      "needs": [],
+      "config": {
+       "method": "high_gain_observer",
+       "version": "1.0.0",
+       "pattern": [
+        2.0,
+        1.0
+       ],
+       "Ts": 0.001,
+       "V": 0.0,
+       "D": 0.0,
+       "D_detail": {
+        "how": "supplied total-disturbance bound used as stated",
+        "supplied_D": 0.0,
+        "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories"
+       },
+       "target": 1,
+       "init": {
+        "policy": "given",
+        "x0_hat": [
+         0.0,
+         1.0
+        ],
+        "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+       },
+       "E_eff": [
+        0.0,
+        0.0
+       ],
+       "eps": 0.0003000000000000001,
+       "domain": {},
+       "f0": "0",
+       "params": {},
+       "form": "current",
+       "M": [
+        0.9987273661986602,
+        929.924647106835
+       ],
+       "pole": 0.03567399334725242,
+       "continuous_gains": [
+        6666.666666666665,
+        11111111.111111104
+       ]
+      },
+      "claim": {
+       "type": "hard_bound",
+       "statement": "|error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance",
+       "value": 0.0,
+       "conditions": [
+        "plant in second-order chain form with measured first state",
+        "|measurement error| <= 0",
+        "|x2' - nominal model| <= 0 on each sample interval (D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories)",
+        "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E",
+        "applied input held constant on each sample interval",
+        "observer updated every 0.001 s with the stated binary gains; the bound is the exact worst case of this recursion in exact arithmetic (Proposition 1), certified from above by interval arithmetic; rounding of the float64 implementation is not included"
+       ],
+       "uncertainty": "deterministic error envelope"
+      },
+      "metrics": {
+       "Ts": 0.001,
+       "D": 0.0,
+       "V": 0.0,
+       "E_eff": [
+        0.0,
+        0.0
+       ],
+       "init": "box",
+       "window": [
+        0,
+        3
+       ],
+       "lower_limit_velocity": 0.0,
+       "worst_case": {
+        "stable": true,
+        "spectral_radius_float": 0.03567400138604398,
+        "form": "current",
+        "T": 0.001,
+        "M": [
+         0.9987273661986602,
+         929.924647106835
+        ],
+        "k_deadline": 0,
+        "k_end": 3,
+        "init": "box",
+        "m": 4,
+        "q_upper": 0.16905079558089,
+        "N_max": 180,
+        "prec": 329,
+        "peak_upper": 0.0,
+        "post_deadline_upper": 0.0,
+        "ultimate_lower": 0.0,
+        "ultimate_upper": 0.0,
+        "W_at_deadline_upper": 0.0,
+        "tail_upper": 0.0
+       },
+       "hard_bound_value": 0.0
+      },
+      "limits": [
+       "guarantee at the sample instants only; inter-sample error is not covered",
+       "no closed-loop stability claim; no statistical claim",
+       "continuous-time source theorems are not invoked for the sampled implementation: the bound is the exact worst case of the implemented recursion"
+      ],
+      "harmless": [],
+      "impossibility": null,
+      "checks": [
+       {
+        "name": "interval certificate of the sampled error envelope",
+        "passed": true,
+        "detail": {
+         "post_deadline_upper": 0.0,
+         "peak_upper": 0.0,
+         "ultimate_upper": 0.0,
+         "q_upper": 0.16905079558089,
+         "m": 4,
+         "N_max": 180,
+         "prec": 329
+        }
+       }
+      ]
+     }
+    },
+    "impossibility": null,
+    "accepted_choices": [],
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "limits": [
+     "guarantee at the sample instants only; inter-sample error is not covered",
+     "no closed-loop stability claim; no statistical claim",
+     "continuous-time source theorems are not invoked for the sampled implementation: the bound is the exact worst case of the implemented recursion"
+    ],
+    "checks": [
+     {
+      "name": "interval certificate of the sampled error envelope",
+      "passed": true,
+      "detail": {
+       "post_deadline_upper": 0.0,
+       "peak_upper": 0.0,
+       "ultimate_upper": 0.0,
+       "q_upper": 0.16905079558089,
+       "m": 4,
+       "N_max": 180,
+       "prec": 329
+      }
+     }
+    ],
+    "display": "Verified design released."
+   },
+   "timing": {
+    "ok": true,
+    "code": null,
+    "n": 3,
+    "Ts_stated": 0.001,
+    "dt_min": 0.0009999995,
+    "dt_max": 0.0010000005,
+    "dt_median": 0.001,
+    "t0": 0.0,
+    "message": "the recorded period 0.001 s agrees with the stated period"
+   },
+   "estimate_check": {
+    "first_scored_sample": 0,
+    "n_estimates": 3,
+    "max_velocity_error": 4.649623235319922e-07,
+    "at_sample": 1,
+    "claim_value": 0.0,
+    "claim_covers_error_on_this_record": false
+   },
+   "same_outcome_as_review_record": true
+  },
+  {
+   "file": "02_true_gain_two_nominal_gain_one.json",
+   "sha256": "878e3d492de0d34a2709d8f8857c226c4839b64ba7b759e5ca0ccc2e243a82e0",
+   "arguments": [
+    "spec",
+    "t",
+    "u",
+    "y"
+   ],
+   "decision": {
+    "disposition": "RELEASE",
+    "selected": "high_gain_observer",
+    "display": "Verified design released.",
+    "claim": "|error| <= 0 at every sample instant t_k >= 0.5 s for every admissible initial error, measurement error and disturbance",
+    "claim_value": 0.0,
+    "explanations": [
+     "high_gain_observer selected for objective 'hard_bound': |error| <= 0 at every sample instant t_k >= 0.5 s for every admissible initial error, measurement error and disturbance",
+     "kalman_filter was not selected: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "c471e34c951b940b",
+    "disposition": "RELEASE",
+    "selected": "high_gain_observer",
+    "qualifying": [
+     "high_gain_observer"
+    ],
+    "explanations": [
+     "high_gain_observer selected for objective 'hard_bound': |error| <= 0 at every sample instant t_k >= 0.5 s for every admissible initial error, measurement error and disturbance",
+     "kalman_filter was not selected: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ],
+    "harmless": [],
+    "question": null,
+    "all_needs": [],
+    "claim": {
+     "type": "hard_bound",
+     "statement": "|error| <= 0 at every sample instant t_k >= 0.5 s for every admissible initial error, measurement error and disturbance",
+     "value": 0.0,
+     "conditions": [
+      "plant in second-order chain form with measured first state",
+      "|measurement error| <= 0",
+      "|x2' - nominal model| <= 0 on each sample interval (global bound (no domain restriction used))",
+      "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E",
+      "applied input held constant on each sample interval",
+      "observer updated every 0.1 s with the stated binary gains; the bound is the exact worst case of this recursion in exact arithmetic (Proposition 1), certified from above by interval arithmetic; rounding of the float64 implementation is not included"
+     ],
+     "uncertainty": "deterministic error envelope"
+    },
+    "config": {
+     "method": "high_gain_observer",
+     "version": "1.0.0",
+     "pattern": [
+      2.0,
+      1.0
+     ],
+     "Ts": 0.1,
+     "V": 0.0,
+     "D": 0.0,
+     "D_detail": {
+      "how": "exact nominal model: the total disturbance equals the additive disturbance bound",
+      "additive": 0.0,
+      "conditions": "global bound (no domain restriction used)",
+      "domain_used": []
+     },
+     "target": 1,
+     "init": {
+      "policy": "given",
+      "x0_hat": [
+       0.0,
+       0.0
+      ],
+      "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+     },
+     "E_eff": [
+      0.0,
+      0.0
+     ],
+     "eps": 0.029999999999999995,
+     "domain": {},
+     "f0": "b*u",
+     "params": {
+      "b": 1.0
+     },
+     "form": "current",
+     "M": [
+      0.9987273661986602,
+      9.299246471068349
+     ],
+     "pole": 0.035673993347252374,
+     "continuous_gains": [
+      66.66666666666667,
+      1111.1111111111113
+     ]
+    },
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {
+     "kalman_filter": {
+      "method": "kalman_filter",
+      "status": "not_applicable",
+      "reasons": [
+       "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     },
+     "high_gain_observer": {
+      "method": "high_gain_observer",
+      "status": "qualifies",
+      "reasons": [],
+      "needs": [],
+      "config": {
+       "method": "high_gain_observer",
+       "version": "1.0.0",
+       "pattern": [
+        2.0,
+        1.0
+       ],
+       "Ts": 0.1,
+       "V": 0.0,
+       "D": 0.0,
+       "D_detail": {
+        "how": "exact nominal model: the total disturbance equals the additive disturbance bound",
+        "additive": 0.0,
+        "conditions": "global bound (no domain restriction used)",
+        "domain_used": []
+       },
+       "target": 1,
+       "init": {
+        "policy": "given",
+        "x0_hat": [
+         0.0,
+         0.0
+        ],
+        "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+       },
+       "E_eff": [
+        0.0,
+        0.0
+       ],
+       "eps": 0.029999999999999995,
+       "domain": {},
+       "f0": "b*u",
+       "params": {
+        "b": 1.0
+       },
+       "form": "current",
+       "M": [
+        0.9987273661986602,
+        9.299246471068349
+       ],
+       "pole": 0.035673993347252374,
+       "continuous_gains": [
+        66.66666666666667,
+        1111.1111111111113
+       ]
+      },
+      "claim": {
+       "type": "hard_bound",
+       "statement": "|error| <= 0 at every sample instant t_k >= 0.5 s for every admissible initial error, measurement error and disturbance",
+       "value": 0.0,
+       "conditions": [
+        "plant in second-order chain form with measured first state",
+        "|measurement error| <= 0",
+        "|x2' - nominal model| <= 0 on each sample interval (global bound (no domain restriction used))",
+        "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E",
+        "applied input held constant on each sample interval",
+        "observer updated every 0.1 s with the stated binary gains; the bound is the exact worst case of this recursion in exact arithmetic (Proposition 1), certified from above by interval arithmetic; rounding of the float64 implementation is not included"
+       ],
+       "uncertainty": "deterministic error envelope"
+      },
+      "metrics": {
+       "Ts": 0.1,
+       "D": 0.0,
+       "V": 0.0,
+       "E_eff": [
+        0.0,
+        0.0
+       ],
+       "init": "box",
+       "window": [
+        5,
+        null
+       ],
+       "lower_limit_velocity": 0.0,
+       "worst_case": {
+        "stable": true,
+        "spectral_radius_float": 0.035674006130174955,
+        "form": "current",
+        "T": 0.1,
+        "M": [
+         0.9987273661986602,
+         9.299246471068349
+        ],
+        "k_deadline": 5,
+        "k_end": null,
+        "init": "box",
+        "m": 3,
+        "q_upper": 0.039230707702709214,
+        "N_max": 140,
+        "prec": 282,
+        "peak_upper": 0.0,
+        "post_deadline_upper": 0.0,
+        "ultimate_lower": 0.0,
+        "ultimate_upper": 0.0,
+        "W_at_deadline_upper": 0.0,
+        "tail_upper": 0.0
+       },
+       "hard_bound_value": 0.0
+      },
+      "limits": [
+       "guarantee at the sample instants only; inter-sample error is not covered",
+       "no closed-loop stability claim; no statistical claim",
+       "continuous-time source theorems are not invoked for the sampled implementation: the bound is the exact worst case of the implemented recursion"
+      ],
+      "harmless": [],
+      "impossibility": null,
+      "checks": [
+       {
+        "name": "interval certificate of the sampled error envelope",
+        "passed": true,
+        "detail": {
+         "post_deadline_upper": 0.0,
+         "peak_upper": 0.0,
+         "ultimate_upper": 0.0,
+         "q_upper": 0.039230707702709214,
+         "m": 3,
+         "N_max": 140,
+         "prec": 282
+        }
+       }
+      ]
+     }
+    },
+    "impossibility": null,
+    "accepted_choices": [],
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "limits": [
+     "guarantee at the sample instants only; inter-sample error is not covered",
+     "no closed-loop stability claim; no statistical claim",
+     "continuous-time source theorems are not invoked for the sampled implementation: the bound is the exact worst case of the implemented recursion"
+    ],
+    "checks": [
+     {
+      "name": "interval certificate of the sampled error envelope",
+      "passed": true,
+      "detail": {
+       "post_deadline_upper": 0.0,
+       "peak_upper": 0.0,
+       "ultimate_upper": 0.0,
+       "q_upper": 0.039230707702709214,
+       "m": 3,
+       "N_max": 140,
+       "prec": 282
+      }
+     }
+    ],
+    "display": "Verified design released."
+   },
+   "timing": {
+    "ok": true,
+    "code": null,
+    "n": 100,
+    "Ts_stated": 0.1,
+    "dt_min": 0.09999999999999964,
+    "dt_max": 0.10000000000000142,
+    "dt_median": 0.09999999999999998,
+    "t0": 0.0,
+    "message": "the recorded period 0.1 s agrees with the stated period"
+   },
+   "estimate_check": {
+    "first_scored_sample": 5,
+    "n_estimates": 100,
+    "max_velocity_error": 0.05739874131817402,
+    "at_sample": 65,
+    "claim_value": 0.0,
+    "claim_covers_error_on_this_record": false
+   },
+   "same_outcome_as_review_record": true
+  },
+  {
+   "file": "03a_first_sample_known_travel.json",
+   "sha256": "c7631c20a1a4aece31214957b18f0d53c232709ef9dfae14fea37b8615675509",
+   "arguments": [
+    "spec"
+   ],
+   "decision": {
+    "disposition": "PROVED_IMPOSSIBLE",
+    "selected": null,
+    "display": "No estimator can meet this requirement.",
+    "impossibility": {
+     "argument": "no estimator can keep the velocity error within the requested tolerance (deadline at the first sample) 0.2 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+     "bound": 1.0,
+     "level": 0.2,
+     "sample_time": 0.0,
+     "kind": "initial_sample"
+    },
+    "explanations": [
+     "no estimator can keep the velocity error within the requested tolerance (deadline at the first sample) 0.2 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 1 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "a33f2649d691b099",
+    "disposition": "PROVED_IMPOSSIBLE",
+    "selected": null,
+    "qualifying": [],
+    "explanations": [
+     "no estimator can keep the velocity error within the requested tolerance (deadline at the first sample) 0.2 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 1 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it"
+    ],
+    "harmless": [],
+    "question": null,
+    "all_needs": [],
+    "claim": null,
+    "config": null,
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {
+     "kalman_filter": {
+      "method": "kalman_filter",
+      "status": "not_applicable",
+      "reasons": [
+       "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     },
+     "high_gain_observer": {
+      "method": "high_gain_observer",
+      "status": "fails",
+      "reasons": [],
+      "needs": [],
+      "config": {
+       "method": "high_gain_observer",
+       "version": "1.0.0",
+       "pattern": [
+        2.0,
+        1.0
+       ],
+       "Ts": 0.1,
+       "V": 0.01,
+       "D": 0.0,
+       "D_detail": {
+        "how": "supplied total-disturbance bound used as stated (the bound derived from the stated model, 0, is not smaller)",
+        "supplied_D": 0.0,
+        "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories",
+        "model_bound": 0.0
+       },
+       "target": 1,
+       "init": {
+        "policy": "given",
+        "x0_hat": [
+         0.0,
+         0.0
+        ],
+        "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+       },
+       "E_eff": [
+        0.0,
+        1.0
+       ],
+       "eps": null,
+       "domain": {},
+       "f0": "0",
+       "params": {},
+       "form": "current"
+      },
+      "claim": null,
+      "metrics": {
+       "Ts": 0.1,
+       "D": 0.0,
+       "V": 0.01,
+       "E_eff": [
+        0.0,
+        1.0
+       ],
+       "init": "box",
+       "window": [
+        0,
+        10
+       ],
+       "lower_limit_velocity": 0.0,
+       "best_float_bound": 1.000000011107408,
+       "two_signal_not_applied": "the stated class does not let the acceleration error be an arbitrary bounded signal"
+      },
+      "limits": [
+       "no gain of the pole-matched sampled observer family meets the requirement (best bound found 1 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it"
+      ],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     }
+    },
+    "impossibility": {
+     "argument": "no estimator can keep the velocity error within the requested tolerance (deadline at the first sample) 0.2 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+     "class": "all causal estimators using the same measurements",
+     "bound": 1.0,
+     "level": 0.2,
+     "sample_time": 0.0,
+     "kind": "initial_sample"
+    },
+    "accepted_choices": [],
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "display": "No estimator can meet this requirement."
+   },
+   "timing": null,
+   "same_outcome_as_review_record": true
+  },
+  {
+   "file": "03b_first_sample_known_travel_acceleration.json",
+   "sha256": "534fc325bc227d7fbadb9f12a11f6cbb6c717b54dde2b40831753894460b1bd3",
+   "arguments": [
+    "spec"
+   ],
+   "decision": {
+    "disposition": "PROVED_IMPOSSIBLE",
+    "selected": null,
+    "display": "No estimator can meet this requirement.",
+    "impossibility": {
+     "argument": "no estimator can keep the velocity error within the requested transient cap 0.1 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+     "bound": 1.0,
+     "level": 0.1,
+     "sample_time": 0.0,
+     "kind": "initial_sample"
+    },
+    "explanations": [
+     "no estimator can keep the velocity error within the requested transient cap 0.1 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 2.43483 > 0.1, or none keeps the transient below the cap 0.1); this is the limit of this certificate family, not a proof that no estimator can meet it"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "ec3a02cd2f18f4ed",
+    "disposition": "PROVED_IMPOSSIBLE",
+    "selected": null,
+    "qualifying": [],
+    "explanations": [
+     "no estimator can keep the velocity error within the requested transient cap 0.1 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 2.43483 > 0.1, or none keeps the transient below the cap 0.1); this is the limit of this certificate family, not a proof that no estimator can meet it"
+    ],
+    "harmless": [],
+    "question": null,
+    "all_needs": [],
+    "claim": null,
+    "config": null,
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {
+     "kalman_filter": {
+      "method": "kalman_filter",
+      "status": "not_applicable",
+      "reasons": [
+       "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     },
+     "high_gain_observer": {
+      "method": "high_gain_observer",
+      "status": "fails",
+      "reasons": [],
+      "needs": [],
+      "config": {
+       "method": "high_gain_observer",
+       "version": "1.0.0",
+       "pattern": [
+        2.0,
+        1.0
+       ],
+       "Ts": 0.1,
+       "V": 1.0,
+       "D": 1.0,
+       "D_detail": {
+        "how": "supplied total-disturbance bound used as stated",
+        "supplied_D": 1.0,
+        "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories"
+       },
+       "target": 1,
+       "init": {
+        "policy": "first_measurement",
+        "x2_hat0": 0.0,
+        "E1_effective": 1.0,
+        "premise": "xh1(0) is set to the first measurement, so e1(0) = -v(0) exactly (the same measurement error, not an independent one); a supplied position-error bound is not used (supplied E1 = 1.0); xh2(0) = 0 with |x2(0) - xh2(0)| <= E2"
+       },
+       "E_eff": [
+        1.0,
+        1.0
+       ],
+       "eps": null,
+       "domain": {},
+       "f0": "0",
+       "params": {},
+       "form": "current"
+      },
+      "claim": null,
+      "metrics": {
+       "Ts": 0.1,
+       "D": 1.0,
+       "V": 1.0,
+       "E_eff": [
+        1.0,
+        1.0
+       ],
+       "init": "first_measurement",
+       "window": [
+        10,
+        60
+       ],
+       "lower_limit_velocity": 2.0,
+       "best_float_bound": 2.4348263685613554,
+       "two_signal_not_applied": "the stated travel range is narrower than twice the measurement-error bound"
+      },
+      "limits": [
+       "no gain of the pole-matched sampled observer family meets the requirement (best bound found 2.43483 > 0.1, or none keeps the transient below the cap 0.1); this is the limit of this certificate family, not a proof that no estimator can meet it"
+      ],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     }
+    },
+    "impossibility": {
+     "argument": "no estimator can keep the velocity error within the requested transient cap 0.1 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+     "class": "all causal estimators using the same measurements",
+     "bound": 1.0,
+     "level": 0.1,
+     "sample_time": 0.0,
+     "kind": "initial_sample"
+    },
+    "accepted_choices": [],
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "display": "No estimator can meet this requirement."
+   },
+   "timing": null,
+   "same_outcome_as_review_record": true
+  }
+ ]
+}

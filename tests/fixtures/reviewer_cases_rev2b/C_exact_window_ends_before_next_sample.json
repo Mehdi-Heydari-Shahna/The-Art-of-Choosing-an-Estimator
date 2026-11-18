@@ -1,0 +1,194 @@
+{
+  "public_api": "heros.api.solve",
+  "arguments": {
+    "spec": {
+      "schema": "heros-spec/1",
+      "plant": {
+        "family": null,
+        "kind": "linear",
+        "states": [],
+        "inputs": [],
+        "outputs": [],
+        "linear": {
+          "clock": "discrete",
+          "A": [
+            [
+              1.0
+            ]
+          ],
+          "B": [
+            [
+              0.0
+            ]
+          ],
+          "C": [
+            [
+              1.0
+            ]
+          ],
+          "Ts_native": 1.0
+        },
+        "second_order": null,
+        "flags": []
+      },
+      "target": {
+        "state": 0
+      },
+      "time": {
+        "Ts": 1.0,
+        "input_hold": "zoh",
+        "t_end": 3.9999999995343387,
+        "irregular": false
+      },
+      "initial": {
+        "x0_hat": [
+          0.0
+        ],
+        "P0": [
+          [
+            0.1
+          ]
+        ],
+        "E": null,
+        "policy": null
+      },
+      "stochastic": {
+        "distribution": "gaussian",
+        "Q": [
+          [
+            1.0
+          ]
+        ],
+        "Q_kind": "discrete_cov",
+        "G": null,
+        "R": [
+          [
+            1.0
+          ]
+        ],
+        "white": true,
+        "cross_cov": null
+      },
+      "deterministic": {
+        "V": null,
+        "D": null,
+        "d_bound": null,
+        "domain": null,
+        "domain_evidence": null
+      },
+      "objective": {
+        "kind": "mse_bound",
+        "tolerance": null,
+        "deadline": null,
+        "peak_cap": null,
+        "prob": null,
+        "mse_target": 0.6168077794,
+        "horizon": "finite"
+      },
+      "evidence": {
+        "target.state": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.Ts": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "stochastic.Q": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "stochastic.Q_kind": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "stochastic.R": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.P0": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.x0_hat": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "stochastic.white": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "stochastic.distribution": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.t_end": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.kind": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.mse_target": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.horizon": {
+          "status": "supplied",
+          "source": "structured input"
+        }
+      },
+      "ranges": {},
+      "constraints": []
+    },
+    "y": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "u": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "t": [
+      0.0,
+      1.0,
+      2.0,
+      3.0
+    ]
+  },
+  "expected_engineering_outcome": "The four actual in-window samples meet the requested bound. A sample at four seconds is outside the window.",
+  "mathematical_basis": "Exact endpoint 4-2^(-31) seconds. For the scalar Gaussian walk the filtered covariance sequence for samples k=0,...,4 is [0.09090909090909091, 0.5217391304347826, 0.603448275862069, 0.6158940397350994, 0.6177215189873417]. The first four filtered covariances are below 0.6168077794. Only the fifth exceeds it.",
+  "actual_true_velocity_if_applicable": null,
+  "observed_rev2b_result": {
+    "disposition": "PROVED_IMPOSSIBLE",
+    "claim": null,
+    "impossibility": {
+      "argument": "the optimal (time-varying) Kalman filter attains the minimum mean-square error over any estimator of the same data under the stated model (mmse) at every sample; its error variance at every sample from t = 0 s to the last sample of the record, t = 4 s reaches 0.617722 > 0.616808, so any estimator exceeds the requested level at that sample as well",
+      "class": "any estimator",
+      "bound": 0.6177215189873417
+    },
+    "timing": {
+      "ok": true,
+      "code": null,
+      "n": 4,
+      "Ts_stated": 1.0,
+      "label_resolution": null,
+      "dt_min": 1.0,
+      "dt_max": 1.0,
+      "dt_median": 1.0,
+      "t0": 0.0,
+      "tolerance": 4.263256414560601e-14,
+      "max_deviation": 0.0,
+      "message": "the recorded times equal the instants t_0 + k Ts of the stated period 1 s to within the binary rounding of the labels"
+    },
+    "package_impossibility_checker": [
+      true,
+      "independent optimal-filter window maximum 0.617722 vs target 0.616808"
+    ]
+  }
+}

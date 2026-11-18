@@ -1,0 +1,39 @@
+{
+  "archive": "Heros_Estimation_full(3).zip",
+  "archive_sha256": "b46394f0ff6505f3104470181a1c131fcbd1282af8aaa5dfad8b8de2f024e9b9",
+  "request_file": "coupled_bounds_request.json",
+  "public_api_call": "heros.api.solve(**json.load(request_file))",
+  "physical_completion": {
+    "D": 1.0,
+    "d_bound": 1.0,
+    "unmodeled_acceleration_m_per_s2": 1.0,
+    "position_m": "0.5*t**2",
+    "velocity_m_per_s": "t"
+  },
+  "observed": {
+    "disposition": "RELEASE",
+    "selected_method": "high_gain_observer",
+    "requested_tolerance_m_per_s": 0.001,
+    "claimed_bound_m_per_s": 0.0,
+    "sample_time_s": 0.1,
+    "position_measurement_m": 0.005000000000000001,
+    "actual_velocity_m_per_s": 0.1,
+    "estimated_velocity_m_per_s": 0.046496232355341754,
+    "absolute_error_m_per_s": 0.05350376764465825,
+    "velocity_update_gain": 9.299246471068349,
+    "tested_vertices": [
+      {
+        "deterministic.D": 0,
+        "deterministic.d_bound": 2.0
+      },
+      {
+        "deterministic.D": 2,
+        "deterministic.d_bound": 0.0
+      }
+    ],
+    "reported_bounds_at_vertices_m_per_s": [
+      0.0,
+      0.0
+    ]
+  }
+}

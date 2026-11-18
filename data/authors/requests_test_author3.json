@@ -1,0 +1,1276 @@
+[
+ {
+  "id": "test-00387",
+  "q1": "The stage velocity of a nonlinear (Duffing-type) positioning stage shall be estimated; this quantity is not measured directly.",
+  "q2": "The stage displacement is measured by a capacitive probe and is sampled with a period of 500 µs; the voice-coil force is the known input and the model is supplied in the attached file. Per the probe data sheet, the measurement error is guaranteed not to exceed 0.519 um in magnitude. Unmodelled forces are specified as an acceleration disturbance with a hard limit of 212 mm/s^2. The stage velocity cannot exceed 184 mm/s in magnitude during operation, since this range is enforced by a hardware limiter.",
+  "q3": "The velocity estimation error shall not exceed 5.27 mm/s, and this requirement applies from 84 ms after start onwards. It is to be understood as a guaranteed limit, valid for every admissible combination of probe error and disturbance, and not as a statistical figure.",
+  "stated": {
+   "Ts#0": "500 µs",
+   "meas_bound#1": "0.519 um",
+   "acc_bound#2": "212 mm/s^2",
+   "vel_limit#3": "184 mm/s",
+   "tolerance#4": "5.27 mm/s",
+   "deadline#5": "84 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00257",
+  "q1": "Estimation of the stage velocity is requested for a stage with Duffing behaviour.",
+  "q2": "Measured quantity: stage displacement, by capacitive probe, one sample every 2.5e-4 s. Known input: voice-coil force. The plant model is delivered as attachment. The disturbance acceleration which is not covered by the model is bounded in magnitude by 79.4 mm/s^2 (hard bound). At start the displacement is known within 104 um and the velocity within 35 mm/s; both are guaranteed bounds on the initial error. A mechanical limiter ensures that the velocity magnitude never exceeds 0.313 m/s.",
+  "q3": "Acceptance criterion: the error of the velocity estimate shall stay below or equal to 3.7 mm/s at all times later than 88 ms after start. The criterion is of worst-case type, i.e. it shall hold for all disturbances and initial errors within the stated bounds.",
+  "stated": {
+   "Ts#0": "2.5e-4 s",
+   "acc_bound#1": "79.4 mm/s^2",
+   "init_pos_bound#2": "104 um",
+   "init_vel_bound#3": "35 mm/s",
+   "vel_limit#4": "0.313 m/s",
+   "tolerance#5": "3.7 mm/s",
+   "deadline#6": "88 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00194",
+  "q1": "The quantity to be estimated is the shaft angle of a DC motor drive.",
+  "q2": "Two signals are measured: the shaft encoder reading and the armature current sensor output, both acquired with a sample period of 10 ms. The armature voltage is commanded and therefore known. The motor model is provided in the attached file, which corresponds to revision 3 of our design description. All noise terms are specified as Gaussian.",
+  "q3": "The mean-square error of the angle estimate shall not exceed 4.6225e-08 rad^2. Only the stationary regime is relevant for acceptance, hence a constant-gain estimator is considered as sufficient.",
+  "stated": {
+   "Ts#0": "10 ms",
+   "mse_target#1": "4.6225e-08 rad^2"
+  },
+  "extra_numbers": [
+   "revision 3"
+  ]
+ },
+ {
+  "id": "test-00019",
+  "q1": "The east velocity of the target shall be estimated from bearing measurements only.",
+  "q2": "Only the bearing angle to the target is measured, and a new bearing is taken every 1 s. The target motion model, with east and north position and velocity as states, is attached as a file.",
+  "q3": "The estimate with the minimum mean-square error is requested, i.e. the statistically optimal one; no numeric threshold is specified. The convergence phase after start is of importance, so a gain that varies with time is expected instead of a fixed one.",
+  "stated": {
+   "Ts#0": "1 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00290",
+  "q1": "It is required to estimate the carriage velocity of a gantry axis.",
+  "q2": "The carriage position is read from a linear scale every 250 µs, the drive force is the known input, and the axis model is attached. Per the scale data sheet the reading error never exceeds 19.2 µm, and its variance per sample is 123.21 µm^2. The disturbance acceleration is limited in magnitude to 262 mm/s^2; it is treated as a white random sequence, held constant inside each sample interval, with a standard deviation of 151 mm/s^2. At start the position error is at most 1.22 mm with a standard deviation of 0.704 mm, and the velocity error is at most 20.4 mm/s with a standard deviation of 11.8 mm/s. The noises are of bounded (uniform-like) type and not Gaussian, so only their means and variances are known.",
+  "q3": "The velocity estimation error shall stay within 1.31 mm/s with a probability of at least 90%. This is verified in stationary operation only, so an estimator with fixed gain is acceptable.",
+  "stated": {
+   "Ts#0": "250 µs",
+   "meas_bound#1": "19.2 µm",
+   "acc_bound#2": "262 mm/s^2",
+   "init_pos_bound#3": "1.22 mm",
+   "init_vel_bound#4": "20.4 mm/s",
+   "meas_var#5": "123.21 µm^2",
+   "acc_std#6": "151 mm/s^2",
+   "init_pos_std#7": "0.704 mm",
+   "init_vel_std#8": "11.8 mm/s",
+   "tolerance#9": "1.31 mm/s",
+   "prob#10": "90%"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00027",
+  "q1": "The joint velocity of a single rotary joint shall be estimated, since no velocity sensor is installed.",
+  "q2": "The joint angle is delivered by the joint encoder at a sampling rate of 1 kHz and the applied joint torque is known; the model is attached. According to the encoder test report the measurement noise has a standard deviation (RMS) of 61.2 urad. The acceleration caused by unmodelled effects is bounded in magnitude by 0.134 rad/s^2. The initial angle error is guaranteed to be not larger than 8.63 mrad and the initial velocity error not larger than 2.3 rad/s. The joint velocity cannot exceed 4 rad/s in magnitude, as this is enforced by the hardware speed limiter of the 48 V drive.",
+  "q3": "From 298 ms after start, the error of the velocity estimate shall not be larger than 0.184 rad/s. This is specified as a hard worst-case limit, to be met for all admissible noise and disturbance realisations.",
+  "stated": {
+   "fs#0": "1 kHz",
+   "acc_bound#1": "0.134 rad/s^2",
+   "init_pos_bound#2": "8.63 mrad",
+   "init_vel_bound#3": "2.3 rad/s",
+   "vel_limit#4": "4 rad/s",
+   "meas_std#5": "61.2 urad",
+   "tolerance#6": "0.184 rad/s",
+   "deadline#7": "298 ms"
+  },
+  "extra_numbers": [
+   "48 V"
+  ]
+ },
+ {
+  "id": "test-00544",
+  "q1": "An estimate of the shaft speed of a DC motor is needed.",
+  "q2": "The shaft encoder and the armature current sensor are both sampled at 100 Hz, and the armature voltage applied to the motor is known. The model is found in the attached file. All noises may be assumed Gaussian. It is noted that the start-up phase is of interest for us, therefore the time-varying gain should be provided and not only its final value.",
+  "q3": "A formal acceptance criterion has not been defined at this stage. A good accuracy of the speed estimate is of course desirable.",
+  "stated": {
+   "fs#0": "100 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00077",
+  "q1": "Subject of this request is the joint velocity of a rotary joint, which shall be reconstructed from the angle measurement.",
+  "q2": "Measurement: joint angle from the joint encoder, sampling rate 500 Hz. Input: joint torque, known. Model: see attached file. The encoder error is specified with a hard worst-case limit of 25.8 urad. The unmodelled disturbance, expressed as acceleration, is bounded by 0.871 rad/s^2. The velocity of the joint is limited so that its magnitude stays within 4 rad/s; this limit is enforced in hardware.",
+  "q3": "The estimation error of the joint velocity shall be at most 36.3 mrad/s, and compliance is required from 170 ms after start. The limit is meant as guaranteed for every admissible measurement error and disturbance, not as an average value.",
+  "stated": {
+   "fs#0": "500 Hz",
+   "meas_bound#1": "25.8 urad",
+   "acc_bound#2": "0.871 rad/s^2",
+   "vel_limit#3": "4 rad/s",
+   "tolerance#4": "36.3 mrad/s",
+   "deadline#5": "170 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00501",
+  "q1": "The mass velocity of a mass-spring-damper test rig is to be estimated.",
+  "q2": "A position sensor measures the mass position with a sample period of 1 ms; the actuator force is known and the rig model is attached (identification report issue 2). The sensor error is bounded in the worst case by 9.26 um. Disturbance accelerations not contained in the model are bounded by 1.41 m/s^2. At the start instant the position is known with an error of not more than 571 um and the velocity with an error of not more than 0.112 m/s. The velocity magnitude cannot become larger than 0.505 m/s because of a mechanical limit of the rig.",
+  "q3": "It shall be guaranteed that the velocity error is not greater than 15.1 mm/s for all times after 0.306 s from start. The guarantee has to cover the worst admissible case of sensor error and disturbance.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "9.26 um",
+   "acc_bound#2": "1.41 m/s^2",
+   "init_pos_bound#3": "571 um",
+   "init_vel_bound#4": "0.112 m/s",
+   "vel_limit#5": "0.505 m/s",
+   "tolerance#6": "15.1 mm/s",
+   "deadline#7": "0.306 s"
+  },
+  "extra_numbers": [
+   "issue 2"
+  ]
+ },
+ {
+  "id": "test-00041",
+  "q1": "The carriage velocity of a gantry axis shall be estimated from the scale signal.",
+  "q2": "The linear scale reading (carriage position) is acquired at 250 Hz and the drive force is known; the model is attached. The scale error is bounded by 23 µm and has an RMS value (standard deviation) of 13.3 um. The disturbance acceleration is bounded by 89.9 mm/s^2; statistically it is a white sequence, constant during one sample, with standard deviation 51.9 mm/s^2. For the initial state, hard error bounds of 0.23 mm in position and 372 mm/s in velocity apply; the corresponding standard deviations of the initial uncertainty are 133 um for the position and 0.215 m/s for the velocity. These noises are bounded and not Gaussian; only mean and variance are known for them.",
+  "q3": "The RMS error of the velocity estimate shall not exceed 0.31 mm/s. The requirement is an average (mean-square type) accuracy level in stationary operation, so that a constant gain is fully acceptable.",
+  "stated": {
+   "fs#0": "250 Hz",
+   "meas_bound#1": "23 µm",
+   "acc_bound#2": "89.9 mm/s^2",
+   "init_pos_bound#3": "0.23 mm",
+   "init_vel_bound#4": "372 mm/s",
+   "meas_std#5": "13.3 um",
+   "acc_std#6": "51.9 mm/s^2",
+   "init_pos_std#7": "133 um",
+   "init_vel_std#8": "0.215 m/s",
+   "rms_target#9": "0.31 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00314",
+  "q1": "Carriage velocity of a gantry axis; it shall be estimated because only the position is measured.",
+  "q2": "The position of the carriage is taken from the linear scale with a sample period of 0.5 ms, and the drive force is known. The model file is attached. Scale error: worst-case bound 31.2 µm, standard deviation 18 µm. Disturbance acceleration: never larger than 0.145 m/s² in magnitude, random and white, constant over a sample interval, standard deviation 83.7 mm/s^2. Initial position error: bounded by 123 um, standard deviation 71 µm. Initial velocity error: bounded by 40.7 mm/s, standard deviation 23.5 mm/s.",
+  "q3": "No numeric limit is specified; the estimate having the smallest mean-square error, i.e. the statistically optimal estimate, is requested. The phase directly after start is important for the application, therefore the gain shall be time-varying.",
+  "stated": {
+   "Ts#0": "0.5 ms",
+   "meas_bound#1": "31.2 µm",
+   "acc_bound#2": "0.145 m/s²",
+   "init_pos_bound#3": "123 um",
+   "init_vel_bound#4": "40.7 mm/s",
+   "meas_std#5": "18 µm",
+   "acc_std#6": "83.7 mm/s^2",
+   "init_pos_std#7": "71 µm",
+   "init_vel_std#8": "23.5 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00417",
+  "q1": "Estimation of the mass velocity for a mass-spring-damper system is requested.",
+  "q2": "The mass position is measured by a position sensor at a sampling rate of 2 kHz, the actuator force is known, and the model is attached. The sensor is supplied from 24 V. Unmodelled accelerations are bounded in magnitude by 0.205 m/s^2 (hard bound). The initial position error does not exceed 140 um and the initial velocity error does not exceed 141 mm/s; both figures are guaranteed. By a hardware limiter, the velocity of the mass is kept within 0.357 m/s in magnitude.",
+  "q3": "The error of the estimated velocity shall be not larger than 11.9 mm/s starting 140.5 ms after the start of the estimator. This shall be a guaranteed limit under all admissible disturbances, not a typical value.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "acc_bound#1": "0.205 m/s^2",
+   "init_pos_bound#2": "140 um",
+   "init_vel_bound#3": "141 mm/s",
+   "vel_limit#4": "0.357 m/s",
+   "tolerance#5": "11.9 mm/s",
+   "deadline#6": "140.5 ms"
+  },
+  "extra_numbers": [
+   "24 V"
+  ]
+ },
+ {
+  "id": "test-00350",
+  "q1": "The shaft speed of a servo axis shall be estimated.",
+  "q2": "The encoder angle is sampled at 500 Hz; the motor torque is the known input and the axis model is attached. The encoder error has a guaranteed maximum of 148 urad and a standard deviation of 85.4 µrad. The disturbance acceleration is bounded by 2.06 rad/s^2 and, seen as a white sequence that is constant within each sample, has a standard deviation of 1.19 rad/s². The initial angle error is bounded by 1.69 mrad (standard deviation 976 µrad), the initial speed error by 537 mrad/s (standard deviation 310 mrad/s). It has to be remarked that the noises are bounded and non-Gaussian; nothing more than their means and variances is known.",
+  "q3": "The mean-square error of the speed estimate is specified as not more than 1.19716e-5 (rad/s)^2. Acceptance is evaluated in steady state only; a constant-gain solution is fine.",
+  "stated": {
+   "fs#0": "500 Hz",
+   "meas_bound#1": "148 urad",
+   "acc_bound#2": "2.06 rad/s^2",
+   "init_pos_bound#3": "1.69 mrad",
+   "init_vel_bound#4": "537 mrad/s",
+   "meas_std#5": "85.4 µrad",
+   "acc_std#6": "1.19 rad/s²",
+   "init_pos_std#7": "976 µrad",
+   "init_vel_std#8": "310 mrad/s",
+   "mse_target#9": "1.19716e-5 (rad/s)^2"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00404",
+  "q1": "For a servo axis, the shaft speed is to be estimated.",
+  "q2": "Only the encoder angle is measured, with a sample period of 1 ms; the motor torque is known and the model is attached. The worst-case error of the encoder is not known exactly: depending on the data sheet edition, the hard bound lies between 10.1 urad and 40.2 urad. The unmodelled acceleration is bounded by 0.832 rad/s². At start the angle error is at most 3.72 mrad and the speed error at most 734 mrad/s, both as hard bounds.",
+  "q3": "The speed estimation error shall not exceed 16.3 mrad/s from 0.157 s after start. The requirement is to be met with guarantee, for each admissible encoder error and disturbance.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "40.2 urad",
+   "meas_bound#2": "10.1 urad",
+   "acc_bound#3": "0.832 rad/s²",
+   "init_pos_bound#4": "3.72 mrad",
+   "init_vel_bound#5": "734 mrad/s",
+   "tolerance#6": "16.3 mrad/s",
+   "deadline#7": "0.157 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00543",
+  "q1": "The carriage velocity of a gantry axis shall be estimated.",
+  "q2": "The linear scale is read at 1 kHz and the drive force is known; the model is attached and the scale is of the 5 V type. The scale error is bounded by 3.79 um; its per-sample variance is only known as a range, from 2.88 µm^2 to 4.7961 µm^2. The disturbance acceleration is bounded by 0.235 m/s² and is described as white, piecewise constant over a sample, with a standard deviation of 0.136 m/s². The initial position error is bounded by 1.3 mm with standard deviation 0.751 mm; the initial velocity error is bounded by 0.269 m/s with standard deviation 155 mm/s. The distributions are bounded (uniform type), not Gaussian, and only the means and variances are available.",
+  "q3": "The mean-square error of the velocity estimate shall be at most 0.755161 (mm/s)^2. Steady-state operation is the only regime of interest and a fixed-gain estimator is accepted.",
+  "stated": {
+   "fs#0": "1 kHz",
+   "meas_bound#1": "3.79 um",
+   "acc_bound#2": "0.235 m/s²",
+   "init_pos_bound#3": "1.3 mm",
+   "init_vel_bound#4": "0.269 m/s",
+   "meas_var#5": "2.88 µm^2",
+   "meas_var#6": "4.7961 µm^2",
+   "acc_std#7": "0.136 m/s²",
+   "init_pos_std#8": "0.751 mm",
+   "init_vel_std#9": "155 mm/s",
+   "mse_target#10": "0.755161 (mm/s)^2"
+  },
+  "extra_numbers": [
+   "5 V"
+  ]
+ },
+ {
+  "id": "test-00229",
+  "q1": "The velocity of the mass in a mass-spring-damper arrangement shall be estimated.",
+  "q2": "The position sensor provides the mass position at 2 kHz, and the actuator force is known. The model is attached. The position sensor error is specified with a hard limit of 6.19 µm. Unmodelled effects act as an acceleration disturbance which is bounded by 237 mm/s^2. The mass velocity is restricted by a mechanical limiter to a magnitude of 0.207 m/s at most.",
+  "q3": "The error of the mass velocity estimate shall not exceed 9.52 mm/s. This limit shall be guaranteed in the worst case, that is for any sensor error and any disturbance inside the specified bounds.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "meas_bound#1": "6.19 µm",
+   "acc_bound#2": "237 mm/s^2",
+   "vel_limit#3": "0.207 m/s",
+   "tolerance#4": "9.52 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00085",
+  "q1": "The stage velocity of a Duffing-type stage is the quantity to be estimated.",
+  "q2": "The stage displacement is measured with a capacitive probe; the sample period is not frozen yet and will be between 1 ms and 2 ms. The voice-coil force is known, and the model is attached. Per the probe data sheet the measurement error is bounded by 0.747 µm. The disturbance acceleration is bounded by 831 mm/s^2. Initial errors are bounded by 24.9 um for the displacement and by 51.6 mm/s for the velocity. The velocity magnitude is limited to 0.123 m/s by the hardware.",
+  "q3": "A guaranteed error limit of 6.26 mm/s on the velocity estimate shall be respected from 233 ms after start. The limit shall hold in the worst case over all admissible errors and disturbances, for any sample period in the given range.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "Ts#1": "2 ms",
+   "meas_bound#2": "0.747 µm",
+   "acc_bound#3": "831 mm/s^2",
+   "init_pos_bound#4": "24.9 um",
+   "init_vel_bound#5": "51.6 mm/s",
+   "vel_limit#6": "0.123 m/s",
+   "tolerance#7": "6.26 mm/s",
+   "deadline#8": "233 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00181",
+  "q1": "Shaft speed of a servo axis shall be estimated; only the angle is measured.",
+  "q2": "The encoder angle is acquired at a sampling rate of 1 kHz with a 20-bit encoder, the motor torque is known, and the model is attached. The encoder error is bounded by 41.5 µrad and its RMS value is 24 urad. The disturbance acceleration is bounded by 4.25 rad/s^2; as random sequence (white, constant within a sample) its standard deviation is 2.45 rad/s². The initial angle error is at most 1.46 mrad, with a standard deviation of 843 urad. The initial speed error is at most 1.6 rad/s, with a standard deviation of 0.924 rad/s. The noises are bounded and therefore not Gaussian; only means and variances can be given.",
+  "q3": "The RMS estimation error of the shaft speed shall not exceed 13.2 mrad/s. The criterion is an average one and is checked in steady state, so a constant estimator gain is acceptable.",
+  "stated": {
+   "fs#0": "1 kHz",
+   "meas_bound#1": "41.5 µrad",
+   "acc_bound#2": "4.25 rad/s^2",
+   "init_pos_bound#3": "1.46 mrad",
+   "init_vel_bound#4": "1.6 rad/s",
+   "meas_std#5": "24 urad",
+   "acc_std#6": "2.45 rad/s²",
+   "init_pos_std#7": "843 urad",
+   "init_vel_std#8": "0.924 rad/s",
+   "rms_target#9": "13.2 mrad/s"
+  },
+  "extra_numbers": [
+   "20-bit"
+  ]
+ },
+ {
+  "id": "test-00520",
+  "q1": "The mass velocity of a mass-spring-damper system shall be estimated.",
+  "q2": "The mass position is measured at 1 kHz by a position sensor and the actuator force is known; the model is attached. The sensor error is guaranteed to stay within 3.16 um. The unmodelled acceleration is bounded by 0.182 m/s². The initial knowledge of the state may be wrong by up to 0.358 mm in position and up to 193 mm/s in velocity (hard bounds). The velocity is limited by hardware to a magnitude of 301 mm/s.",
+  "q3": "From 0.259 s after start the velocity error shall be guaranteed not to exceed 3.03 mm/s. In addition, during the initial transient before that time the error shall never be larger than 1.52 mm/s. Both limits are worst-case limits over all admissible sensor errors and disturbances.",
+  "stated": {
+   "fs#0": "1 kHz",
+   "meas_bound#1": "3.16 um",
+   "acc_bound#2": "0.182 m/s²",
+   "init_pos_bound#3": "0.358 mm",
+   "init_vel_bound#4": "193 mm/s",
+   "vel_limit#5": "301 mm/s",
+   "tolerance#6": "3.03 mm/s",
+   "deadline#7": "0.259 s",
+   "peak_cap#8": "1.52 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00562",
+  "q1": "The load position of a two-mass drive train shall be estimated.",
+  "q2": "The motor encoder and the load encoder are both sampled at 50 Hz, and the motor force is known. The two-mass model is attached; it was released in 2024. All noises are specified as Gaussian.",
+  "q3": "The error of the load position estimate shall be within 2.02 mm with a probability of 95%. The requirement concerns the stationary regime only, so an estimator with constant gain is acceptable.",
+  "stated": {
+   "fs#0": "50 Hz",
+   "tolerance#1": "2.02 mm",
+   "prob#2": "95%"
+  },
+  "extra_numbers": [
+   "2024"
+  ]
+ },
+ {
+  "id": "test-00090",
+  "q1": "The shaft speed of a DC motor shall be estimated.",
+  "q2": "Measured signals are the shaft encoder angle and the armature current, each sampled at 100 Hz. The armature voltage is the known input, and the motor model is attached. A Gaussian distribution is assumed for all noise sources.",
+  "q3": "The statistically optimal estimate is requested, that is the one with the minimum mean-square error. Since the start-up transient is important, the gain should be the time-varying one and not the stationary one.",
+  "stated": {
+   "fs#0": "100 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00394",
+  "q1": "The armature current of a DC motor shall be estimated.",
+  "q2": "A shaft encoder and a current sensor are installed, and both are read with a sample period of 10 ms; the armature voltage is known. The model is attached and refers to the 24 V motor variant. All noises are Gaussian.",
+  "q3": "The current estimation error shall not exceed 0.1 A from 200 ms after start. This is required as a guaranteed worst-case limit, valid for all admissible noise and disturbance, and not only on average.",
+  "stated": {
+   "Ts#0": "10 ms",
+   "tolerance#1": "0.1 A",
+   "deadline#2": "200 ms"
+  },
+  "extra_numbers": [
+   "24 V"
+  ]
+ },
+ {
+  "id": "test-00365",
+  "q1": "This request concerns the estimation of the mass velocity in a mass-spring-damper unit.",
+  "q2": "The mass position is sampled at 500 Hz by the position sensor; the actuator force is known; the model is given in the attachment. The acceleration due to unmodelled effects is bounded by 0.529 m/s^2. At start, the position error is bounded by 182 µm and the velocity error by 57.4 mm/s. A hardware limit prevents the velocity from exceeding 0.632 m/s in magnitude.",
+  "q3": "The velocity error shall be not greater than 13.2 mm/s once 526 ms have passed after start. A guarantee for the worst case is required, covering all admissible disturbances and initial errors.",
+  "stated": {
+   "fs#0": "500 Hz",
+   "acc_bound#1": "0.529 m/s^2",
+   "init_pos_bound#2": "182 µm",
+   "init_vel_bound#3": "57.4 mm/s",
+   "vel_limit#4": "0.632 m/s",
+   "tolerance#5": "13.2 mm/s",
+   "deadline#6": "526 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00408",
+  "q1": "The stage velocity of a Duffing stage shall be estimated.",
+  "q2": "The capacitive probe measures the stage displacement at 4 kHz; the voice-coil force is known and the model is attached. The hard error bound of the probe is uncertain: per the available test reports it is somewhere between 0.578 um and 1.58 um. The disturbance acceleration is bounded by 0.111 m/s². The initial displacement error is at most 23.5 um and the initial velocity error at most 41.9 mm/s. The velocity range is restricted by a hardware limiter to 0.101 m/s in magnitude.",
+  "q3": "After 66.5 ms from start, the estimation error on the velocity shall be guaranteed to be at most 4.79 mm/s. Guaranteed means here: for each admissible probe error and disturbance.",
+  "stated": {
+   "fs#0": "4 kHz",
+   "meas_bound#1": "0.578 um",
+   "meas_bound#2": "1.58 um",
+   "acc_bound#3": "0.111 m/s²",
+   "init_pos_bound#4": "23.5 um",
+   "init_vel_bound#5": "41.9 mm/s",
+   "vel_limit#6": "0.101 m/s",
+   "tolerance#7": "4.79 mm/s",
+   "deadline#8": "66.5 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00292",
+  "q1": "The shaft angle of a DC motor is the quantity of interest.",
+  "q2": "The shaft encoder and the armature current sensor are sampled at 100 Hz, the armature voltage is known, and the model is attached per revision 4 of the interface specification. The noise is Gaussian for all sources.",
+  "q3": "A mean-square error of at most 7.7284e-08 rad^2 is specified for the angle estimate. The specification applies to the steady state; a constant-gain estimator is therefore sufficient.",
+  "stated": {
+   "fs#0": "100 Hz",
+   "mse_target#1": "7.7284e-08 rad^2"
+  },
+  "extra_numbers": [
+   "revision 4"
+  ]
+ },
+ {
+  "id": "test-00545",
+  "q1": "An estimate of the stage velocity is required for a Duffing stage.",
+  "q2": "The stage displacement is measured by a capacitive probe every 500 µs, with known voice-coil force; the model is attached. The probe error is bounded by 0.242 um and has a standard deviation of 0.14 µm. The disturbance acceleration is bounded by 0.105 m/s^2. Initially, the displacement error is not larger than 57.1 µm and the velocity error is not larger than 23.8 mm/s. The stage velocity is confined by a mechanical limiter to 0.433 m/s in magnitude. The noises are bounded and non-Gaussian, with known means and variances only.",
+  "q3": "The minimum mean-square error estimate is requested; no threshold is given. Only the stationary behaviour counts, so a constant gain is acceptable.",
+  "stated": {
+   "Ts#0": "500 µs",
+   "meas_bound#1": "0.242 um",
+   "acc_bound#2": "0.105 m/s^2",
+   "init_pos_bound#3": "57.1 µm",
+   "init_vel_bound#4": "23.8 mm/s",
+   "vel_limit#5": "0.433 m/s",
+   "meas_std#6": "0.14 µm"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00233",
+  "q1": "The quantity to be estimated is the carriage velocity of a gantry axis.",
+  "q2": "The linear scale gives the carriage position every 0.25 ms and the drive force command is known. The attached model does not contain the actuator dynamics; a lag exists between command and force which is not modelled. The scale error is bounded by 9.69 µm in the worst case. The disturbance acceleration is bounded by 0.717 m/s². The initial position error is at most 0.328 mm and the initial velocity error at most 22.3 mm/s.",
+  "q3": "The velocity error shall be guaranteed not to exceed 7.94 mm/s from 52.75 ms after start, for every admissible scale error and disturbance.",
+  "stated": {
+   "Ts#0": "0.25 ms",
+   "meas_bound#1": "9.69 µm",
+   "acc_bound#2": "0.717 m/s²",
+   "init_pos_bound#3": "0.328 mm",
+   "init_vel_bound#4": "22.3 mm/s",
+   "tolerance#5": "7.94 mm/s",
+   "deadline#6": "52.75 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00277",
+  "q1": "Joint velocity of a rotary joint shall be estimated.",
+  "q2": "The joint encoder is sampled at 0.5 kHz and the joint torque is known; the model is attached. The encoder is a 17-bit unit, but its guaranteed error bound is poorly documented: it is between 16.5 urad and 1.17 mrad. The unmodelled acceleration is bounded by 0.814 rad/s². The initial angle error is bounded by 4.42 mrad and the initial velocity error by 543 mrad/s. The joint velocity magnitude is limited to 4 rad/s by the hardware.",
+  "q3": "The error of the velocity estimate shall be at most 117 mrad/s from 302 ms after start, as a guaranteed worst-case limit over the complete admissible range of encoder error and disturbance.",
+  "stated": {
+   "fs#0": "0.5 kHz",
+   "meas_bound#1": "16.5 urad",
+   "meas_bound#2": "1.17 mrad",
+   "acc_bound#3": "0.814 rad/s²",
+   "init_pos_bound#4": "4.42 mrad",
+   "init_vel_bound#5": "543 mrad/s",
+   "vel_limit#6": "4 rad/s",
+   "tolerance#7": "117 mrad/s",
+   "deadline#8": "302 ms"
+  },
+  "extra_numbers": [
+   "17-bit"
+  ]
+ },
+ {
+  "id": "test-00067",
+  "q1": "For the Duffing stage of our test bench, the stage velocity shall be estimated.",
+  "q2": "Displacement is measured by capacitive probe at a rate of 1 kHz; the force of the voice coil is known; the model is attached. The worst-case probe error is known only as a range, namely from 1.74 um to 2.41 µm. The disturbance acceleration has a hard bound of 0.104 m/s^2. The initial error is bounded by 21.9 µm in displacement and by 62.8 mm/s in velocity. The stage velocity never exceeds 180 mm/s in magnitude due to a hardware limiter.",
+  "q3": "It is required that the velocity estimation error does not exceed 6.91 mm/s from 0.272 s after start. This shall be guaranteed for all admissible cases, including the most unfavourable probe error inside the stated range.",
+  "stated": {
+   "fs#0": "1 kHz",
+   "meas_bound#1": "1.74 um",
+   "meas_bound#2": "2.41 µm",
+   "acc_bound#3": "0.104 m/s^2",
+   "init_pos_bound#4": "21.9 µm",
+   "init_vel_bound#5": "62.8 mm/s",
+   "vel_limit#6": "180 mm/s",
+   "tolerance#7": "6.91 mm/s",
+   "deadline#8": "0.272 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00534",
+  "q1": "The boom rate of a hydraulic boom shall be estimated.",
+  "q2": "An inclinometer and a pressure transducer are installed on the boom and are sampled with a period of 10 ms; the valve command is known. The boom model is attached. All noises are Gaussian.",
+  "q3": "The estimate with minimum mean-square error is requested, without numeric acceptance limit. The stationary behaviour is the only one of interest, so a constant-gain estimator is fine.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00349",
+  "q1": "The carriage velocity of a gantry axis shall be made available by estimation.",
+  "q2": "The linear scale reading is available every 250 µs, the drive force is known, and the model (document revision 2) is attached. The worst-case scale error is not exactly known; it is between 13.2 µm and 22.4 um. The disturbance acceleration is bounded by 0.751 m/s². The initial position error is bounded by 209 um and the initial velocity error by 87.8 mm/s.",
+  "q3": "From 35.75 ms after start, the velocity error shall not exceed 23.9 mm/s. This is a guaranteed limit for all admissible errors and disturbances.",
+  "stated": {
+   "Ts#0": "250 µs",
+   "meas_bound#1": "13.2 µm",
+   "meas_bound#2": "22.4 um",
+   "acc_bound#3": "0.751 m/s²",
+   "init_pos_bound#4": "209 um",
+   "init_vel_bound#5": "87.8 mm/s",
+   "tolerance#6": "23.9 mm/s",
+   "deadline#7": "35.75 ms"
+  },
+  "extra_numbers": [
+   "revision 2"
+  ]
+ },
+ {
+  "id": "test-00024",
+  "q1": "Carriage velocity of the gantry axis is to be estimated.",
+  "q2": "Carriage position from the linear scale is sampled every 0.25 ms, the drive force is known, the model is attached. The scale error is bounded by 1.89 um; its variance per sample lies between 0.594 µm^2 and 2.38 µm^2, a more exact value is not available. The disturbance acceleration is bounded by 2.61 m/s^2 and is white, constant within one sample, with standard deviation 1.51 m/s^2. Initial position: error bound 350 µm, standard deviation 202 µm. Initial velocity: error bound 23.1 mm/s, standard deviation 13.3 mm/s. The noises are bounded, not Gaussian; only means and variances are known.",
+  "q3": "The estimate with the smallest mean-square error is requested. Only the steady state is relevant and a constant gain is accepted.",
+  "stated": {
+   "Ts#0": "0.25 ms",
+   "meas_bound#1": "1.89 um",
+   "acc_bound#2": "2.61 m/s^2",
+   "init_pos_bound#3": "350 µm",
+   "init_vel_bound#4": "23.1 mm/s",
+   "meas_var#5": "0.594 µm^2",
+   "meas_var#6": "2.38 µm^2",
+   "acc_std#7": "1.51 m/s^2",
+   "init_pos_std#8": "202 µm",
+   "init_vel_std#9": "13.3 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00442",
+  "q1": "The velocity of the carriage of a gantry axis shall be estimated.",
+  "q2": "The position of the carriage is read from the linear scale with a sample period of 1e-3 s. The drive force is known and the model is attached. The scale error is bounded by 2.59 um, the unmodelled acceleration by 1.39 m/s², the initial position error by 260 µm and the initial velocity error by 46 mm/s; all four are hard bounds.",
+  "q3": "The acceptance criterion is a guaranteed one: the velocity error shall not exceed 6.23 mm/s at any time later than 279 ms after start, whatever the admissible scale error and disturbance are.",
+  "stated": {
+   "Ts#0": "1e-3 s",
+   "meas_bound#1": "2.59 um",
+   "acc_bound#2": "1.39 m/s²",
+   "init_pos_bound#3": "260 µm",
+   "init_vel_bound#4": "46 mm/s",
+   "tolerance#5": "6.23 mm/s",
+   "deadline#6": "279 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00599",
+  "q1": "The carriage velocity of one gantry axis shall be estimated.",
+  "q2": "The linear scale is sampled at 250 Hz; the drive force is known; the model is attached. The gantry is a 3-axis machine, but only this axis is concerned. The following hard bounds are specified: scale error 1.34 µm, disturbance acceleration 1.01 m/s^2, initial position error 0.22 mm, initial velocity error 23.2 mm/s.",
+  "q3": "The velocity error shall be guaranteed to be at most 4.03 mm/s from 584 ms after start. During the transient before this time, the error shall not exceed 2.01 mm/s. Both limits are to be met in the worst case.",
+  "stated": {
+   "fs#0": "250 Hz",
+   "meas_bound#1": "1.34 µm",
+   "acc_bound#2": "1.01 m/s^2",
+   "init_pos_bound#3": "0.22 mm",
+   "init_vel_bound#4": "23.2 mm/s",
+   "tolerance#5": "4.03 mm/s",
+   "deadline#6": "584 ms",
+   "peak_cap#7": "2.01 mm/s"
+  },
+  "extra_numbers": [
+   "3-axis"
+  ]
+ },
+ {
+  "id": "test-00564",
+  "q1": "The carriage velocity of a gantry axis is needed and shall be estimated.",
+  "q2": "The linear scale reading is sampled at 250 Hz, the drive force is known, and the model is attached. Scale error: bounded by 14 µm, RMS 8.08 µm. Disturbance acceleration: bounded by 83.6 mm/s^2, white with value constant over a sample, standard deviation 48.3 mm/s^2. Initial position error: bounded by 935 um, standard deviation 540 µm. Initial velocity error: bounded by 99 mm/s, standard deviation 57.2 mm/s. The noises are bounded and non-Gaussian; only means and variances are known.",
+  "q3": "The mean-square velocity error shall not exceed 4.84e-8 (m/s)^2. This is assessed in steady state; a constant gain is fine.",
+  "stated": {
+   "fs#0": "250 Hz",
+   "meas_bound#1": "14 µm",
+   "acc_bound#2": "83.6 mm/s^2",
+   "init_pos_bound#3": "935 um",
+   "init_vel_bound#4": "99 mm/s",
+   "meas_std#5": "8.08 µm",
+   "acc_std#6": "48.3 mm/s^2",
+   "init_pos_std#7": "540 µm",
+   "init_vel_std#8": "57.2 mm/s",
+   "mse_target#9": "4.84e-8 (m/s)^2"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00358",
+  "q1": "The load pressure of a hydraulic boom shall be estimated.",
+  "q2": "The inclinometer and pressure transducer signals are sampled at 100 Hz, the valve command is known, and the model is attached. The transducer is of the 16-bit type. All noises are Gaussian.",
+  "q3": "The error of the load pressure estimate shall not exceed 0.1 MPa from 0.2 s after start. A guaranteed worst-case limit is meant, valid for all admissible noise and disturbance.",
+  "stated": {
+   "fs#0": "100 Hz",
+   "tolerance#1": "0.1 MPa",
+   "deadline#2": "0.2 s"
+  },
+  "extra_numbers": [
+   "16-bit"
+  ]
+ },
+ {
+  "id": "test-00253",
+  "q1": "The joint velocity of a rotary joint shall be estimated.",
+  "q2": "The joint encoder is read every 1 ms, the joint torque is known, and the model is attached. The encoder error is bounded by 30 µrad in the worst case. The unmodelled acceleration is bounded by 0.165 rad/s^2. The initial angle error is at most 4.69 mrad and the initial velocity error at most 2.77 rad/s. The joint velocity is limited by hardware to 4 rad/s in magnitude.",
+  "q3": "The largest allowed error of the joint velocity estimate is 61.4 mrad/s, and this accuracy is required from 0.319 s after start.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "30 µrad",
+   "acc_bound#2": "0.165 rad/s^2",
+   "init_pos_bound#3": "4.69 mrad",
+   "init_vel_bound#4": "2.77 rad/s",
+   "vel_limit#5": "4 rad/s",
+   "tolerance#6": "61.4 mrad/s",
+   "deadline#7": "0.319 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00415",
+  "q1": "From the encoder data of a servo axis, the shaft speed shall be estimated.",
+  "q2": "The encoder angle is sampled with a period of 0.5 ms; the motor torque is known; the model is attached. A recorded data set is available, and the duration of this record is 79.75 ms. The encoder error is bounded by 133 µrad and the disturbance acceleration by 7.54 rad/s². The initial angle error is bounded by 1.75 mrad and the initial speed error by 0.267 rad/s.",
+  "q3": "The speed error shall be guaranteed to be at most 0.102 rad/s from 0.1595 s after start, for all admissible encoder errors and disturbances.",
+  "stated": {
+   "Ts#0": "0.5 ms",
+   "meas_bound#1": "133 µrad",
+   "acc_bound#2": "7.54 rad/s²",
+   "init_pos_bound#3": "1.75 mrad",
+   "init_vel_bound#4": "0.267 rad/s",
+   "tolerance#5": "0.102 rad/s",
+   "deadline#6": "0.1595 s",
+   "window#7": "79.75 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00189",
+  "q1": "Stage velocity of a Duffing stage; an estimate of it is requested.",
+  "q2": "The stage displacement is measured with a capacitive probe every 1 ms, the voice-coil force is known, and the model is attached. The probe was commissioned in 2022 and its worst-case error is known only very roughly: it is between 0.57 um and 28.7 µm. The disturbance acceleration is bounded by 64 mm/s^2. The initial displacement error is bounded by 11.3 µm, the initial velocity error by 27 mm/s. The velocity is limited mechanically to 239 mm/s in magnitude.",
+  "q3": "A guaranteed limit is specified: the velocity error shall be at most 4.83 mm/s from 134 ms after start, under all admissible conditions of probe error and disturbance.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "0.57 um",
+   "meas_bound#2": "28.7 µm",
+   "acc_bound#3": "64 mm/s^2",
+   "init_pos_bound#4": "11.3 µm",
+   "init_vel_bound#5": "27 mm/s",
+   "vel_limit#6": "239 mm/s",
+   "tolerance#7": "4.83 mm/s",
+   "deadline#8": "134 ms"
+  },
+  "extra_numbers": [
+   "2022"
+  ]
+ },
+ {
+  "id": "test-00395",
+  "q1": "The load pressure in a hydraulic boom shall be estimated.",
+  "q2": "The measurements are the inclinometer signal and the pressure transducer signal, both taken at 100 Hz. The valve command is known and the model is attached. For all noises a Gaussian distribution is specified.",
+  "q3": "The estimate that is optimal in the mean-square sense, i.e. with the smallest mean-square error, is requested. The behaviour during start-up is relevant for us, so the time-varying gain is wanted.",
+  "stated": {
+   "fs#0": "100 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00542",
+  "q1": "For one gantry axis the carriage velocity is required as an estimated signal.",
+  "q2": "The linear scale is read with a sample period of 0.25 ms and the drive force is known; the model is attached. The reading error of the scale never exceeds 1.76 um, and for its per-sample variance only a range from 0.52 µm^2 to 2.08 µm^2 can be stated. The disturbance acceleration never exceeds 0.237 m/s^2; it is a white sequence, constant over each sample, with standard deviation 137 mm/s^2. The initial position error is within 0.523 mm, with standard deviation 302 um, and the initial velocity error is within 95.3 mm/s, with standard deviation 55 mm/s. All these noises are bounded and not Gaussian, and only their means and variances are known.",
+  "q3": "The statistically optimal estimate, with minimum mean-square error, is requested. Acceptance looks at the steady state only, so a constant-gain estimator is sufficient.",
+  "stated": {
+   "Ts#0": "0.25 ms",
+   "meas_bound#1": "1.76 um",
+   "acc_bound#2": "0.237 m/s^2",
+   "init_pos_bound#3": "0.523 mm",
+   "init_vel_bound#4": "95.3 mm/s",
+   "meas_var#5": "0.52 µm^2",
+   "meas_var#6": "2.08 µm^2",
+   "acc_std#7": "137 mm/s^2",
+   "init_pos_std#8": "302 um",
+   "init_vel_std#9": "55 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00296",
+  "q1": "The velocity of the mass (mass velocity) in a mass-spring-damper system is to be estimated.",
+  "q2": "The mass position is measured by a position sensor with a sample period of 2 ms; the sensor runs on a 12 V supply. The actuator force is known and the model is attached. The worst-case sensor error is not exactly specified; it lies between 1.39 µm and 2.9 µm. The unmodelled acceleration is bounded by 0.862 m/s². The initial position error is at most 0.131 mm and the initial velocity error at most 197 mm/s. The velocity magnitude is kept within 212 mm/s by a hardware limiter.",
+  "q3": "The error of the velocity estimate shall not exceed 10.8 mm/s from 0.32 s after start. This shall be guaranteed in the worst case, for every admissible sensor error and disturbance.",
+  "stated": {
+   "Ts#0": "2 ms",
+   "meas_bound#1": "1.39 µm",
+   "meas_bound#2": "2.9 µm",
+   "acc_bound#3": "0.862 m/s²",
+   "init_pos_bound#4": "0.131 mm",
+   "init_vel_bound#5": "197 mm/s",
+   "vel_limit#6": "212 mm/s",
+   "tolerance#7": "10.8 mm/s",
+   "deadline#8": "0.32 s"
+  },
+  "extra_numbers": [
+   "12 V"
+  ]
+ },
+ {
+  "id": "test-00015",
+  "q1": "Mass velocity of a mass-spring-damper rig shall be estimated.",
+  "q2": "The position sensor is sampled at 2 kHz, the actuator force is known, and the model is attached. Per the data sheet the sensor error is bounded by 12.6 um. The disturbance acceleration is bounded by 1.75 m/s². The initial errors are bounded by 181 um for the position and by 383 mm/s for the velocity. The velocity of the mass is limited by a mechanical limiter to 543 mm/s in magnitude.",
+  "q3": "Two guaranteed limits are specified for the velocity error. From 115.5 ms after start the error shall not exceed 24.3 mm/s, and during the initial transient before it the error shall be capped at 12.1 mm/s. Both shall hold for all admissible sensor errors and disturbances.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "meas_bound#1": "12.6 um",
+   "acc_bound#2": "1.75 m/s²",
+   "init_pos_bound#3": "181 um",
+   "init_vel_bound#4": "383 mm/s",
+   "vel_limit#5": "543 mm/s",
+   "tolerance#6": "24.3 mm/s",
+   "deadline#7": "115.5 ms",
+   "peak_cap#8": "12.1 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00525",
+  "q1": "It is requested to estimate the shaft speed of a servo axis, which is not measured directly.",
+  "q2": "The encoder angle is sampled at 1 kHz, the motor torque is known, and the model is attached. The encoder error is bounded by 28.2 µrad, with an RMS value of 16.3 urad. The disturbance acceleration is bounded by 7.76 rad/s^2; as white sequence, constant inside a sample, it has a standard deviation of 4.48 rad/s^2. The initial angle error is bounded by 3.68 mrad (standard deviation 2.12 mrad) and the initial speed error by 4.61 rad/s (standard deviation 2.66 rad/s). The noises are bounded and non-Gaussian, and only means and variances are known.",
+  "q3": "Acceptance limits are not yet agreed with the customer. It is only noted that the start-up phase matters for us, hence the gain should be time-varying.",
+  "stated": {
+   "fs#0": "1 kHz",
+   "meas_bound#1": "28.2 µrad",
+   "acc_bound#2": "7.76 rad/s^2",
+   "init_pos_bound#3": "3.68 mrad",
+   "init_vel_bound#4": "4.61 rad/s",
+   "meas_std#5": "16.3 urad",
+   "acc_std#6": "4.48 rad/s^2",
+   "init_pos_std#7": "2.12 mrad",
+   "init_vel_std#8": "2.66 rad/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00335",
+  "q1": "Estimation of the carriage velocity of a gantry axis is requested, including the phase directly after switch-on.",
+  "q2": "The linear scale is read every 1 ms and the drive force is known; the model is attached (revision 5 of the axis description). The scale error has a hard bound of 4.24 um. The disturbance acceleration is bounded by 2.72 m/s^2 and, as a white sequence constant within one sample, has a standard deviation of 1.57 m/s². The initial position error is bounded by 363 um with a standard deviation of 0.21 mm; the initial velocity error is bounded by 0.13 m/s with a standard deviation of 75.1 mm/s. The noises are bounded, not Gaussian, and only their means and variances are known.",
+  "q3": "The estimate with the smallest mean-square error is requested. The transient after start is of importance, therefore the time-varying gain is wanted.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "4.24 um",
+   "acc_bound#2": "2.72 m/s^2",
+   "init_pos_bound#3": "363 um",
+   "init_vel_bound#4": "0.13 m/s",
+   "acc_std#5": "1.57 m/s²",
+   "init_pos_std#6": "0.21 mm",
+   "init_vel_std#7": "75.1 mm/s"
+  },
+  "extra_numbers": [
+   "revision 5"
+  ]
+ },
+ {
+  "id": "test-00000",
+  "q1": "The zone two temperature of a thermal process shall be estimated; no sensor is installed in that zone.",
+  "q2": "Only the zone one thermocouple is available, and it is read every 2 s. The heater power is known. The thermal model with both zone temperatures and the ambient offset is attached. All noises are Gaussian.",
+  "q3": "The estimate with the minimum mean-square error is requested. Only the stationary behaviour is of interest, so an estimator with constant gain is acceptable.",
+  "stated": {
+   "Ts#0": "2 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00148",
+  "q1": "Estimation of the zone two temperature of a thermal plant is requested.",
+  "q2": "The measurement is the thermocouple of zone one, with a sample period of 2 s; the heater power is the known input, and the model is attached. All noises are Gaussian. It shall be considered that the process noise and the measurement noise are correlated with each other.",
+  "q3": "The statistically optimal (minimum mean-square error) estimate is requested. The heat-up phase directly after start matters, so the time-varying gain is needed and not only the stationary one.",
+  "stated": {
+   "Ts#0": "2 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00524",
+  "q1": "The cart velocity of a cart-pole test stand shall be estimated.",
+  "q2": "The cart encoder and the pole encoder are both sampled with a period of 5 ms. The cart force is the known input; the cart is driven by a 12 V motor. The cart-pole model is attached.",
+  "q3": "The estimate with the smallest mean-square error is requested, without a numeric limit. The start-up transient is important, so a time-varying gain is expected.",
+  "stated": {
+   "Ts#0": "5 ms"
+  },
+  "extra_numbers": [
+   "12 V"
+  ]
+ },
+ {
+  "id": "test-00252",
+  "q1": "The ambient offset of a thermal system shall be estimated.",
+  "q2": "The zone one thermocouple is the only measurement and is sampled every 2 s. The heater power is known and the model is attached. Gaussian noise is specified for all sources.",
+  "q3": "The optimal estimate in the mean-square sense, i.e. with minimum mean-square error, is requested. Since the behaviour during the start-up matters, the gain shall be the time-varying one.",
+  "stated": {
+   "Ts#0": "2 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00074",
+  "q1": "The shaft speed of a servo axis is to be estimated.",
+  "q2": "Sensor: encoder angle, sampled at 200 Hz. Known input: motor torque. Model: attached file. The encoder error is guaranteed not to exceed 181 µrad. The unmodelled acceleration is bounded by 5.72 rad/s^2. The initial angle error is bounded by 4.51 mrad and the initial speed error by 361 mrad/s.",
+  "q3": "The speed estimation error shall not exceed 32.5 mrad/s. This is a worst-case requirement, to be guaranteed for every admissible encoder error and disturbance.",
+  "stated": {
+   "fs#0": "200 Hz",
+   "meas_bound#1": "181 µrad",
+   "acc_bound#2": "5.72 rad/s^2",
+   "init_pos_bound#3": "4.51 mrad",
+   "init_vel_bound#4": "361 mrad/s",
+   "tolerance#5": "32.5 mrad/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00217",
+  "q1": "The stage velocity of a stage with Duffing characteristic is to be estimated.",
+  "q2": "The capacitive probe measures the stage displacement with a sample period of 1 ms; the voice-coil force is known; the model is attached per revision 6 of the stage specification. The probe error is bounded by 0.944 um. The disturbance acceleration is bounded by 0.441 m/s². The initial displacement error is at most 34.7 um and the initial velocity error at most 174 mm/s. Due to a hardware limiter the velocity magnitude cannot exceed 0.264 m/s.",
+  "q3": "The velocity error shall be guaranteed to stay within 8.47 mm/s for all times from 0.211 s after start. The guarantee shall cover every admissible probe error and disturbance.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "0.944 um",
+   "acc_bound#2": "0.441 m/s²",
+   "init_pos_bound#3": "34.7 um",
+   "init_vel_bound#4": "174 mm/s",
+   "vel_limit#5": "0.264 m/s",
+   "tolerance#6": "8.47 mm/s",
+   "deadline#7": "0.211 s"
+  },
+  "extra_numbers": [
+   "revision 6"
+  ]
+ },
+ {
+  "id": "test-00467",
+  "q1": "For a Duffing stage, the stage velocity shall be estimated.",
+  "q2": "The stage displacement is measured by a capacitive probe with a sample period of 0.25 ms, the voice-coil force is known, and the model is attached. For the probe noise the test report gives a standard deviation of 0.233 um. The disturbance acceleration is bounded by 760 mm/s^2. The initial displacement error is bounded by 32.4 um and the initial velocity error by 86.6 mm/s. The velocity magnitude is limited by hardware to 0.405 m/s.",
+  "q3": "From 80.75 ms after start, the velocity error shall not exceed 6.76 mm/s. A guaranteed worst-case limit is required, for all admissible noise and disturbance.",
+  "stated": {
+   "Ts#0": "0.25 ms",
+   "acc_bound#1": "760 mm/s^2",
+   "init_pos_bound#2": "32.4 um",
+   "init_vel_bound#3": "86.6 mm/s",
+   "vel_limit#4": "0.405 m/s",
+   "meas_std#5": "0.233 um",
+   "tolerance#6": "6.76 mm/s",
+   "deadline#7": "80.75 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00141",
+  "q1": "Carriage velocity of a gantry axis; it is not measured and shall be estimated.",
+  "q2": "The available measurement is the linear scale reading, sampled at 2 kHz; the drive force is a known input. The model is delivered in the attached file. The unmodelled acceleration is bounded by 80.7 mm/s^2. The initial position error is bounded by 1.88 mm and the initial velocity error by 99.3 mm/s; these are hard bounds.",
+  "q3": "The velocity error shall be guaranteed not to exceed 1.67 mm/s from 0.1455 s after start, in the worst case over all admissible disturbances and initial errors.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "acc_bound#1": "80.7 mm/s^2",
+   "init_pos_bound#2": "1.88 mm",
+   "init_vel_bound#3": "99.3 mm/s",
+   "tolerance#4": "1.67 mm/s",
+   "deadline#5": "0.1455 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00471",
+  "q1": "The estimation of the carriage velocity of a gantry axis is the subject of this request.",
+  "q2": "The linear scale is read every 0.25 ms and the drive force is known; the model is attached and was validated in 2023. The scale error is bounded by 7.08 um and its variance per sample is 16.7281 µm^2. The disturbance acceleration is bounded by 0.391 m/s²; it is a white sequence, constant within a sample, with standard deviation 226 mm/s^2. The initial position error is bounded by 0.464 mm, with standard deviation 0.268 mm, and the initial velocity error is bounded by 406 mm/s, with standard deviation 234 mm/s. The noises are bounded and not Gaussian; only means and variances are known.",
+  "q3": "The velocity error shall not exceed 9.85 mm/s from 15.5 ms after start. This is required as a guaranteed limit for every admissible noise and disturbance, not as a probabilistic statement.",
+  "stated": {
+   "Ts#0": "0.25 ms",
+   "meas_bound#1": "7.08 um",
+   "acc_bound#2": "0.391 m/s²",
+   "init_pos_bound#3": "0.464 mm",
+   "init_vel_bound#4": "406 mm/s",
+   "meas_var#5": "16.7281 µm^2",
+   "acc_std#6": "226 mm/s^2",
+   "init_pos_std#7": "0.268 mm",
+   "init_vel_std#8": "234 mm/s",
+   "tolerance#9": "9.85 mm/s",
+   "deadline#10": "15.5 ms"
+  },
+  "extra_numbers": [
+   "2023"
+  ]
+ },
+ {
+  "id": "test-00044",
+  "q1": "For a DC motor, the shaft speed is the quantity to be estimated.",
+  "q2": "The shaft encoder and the armature current sensor are sampled every 10 ms; the armature voltage is known and the model is attached. All noises are Gaussian. It has to be considered that the measurement noise is not white but correlated in time.",
+  "q3": "The estimate with the smallest mean-square error is requested. The start-up transient is of interest, so the gain shall be time-varying.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00303",
+  "q1": "For a rotary joint the joint velocity is needed and shall be estimated from the encoder signal.",
+  "q2": "As measurement, the joint encoder signal is available with a sample period of 1 ms. The joint torque is known and the model is attached. The encoder error is bounded by 51.2 µrad and has a standard deviation of 29.6 µrad. The unmodelled acceleration is bounded by 0.604 rad/s^2. The initial angle error is at most 1.52 mrad and the initial velocity error at most 1.01 rad/s. The joint velocity is limited by a hardware limiter to 4 rad/s in magnitude. The noises are bounded and not Gaussian; only their means and variances are known.",
+  "q3": "The statistically optimal estimate, with minimum mean-square error, is requested. Only the stationary regime is relevant; a constant gain is fine.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "51.2 µrad",
+   "acc_bound#2": "0.604 rad/s^2",
+   "init_pos_bound#3": "1.52 mrad",
+   "init_vel_bound#4": "1.01 rad/s",
+   "vel_limit#5": "4 rad/s",
+   "meas_std#6": "29.6 µrad"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00373",
+  "q1": "Shaft speed of the servo axis; this signal is not measured and has to be estimated.",
+  "q2": "The angle is measured by a 19-bit encoder with a sample period of 2 ms; the motor torque is known and the model is attached. The encoder error is bounded by 0.153 mrad and has a standard deviation of 88.3 µrad; this error is correlated from sample to sample, it is not white. The disturbance acceleration is bounded by 2.72 rad/s^2 and is a white sequence, constant within a sample, with standard deviation 1.57 rad/s². The initial angle error is bounded by 3.65 mrad (standard deviation 2.11 mrad) and the initial speed error by 2.23 rad/s (standard deviation 1.29 rad/s). The noises are bounded, non-Gaussian, with only means and variances known.",
+  "q3": "The estimate with minimum mean-square error is requested. Only the steady state matters; an estimator with constant gain is sufficient.",
+  "stated": {
+   "Ts#0": "2 ms",
+   "meas_bound#1": "0.153 mrad",
+   "acc_bound#2": "2.72 rad/s^2",
+   "init_pos_bound#3": "3.65 mrad",
+   "init_vel_bound#4": "2.23 rad/s",
+   "meas_std#5": "88.3 µrad",
+   "acc_std#6": "1.57 rad/s²",
+   "init_pos_std#7": "2.11 mrad",
+   "init_vel_std#8": "1.29 rad/s"
+  },
+  "extra_numbers": [
+   "19-bit"
+  ]
+ },
+ {
+  "id": "test-00369",
+  "q1": "The target east velocity shall be estimated in a bearing-only tracking problem.",
+  "q2": "The bearing angle to the target is the only measurement and is taken at 1 Hz. The motion model of the target is attached.",
+  "q3": "The estimate with the smallest mean-square error is requested. The initial convergence phase is of importance, so the time-varying gain is wanted.",
+  "stated": {
+   "fs#0": "1 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00438",
+  "q1": "Stage velocity of a Duffing stage; only the displacement is measured, so the velocity shall be estimated.",
+  "q2": "The capacitive probe measures the stage displacement every 0.5 ms, the voice-coil force is known, and the model is attached. The probe error is bounded by 0.527 µm and its variance per sample is 9.2416e-8 mm^2. The disturbance acceleration is bounded by 62.3 mm/s^2. The initial displacement error is bounded by 11.1 µm and the initial velocity error by 29.6 mm/s. The velocity is limited by a mechanical limiter to 0.151 m/s in magnitude. The noises are bounded and non-Gaussian; only means and variances are known.",
+  "q3": "The minimum mean-square error estimate is requested. Only steady-state behaviour is assessed; a constant gain is acceptable.",
+  "stated": {
+   "Ts#0": "0.5 ms",
+   "meas_bound#1": "0.527 µm",
+   "acc_bound#2": "62.3 mm/s^2",
+   "init_pos_bound#3": "11.1 µm",
+   "init_vel_bound#4": "29.6 mm/s",
+   "vel_limit#5": "0.151 m/s",
+   "meas_var#6": "9.2416e-8 mm^2"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00191",
+  "q1": "It is required to obtain the carriage velocity of a gantry axis by estimation from the scale reading.",
+  "q2": "The linear scale is read with a sample period of 0.5 ms, the drive force is known, and the model is attached (revision 7). The worst-case scale error is very uncertain; the hard bound lies between 1.24 um and 93.2 um. The disturbance acceleration is bounded by 0.166 m/s². The initial position error is bounded by 1.99 mm and the initial velocity error by 96.3 mm/s.",
+  "q3": "The velocity error shall be guaranteed not to exceed 2.83 mm/s from 112.5 ms after start, for every admissible scale error and disturbance.",
+  "stated": {
+   "Ts#0": "0.5 ms",
+   "meas_bound#1": "1.24 um",
+   "meas_bound#2": "93.2 um",
+   "acc_bound#3": "0.166 m/s²",
+   "init_pos_bound#4": "1.99 mm",
+   "init_vel_bound#5": "96.3 mm/s",
+   "tolerance#6": "2.83 mm/s",
+   "deadline#7": "112.5 ms"
+  },
+  "extra_numbers": [
+   "revision 7"
+  ]
+ },
+ {
+  "id": "test-00076",
+  "q1": "The ambient offset in a thermal model with two zone temperatures is the quantity to be estimated.",
+  "q2": "The zone one thermocouple is read with a sample period of 2 s, the heater power is known, and the model is attached. All noises are Gaussian. Only the stationary behaviour is of interest, and a constant-gain estimator would be fine.",
+  "q3": "No acceptance criterion is specified at present. A high accuracy of the offset estimate is desirable.",
+  "stated": {
+   "Ts#0": "2 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00302",
+  "q1": "The ambient offset of a thermal plant shall be estimated.",
+  "q2": "The thermocouple of zone one is sampled at 0.5 Hz, the heater power is known, and the model is attached. All noises are specified as Gaussian.",
+  "q3": "The mean-square error of the offset estimate shall not exceed 0.00253009 K^2. This is a steady-state requirement; a constant-gain estimator is accepted.",
+  "stated": {
+   "fs#0": "0.5 Hz",
+   "mse_target#1": "0.00253009 K^2"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00111",
+  "q1": "The estimation target is the shaft speed of a servo axis.",
+  "q2": "The encoder angle is sampled at 0.5 kHz, the motor torque of the 48 V drive is known, and the model is attached. The encoder error is bounded by 24.2 urad and its variance per sample is 1.96e-10 rad². The disturbance acceleration is bounded by 17.3 rad/s² and is a white sequence, constant within one sample, with standard deviation 9.99 rad/s². The initial angle error is bounded by 4.53 mrad (standard deviation 2.62 mrad) and the initial speed error by 0.28 rad/s (standard deviation 162 mrad/s). The noises are bounded and non-Gaussian, with only means and variances known; in addition the process noise and the measurement noise are correlated with each other.",
+  "q3": "The estimate with the smallest mean-square error is requested. The start-up transient is relevant, therefore the time-varying gain is wanted.",
+  "stated": {
+   "fs#0": "0.5 kHz",
+   "meas_bound#1": "24.2 urad",
+   "acc_bound#2": "17.3 rad/s²",
+   "init_pos_bound#3": "4.53 mrad",
+   "init_vel_bound#4": "0.28 rad/s",
+   "meas_var#5": "1.96e-10 rad²",
+   "acc_std#6": "9.99 rad/s²",
+   "init_pos_std#7": "2.62 mrad",
+   "init_vel_std#8": "162 mrad/s"
+  },
+  "extra_numbers": [
+   "48 V"
+  ]
+ },
+ {
+  "id": "test-00556",
+  "q1": "The estimation of the stage velocity of a Duffing stage is requested.",
+  "q2": "The capacitive probe is sampled at 4 kHz and the voice-coil force command is known. The attached model does not include the dynamics of the actuator; the force follows the command with a lag which is not modelled. The probe error is bounded by 4.8 µm and the disturbance acceleration by 67 mm/s^2. The initial displacement error is bounded by 65.2 um and the initial velocity error by 0.161 m/s. The velocity is limited by a hardware limiter to 172 mm/s in magnitude.",
+  "q3": "The velocity error shall be guaranteed to be at most 20.3 mm/s from 48.75 ms after start. The limit shall hold in the worst case, for all admissible probe errors and disturbances.",
+  "stated": {
+   "fs#0": "4 kHz",
+   "meas_bound#1": "4.8 µm",
+   "acc_bound#2": "67 mm/s^2",
+   "init_pos_bound#3": "65.2 um",
+   "init_vel_bound#4": "0.161 m/s",
+   "vel_limit#5": "172 mm/s",
+   "tolerance#6": "20.3 mm/s",
+   "deadline#7": "48.75 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00324",
+  "q1": "The pole angle of a cart-pole system shall be estimated.",
+  "q2": "The cart encoder and the pole encoder are read with a sample period of 5 ms. The cart force is known. The model of the cart-pole is attached.",
+  "q3": "The estimate with minimum mean-square error, i.e. the statistically optimal one, is requested. The phase after start is important, so the gain is expected to be time-varying.",
+  "stated": {
+   "Ts#0": "5 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00418",
+  "q1": "An estimate of the stage velocity of a Duffing stage is requested.",
+  "q2": "The stage displacement is measured by a capacitive probe every 250 µs; the voice-coil force is known; the model is attached. The probe was last calibrated in 2021 and its hard error bound is uncertain, between 0.515 µm and 22.4 um. The disturbance acceleration is bounded by 234 mm/s^2. The initial displacement error is at most 37.4 µm and the initial velocity error at most 140 mm/s. A hardware limiter keeps the velocity magnitude within 0.396 m/s.",
+  "q3": "The velocity error shall not exceed 7.86 mm/s from 43.75 ms after start. This is a worst-case requirement which shall be guaranteed for all admissible probe errors and disturbances.",
+  "stated": {
+   "Ts#0": "250 µs",
+   "meas_bound#1": "0.515 µm",
+   "meas_bound#2": "22.4 um",
+   "acc_bound#3": "234 mm/s^2",
+   "init_pos_bound#4": "37.4 µm",
+   "init_vel_bound#5": "140 mm/s",
+   "vel_limit#6": "0.396 m/s",
+   "tolerance#7": "7.86 mm/s",
+   "deadline#8": "43.75 ms"
+  },
+  "extra_numbers": [
+   "2021"
+  ]
+ },
+ {
+  "id": "test-00108",
+  "q1": "The quantity to be estimated is the joint velocity of a rotary joint.",
+  "q2": "The joint encoder is sampled with a period of 2 ms, the joint torque is known, and the model is attached. For the worst-case encoder error only a range is available: the bound is between 61 urad and 137 urad. The unmodelled acceleration is bounded by 0.734 rad/s². The initial angle error is bounded by 1.71 mrad and the initial velocity error by 0.774 rad/s. The joint velocity magnitude is limited to 4 rad/s by the hardware.",
+  "q3": "The error of the joint velocity estimate shall be guaranteed not to exceed 0.149 rad/s from 0.498 s after start, for every admissible encoder error and disturbance.",
+  "stated": {
+   "Ts#0": "2 ms",
+   "meas_bound#1": "61 urad",
+   "meas_bound#2": "137 urad",
+   "acc_bound#3": "0.734 rad/s²",
+   "init_pos_bound#4": "1.71 mrad",
+   "init_vel_bound#5": "0.774 rad/s",
+   "vel_limit#6": "4 rad/s",
+   "tolerance#7": "0.149 rad/s",
+   "deadline#8": "0.498 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00535",
+  "q1": "An estimate of the carriage velocity is needed for a gantry axis.",
+  "q2": "The linear scale is sampled at 4 kHz and the drive force is known; the model is attached. The worst-case scale error is given by two sources with different figures, so it is between 0.798 µm and 1.01 um. The disturbance acceleration is bounded by 0.236 m/s². The initial position error is bounded by 0.893 mm and the initial velocity error by 33.9 mm/s.",
+  "q3": "The velocity error shall not exceed 2.11 mm/s from 12.75 ms after start. This is to be guaranteed for all admissible scale errors and disturbances.",
+  "stated": {
+   "fs#0": "4 kHz",
+   "meas_bound#1": "0.798 µm",
+   "meas_bound#2": "1.01 um",
+   "acc_bound#3": "0.236 m/s²",
+   "init_pos_bound#4": "0.893 mm",
+   "init_vel_bound#5": "33.9 mm/s",
+   "tolerance#6": "2.11 mm/s",
+   "deadline#7": "12.75 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00145",
+  "q1": "The load torque bias of a hydraulic boom shall be estimated.",
+  "q2": "The inclinometer and the pressure transducer are sampled at 100 Hz and the valve command is known. The model is attached and corresponds to revision 3 of the boom description. All noises are Gaussian.",
+  "q3": "The estimate with the smallest mean-square error is requested. Only the stationary behaviour is relevant; a constant-gain estimator is acceptable.",
+  "stated": {
+   "fs#0": "100 Hz"
+  },
+  "extra_numbers": [
+   "revision 3"
+  ]
+ },
+ {
+  "id": "test-00460",
+  "q1": "The zone one temperature of a thermal process shall be estimated, i.e. a filtered value of the measured zone.",
+  "q2": "The zone one thermocouple is sampled at 0.5 Hz; the heater power is known; the thermal model is attached. All noises are Gaussian.",
+  "q3": "The minimum mean-square error estimate is requested. Only the steady state is of interest, so a constant gain is sufficient.",
+  "stated": {
+   "fs#0": "0.5 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00411",
+  "q1": "Estimation of the zone one temperature of a thermal system is requested.",
+  "q2": "A thermocouple in zone one is the only sensor and is read at 0.5 Hz. The heater power is the known input and the model is delivered as attachment. A Gaussian distribution is specified for every noise source.",
+  "q3": "The statistically optimal estimate, in the sense of the smallest mean-square error, is requested. The requirement refers to stationary operation only, and an estimator with fixed gain is accepted.",
+  "stated": {
+   "fs#0": "0.5 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00400",
+  "q1": "For the servo axis described in the attached model, an estimate of the shaft speed is required.",
+  "q2": "Measurement is the encoder angle with a sampling rate of 500 Hz. The motor torque of the 24 V servo is the known input. For the model, reference is made to the attached file. The encoder error is bounded by 82 µrad. The unmodelled acceleration is bounded by 2.01 rad/s^2. The initial angle error is bounded by 3.33 mrad and the initial speed error by 1.45 rad/s.",
+  "q3": "The speed error shall be guaranteed to be at most 65.5 mrad/s from 0.726 s after start, in the worst case over all admissible encoder errors and disturbances.",
+  "stated": {
+   "fs#0": "500 Hz",
+   "meas_bound#1": "82 µrad",
+   "acc_bound#2": "2.01 rad/s^2",
+   "init_pos_bound#3": "3.33 mrad",
+   "init_vel_bound#4": "1.45 rad/s",
+   "tolerance#5": "65.5 mrad/s",
+   "deadline#6": "0.726 s"
+  },
+  "extra_numbers": [
+   "24 V"
+  ]
+ },
+ {
+  "id": "test-00073",
+  "q1": "The cart velocity of a cart-pole system shall be estimated.",
+  "q2": "The cart encoder and the pole encoder are sampled at 200 Hz, the cart force is known, and the model is attached.",
+  "q3": "The estimate with the smallest mean-square error is requested. The start-up transient matters, so the time-varying gain is wanted.",
+  "stated": {
+   "fs#0": "200 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00478",
+  "q1": "Joint velocity of a rotary joint; an estimate is requested because only the angle is measured.",
+  "q2": "Joint angle readings are delivered by the joint encoder every 500 µs. The joint torque is known. Model data are in the attachment. The worst-case encoder error is not fixed by the data sheet; it is between 58.5 µrad and 234 urad. The unmodelled acceleration is bounded by 1.45 rad/s^2. The initial angle error is at most 7.74 mrad and the initial velocity error at most 573 mrad/s. The joint velocity is limited by hardware to 4 rad/s in magnitude.",
+  "q3": "From 97 ms after start the velocity error shall not exceed 96 mrad/s. The limit shall be guaranteed for every admissible encoder error and disturbance.",
+  "stated": {
+   "Ts#0": "500 µs",
+   "meas_bound#1": "234 urad",
+   "meas_bound#2": "58.5 µrad",
+   "acc_bound#3": "1.45 rad/s^2",
+   "init_pos_bound#4": "7.74 mrad",
+   "init_vel_bound#5": "573 mrad/s",
+   "vel_limit#6": "4 rad/s",
+   "tolerance#7": "96 mrad/s",
+   "deadline#8": "97 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00434",
+  "q1": "The boom angle of a hydraulic boom shall be estimated.",
+  "q2": "The inclinometer and the pressure transducer are sampled with a period of 10 ms; the valve command is known. The model is attached and was issued in 2025. All noises are Gaussian.",
+  "q3": "The estimate with minimum mean-square error is requested. Only the steady state matters; a constant gain is acceptable.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": [
+   "2025"
+  ]
+ },
+ {
+  "id": "test-00435",
+  "q1": "The carriage velocity of the gantry axis shall be reconstructed, since only the position is measured.",
+  "q2": "A linear scale measures the carriage position and is sampled at 0.25 kHz. The drive force is known and the model can be found in the attached file. The worst-case scale error is only known as a range from 1 µm to 4 µm. The unmodelled acceleration is bounded by 1.87 m/s². The initial position error is bounded by 617 µm and the initial velocity error by 0.258 m/s.",
+  "q3": "The velocity error shall be guaranteed not to exceed 9.63 mm/s from 248 ms after start, for all admissible scale errors and disturbances.",
+  "stated": {
+   "fs#0": "0.25 kHz",
+   "meas_bound#1": "4 µm",
+   "meas_bound#2": "1 µm",
+   "acc_bound#3": "1.87 m/s²",
+   "init_pos_bound#4": "617 µm",
+   "init_vel_bound#5": "0.258 m/s",
+   "tolerance#6": "9.63 mm/s",
+   "deadline#7": "248 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00080",
+  "q1": "Requested output is an estimate of the mass velocity of a mass-spring-damper system.",
+  "q2": "Per the test set-up description, the position sensor is sampled with a period of 1 ms and the actuator force is known. The model is contained in the attached file. The sensor error is bounded by 4.98 um in the worst case. The unmodelled acceleration is bounded by 175 mm/s^2. The velocity of the mass is limited by a hardware limiter to 0.425 m/s in magnitude.",
+  "q3": "The velocity error shall not exceed 12 mm/s from 236 ms after start. This is required as a guaranteed limit for every admissible sensor error and disturbance.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "4.98 um",
+   "acc_bound#2": "175 mm/s^2",
+   "vel_limit#3": "0.425 m/s",
+   "tolerance#4": "12 mm/s",
+   "deadline#5": "236 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00432",
+  "q1": "Shaft speed estimation is requested for a servo axis with angle measurement only.",
+  "q2": "The angle is measured by an 18-bit encoder with a sample period of 5 ms; the motor torque is known and the model is attached. The encoder error is bounded by 95.6 urad and its variance per sample is 3.04704e-9 rad². The disturbance acceleration is bounded by 4.44 rad/s^2; it is a white sequence, constant within a sample, with standard deviation 2.56 rad/s^2. The initial angle error is bounded by 3.95 mrad (standard deviation 2.28 mrad) and the initial speed error by 0.772 rad/s (standard deviation 446 mrad/s). The noises are bounded and non-Gaussian; only means and variances are known.",
+  "q3": "The estimate with the smallest mean-square error is requested. Only the stationary behaviour is relevant, so a constant-gain estimator is fine.",
+  "stated": {
+   "Ts#0": "5 ms",
+   "meas_bound#1": "95.6 urad",
+   "acc_bound#2": "4.44 rad/s^2",
+   "init_pos_bound#3": "3.95 mrad",
+   "init_vel_bound#4": "0.772 rad/s",
+   "meas_var#5": "3.04704e-9 rad²",
+   "acc_std#6": "2.56 rad/s^2",
+   "init_pos_std#7": "2.28 mrad",
+   "init_vel_std#8": "446 mrad/s"
+  },
+  "extra_numbers": [
+   "18-bit"
+  ]
+ },
+ {
+  "id": "test-00278",
+  "q1": "An estimator for the joint velocity of a rotary joint is requested.",
+  "q2": "The joint encoder is sampled with a period which is not yet fixed; it will be between 0.5 ms and 1 ms. The joint torque is known and the model is attached. The encoder error is bounded by 78.2 urad. The unmodelled acceleration is bounded by 1.65 rad/s^2. The initial angle error is bounded by 4.9 mrad and the initial velocity error by 3.41 rad/s. The joint velocity is limited by hardware to 4 rad/s in magnitude.",
+  "q3": "The velocity error shall be guaranteed to be at most 152 mrad/s from 145.5 ms after start, for all admissible encoder errors and disturbances and for any sample period in the stated range.",
+  "stated": {
+   "Ts#0": "0.5 ms",
+   "Ts#1": "1 ms",
+   "meas_bound#2": "78.2 urad",
+   "acc_bound#3": "1.65 rad/s^2",
+   "init_pos_bound#4": "4.9 mrad",
+   "init_vel_bound#5": "3.41 rad/s",
+   "vel_limit#6": "4 rad/s",
+   "tolerance#7": "152 mrad/s",
+   "deadline#8": "145.5 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00200",
+  "q1": "The shaft speed of a servo axis shall be provided by an estimator, as it is not directly measured.",
+  "q2": "The encoder angle is sampled with a period of 1 ms, the motor torque is known, and the model is attached. The encoder error is bounded by 47.9 urad and has an RMS value of 27.7 urad. The disturbance acceleration is bounded by 0.994 rad/s^2 and, as a white sequence constant within one sample, has a standard deviation of 0.574 rad/s². The initial angle error is bounded by 9.64 mrad with a standard deviation of 5.57 mrad; the initial speed error is bounded by 1.72 rad/s with a standard deviation of 993 mrad/s. The noises are bounded, not Gaussian, and only means and variances are known.",
+  "q3": "The speed error shall be within 8.77 mrad/s with a probability of at least 90%. This is assessed in steady state only; a constant gain is acceptable.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "47.9 urad",
+   "acc_bound#2": "0.994 rad/s^2",
+   "init_pos_bound#3": "9.64 mrad",
+   "init_vel_bound#4": "1.72 rad/s",
+   "meas_std#5": "27.7 urad",
+   "acc_std#6": "0.574 rad/s²",
+   "init_pos_std#7": "5.57 mrad",
+   "init_vel_std#8": "993 mrad/s",
+   "tolerance#9": "8.77 mrad/s",
+   "prob#10": "90%"
+  },
+  "extra_numbers": []
+ }
+]

@@ -1,0 +1,14 @@
+/usr/local/lib/python3.13/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+null+certificate         first 0.130 final<=refQ 0.090 final(oracle user) 0.387 unsupp 0.603 invalid 0.138 hd 29/38 decl 0.000 q 1.78 F1 nan exact 0.000
+rule+certificate         first 0.214 final<=refQ 0.148 final(oracle user) 0.529 unsupp 0.420 invalid 0.082 hd 27/38 decl 0.000 q 1.48 F1 0.589 exact 0.002
+scratch+certificate      first 0.378 final<=refQ 0.339 final(oracle user) 0.596 unsupp 0.272 invalid 0.069 hd 28/38 decl 0.077 q 0.88 F1 0.816 exact 0.169
+frozen+certificate       first 0.310 final<=refQ 0.281 final(oracle user) 0.471 unsupp 0.164 invalid 0.033 hd 11/38 decl 0.349 q 0.61 F1 0.766 exact 0.098
+finetuned+certificate    first 0.497 final<=refQ 0.444 final(oracle user) 0.554 unsupp 0.201 invalid 0.032 hd 10/38 decl 0.232 q 0.46 F1 0.814 exact 0.154
+finetuned+default_fill   first 0.497 final<=refQ 0.429 final(oracle user) 0.429 unsupp 0.247 invalid 0.049 hd 10/38 decl 0.232 q 0.00 F1 0.814 exact 0.154
+finetuned+ask_all        first 0.497 final<=refQ 0.137 final(oracle user) 0.556 unsupp 0.200 invalid 0.032 hd 10/38 decl 0.232 q 1.22 F1 0.814 exact 0.154
+oracle+certificate       first 1.000 final<=refQ 1.000 final(oracle user) 1.000 unsupp 0.000 invalid 0.000 hd 0/38 decl 0.000 q 0.33 F1 1.000 exact 1.000
+oracle+default_fill      first 1.000 final<=refQ 0.763 final(oracle user) 0.763 unsupp 0.168 invalid 0.027 hd 0/38 decl 0.000 q 0.00 F1 1.000 exact 1.000
+oracle+ask_all           first 1.000 final<=refQ 0.219 final(oracle user) 1.000 unsupp 0.000 invalid 0.000 hd 0/38 decl 0.000 q 1.28 F1 1.000 exact 1.000
+verified enclosures on: label agreement with float decisions 1.0 ms/case 60.08928041333648
+wrote <workdir>/legacy_rerun/heros_khalil/repo/experiments/../results/eval_test.json

@@ -1,0 +1,174 @@
+{
+ "plant": {
+  "family": "hydraulic_boom",
+  "kind": "linear",
+  "states": [
+   {
+    "name": "boom angle",
+    "unit": "rad"
+   },
+   {
+    "name": "boom rate",
+    "unit": "rad/s"
+   },
+   {
+    "name": "load pressure",
+    "unit": "MPa"
+   },
+   {
+    "name": "load torque bias",
+    "unit": "kN m"
+   }
+  ],
+  "inputs": [
+   {
+    "name": "valve command",
+    "unit": "-"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "inclinometer",
+    "unit": "rad"
+   },
+   {
+    "name": "pressure transducer",
+    "unit": "MPa"
+   }
+  ],
+  "linear": {
+   "clock": "continuous",
+   "A": [
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     -0.25,
+     0.2,
+     0.05
+    ],
+    [
+     0.0,
+     -4800.0,
+     -24.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "B": [
+    [
+     0.0
+    ],
+    [
+     0.0
+    ],
+    [
+     1200.0
+    ],
+    [
+     0.0
+    ]
+   ],
+   "C": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ]
+   ],
+   "Ts_native": null
+  },
+  "second_order": null,
+  "flags": []
+ },
+ "target": 1,
+ "Ts": 0.01,
+ "Q": [
+  [
+   4.0,
+   0.0
+  ],
+  [
+   0.0,
+   25.0
+  ]
+ ],
+ "Q_kind": "continuous_psd",
+ "G": [
+  [
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0
+  ],
+  [
+   1.0,
+   0.0
+  ],
+  [
+   0.0,
+   1.0
+  ]
+ ],
+ "R": [
+  [
+   4e-06,
+   0.0
+  ],
+  [
+   0.0,
+   0.0025000000000000005
+  ]
+ ],
+ "P0": [
+  [
+   0.0004,
+   0.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0025000000000000005,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   1.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   25.0
+  ]
+ ],
+ "distribution": "gaussian",
+ "white": true,
+ "t_end": 3.0,
+ "objective": {
+  "kind": "mse_optimal",
+  "horizon": "finite"
+ }
+}

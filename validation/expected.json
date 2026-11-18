@@ -1,0 +1,65 @@
+{
+ "note": "computed by validation/expected_answers.py without the package",
+ "expected": {
+  "V01": {
+   "answer": "release",
+   "value": 1.6666666666666667,
+   "reason": "Kalman recursion from P0 = 10: P_k|k = 1.667, 1.04, 0.8701, 0.8131, 0.7927, 0.7852; the largest is at t = 0"
+  },
+  "V02": {
+   "answer": "release",
+   "value": 0.37500000000000006,
+   "reason": "scalar Riccati equation: prior P = 0.6, filtered P R / (P + R) = 0.375 <= 0.5"
+  },
+  "V03": {
+   "answer": "release",
+   "value": 0.06,
+   "reason": "a pole-matched observer with eps = 3.22 ms has exact ultimate worst case 0.04694 <= 0.06 (term-by-term sum)"
+  },
+  "V04": {
+   "answer": "release",
+   "value": 0.045,
+   "reason": "with the exact model the acceleration error is the additive disturbance (<= 1.5); eps = 4.97 ms gives 0.02906 <= 0.045, whereas with 6 alone no estimator could (2 sqrt(6 V) = 0.04899)"
+  },
+  "V05": {
+   "answer": "ask: deterministic.V",
+   "value": null,
+   "reason": "every gain passes the measurement error to the speed estimate with a nonzero weight, so no finite bound holds without it"
+  },
+  "V06": {
+   "answer": "ask: stochastic.R",
+   "value": null,
+   "reason": "the optimal gain P/(P + R) and the reported variance depend on R"
+  },
+  "V07": {
+   "answer": "ask: initial.E",
+   "value": null,
+   "reason": "at t = 0.02 s the initial velocity error still enters the error with a positive weight, so an unbounded initial error defeats any finite limit"
+  },
+  "V08": {
+   "answer": "decline: impossible",
+   "value": 0.04,
+   "reason": "two admissible signals with identical readings differ in speed by 4 sqrt(DV); 2 sqrt(DV) = 0.04 > 0.035"
+  },
+  "V09": {
+   "answer": "decline: impossible",
+   "value": 2.0,
+   "reason": "at t = 0 only one position reading exists; it says nothing about the speed, which may be anywhere in [-2, 2] rad/s, so some admissible speed is 2 rad/s from any estimate"
+  },
+  "V10": {
+   "answer": "decline: impossible",
+   "value": 0.37500000000000006,
+   "reason": "the steady-state Kalman filter attains the minimum over all estimators (Gaussian), 0.375 > 0.3"
+  },
+  "V11": {
+   "answer": "decline: no verified design",
+   "value": 0.8411466134928545,
+   "reason": "the smallest error variance of any linear estimator is 6.354e-05; Chebyshev then proves only 0.841 < 0.9, and the worst-case limit 2 sqrt(DV) = 0.04899 > 0.02 rules out a probability-one bound; neither proves the level unattainable"
+  },
+  "V12": {
+   "answer": "decline: data contradict the request",
+   "value": 0.002,
+   "reason": "the gains, the model and the certificate are computed for 1 ms; the record is sampled every 2 ms"
+  }
+ }
+}

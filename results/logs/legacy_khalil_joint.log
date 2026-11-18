@@ -1,0 +1,38 @@
+certified gain interval [81.89145424253448, 482.3825285484239] selected g 172.52998123800214
+state-feedback envelope: {'assumes': 'zeta >= 1 and |f - fh + d| <= D', 'e1_env_max': 1.0472, 'x2_env_max': 2.6375, 'ultimate_e1': 0.1095, 'ultimate_x2': 0.4841, 'l1_norm_h1': 0.0278, 'l1_norm_h1_exact': 0.0278, 'u_bound': 10.1098, 'u_max': 12.0, 'saturation_inactive': True, 'S2_required': 2.6375}
+RK4 runs 3.7 s
+DOP853 runs 4.4 s
+agreement with independent solver: {'sf_max_abs_state_diff': 1.1570941427230252e-10, 'of_max_abs_state_diff': 1.1555698065102149e-10}
+closed loop: {
+ "state_feedback": {
+  "peak_e2": 1.5,
+  "e2_at_deadline": 0.0038429215434518937,
+  "post_deadline_e2": 0.01780310816753558,
+  "peak_e1": 0.0027951980366093653,
+  "max_abs_x2": 2.361195662787132,
+  "max_abs_u": 2.7108379040054404,
+  "saturated_fraction": 0.0,
+  "final_tracking_error": 0.0743927664864018,
+  "rms_tracking_error_after_1s": 0.07274554215144016,
+  "u_rms": 2.326231018869458
+ },
+ "output_feedback": {
+  "peak_e2": 1.5,
+  "e2_at_deadline": 0.003928216978124066,
+  "post_deadline_e2": 0.0177775911131415,
+  "peak_e1": 0.0027954719685550416,
+  "max_abs_x2": 2.3770785070666562,
+  "max_abs_u": 3.76990271928734,
+  "saturated_fraction": 0.0,
+  "final_tracking_error": 0.07713993147296205,
+  "rms_tracking_error_after_1s": 0.07558282363910851,
+  "u_rms": 2.328924095676818
+ },
+ "max_abs_x1_diff_sf_vs_of": 0.005625575680400452,
+ "max_abs_x2_diff_sf_vs_of": 0.0946054500661071,
+ "x2_limit_S2_reached_in_sf": false,
+ "claim_level": "simulation evidence; the estimation bound is certified (global assumptions), closed-loop stability under output feedback is not claimed"
+}
+certificate vs simulation: {'bound_violations': 0, 'certified_peak_bound': 5.236116683495719, 'simulated_peak': 1.5, 'certified_post_deadline_bound': 0.24836092393525852, 'requested_rho': 0.4, 'simulated_post_deadline': 0.0177775911131415, 'conservatism_post_deadline': 13.97044865947366}
+stress: {'noise_free': (1.5, 0.0132, True), 'biased': (1.5, 0.0132, True), 'square_at_bandwidth': (1.5, 0.0302, True), 'large_initial_velocity': (2.0, 0.0143, True)}
+gain choices: {'certified_selection': (172.5, True, 0.0143, 0.0241), 'manual_noise_balance': (167.0, True, 0.0146, 0.0243), 'ten_times_loop_bandwidth': (60.0, False, 0.0361, 0.0385), 'simulation_search': (244.9, True, 0.0123, 0.0254)}

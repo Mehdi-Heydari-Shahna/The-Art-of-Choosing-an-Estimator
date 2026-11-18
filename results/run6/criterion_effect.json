@@ -1,0 +1,62 @@
+{
+ "n_cases": 600,
+ "n_different_choice": 4,
+ "cases": [
+  {
+   "id": "test-00204",
+   "category": "both_hard",
+   "objective": "hard_bound",
+   "coordinator": "high_gain_observer",
+   "selector": "kalman_filter",
+   "criterion_values": {
+    "high_gain_observer": 0.02027428940201767,
+    "kalman_filter": 0.02145365176489667
+   },
+   "ratio_selector_over_coordinator": 1.058170342717986
+  },
+  {
+   "id": "test-00291",
+   "category": "both_hard",
+   "objective": "hard_bound",
+   "coordinator": "high_gain_observer",
+   "selector": "kalman_filter",
+   "criterion_values": {
+    "high_gain_observer": 0.0011629887419104775,
+    "kalman_filter": 0.0013291996881036948
+   },
+   "ratio_selector_over_coordinator": 1.1429170723700879
+  },
+  {
+   "id": "test-00462",
+   "category": "both_hard",
+   "objective": "hard_bound",
+   "coordinator": "high_gain_observer",
+   "selector": "kalman_filter",
+   "criterion_values": {
+    "high_gain_observer": 0.018508104970159825,
+    "kalman_filter": 0.0195142006305079
+   },
+   "ratio_selector_over_coordinator": 1.0543597338555286
+  },
+  {
+   "id": "test-00463",
+   "category": "complete_prob",
+   "objective": "probability",
+   "coordinator": "high_gain_observer",
+   "selector": "kalman_filter",
+   "criterion_values": {
+    "high_gain_observer": 0.0,
+    "kalman_filter": 0.03987485971983007
+   },
+   "ratio_selector_over_coordinator": null
+  }
+ ],
+ "note": "post-hoc descriptive analysis (not in the frozen protocol); for a probability objective the value is one minus the guaranteed probability level (smaller is better)",
+ "_meta": {
+  "script": "criterion_effect.py",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "created_utc": "2026-11-18T08:44:11Z",
+  "hardware": "2 CPU cores, no GPU (build machine)"
+ }
+}

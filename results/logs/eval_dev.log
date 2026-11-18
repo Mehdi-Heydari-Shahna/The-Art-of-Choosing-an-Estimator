@@ -1,0 +1,13 @@
+dev items: 581 templated, 59 authored
+null                               score 0.000 | tmpl exact 0.000 role 0.183 | auth exact 0.000 role 0.115 | 0.0 ms/req | params None
+rules                              score 0.153 | tmpl exact 0.052 role 0.714 | auth exact 0.254 role 0.719 | 0.3 ms/req | params 0
+select_linear_s0                   score 0.380 | tmpl exact 0.404 role 0.836 | auth exact 0.356 role 0.805 | 4.8 ms/req | params 96839
+select_neural_pretrained_s0        score 0.459 | tmpl exact 0.494 role 0.886 | auth exact 0.424 role 0.860 | 5.1 ms/req | params 169748
+select_neural_scratch_s0           score 0.511 | tmpl exact 0.513 role 0.941 | auth exact 0.508 role 0.923 | 5.2 ms/req | params 113620
+select_neural_frozen_s0            score 0.160 | tmpl exact 0.117 role 0.637 | auth exact 0.203 role 0.648 | 1.4 ms/req | params 66103
+/usr/local/lib/python3.13/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+supplied_khalil_spacy_finetuned    score 0.000 | tmpl exact 0.000 role 0.680 | auth exact 0.000 role 0.542 | 8.7 ms/req | params None
+supplied_kalman_roberta_lora       score 0.000 | tmpl exact 0.000 role 0.305 | auth exact 0.000 role 0.301 | 211.9 ms/req | params None
+selected: neural_scratch
+wrote results/dev_selection.json

@@ -1,0 +1,382 @@
+{
+ "a": "results/run3",
+ "b": "results/run3/rescored",
+ "files": {
+  "test_structured_rows.jsonl": {
+   "rows_a": 4200,
+   "rows_b": 4200,
+   "matched": 4200,
+   "only_a": 0,
+   "only_b": 0,
+   "changed": 0,
+   "summary": [],
+   "rows": []
+  },
+  "test_nl_rows.jsonl": {
+   "rows_a": 3435,
+   "rows_b": 3435,
+   "matched": 3435,
+   "only_a": 0,
+   "only_b": 0,
+   "changed": 17,
+   "summary": [
+    {
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "before": "unnecessary_refusal",
+     "after": "false_impossibility",
+     "n": 1
+    },
+    {
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "before": "nonrelease_other_reason",
+     "after": "false_impossibility",
+     "n": 2
+    },
+    {
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "before": "nonrelease_other_reason",
+     "after": "false_impossibility",
+     "n": 2
+    },
+    {
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "before": "unnecessary_refusal",
+     "after": "false_impossibility",
+     "n": 6
+    },
+    {
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "attentive",
+     "before": "unnecessary_refusal",
+     "after": "false_impossibility",
+     "n": 3
+    },
+    {
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "before": "unnecessary_refusal",
+     "after": "false_impossibility",
+     "n": 3
+    }
+   ],
+   "rows": [
+    {
+     "id": "test-00075",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "nonrelease_other_reason",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "the request asks for the smallest error variance; an optimal filter always exists, so no impossibility claim is true"
+    },
+    {
+     "id": "test-00088",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "nonrelease_other_reason",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.0036 vs two-signal limit 0.00127289 and its conditions"
+    },
+    {
+     "id": "test-00154",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "nonrelease_other_reason",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.0359 vs two-signal limit 0.0190053 and its conditions"
+    },
+    {
+     "id": "test-00164",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.00909 vs two-signal limit 0.00450759 and its conditions"
+    },
+    {
+     "id": "test-00191",
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "attentive",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.00283 vs two-signal limit 0.00128583 and its conditions"
+    },
+    {
+     "id": "test-00191",
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.00283 vs two-signal limit 0.00128583 and its conditions"
+    },
+    {
+     "id": "test-00230",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.0244 vs two-signal limit 0.00955288 and its conditions"
+    },
+    {
+     "id": "test-00280",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.0675 vs two-signal limit 0.0325433 and its conditions"
+    },
+    {
+     "id": "test-00347",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.00498 vs two-signal limit 0.00252698 and its conditions"
+    },
+    {
+     "id": "test-00347",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.00498 vs two-signal limit 0.00252698 and its conditions"
+    },
+    {
+     "id": "test-00363",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.0113 vs two-signal limit 0.00489457 and its conditions"
+    },
+    {
+     "id": "test-00363",
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "attentive",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.0113 vs two-signal limit 0.00489457 and its conditions"
+    },
+    {
+     "id": "test-00363",
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.0113 vs two-signal limit 0.00489457 and its conditions"
+    },
+    {
+     "id": "test-00442",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.00623 vs two-signal limit 0.00379479 and its conditions"
+    },
+    {
+     "id": "test-00541",
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "attentive",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.0017 vs two-signal limit 0.00057865 and its conditions"
+    },
+    {
+     "id": "test-00541",
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.0017 vs two-signal limit 0.00057865 and its conditions"
+    },
+    {
+     "id": "test-00599",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "nonrelease_other_reason",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent check fails: tolerance 0.00403 vs two-signal limit 0.00232671 and its conditions"
+    }
+   ]
+  }
+ }
+}

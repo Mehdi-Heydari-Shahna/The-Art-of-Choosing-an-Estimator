@@ -1,0 +1,457 @@
+{
+ "setting": {
+  "Ts": 0.001,
+  "b": 4.0,
+  "V": 0.0001,
+  "D": 6.0,
+  "E": [
+   0.002,
+   3.0
+  ],
+  "sigma_a": 3.464101615137755,
+  "sigma_v": 5.7735026918962585e-05,
+  "deadline": 0.05,
+  "n_records": 200,
+  "n_steps": 1000,
+  "noise": "uniform (bounded), white; identical records for all designs",
+  "initialisation": "first measurement, zero velocity (all designs); worst cases are exact for this initialisation (e_1(0) = -v_0)"
+ },
+ "designs": {
+  "hgo_worst_case_tuned": {
+   "eps": 0.0024663034626502362,
+   "M": [
+    0.5555555555155431,
+    111.11111109110492
+   ]
+  },
+  "hgo_mse_tuned": {
+   "eps": 0.003567050227325972,
+   "M": [
+    0.42918343151556404,
+    59.76849713205711
+   ]
+  },
+  "kalman_steady_state": {
+   "M": [
+    0.2924723746092617,
+    50.46879680951712
+   ]
+  }
+ },
+ "exact": {
+  "kalman_time_varying": {
+   "mse_steady": 6.35413546028549e-05,
+   "mse_at_deadline": 6.354135667629314e-05,
+   "worst_case_at_deadline": 0.06001070131459262,
+   "worst_case_post_deadline_max_evaluated": 0.060018487373690727,
+   "worst_case_peak_evaluated": 3.0,
+   "note": "time-varying gain: worst case evaluated in floating point over 400 steps (no interval certificate)"
+  },
+  "kalman_steady_state": {
+   "mse_steady": 6.354135460285491e-05,
+   "mse_at_deadline": 6.354367792202768e-05,
+   "worst_case_at_deadline": 0.06009517263298031,
+   "worst_case_post_deadline_max_evaluated": 0.060262868421847096,
+   "worst_case_peak_evaluated": 3.0,
+   "certified_post_deadline": 0.06026286842184711,
+   "certified_ultimate": 0.06001848737370706,
+   "certified_peak": 3.0,
+   "independent_worst_case_at_deadline": 0.06009517263298088,
+   "independent_box_upper_bound_at_k0": 3.0100937593619035,
+   "exact_at_k0": 3.0,
+   "independent_box_max_rel_excess": 0.003364586453967829,
+   "independent_mse_steady": 6.354135460285478e-05
+  },
+  "hgo_worst_case_tuned": {
+   "mse_steady": 8.513333332006685e-05,
+   "mse_at_deadline": 8.513333332237033e-05,
+   "worst_case_at_deadline": 0.05662971231718922,
+   "worst_case_post_deadline_max_evaluated": 0.05662971231718922,
+   "worst_case_peak_evaluated": 3.0,
+   "certified_post_deadline": 0.056629712317189225,
+   "certified_ultimate": 0.05662962963020315,
+   "certified_peak": 3.0,
+   "independent_worst_case_at_deadline": 0.05662971231718511,
+   "independent_box_upper_bound_at_k0": 3.022222222218221,
+   "exact_at_k0": 3.0,
+   "independent_box_max_rel_excess": 0.0074074074060736335,
+   "independent_mse_steady": 8.513333332006685e-05
+  },
+  "hgo_mse_tuned": {
+   "mse_steady": 6.60697729607692e-05,
+   "mse_at_deadline": 6.607012346756568e-05,
+   "worst_case_at_deadline": 0.06073763697239728,
+   "worst_case_post_deadline_max_evaluated": 0.06073763697239728,
+   "worst_case_peak_evaluated": 3.0,
+   "certified_post_deadline": 0.060737636972397265,
+   "certified_ultimate": 0.06070545909384146,
+   "certified_peak": 3.0,
+   "independent_worst_case_at_deadline": 0.06073763697239977,
+   "independent_box_upper_bound_at_k0": 3.011953699426411,
+   "exact_at_k0": 3.0,
+   "independent_box_max_rel_excess": 0.003984566475470371,
+   "independent_mse_steady": 6.606977296076922e-05
+  }
+ },
+ "empirical": {
+  "kalman_time_varying": {
+   "mse_steady_empirical": 6.366903402678354e-05,
+   "max_abs_error_post_deadline": 0.03267138112849155,
+   "max_abs_error_overall": 2.9935740125268397,
+   "rmse_at_deadline": 0.007561309109903834
+  },
+  "kalman_steady_state": {
+   "mse_steady_empirical": 6.366903402678629e-05,
+   "max_abs_error_post_deadline": 0.03267138109226142,
+   "max_abs_error_overall": 2.9935740125268397,
+   "rmse_at_deadline": 0.007563185413758309
+  },
+  "hgo_worst_case_tuned": {
+   "mse_steady_empirical": 8.541277401837733e-05,
+   "max_abs_error_post_deadline": 0.035296114103418375,
+   "max_abs_error_overall": 2.9935740125268397,
+   "rmse_at_deadline": 0.009194032229145234
+  },
+  "hgo_mse_tuned": {
+   "mse_steady_empirical": 6.631086835112936e-05,
+   "max_abs_error_post_deadline": 0.033639742754372426,
+   "max_abs_error_overall": 2.9935740125268397,
+   "rmse_at_deadline": 0.007747886600130658
+  }
+ },
+ "decisions": {
+  "smallest mean-square error": {
+   "objective": {
+    "kind": "mse_optimal",
+    "horizon": "steady_state"
+   },
+   "disposition": "RELEASE",
+   "selected": "kalman_filter",
+   "qualifying": [
+    "kalman_filter"
+   ],
+   "criterion_values": null,
+   "ranking_supported": null,
+   "claim": "constant (steady-state) Kalman gain: in the limit k -> infinity its error covariance equals that of the optimal filter, whose estimate is the minimum mean-square error among linear (affine) estimators of the same measurements and inputs (only means and covariances are assumed; no claim against nonlinear estimators); at finite times the time-varying filter is better (horizon 'finite'); error variance of the target in steady state (the limit as k -> infinity): at most 6.35414e-05; the exported covariance at each sample is that of the constant gain started from the stated initial covariance",
+   "explanation": [
+    "kalman_filter selected for objective 'mse_optimal': constant (steady-state) Kalman gain: in the limit k -> infinity its error covariance equals that of the optimal filter, whose estimate is the minimum mean-square error among linear (affine) estimators of the same measurements and inputs (only means and covariances are assumed; no claim against nonlinear estimators); at finite times the time-varying filter is better (horizon 'finite'); error variance of the target in steady state (the limit as k -> infinity): at most 6.35414e-05; the exported covariance at each sample is that of the constant gain started from the stated initial covariance",
+    "high_gain_observer was not selected: a minimum-mean-square-error claim is requested; a fixed-gain high-gain observer is one linear estimator and carries no such claim (its best error variance in steady state (the limit as k -> infinity) on this model is 6.60695e-05)"
+   ]
+  },
+  "mean-square error below a level": {
+   "objective": {
+    "kind": "mse_bound",
+    "horizon": "steady_state",
+    "mse_target": 0.000191
+   },
+   "disposition": "RELEASE",
+   "selected": "kalman_filter",
+   "qualifying": [
+    "kalman_filter",
+    "high_gain_observer"
+   ],
+   "criterion_values": {
+    "kalman_filter": 6.35413546028303e-05,
+    "high_gain_observer": 6.606951151825739e-05
+   },
+   "ranking_supported": true,
+   "claim": "mean-square error of the target in steady state (the limit as k -> infinity) is at most 6.35414e-05 <= 0.000191",
+   "explanation": [
+    "kalman_filter selected for objective 'mse_bound': mean-square error of the target in steady state (the limit as k -> infinity) is at most 6.35414e-05 <= 0.000191",
+    "both methods meet the request; the selected one has the better value of the requested criterion, evaluated on the same information"
+   ]
+  },
+  "error within r with probability 0.9": {
+   "objective": {
+    "kind": "probability",
+    "horizon": "steady_state",
+    "tolerance": 0.0319,
+    "prob": 0.9
+   },
+   "disposition": "RELEASE",
+   "selected": "kalman_filter",
+   "qualifying": [
+    "kalman_filter"
+   ],
+   "criterion_values": null,
+   "ranking_supported": null,
+   "claim": "in steady state (the limit as k -> infinity), |error| <= 0.0319 with probability at least 0.937558 (Chebyshev inequality with error variance P (distribution-free): P(|e| <= r) >= 1 - P / r^2); the statement is per time instant, not simultaneous over the window",
+   "explanation": [
+    "kalman_filter selected for objective 'probability': in steady state (the limit as k -> infinity), |error| <= 0.0319 with probability at least 0.937558 (Chebyshev inequality with error variance P (distribution-free): P(|e| <= r) >= 1 - P / r^2); the statement is per time instant, not simultaneous over the window",
+    "high_gain_observer was not selected: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0566296 > 0.0319); this is the limit of this certificate family, not a proof that no estimator can meet it"
+   ]
+  },
+  "guaranteed error limit after the deadline": {
+   "objective": {
+    "kind": "hard_bound",
+    "tolerance": 0.0906,
+    "deadline": 0.05
+   },
+   "disposition": "RELEASE",
+   "selected": "high_gain_observer",
+   "qualifying": [
+    "high_gain_observer",
+    "kalman_filter"
+   ],
+   "criterion_values": {
+    "high_gain_observer": 0.056629712317189225,
+    "kalman_filter": 0.06026286842184711
+   },
+   "ranking_supported": true,
+   "claim": "|error| <= 0.0566298 at every sample instant from t = 0.05 s to t = 1 s for every admissible initial error, measurement error and disturbance",
+   "explanation": [
+    "high_gain_observer selected for objective 'hard_bound': |error| <= 0.0566298 at every sample instant from t = 0.05 s to t = 1 s for every admissible initial error, measurement error and disturbance",
+    "both methods meet the request; the selected one has the better value of the requested criterion, evaluated on the same information"
+   ]
+  },
+  "guaranteed ultimate error limit": {
+   "objective": {
+    "kind": "hard_bound",
+    "tolerance": 0.0906
+   },
+   "disposition": "RELEASE",
+   "selected": "high_gain_observer",
+   "qualifying": [
+    "high_gain_observer",
+    "kalman_filter"
+   ],
+   "criterion_values": {
+    "high_gain_observer": 0.05662962963020315,
+    "kalman_filter": 0.06001848737370706
+   },
+   "ranking_supported": true,
+   "claim": "lim sup |error| <= 0.0566297 at the sample instants (an ultimate bound; no finite-time claim is made) for every admissible initial error, measurement error and disturbance",
+   "explanation": [
+    "high_gain_observer selected for objective 'hard_bound': lim sup |error| <= 0.0566297 at the sample instants (an ultimate bound; no finite-time claim is made) for every admissible initial error, measurement error and disturbance",
+    "both methods meet the request; the selected one has the better value of the requested criterion, evaluated on the same information"
+   ]
+  },
+  "guaranteed limit below the two-signal limit": {
+   "objective": {
+    "kind": "hard_bound",
+    "tolerance": 0.0392
+   },
+   "disposition": "PROVED_IMPOSSIBLE",
+   "selected": null,
+   "qualifying": [],
+   "criterion_values": null,
+   "ranking_supported": null,
+   "claim": null,
+   "explanation": [
+    "no causal estimator of the velocity can keep the worst-case error below 2 sqrt(D V) = 0.0489898 at the sample t = 0.017 s, which the requested tolerance 0.0392 covers: two admissible signals rest at x1 = 0, u = 0 and separate symmetrically within +-0.0001 (accelerations at most 6) over the 4 sqrt(V/D) = 0.0163299 s before that sample; their measurements coincide within |v| <= 0.0001, their velocities differ by 4 sqrt(D V) at the sample, and afterwards they brake to rest within +-0.0003 of the rest position (the stated travel, speed and input ranges and the initial-error bounds admit both)",
+    "kalman_filter: a covariance is not a deterministic bound; a hard error limit for the Kalman gain is evaluated only on the sampled double-integrator class, where the exact worst case of any constant linear gain is available"
+   ]
+  }
+ },
+ "sweep": [
+  {
+   "V": 2e-05,
+   "D": 1.0,
+   "kalman_mse": 1.9480962567415862e-06,
+   "hgo_mse": 3.0166666659735678e-06,
+   "mse_ratio_hgo_over_kalman": 1.5485203339075697,
+   "kalman_worst_post_deadline": 0.011896164524622667,
+   "hgo_worst_post_deadline": 0.01042600897494252,
+   "worst_ratio_kalman_over_hgo": 1.1410084676901262,
+   "kalman_worst_ultimate": 0.011021262439562758,
+   "hgo_worst_ultimate": 0.010425925925933896,
+   "two_signal_limit": 0.00894427190999916
+  },
+  {
+   "V": 2e-05,
+   "D": 6.0,
+   "kalman_mse": 2.5559467676118996e-05,
+   "hgo_mse": 2.790035203608859e-05,
+   "mse_ratio_hgo_over_kalman": 1.0915858025539693,
+   "kalman_worst_post_deadline": 0.025825689713792878,
+   "hgo_worst_post_deadline": 0.024877297039719904,
+   "worst_ratio_kalman_over_hgo": 1.0381228182691529,
+   "kalman_worst_ultimate": 0.025825674179166903,
+   "hgo_worst_ultimate": 0.02487729703971702,
+   "two_signal_limit": 0.021908902300206645
+  },
+  {
+   "V": 2e-05,
+   "D": 30.0,
+   "kalman_mse": 0.00022749172176353736,
+   "hgo_mse": 0.00026028384103235773,
+   "mse_ratio_hgo_over_kalman": 1.1441464287782113,
+   "kalman_worst_post_deadline": 0.05599112077873657,
+   "hgo_worst_post_deadline": 0.05405781746683881,
+   "worst_ratio_kalman_over_hgo": 1.0357636212946206,
+   "kalman_worst_ultimate": 0.05599112077873657,
+   "hgo_worst_ultimate": 0.05405781746683881,
+   "two_signal_limit": 0.048989794855663564
+  },
+  {
+   "V": 5e-05,
+   "D": 1.0,
+   "kalman_mse": 3.1708307324168e-06,
+   "hgo_mse": 4.781356293686723e-06,
+   "mse_ratio_hgo_over_kalman": 1.507919121889671,
+   "kalman_worst_post_deadline": 0.029347738414860793,
+   "hgo_worst_post_deadline": 0.016920503543150306,
+   "worst_ratio_kalman_over_hgo": 1.7344482887296362,
+   "kalman_worst_ultimate": 0.01766935404107788,
+   "hgo_worst_ultimate": 0.01679771032775294,
+   "two_signal_limit": 0.01414213562373095
+  },
+  {
+   "V": 5e-05,
+   "D": 6.0,
+   "kalman_mse": 4.335585071701228e-05,
+   "hgo_mse": 6.29738830585104e-05,
+   "mse_ratio_hgo_over_kalman": 1.45248869569062,
+   "kalman_worst_post_deadline": 0.04185571240148517,
+   "hgo_worst_post_deadline": 0.03993920188268494,
+   "worst_ratio_kalman_over_hgo": 1.0479856989738972,
+   "kalman_worst_ultimate": 0.04184464107620034,
+   "hgo_worst_ultimate": 0.039939201878653366,
+   "two_signal_limit": 0.034641016151377546
+  },
+  {
+   "V": 5e-05,
+   "D": 30.0,
+   "kalman_mse": 0.00041789083458002713,
+   "hgo_mse": 0.0004537984118751355,
+   "mse_ratio_hgo_over_kalman": 1.0859257354404406,
+   "kalman_worst_post_deadline": 0.08706146225771569,
+   "hgo_worst_post_deadline": 0.08944214239671495,
+   "worst_ratio_kalman_over_hgo": 0.9733830152632088,
+   "kalman_worst_ultimate": 0.0870614622546248,
+   "hgo_worst_ultimate": 0.08944214239671495,
+   "two_signal_limit": 0.07745966692414834
+  },
+  {
+   "V": 0.0001,
+   "D": 1.0,
+   "kalman_mse": 4.550323899361633e-06,
+   "hgo_mse": 1.0465864330689376e-05,
+   "mse_ratio_hgo_over_kalman": 2.300026231573897,
+   "kalman_worst_post_deadline": 0.13670342467287297,
+   "hgo_worst_post_deadline": 0.02534746291711086,
+   "worst_ratio_kalman_over_hgo": 5.393179787654055,
+   "kalman_worst_ultimate": 0.025174816023142484,
+   "hgo_worst_ultimate": 0.024794142970531917,
+   "two_signal_limit": 0.02
+  },
+  {
+   "V": 0.0001,
+   "D": 6.0,
+   "kalman_mse": 6.354135460285489e-05,
+   "hgo_mse": 8.513333332006679e-05,
+   "mse_ratio_hgo_over_kalman": 1.3398098585112912,
+   "kalman_worst_post_deadline": 0.060262868421848345,
+   "hgo_worst_post_deadline": 0.05662971231718922,
+   "worst_ratio_kalman_over_hgo": 1.0641563581377462,
+   "kalman_worst_ultimate": 0.06001848737370802,
+   "hgo_worst_ultimate": 0.05662962963020314,
+   "two_signal_limit": 0.048989794855663564
+  },
+  {
+   "V": 0.0001,
+   "D": 30.0,
+   "kalman_mse": 0.000638986691902975,
+   "hgo_mse": 0.0006975087984814402,
+   "mse_ratio_hgo_over_kalman": 1.0915857987655104,
+   "kalman_worst_post_deadline": 0.12912838618661357,
+   "hgo_worst_post_deadline": 0.124386485198588,
+   "worst_ratio_kalman_over_hgo": 1.0381223167489213,
+   "kalman_worst_ultimate": 0.12912837089610008,
+   "hgo_worst_ultimate": 0.12438648519858515,
+   "two_signal_limit": 0.10954451150103323
+  },
+  {
+   "V": 0.0003,
+   "D": 1.0,
+   "kalman_mse": 8.000000000000008e-06,
+   "hgo_mse": 4.705766198733558e-05,
+   "mse_ratio_hgo_over_kalman": 5.882207748416942,
+   "kalman_worst_post_deadline": 0.19785918980521464,
+   "hgo_worst_post_deadline": 0.053758222236403294,
+   "worst_ratio_kalman_over_hgo": 3.680538186979534,
+   "kalman_worst_ultimate": 0.04394500522548591,
+   "hgo_worst_ultimate": 0.050658551974835805,
+   "two_signal_limit": 0.034641016151377546
+  },
+  {
+   "V": 0.0003,
+   "D": 6.0,
+   "kalman_mse": 0.00011414990636700446,
+   "hgo_mse": 0.00015021071029570795,
+   "mse_ratio_hgo_over_kalman": 1.3159074332725604,
+   "kalman_worst_post_deadline": 0.11743383537600269,
+   "hgo_worst_post_deadline": 0.10056222207149443,
+   "worst_ratio_kalman_over_hgo": 1.167772876901163,
+   "kalman_worst_ultimate": 0.10601612424651499,
+   "hgo_worst_ultimate": 0.1002312286437844,
+   "two_signal_limit": 0.08485281374238571
+  },
+  {
+   "V": 0.0003,
+   "D": 30.0,
+   "kalman_mse": 0.0011999999999999995,
+   "hgo_mse": 0.0015084620734789934,
+   "mse_ratio_hgo_over_kalman": 1.2570517278991618,
+   "kalman_worst_post_deadline": 0.22947429330937105,
+   "hgo_worst_post_deadline": 0.2201718647749758,
+   "worst_ratio_kalman_over_hgo": 1.042250759623182,
+   "kalman_worst_ultimate": 0.22945154411310797,
+   "hgo_worst_ultimate": 0.22017186395658866,
+   "two_signal_limit": 0.18973665961010275
+  },
+  {
+   "V": 0.001,
+   "D": 1.0,
+   "kalman_mse": 1.4741384849208894e-05,
+   "hgo_mse": 0.0002759037035398341,
+   "mse_ratio_hgo_over_kalman": 18.716267593722083,
+   "kalman_worst_post_deadline": 1.358274053157296,
+   "hgo_worst_post_deadline": 0.13646288042016702,
+   "worst_ratio_kalman_over_hgo": 9.95343238377493,
+   "kalman_worst_ultimate": 0.08063156470041223,
+   "hgo_worst_ultimate": 0.12258148371535404,
+   "two_signal_limit": 0.06324555320336758
+  },
+  {
+   "V": 0.001,
+   "D": 6.0,
+   "kalman_mse": 0.00021317116598676913,
+   "hgo_mse": 0.000453222841559953,
+   "mse_ratio_hgo_over_kalman": 2.126098243456074,
+   "kalman_worst_post_deadline": 0.31715992584724206,
+   "hgo_worst_post_deadline": 0.19821310953271565,
+   "worst_ratio_kalman_over_hgo": 1.6000956071722083,
+   "kalman_worst_ultimate": 0.19579041289237775,
+   "hgo_worst_ultimate": 0.19137053580156752,
+   "two_signal_limit": 0.15491933384829668
+  },
+  {
+   "V": 0.001,
+   "D": 30.0,
+   "kalman_mse": 0.002304078238361606,
+   "hgo_mse": 0.003111491739495694,
+   "mse_ratio_hgo_over_kalman": 1.350427987943772,
+   "kalman_worst_post_deadline": 0.43490926190988866,
+   "hgo_worst_post_deadline": 0.405959582297514,
+   "worst_ratio_kalman_over_hgo": 1.0713117287404204,
+   "kalman_worst_ultimate": 0.4300530525251827,
+   "hgo_worst_ultimate": 0.4059375000003218,
+   "two_signal_limit": 0.34641016151377546
+  }
+ ],
+ "two_signal_limit": 0.048989794855663564,
+ "finding": {
+  "mse_preferred": "kalman_steady_state",
+  "hard_bound_preferred": "hgo_worst_case_tuned",
+  "mse_ratio_hgo_worstcase_tuned_over_kalman": 1.3398098585112916,
+  "worst_case_ratio_kalman_over_hgo": 1.0641563581377242
+ },
+ "_meta": {
+  "script": "exp_common_domain.py",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "created_utc": "2026-11-18T14:17:28Z",
+  "hardware": "2 CPU cores, no GPU (build machine)"
+ }
+}

@@ -1,0 +1,183 @@
+{
+  "spec": {
+    "schema": "heros-spec/1",
+    "plant": {
+      "family": "servo_axis",
+      "kind": "second_order",
+      "states": [
+        {
+          "name": "position",
+          "unit": "m"
+        },
+        {
+          "name": "velocity",
+          "unit": "m/s"
+        }
+      ],
+      "inputs": [
+        {
+          "name": "input",
+          "unit": "m/s2"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "position",
+          "unit": "m"
+        }
+      ],
+      "linear": null,
+      "second_order": {
+        "f": "0",
+        "f0": "0",
+        "params": {},
+        "param_ranges": {},
+        "output": "x1"
+      },
+      "flags": []
+    },
+    "target": {
+      "state": 1
+    },
+    "time": {
+      "Ts": 0.1,
+      "input_hold": "zoh",
+      "t_end": 1.0,
+      "irregular": false
+    },
+    "initial": {
+      "x0_hat": null,
+      "P0": null,
+      "E": [
+        0.0,
+        0.0
+      ],
+      "policy": null
+    },
+    "stochastic": {
+      "distribution": null,
+      "Q": null,
+      "Q_kind": null,
+      "G": null,
+      "R": null,
+      "white": null,
+      "cross_cov": null
+    },
+    "deterministic": {
+      "V": 0.0,
+      "D": null,
+      "d_bound": null,
+      "domain": null,
+      "domain_evidence": null
+    },
+    "objective": {
+      "kind": "hard_bound",
+      "tolerance": 0.001,
+      "deadline": 0.1,
+      "peak_cap": null,
+      "prob": null,
+      "mse_target": null,
+      "horizon": null
+    },
+    "evidence": {
+      "target.state": {
+        "status": "supplied",
+        "source": "structured input"
+      },
+      "time.Ts": {
+        "status": "supplied",
+        "source": "structured input"
+      },
+      "time.t_end": {
+        "status": "supplied",
+        "source": "structured input"
+      },
+      "deterministic.V": {
+        "status": "supplied",
+        "source": "structured input"
+      },
+      "initial.E": {
+        "status": "supplied",
+        "source": "structured input"
+      },
+      "objective.kind": {
+        "status": "supplied",
+        "source": "structured input"
+      },
+      "objective.deadline": {
+        "status": "supplied",
+        "source": "structured input"
+      },
+      "objective.tolerance": {
+        "status": "supplied",
+        "source": "structured input"
+      },
+      "deterministic.D": {
+        "status": "unresolved",
+        "source": "structured input (range)"
+      },
+      "deterministic.d_bound": {
+        "status": "unresolved",
+        "source": "structured input (range)"
+      }
+    },
+    "ranges": {
+      "deterministic.D": [
+        0,
+        2
+      ],
+      "deterministic.d_bound": [
+        0,
+        2
+      ]
+    },
+    "constraints": [
+      {
+        "paths": [
+          "deterministic.D",
+          "deterministic.d_bound"
+        ],
+        "sum": 2.0
+      }
+    ]
+  },
+  "y": [
+    0.0,
+    0.005000000000000001,
+    0.020000000000000004,
+    0.04500000000000001,
+    0.08000000000000002,
+    0.125,
+    0.18000000000000005,
+    0.24500000000000005,
+    0.32000000000000006,
+    0.405,
+    0.5
+  ],
+  "u": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "t": [
+    0.0,
+    0.1,
+    0.2,
+    0.30000000000000004,
+    0.4,
+    0.5,
+    0.6000000000000001,
+    0.7000000000000001,
+    0.8,
+    0.9,
+    1.0
+  ]
+}

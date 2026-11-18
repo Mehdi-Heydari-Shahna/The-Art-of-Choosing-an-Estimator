@@ -1,0 +1,22 @@
+1. |1 - h g| < 1 condition reproduced on 7 cases
+2. certified (continuous) interval [8.0, 6791.7] | h = 0.001
+   g=    50  h*g=0.05  continuous 0.0420  sampled 0.0415
+   g=   200  h*g=0.20  continuous 0.0137  sampled 0.0133
+   g=   800  h*g=0.80  continuous 0.0065  sampled 0.0060
+   g=  1500  h*g=1.50  continuous 0.0053  sampled 0.0048
+   g=  1900  h*g=1.90  continuous 0.0050  sampled 0.0045
+   g=  2100  h*g=2.10  continuous 0.0049  sampled DIVERGED
+   g=  2500  h*g=2.50  continuous 0.0048  sampled DIVERGED
+   g=  4000  h*g=4.00  continuous 0.0045  sampled DIVERGED
+   with the sample period in the request the agent returns CERTIFIED g = 159.281592566486 interval [8.000000000164873, 999.9999999991649]
+3. joint, g = 172.5:
+   h=0       post-deadline e2 0.0178  tracking err 0.0771
+   h=5e-05   post-deadline e2 0.0178  tracking err 0.0771
+   h=0.0001  post-deadline e2 0.0179  tracking err 0.0771
+   h=0.0002  post-deadline e2 0.0179  tracking err 0.0771
+   h=0.0005  post-deadline e2 0.0182  tracking err 0.0771
+   h=0.001   post-deadline e2 0.0189  tracking err 0.0771
+   h=0.002   post-deadline e2 0.0203  tracking err 0.0771
+   h=0.004   post-deadline e2 0.0394  tracking err 0.0771
+   h=0.006   post-deadline e2 DIVERGED  tracking err -
+   h=0.008   post-deadline e2 DIVERGED  tracking err -

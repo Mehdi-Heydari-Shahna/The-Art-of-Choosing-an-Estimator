@@ -1,0 +1,156 @@
+{
+ "n": 12,
+ "agree": 12,
+ "rows": [
+  {
+   "id": "V01",
+   "request": "level gauge, random-walk level, Q = 0.5, R = 2, P0 = 10, record of 5 s at 1 s; smallest mean-square error",
+   "expected": "release",
+   "expected_value": 1.6666666666666667,
+   "returned": "release",
+   "display": "Verified design released.",
+   "agree": true,
+   "reason": "Kalman recursion from P0 = 10: P_k|k = 1.667, 1.04, 0.8701, 0.8131, 0.7927, 0.7852; the largest is at t = 0",
+   "claim_value": 1.6666666666666665,
+   "selected": "kalman_filter",
+   "independent_value": 1.6666666666666667,
+   "value_check": true
+  },
+  {
+   "id": "V02",
+   "request": "AR(1) level, a = 0.8, Q = 0.36, R = 1; steady-state mean-square error at most 0.5",
+   "expected": "release",
+   "expected_value": 0.37500000000000006,
+   "returned": "release",
+   "display": "Verified design released.",
+   "agree": true,
+   "reason": "scalar Riccati equation: prior P = 0.6, filtered P R / (P + R) = 0.375 <= 0.5",
+   "claim_value": 0.3750000000000001,
+   "selected": "kalman_filter",
+   "independent_value": 0.37500000000000006,
+   "value_check": true
+  },
+  {
+   "id": "V03",
+   "request": "axis, encoder error <= 1e-4 rad, unmodelled acceleration <= 4 rad/s^2, 1 kHz; speed error eventually <= 0.06 rad/s, guaranteed",
+   "expected": "release",
+   "expected_value": 0.06,
+   "returned": "release",
+   "display": "Verified design released.",
+   "agree": true,
+   "reason": "a pole-matched observer with eps = 3.22 ms has exact ultimate worst case 0.04694 <= 0.06 (term-by-term sum)",
+   "claim_value": 0.04693792296105014,
+   "selected": "high_gain_observer",
+   "independent_value": 0.046937922961050114,
+   "value_check": true
+  },
+  {
+   "id": "V04",
+   "request": "same axis, total disturbance <= 6 rad/s^2 and, with the exact model b u, additive disturbance <= 1.5 rad/s^2; speed error eventually <= 0.045",
+   "expected": "release",
+   "expected_value": 0.045,
+   "returned": "release",
+   "display": "Verified design released.",
+   "agree": true,
+   "reason": "with the exact model the acceleration error is the additive disturbance (<= 1.5); eps = 4.97 ms gives 0.02906 <= 0.045, whereas with 6 alone no estimator could (2 sqrt(6 V) = 0.04899)",
+   "claim_value": 0.02906401103558417,
+   "selected": "high_gain_observer",
+   "independent_value": 0.029064011035584158,
+   "value_check": true
+  },
+  {
+   "id": "V05",
+   "request": "axis, unmodelled acceleration <= 4, initial errors given; speed error <= 0.1 rad/s after 0.05 s, guaranteed; encoder error bound not given",
+   "expected": "ask: deterministic.V",
+   "expected_value": null,
+   "returned": "ask: deterministic.V",
+   "display": "One fact is needed before a design can be certified.",
+   "agree": true,
+   "reason": "every gain passes the measurement error to the speed estimate with a nonzero weight, so no finite bound holds without it"
+  },
+  {
+   "id": "V06",
+   "request": "level gauge, random walk, Q = 0.5, P0 = 10; smallest mean-square error over 5 s; sensor noise variance not given",
+   "expected": "ask: stochastic.R",
+   "expected_value": null,
+   "returned": "ask: stochastic.R",
+   "display": "One fact is needed before a design can be certified.",
+   "agree": true,
+   "reason": "the optimal gain P/(P + R) and the reported variance depend on R"
+  },
+  {
+   "id": "V07",
+   "request": "axis, encoder error <= 1e-4, acceleration <= 4; speed error <= 0.1 rad/s from 0.02 s on; no initial-error bound",
+   "expected": "ask: initial.E",
+   "expected_value": null,
+   "returned": "ask: initial.E",
+   "display": "One fact is needed before a design can be certified.",
+   "agree": true,
+   "reason": "at t = 0.02 s the initial velocity error still enters the error with a positive weight, so an unbounded initial error defeats any finite limit"
+  },
+  {
+   "id": "V08",
+   "request": "axis, encoder error <= 1e-4, acceleration <= 4 (arbitrary); speed error eventually <= 0.035 rad/s, guaranteed",
+   "expected": "decline: impossible",
+   "expected_value": 0.04,
+   "returned": "decline: impossible",
+   "display": "No estimator can meet this requirement.",
+   "agree": true,
+   "reason": "two admissible signals with identical readings differ in speed by 4 sqrt(DV); 2 sqrt(DV) = 0.04 > 0.035",
+   "claimed_limit": 0.04,
+   "limit_check": true
+  },
+  {
+   "id": "V09",
+   "request": "axis as V03; speed error <= 0.2 rad/s after 0.05 s and never above 0.5 rad/s; initial speed uncertainty 2 rad/s",
+   "expected": "decline: impossible",
+   "expected_value": 2.0,
+   "returned": "decline: impossible",
+   "display": "No estimator can meet this requirement.",
+   "agree": true,
+   "reason": "at t = 0 only one position reading exists; it says nothing about the speed, which may be anywhere in [-2, 2] rad/s, so some admissible speed is 2 rad/s from any estimate",
+   "claimed_limit": 2.0,
+   "limit_check": true
+  },
+  {
+   "id": "V10",
+   "request": "AR(1) level as V02; steady-state mean-square error at most 0.3",
+   "expected": "decline: impossible",
+   "expected_value": 0.37500000000000006,
+   "returned": "decline: impossible",
+   "display": "No estimator can meet this requirement.",
+   "agree": true,
+   "reason": "the steady-state Kalman filter attains the minimum over all estimators (Gaussian), 0.375 > 0.3",
+   "claimed_limit": 0.3750000000000001,
+   "limit_check": true
+  },
+  {
+   "id": "V11",
+   "request": "axis, uniform noises (acceleration within +-6, encoder within +-1e-4); speed error within 0.02 rad/s with probability 0.9",
+   "expected": "decline: no verified design",
+   "expected_value": 0.8411466134928545,
+   "returned": "decline: no verified design",
+   "display": "No verified design found.",
+   "agree": true,
+   "reason": "the smallest error variance of any linear estimator is 6.354e-05; Chebyshev then proves only 0.841 < 0.9, and the worst-case limit 2 sqrt(DV) = 0.04899 > 0.02 rules out a probability-one bound; neither proves the level unattainable"
+  },
+  {
+   "id": "V12",
+   "request": "request of V03 stated at 1 kHz; the attached record has timestamps every 2 ms",
+   "expected": "decline: data contradict the request",
+   "expected_value": 0.002,
+   "returned": "decline: data contradict the request",
+   "display": "The timestamps of the data do not match the stated sample period; nothing is released.",
+   "agree": true,
+   "reason": "the gains, the model and the certificate are computed for 1 ms; the record is sampled every 2 ms"
+  }
+ ],
+ "note": "expected answers fixed before the run (git tag validation-frozen); software at git tag revision-2-frozen",
+ "_meta": {
+  "script": "run_validation.py",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "created_utc": "2026-11-18T08:04:28Z",
+  "hardware": "2 CPU cores, no GPU (build machine)"
+ }
+}

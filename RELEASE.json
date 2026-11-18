@@ -1,0 +1,10 @@
+{
+ "release": "revision 2c",
+ "release_tag": "revision-2c.1",
+ "software_tag": "revision-2c-frozen",
+ "software_commit": "6f52718",
+ "code_digest": "431b8c31b526a127ef5c08d02dc855eb16f497913efc625656b2d2a95ed449a5",
+ "code_digest_rule": "SHA-256 over the relative path and bytes of every .py file under heros/ and independent/, in sorted order",
+ "date": "2026-11-18",
+ "note": "the release tag marks the delivered tree; heros/ and independent/ are identical to the software tag"
+}

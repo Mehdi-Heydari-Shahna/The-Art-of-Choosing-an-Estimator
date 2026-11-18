@@ -1,0 +1,297 @@
+{
+ "decision": {
+  "coordinator_version": "1.0.0",
+  "spec_hash": "bc24f19221faa214",
+  "policy": {
+   "methods": null,
+   "ranking": "criterion"
+  },
+  "accepted_choices": [],
+  "disposition": "OUT_OF_SCOPE",
+  "selected": null,
+  "qualifying": [],
+  "claim": null,
+  "config": null,
+  "question": null,
+  "all_needs": [],
+  "alternatives": [],
+  "tradeoff": null,
+  "assessments": {},
+  "impossibility": null,
+  "harmless": [],
+  "explanations": [
+   "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 7.63e-06 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+  ],
+  "issues": [
+   {
+    "code": "irregular_sampling",
+    "path": "time.Ts",
+    "message": "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 7.63e-06 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+   }
+  ],
+  "display": "The data are not sampled at a fixed period; no fixed-period certificate applies.",
+  "withdrawn_release": {
+   "selected": "high_gain_observer",
+   "claim": "|error| <= 0 at every sample instant from t = 0 s to t = 0.00195312 s for every admissible initial error, measurement error and disturbance"
+  }
+ },
+ "estimates": null,
+ "timing": {
+  "ok": false,
+  "code": "irregular_sampling",
+  "n": 3,
+  "Ts_stated": 0.0009765625,
+  "label_resolution": null,
+  "dt_min": 0.00096893310546875,
+  "dt_max": 0.00098419189453125,
+  "dt_median": 0.0009765625,
+  "t0": 0.0,
+  "label_precision": 1.734723475976807e-18,
+  "tolerance": 1.734723475976807e-18,
+  "max_deviation": 7.62939453125e-06,
+  "message": "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 7.63e-06 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+ },
+ "inputs": null,
+ "record": {
+  "schema": "heros-record/1",
+  "created_utc": "2026-11-18T17:08:17+00:00",
+  "build": {
+   "package": "heros-estimation",
+   "version": "1.0.0",
+   "coordinator": "1.0.0",
+   "kalman": "1.0.0",
+   "khalil": "1.0.0",
+   "python": "3.13.18",
+   "numpy": "2.5.3"
+  },
+  "interpretation_model": {
+   "used": false
+  },
+  "spec": {
+   "schema": "heros-spec/1",
+   "plant": {
+    "family": null,
+    "kind": "second_order",
+    "states": [],
+    "inputs": [],
+    "outputs": [],
+    "linear": null,
+    "second_order": {
+     "f": "0",
+     "f0": "0",
+     "output": "x1",
+     "params": {}
+    },
+    "flags": []
+   },
+   "target": {
+    "state": 1
+   },
+   "time": {
+    "Ts": 0.0009765625,
+    "input_hold": "zoh",
+    "t_end": 0.001953125,
+    "irregular": false
+   },
+   "initial": {
+    "x0_hat": [
+     0,
+     1
+    ],
+    "P0": null,
+    "E": [
+     0,
+     0
+    ],
+    "policy": null
+   },
+   "stochastic": {
+    "distribution": null,
+    "Q": null,
+    "Q_kind": null,
+    "G": null,
+    "R": null,
+    "white": null,
+    "cross_cov": null
+   },
+   "deterministic": {
+    "V": 0,
+    "D": 0,
+    "d_bound": null,
+    "domain": null,
+    "domain_evidence": null
+   },
+   "objective": {
+    "kind": "hard_bound",
+    "tolerance": 1e-07,
+    "deadline": 0.0,
+    "peak_cap": null,
+    "prob": null,
+    "mse_target": null,
+    "horizon": null
+   },
+   "evidence": {
+    "target.state": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "time.Ts": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "time.t_end": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "deterministic.V": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "deterministic.D": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "initial.E": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "initial.x0_hat": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "objective.kind": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "objective.tolerance": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "objective.deadline": {
+     "status": "supplied",
+     "source": "structured input"
+    }
+   },
+   "ranges": {},
+   "constraints": []
+  },
+  "spec_hash": "bc24f19221faa214",
+  "evidence": {
+   "target.state": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "time.Ts": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "time.t_end": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "deterministic.V": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "deterministic.D": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "initial.E": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "initial.x0_hat": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "objective.kind": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "objective.tolerance": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "objective.deadline": {
+    "status": "supplied",
+    "source": "structured input"
+   }
+  },
+  "accepted_choices": [],
+  "decision": {
+   "coordinator_version": "1.0.0",
+   "spec_hash": "bc24f19221faa214",
+   "policy": {
+    "methods": null,
+    "ranking": "criterion"
+   },
+   "accepted_choices": [],
+   "disposition": "OUT_OF_SCOPE",
+   "selected": null,
+   "qualifying": [],
+   "claim": null,
+   "config": null,
+   "question": null,
+   "all_needs": [],
+   "alternatives": [],
+   "tradeoff": null,
+   "assessments": {},
+   "impossibility": null,
+   "harmless": [],
+   "explanations": [
+    "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 7.63e-06 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+   ],
+   "issues": [
+    {
+     "code": "irregular_sampling",
+     "path": "time.Ts",
+     "message": "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 7.63e-06 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+    }
+   ],
+   "display": "The data are not sampled at a fixed period; no fixed-period certificate applies.",
+   "withdrawn_release": {
+    "selected": "high_gain_observer",
+    "claim": "|error| <= 0 at every sample instant from t = 0 s to t = 0.00195312 s for every admissible initial error, measurement error and disturbance"
+   }
+  },
+  "history": [],
+  "notes": "",
+  "inputs": {
+   "y_sha256": "087ab598957bb1d2f9e109a9a5d7b915917086f401654f5a563ff01e9d76ef95",
+   "n_measurements": 3,
+   "u_sha256": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0",
+   "t_sha256": "087ab598957bb1d2f9e109a9a5d7b915917086f401654f5a563ff01e9d76ef95",
+   "timing_check": {
+    "ok": false,
+    "code": "irregular_sampling",
+    "n": 3,
+    "Ts_stated": 0.0009765625,
+    "label_resolution": null,
+    "dt_min": 0.00096893310546875,
+    "dt_max": 0.00098419189453125,
+    "dt_median": 0.0009765625,
+    "t0": 0.0,
+    "label_precision": 1.734723475976807e-18,
+    "tolerance": 1.734723475976807e-18,
+    "max_deviation": 7.62939453125e-06,
+    "message": "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 7.63e-06 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+   },
+   "y": [
+    0.0,
+    0.00098419189453125,
+    0.001953125
+   ],
+   "u": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "t": [
+    0.0,
+    0.00098419189453125,
+    0.001953125
+   ]
+  }
+ }
+}

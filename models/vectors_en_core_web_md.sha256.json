@@ -1,0 +1,7 @@
+{
+ "words_sha256": "e0c08fff320de0902d5d8fa72785fd7ce3fa63aaff86392cd38dbebdb1e5884c",
+ "matrix_sha256": "f99e6bafcbb4fa9755e0519d67fd67c9cbe1ddbe854abfd726b01a5fecee04e8",
+ "n_words": 342717,
+ "dim": 300,
+ "source": "en_core_web_md 3.8.0 (spaCy), lower-case entries shorter than 25 characters"
+}

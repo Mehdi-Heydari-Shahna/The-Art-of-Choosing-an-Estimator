@@ -1,0 +1,170 @@
+{
+  "public_api": "heros.api.solve",
+  "arguments": {
+    "spec": {
+      "schema": "heros-spec/1",
+      "plant": {
+        "family": "bounded_travel",
+        "kind": "second_order",
+        "states": [
+          {
+            "name": "position",
+            "unit": "m"
+          },
+          {
+            "name": "speed",
+            "unit": "m/s"
+          }
+        ],
+        "inputs": [
+          {
+            "name": "input",
+            "unit": "m/s2"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "position",
+            "unit": "m"
+          }
+        ],
+        "linear": null,
+        "second_order": {
+          "f": "0",
+          "f0": "0",
+          "params": {},
+          "param_ranges": {},
+          "output": "x1"
+        },
+        "flags": []
+      },
+      "target": {
+        "state": 1
+      },
+      "time": {
+        "Ts": 0.1,
+        "input_hold": "zoh",
+        "t_end": 6,
+        "irregular": false
+      },
+      "initial": {
+        "x0_hat": null,
+        "P0": null,
+        "E": [
+          1.0,
+          1.0
+        ],
+        "policy": null
+      },
+      "stochastic": {
+        "distribution": null,
+        "Q": null,
+        "Q_kind": null,
+        "G": null,
+        "R": null,
+        "white": null,
+        "cross_cov": null
+      },
+      "deterministic": {
+        "V": 1.0,
+        "D": 1.0,
+        "d_bound": null,
+        "domain": {
+          "x1": [
+            -0.0005,
+            0.0005
+          ],
+          "x2": [
+            -5.0,
+            5.0
+          ],
+          "u": [
+            0.0,
+            0.0
+          ]
+        },
+        "domain_evidence": {
+          "kind": "mechanical_limit",
+          "statement": "The carriage position remains inside its stated travel range throughout the observation window and its acceleration magnitude is bounded."
+        }
+      },
+      "objective": {
+        "kind": "hard_bound",
+        "tolerance": 0.1,
+        "deadline": 1.0,
+        "peak_cap": 0.1,
+        "prob": null,
+        "mse_target": null,
+        "horizon": null
+      },
+      "evidence": {
+        "target.state": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.Ts": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.t_end": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.V": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.D": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.E": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.domain": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.domain_evidence": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.kind": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.tolerance": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.deadline": {
+          "status": "supplied",
+          "source": "structured input"
+        }
+      },
+      "ranges": {},
+      "constraints": []
+    }
+  },
+  "audit_notes": {
+    "expected": "Universal impossibility is false. Over any 0.1 s interval the magnitude of the average velocity is <=0.001/0.1=0.01 and each endpoint velocity differs from that average by <=0.1/2=0.05. Estimate zero satisfies 0.1 from startup throughout the window. The known mechanical limit applies throughout."
+  },
+  "actual_true_velocity_if_given": null,
+  "observed_rev2_result": {
+    "disposition": "PROVED_IMPOSSIBLE",
+    "claim": null,
+    "impossibility": {
+      "argument": "no estimator can keep the velocity error within the requested transient cap 0.1 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+      "class": "all causal estimators using the same measurements",
+      "bound": 1.0,
+      "level": 0.1,
+      "sample_time": 0.0,
+      "kind": "initial_sample"
+    },
+    "package_impossibility_check": [
+      true,
+      "independent first-sample check: requirement 0.1 at t = 0 versus half-width 1 of the states one reading cannot distinguish"
+    ]
+  }
+}

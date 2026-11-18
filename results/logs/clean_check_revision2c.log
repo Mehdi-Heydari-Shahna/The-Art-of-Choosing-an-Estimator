@@ -1,0 +1,46 @@
+== Wed Nov 18 15:01:05 UTC 2026 venv
+install exit 0 (11 s)
+torch installed: False | spacy installed: False
+data/test_structured.jsonl absent (as shipped in the light archive)
+== Wed Nov 18 15:01:16 UTC 2026 tests
+........................................................................ [ 55%]
+..........................................................               [100%]
+130 passed in 189.74s (0:03:09)
+tests (190 s)
+== Wed Nov 18 15:04:26 UTC 2026 demo
+demo exit 0 (7 s)
+replay demo_output/boom_record.json exit 0
+replay demo_output/joint_record.json exit 0
+== Wed Nov 18 15:04:39 UTC 2026 review cases
+wrote <workdir>/cleancheck/reviewer_cases_current_clean5.json
+A1_relative_times_with_jitter.json                         OUT_OF_SCOPE           claim=None imp=None err=None review_record_match=True
+A2_absolute_times_same_jitter.json                         OUT_OF_SCOPE           claim=None imp=None err=None review_record_match=False
+A3_absolute_times_on_grid.json                             RELEASE                claim=0.0 imp=None err=0.0 review_record_match=True
+B_forward_only_carriage.json                               NO_VERIFIED_CANDIDATE  claim=None imp=None err=None review_record_match=False
+C_exact_window_ends_before_next_sample.json                RELEASE                claim=0.6158940397350994 imp=None err=None review_record_match=False
+D1_fixed_input_only_in_specification.json                  RELEASE                claim=0.0 imp=None err=5.551115123125783e-16 review_record_match=True
+D2_explicit_known_input_control.json                       RELEASE                claim=0.0 imp=None err=5.551115123125783e-16 review_record_match=True
+wrote <workdir>/cleancheck/reviewer_cases_rev2b_current_clean5.json
+reviewer_cases_current.json decisions identical to the shipped results: True | code digest identical: True
+reviewer_cases_rev2b_current.json decisions identical to the shipped results: True | code digest identical: True
+review cases (5 s)
+== Wed Nov 18 15:04:44 UTC 2026 verify_data --install
+sheets_dev_author0.json      60 sheets, 0 differ
+sheets_test_author1.json     80 sheets, 1 differ: ['test-00182']
+sheets_test_author2.json     80 sheets, 0 differ
+sheets_test_author3.json     80 sheets, 0 differ
+verify_data (503 s)
+== Wed Nov 18 15:13:07 UTC 2026 quick
+structured done in 307 s
+evaluable authored test requests: 229
+nl done in 121 s
+test_structured_rows.jsonl: 4200 reference rows, 600 re-run, 0 with a different outcome, disposition, method, question count or correction count
+test_nl_rows.jsonl: 3435 reference rows, 229 re-run, 0 with a different outcome, disposition, method, question count or correction count
+quick exit 0 (430 s)
+== Wed Nov 18 15:20:17 UTC 2026 assets + paper from the light archive
+assets exit 0
+generated.tex identical
+Output written on main.pdf (20 pages, 808032 bytes).
+assets+paper (8 s)
+Pages:           20
+== Wed Nov 18 15:20:25 UTC 2026 end

@@ -1,0 +1,42 @@
+== Wed Nov 18 12:57:53 UTC 2026 venv
+install exit 0 (7 s)
+torch installed: False | spacy installed: False
+data/test_structured.jsonl absent (as shipped in the light archive)
+== Wed Nov 18 12:58:00 UTC 2026 tests
+........................................................................ [ 62%]
+............................................                             [100%]
+116 passed in 170.00s (0:02:49)
+tests (171 s)
+== Wed Nov 18 13:00:51 UTC 2026 demo
+demo exit 0 (4 s)
+47:replay of the exported record: True
+64:replay of the exported record: True
+== Wed Nov 18 13:00:55 UTC 2026 six review cases
+01a_declared_irregular_no_timestamps.json                  NO_VERIFIED_CANDIDATE  claim=None imp=None err=None review_record_match=False
+01b_same_record_supplied_timestamps.json                   OUT_OF_SCOPE           claim=None imp=None err=None review_record_match=True
+01c_exact_timestamps_within_acceptance_tolerance.json      OUT_OF_SCOPE           claim=None imp=None err=None review_record_match=False
+02_true_gain_two_nominal_gain_one.json                     NO_VERIFIED_CANDIDATE  claim=None imp=None err=None review_record_match=False
+03a_first_sample_known_travel.json                         NO_VERIFIED_CANDIDATE  claim=None imp=None err=None review_record_match=False
+03b_first_sample_known_travel_acceleration.json            NO_VERIFIED_CANDIDATE  claim=None imp=None err=None review_record_match=False
+wrote <workdir>/cleancheck/reviewer_cases_current_clean.json
+decisions identical to the shipped results: True | code digest identical: True
+reviewer cases (1 s)
+== Wed Nov 18 13:00:56 UTC 2026 verify_data --install
+sheets_dev_author0.json      60 sheets, 0 differ
+sheets_test_author1.json     80 sheets, 1 differ: ['test-00182']
+sheets_test_author2.json     80 sheets, 0 differ
+sheets_test_author3.json     80 sheets, 0 differ
+verify_data (477 s)
+== Wed Nov 18 13:08:53 UTC 2026 quick
+structured done in 270 s
+evaluable authored test requests: 229
+nl done in 109 s
+test_structured_rows.jsonl: 4200 reference rows, 600 re-run, 0 with a different outcome, disposition, method, question count or correction count
+test_nl_rows.jsonl: 3435 reference rows, 229 re-run, 0 with a different outcome, disposition, method, question count or correction count
+quick exit 0 (380 s)
+== Wed Nov 18 13:15:13 UTC 2026 assets + paper from the light archive
+assets exit 0
+generated.tex identical
+Output written on main.pdf (16 pages, 467528 bytes).
+assets+paper (9 s)
+== Wed Nov 18 13:15:22 UTC 2026 end

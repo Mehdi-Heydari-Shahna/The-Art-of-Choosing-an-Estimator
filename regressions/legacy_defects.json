@@ -1,0 +1,95 @@
+{
+ "khalil_timing_claim": {
+  "decision": "CERTIFIED",
+  "gain": 1.0,
+  "earliest_certified_time": 0.0,
+  "admissible_error_at_t": {
+   "0.0": 2.0,
+   "1.0": 1.9196986029286058,
+   "10.0": 1.0007263988761999,
+   "30.0": 1.0000000000043046
+  },
+  "tolerance": 1.0,
+  "defect": "a finite-time claim is displayed although the admissible error exceeds the tolerance at every finite time"
+ },
+ "khalil_scenario_deadline": {
+  "without_scenario": "CERTIFIED",
+  "with_deadline_scenario": "CERTIFIED",
+  "gain": 4.00000000000501,
+  "question_asked": null,
+  "error_at_deadline_for_initial_error_100": 9.157819444330384,
+  "tolerance": 0.5,
+  "defect": "the deadline introduced by the scenario is not followed by a re-evaluation of the missing initial-velocity bound"
+ },
+ "khalil_initialisation_premise": {
+  "decision": "CERTIFIED",
+  "E1_supplied": 0.001,
+  "V": 0.01,
+  "initialisation": "xh1(0) = y(0), xh2(0) = 0",
+  "params_E1": null,
+  "e1_from_measurement": null,
+  "keys": [
+   "alpha1",
+   "alpha2",
+   "certified_gain_interval",
+   "certified_peak_bound",
+   "certified_ultimate_bound",
+   "g",
+   "h1",
+   "h2",
+   "initialisation",
+   "margin",
+   "pattern"
+  ]
+ },
+ "khalil_sample_period_range": {
+  "exception": "TypeError",
+  "message": "unsupported operand type(s) for /: 'float' and 'NoneType'",
+  "trace_tail": [
+   "    g_dig = 0.5 * EULER_LIMIT[req.pattern] / h",
+   "            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~",
+   "TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'"
+  ]
+ },
+ "khalil_feedthrough_output": {
+  "supported": true,
+  "reason": "supported after a verified change of coordinates; bounds must be supplied in z",
+  "code": "ok_transformed",
+  "keys": [
+   "canonical",
+   "checks",
+   "code",
+   "coordinates",
+   "f_true",
+   "needs_user_bounds",
+   "plant",
+   "reason",
+   "supported"
+  ]
+ },
+ "kalman_timing_conflict": {
+  "dt_native": 0.1,
+  "dt_requested": 0.05,
+  "disposition": "executed",
+  "category": "complete",
+  "issue": "{}",
+  "defect_if_executed": "the native 0.1 s matrices are used although the request states 0.05 s"
+ },
+ "kalman_inadmissible_witness": {
+  "disposition": "question",
+  "declared_interval": [
+   5.0,
+   6.0
+  ],
+  "witness_names": [
+   "r[0]"
+  ],
+  "witness_a": [
+   1.0
+  ],
+  "witness_b": [
+   1.25
+  ],
+  "defect": "returned ambiguity witnesses lie outside the declared admissible interval"
+ }
+}

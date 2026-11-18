@@ -1,0 +1,25 @@
+{
+ "note": "post hoc (review B, B5); the reported test results use final_neural_scratch_s0",
+ "n_requests": 229,
+ "final_neural_scratch_s0": {
+  "role_accuracy": 0.9093632958801499,
+  "exact_reading": 0.47161572052401746,
+  "mean_edits": 1.0,
+  "requests_with_squared_units": 140,
+  "exact_reading_on_those": 0.35
+ },
+ "posthoc_prefix_s0": {
+  "role_accuracy": 0.9048689138576779,
+  "exact_reading": 0.4104803493449782,
+  "mean_edits": 1.165938864628821,
+  "requests_with_squared_units": 140,
+  "exact_reading_on_those": 0.2857142857142857
+ },
+ "_meta": {
+  "script": "posthoc_prefix_training.py",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "created_utc": "2026-11-17T17:26:12Z",
+  "hardware": "2 CPU cores, no GPU (build machine)"
+ }
+}

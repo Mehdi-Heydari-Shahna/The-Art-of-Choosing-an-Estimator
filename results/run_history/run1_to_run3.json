@@ -1,0 +1,1406 @@
+{
+ "a": "results/before_change",
+ "b": "results/run3",
+ "files": {
+  "test_structured_rows.jsonl": {
+   "rows_a": 3600,
+   "rows_b": 4200,
+   "matched": 3600,
+   "only_a": 0,
+   "only_b": 600,
+   "changed": 0,
+   "summary": [],
+   "rows": []
+  },
+  "test_nl_rows.jsonl": {
+   "rows_a": 3435,
+   "rows_b": 3435,
+   "matched": 3435,
+   "only_a": 0,
+   "only_b": 0,
+   "changed": 69,
+   "summary": [
+    {
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "before": "correct_release",
+     "after": "incorrect_release",
+     "n": 4
+    },
+    {
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "before": "correct_release",
+     "after": "false_impossibility",
+     "n": 1
+    },
+    {
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "before": "correct_release",
+     "after": "incorrect_release",
+     "n": 10
+    },
+    {
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "before": "correct_release",
+     "after": "unnecessary_refusal",
+     "n": 2
+    },
+    {
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "before": "unnecessary_refusal",
+     "after": "unnecessary_refusal",
+     "n": 1
+    },
+    {
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "before": "correct_release",
+     "after": "incorrect_release",
+     "n": 7
+    },
+    {
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "before": "unnecessary_refusal",
+     "after": "unnecessary_refusal",
+     "n": 3
+    },
+    {
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "before": "correct_release",
+     "after": "incorrect_release",
+     "n": 15
+    },
+    {
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "before": "correct_release",
+     "after": "incorrect_release",
+     "n": 6
+    },
+    {
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "before": "unnecessary_refusal",
+     "after": "false_impossibility",
+     "n": 1
+    },
+    {
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "before": "unnecessary_refusal",
+     "after": "unnecessary_refusal",
+     "n": 1
+    },
+    {
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "before": "correct_release",
+     "after": "incorrect_release",
+     "n": 10
+    },
+    {
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "before": "nonrelease_other_reason",
+     "after": "correct_nonrelease",
+     "n": 1
+    },
+    {
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "before": "nonrelease_other_reason",
+     "after": "nonrelease_other_reason",
+     "n": 1
+    },
+    {
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "before": "unnecessary_refusal",
+     "after": "unnecessary_refusal",
+     "n": 4
+    },
+    {
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "before": "correct_release",
+     "after": "incorrect_release",
+     "n": 1
+    },
+    {
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "before": "unnecessary_refusal",
+     "after": "false_impossibility",
+     "n": 1
+    }
+   ],
+   "rows": [
+    {
+     "id": "test-00005",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "kalman_filter: the provable level 0.197076 is below the requested 0.950000 (Gaussian error with variance P: P(|e| <= r) = erf(r / sqrt(2 P))); high_gain_observer not applicable: the high-gain observer"
+    },
+    {
+     "id": "test-00015",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00015",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00043",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0194822 > 0.0017); this is the limit of this certificate family, not a proof that no e"
+    },
+    {
+     "id": "test-00075",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00075",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00075",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00088",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00116",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00116",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00116",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "nonrelease_other_reason",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "nonrelease_other_reason",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0425802 > 0.0082); this is the limit of this certificate family, not a proof that no e"
+    },
+    {
+     "id": "test-00154",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00154",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00154",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00154",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00168",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "kalman_filter: the provable level 0.160109 is below the requested 0.950000 (Gaussian error with variance P: P(|e| <= r) = erf(r / sqrt(2 P))); high_gain_observer not applicable: the high-gain observer"
+    },
+    {
+     "id": "test-00197",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent Riccati optimum 1.41092e-07 vs target 1.0404e-06"
+    },
+    {
+     "id": "test-00241",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00241",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00241",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00241",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00241",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00253",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "released disturbance bound 6.636584917659235 is below a sampled value 7.56817 of the true mismatch"
+    },
+    {
+     "id": "test-00253",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "released disturbance bound 6.636584917659235 is below a sampled value 7.56817 of the true mismatch"
+    },
+    {
+     "id": "test-00257",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0222122 > 0.0037); this is the limit of this certificate family, not a proof that no e"
+    },
+    {
+     "id": "test-00319",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "released gain is not optimal under the truth (mse 1.329 vs optimum 1.329) or the claimed value is wrong"
+    },
+    {
+     "id": "test-00365",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.023481 > 0.0132); this is the limit of this certificate family, not a proof that no es"
+    },
+    {
+     "id": "test-00365",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.023481 > 0.0132); this is the limit of this certificate family, not a proof that no es"
+    },
+    {
+     "id": "test-00365",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0251354 > 0.0132); this is the limit of this certificate family, not a proof that no e"
+    },
+    {
+     "id": "test-00365",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0251354 > 0.0132); this is the limit of this certificate family, not a proof that no e"
+    },
+    {
+     "id": "test-00393",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0310277 > 0.0042); this is the limit of this certificate family, not a proof that no e"
+    },
+    {
+     "id": "test-00413",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00413",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00413",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00413",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00415",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00415",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00415",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00415",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00415",
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00423",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00423",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00423",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00423",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00441",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00441",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00450",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent Riccati optimum 4.66355e-08 vs target 2.16225e-07"
+    },
+    {
+     "id": "test-00467",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.025286 > 0.00676); this is the limit of this certificate family, not a proof that no e"
+    },
+    {
+     "id": "test-00503",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00503",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00503",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00503",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00503",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00520",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00520",
+     "policy": "coordinator",
+     "reader": "rules",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00543",
+     "policy": "single_model",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "why_after": "independent Riccati optimum 9.61238e-08 vs target 7.55161e-07"
+    },
+    {
+     "id": "test-00572",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00572",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00572",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00573",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "nonrelease_other_reason",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "correct_nonrelease",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0498171 > 1.4e-05); this is the limit of this certificate family, not a proof that no "
+    },
+    {
+     "id": "test-00581",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "unnecessary_refusal",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0407587 > 0.00657); this is the limit of this certificate family, not a proof that no "
+    },
+    {
+     "id": "test-00590",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00590",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00590",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s2",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00590",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00590",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "kalman_filter"
+     ],
+     "why_after": "a design was released although the samples are irregular (outside the method register)"
+    },
+    {
+     "id": "test-00599",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00599",
+     "policy": "coordinator",
+     "reader": "null",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    },
+    {
+     "id": "test-00599",
+     "policy": "coordinator",
+     "reader": "select_neural_frozen_s0",
+     "user": "blind",
+     "author": "author3",
+     "before": [
+      "correct_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "after": [
+      "incorrect_release",
+      "RELEASE",
+      "high_gain_observer"
+     ],
+     "why_after": "a design was released for an invalid request (contradictory or impossible as stated)"
+    }
+   ]
+  }
+ }
+}

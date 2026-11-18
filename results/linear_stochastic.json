@@ -1,0 +1,85 @@
+{
+ "n_runs": 200,
+ "plant": "hydraulic boom (simulated, synthetic parameters)",
+ "states": [
+  "boom angle",
+  "boom rate",
+  "load pressure",
+  "load torque bias"
+ ],
+ "gaussian": {
+  "claim_type": "mmse",
+  "claim": "conditional mean of the state given the measurements and inputs; minimum mean-square error among all estimators measurable with respect to the same information (jointly Gaussian initial state and noises) (time-varying gain, optimal at every sample given the stated initial covariance); error variance of the target at every sample from t = 0 s to the last sample of the record, t = 3 s: at most 0.00250001",
+  "independent_reference_run0": {
+   "max_estimate_diff": 6.661338147750939e-15,
+   "max_cov_diff_rel": 2.1119585227504792e-16
+  },
+  "rmse": [
+   0.0002830188810173528,
+   0.002449646037491359,
+   0.04877356140899262,
+   1.215149051584421
+  ],
+  "reported_std": [
+   0.0002914206400550905,
+   0.0024641842286189535,
+   0.04869400151492702,
+   1.2069418144186808
+  ],
+  "empirical_over_reported_variance": [
+   0.9431704891629322,
+   0.9882352100479871,
+   1.0032704188209929,
+   1.0136462947680416
+  ],
+  "approx_95_band_half_width": 0.055326628819888396,
+  "mean_nees": 3.9406678525260204,
+  "expected_nees": 4,
+  "mean_nis": 1.9972331193722932,
+  "expected_nis": 2,
+  "coverage_2sigma_target": 0.9542231075697211,
+  "gaussian_2sigma": 0.9545,
+  "exact_mse_ratio_mistuned_R_x10_target": 1.0280410306250796
+ },
+ "bounded": {
+  "claim_type": "lmmse",
+  "claim": "minimum mean-square error among linear (affine) estimators of the same measurements and inputs (only means and covariances are assumed; no claim against nonlinear estimators) (time-varying gain, optimal at every sample given the stated initial covariance); error variance of the target at every sample from t = 0 s to the last sample of the record, t = 3 s: at most 0.00250001",
+  "independent_reference_run0": {
+   "max_estimate_diff": 5.88418203051333e-15,
+   "max_cov_diff_rel": 2.1119585227504792e-16
+  },
+  "rmse": [
+   0.0002928879903177751,
+   0.002440459466282809,
+   0.04857292695422811,
+   1.1904925176782162
+  ],
+  "reported_std": [
+   0.0002914206400550905,
+   0.0024641842286189535,
+   0.04869400151492702,
+   1.2069418144186808
+  ],
+  "empirical_over_reported_variance": [
+   1.010095677752098,
+   0.9808370226559714,
+   0.9950333086289518,
+   0.9729279347448546
+  ],
+  "approx_95_band_half_width": 0.055326628819888396,
+  "mean_nees": 3.974395216111664,
+  "expected_nees": 4,
+  "mean_nis": 1.9963347257210393,
+  "expected_nis": 2,
+  "coverage_2sigma_target": 0.9586454183266933,
+  "gaussian_2sigma": 0.9545,
+  "exact_mse_ratio_mistuned_R_x10_target": 1.0280410306250796
+ },
+ "_meta": {
+  "script": "exp_linear_stochastic.py",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "created_utc": "2026-11-18T14:15:05Z",
+  "hardware": "2 CPU cores, no GPU (build machine)"
+ }
+}

@@ -1,0 +1,104 @@
+{
+ "plant": {
+  "family": "servo_axis",
+  "kind": "second_order",
+  "states": [
+   {
+    "name": "shaft angle",
+    "unit": "rad"
+   },
+   {
+    "name": "shaft speed",
+    "unit": "rad/s"
+   }
+  ],
+  "inputs": [
+   {
+    "name": "motor torque",
+    "unit": "N m"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "encoder angle",
+    "unit": "rad"
+   }
+  ],
+  "linear": {
+   "clock": "continuous",
+   "A": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0
+    ]
+   ],
+   "B": [
+    [
+     0.0
+    ],
+    [
+     4.0
+    ]
+   ],
+   "C": [
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "Ts_native": null
+  },
+  "second_order": {
+   "f": "b*u",
+   "f0": "b*u",
+   "params": {
+    "b": 4.0
+   },
+   "param_ranges": {},
+   "output": "x1"
+  },
+  "flags": []
+ },
+ "target": 1,
+ "Ts": 0.001,
+ "V": 0.0001,
+ "D": 6.0,
+ "E": [
+  0.002,
+  3.0
+ ],
+ "Q": [
+  [
+   2.9929e-12,
+   5.9858000000000006e-09
+  ],
+  [
+   5.9858e-09,
+   1.19716e-05
+  ]
+ ],
+ "Q_kind": "discrete_cov",
+ "R": [
+  [
+   3.3292899999999998e-09
+  ]
+ ],
+ "P0": [
+  [
+   1.3333333333333332e-06,
+   0.0
+  ],
+  [
+   0.0,
+   3.0
+  ]
+ ],
+ "distribution": "bounded",
+ "white": true,
+ "_hard_tolerance": 0.09,
+ "_deadline": 0.05
+}

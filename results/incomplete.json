@@ -1,0 +1,227 @@
+{
+ "rows": [
+  {
+   "case": "Gaussian variance ambiguity",
+   "missing_or_conflicting": "prior and noise variances: their sum (2) and a range for the noise variance (1 to 1.5) are known",
+   "consequence": "conditional mean between y/4 and y/2",
+   "disposition": "CLARIFY",
+   "selected": null,
+   "question": "What is the measurement-noise variance per sample? (stated range 1.0 to 1.5)",
+   "ask_path": "stochastic.R",
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "independent batch conditioning gives gains 0.250 and 0.500 for the two admissible completions; both have measurement variance 2",
+   "check_passed": true
+  },
+  {
+   "case": "variance ambiguity, error level requested",
+   "missing_or_conflicting": "same as above; a mean-square error below 0.65 is requested",
+   "consequence": "a single gain can meet the level for every split",
+   "disposition": "RELEASE",
+   "selected": "kalman_filter",
+   "question": null,
+   "ask_path": null,
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "independent: the released first gain 0.250 gives error 0.375 and 0.625 at the two extreme admissible splits; the error is affine in the split, so these are the largest values",
+   "check_passed": true
+  },
+  {
+   "case": "no initial-error bound, ultimate limit",
+   "missing_or_conflicting": "initial error bounds",
+   "consequence": "none: the initial-error terms vanish in the limit",
+   "disposition": "RELEASE",
+   "selected": "high_gain_observer",
+   "question": null,
+   "ask_path": null,
+   "threshold": null,
+   "harmless": [
+    "initial.E"
+   ],
+   "independent_check": "independent worst case after 400 steps: 0.052130 (zero initial error) vs 0.052130 (initial error 1 rad, 50 rad/s); claimed ultimate bound 0.052130",
+   "check_passed": true
+  },
+  {
+   "case": "no initial covariance, steady-state filter",
+   "missing_or_conflicting": "initial error covariance",
+   "consequence": "none for a steady-state (k -> infinity) statement: the gain and its limiting covariance do not depend on it",
+   "disposition": "RELEASE",
+   "selected": "kalman_filter",
+   "question": null,
+   "ask_path": null,
+   "threshold": null,
+   "harmless": [
+    "initial.P0"
+   ],
+   "independent_check": "Riccati iteration from two very different initial covariances converges to the same gain (difference 7.1e-15); equals the released gain to 4.2e-10",
+   "check_passed": true
+  },
+  {
+   "case": "noise distribution not stated",
+   "missing_or_conflicting": "distribution of the noises",
+   "consequence": "none for the estimate; only the weaker (linear-estimator) claim is made",
+   "disposition": "RELEASE",
+   "selected": "kalman_filter",
+   "question": null,
+   "ask_path": null,
+   "threshold": null,
+   "harmless": [
+    "stochastic.distribution",
+    "initial.P0"
+   ],
+   "independent_check": "Monte Carlo error variance of the released gain: 4.866e-05 (Gaussian) and 4.844e-05 (uniform), reported 4.870e-05; claim type lmmse",
+   "check_passed": true
+  },
+  {
+   "case": "missing hard bound on the measurement error",
+   "missing_or_conflicting": "hard measurement-error bound",
+   "consequence": "the guaranteed limit depends on it",
+   "disposition": "CLARIFY",
+   "selected": null,
+   "question": "What is the largest possible measurement error (a hard bound, not an RMS value)?",
+   "ask_path": "deterministic.V",
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "the design certified for V = 0.0001 has independent worst case 0.0521 <= 0.2, but 0.6151 > 0.2 if the true bound is 0.002",
+   "check_passed": true
+  },
+  {
+   "case": "RMS noise level given, guaranteed limit requested",
+   "missing_or_conflicting": "hard measurement-error bound (an RMS value is not one)",
+   "consequence": "no hard bound follows from an RMS value",
+   "disposition": "CLARIFY",
+   "selected": null,
+   "question": "What is the largest possible measurement error (a hard bound, not an RMS value)?",
+   "ask_path": "deterministic.V",
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "a zero-mean two-point noise with values +-a/sqrt(p), probability p/2 each, has RMS a for every p in (0, 1] and magnitude a/sqrt(p), which is unbounded as p -> 0",
+   "check_passed": true
+  },
+  {
+   "case": "measurement bound known only as a range",
+   "missing_or_conflicting": "value of the bound inside [5e-5, 2e-3] rad",
+   "consequence": "certified for the lower part of the range only",
+   "disposition": "CLARIFY",
+   "selected": null,
+   "question": "Is the hard bound on the measurement error at most 0.00137968? If yes, a certified design exists for the stated requirement; if it can be larger, no candidate is verified.",
+   "ask_path": "deterministic.V",
+   "threshold": 0.0013796752929687499,
+   "harmless": [],
+   "independent_check": "at the threshold 1.380e-03 the released design has independent worst case 0.1994 <= 0.2 at step 140; at 1.05 x threshold the disposition is NO_VERIFIED_CANDIDATE",
+   "check_passed": true
+  },
+  {
+   "case": "sample period stated as a range",
+   "missing_or_conflicting": "exact update period",
+   "consequence": "model, gains and certificate are period-specific",
+   "disposition": "CLARIFY",
+   "selected": null,
+   "question": "What is the exact sample/update period? (stated range: 0.001 to 0.002 s)",
+   "ask_path": "time.Ts",
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "an observer built for 1 ms, driven by error-free data of a 2 rad/s motion: velocity error 0.00e+00 when the true period is 1 ms, 2.00 rad/s when it is 2 ms",
+   "check_passed": true
+  },
+  {
+   "case": "deadline added after an omission was harmless",
+   "missing_or_conflicting": "initial velocity-error bound (now consequential)",
+   "consequence": "with a deadline the initial error matters",
+   "disposition": "CLARIFY",
+   "selected": null,
+   "question": "Is the initial velocity estimate error at most 33134.6? If yes, a certified design exists for the stated requirement; if it can be larger, this certificate family cannot meet it.",
+   "ask_path": "initial.E",
+   "threshold": 33134.592923573444,
+   "harmless": [],
+   "independent_check": "first decision RELEASE (initial error irrelevant for an ultimate limit); after a 5 ms deadline is added the coordinator asks; the earlier design has independent worst case 35.2 rad/s at 5 ms for an admissible initial error of 100 rad/s; once that bound is supplied a different (faster) design is released (RELEASE), with independent worst case 0.171 rad/s at 5 ms",
+   "check_passed": true
+  },
+  {
+   "case": "operating range without evidence",
+   "missing_or_conflicting": "evidence that the trajectory stays in the stated ranges",
+   "consequence": "the mismatch bound holds only inside the ranges",
+   "disposition": "CLARIFY",
+   "selected": null,
+   "question": "What ensures the trajectory stays inside the stated operating ranges (mechanical limit, saturation argument, or an assumption you accept)?",
+   "ask_path": "deterministic.domain_evidence",
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "model mismatch at the edge of the range (4 rad/s): 15.3 rad/s^2; at 40 rad/s: 118.2 rad/s^2, above the bound used inside the range",
+   "check_passed": true
+  },
+  {
+   "case": "process noise without its meaning",
+   "missing_or_conflicting": "whether the value is a spectral density or a per-step covariance",
+   "consequence": "the two readings differ by a factor of order Ts",
+   "disposition": "CLARIFY",
+   "selected": null,
+   "question": "Is the process-noise value a continuous spectral density or a per-step covariance?",
+   "ask_path": "stochastic.Q_kind",
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "independent quadrature: trace of the discrete covariance is 7.043e-03 if the value is a spectral density and 4.297e-03 if it is a per-step covariance (Ts = 2.0 s)",
+   "check_passed": true
+  },
+  {
+   "case": "discrete model and a different stated period",
+   "missing_or_conflicting": "(conflict) native period 0.1 s, stated 0.05 s",
+   "consequence": "a discrete model cannot be re-sampled without the continuous one",
+   "disposition": "INVALID_INPUT",
+   "selected": null,
+   "question": null,
+   "ask_path": null,
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "A = [[1, 0.1], [0, 1]] is the 0.1 s transition; at 0.05 s the transition would be [[1, 0.05], [0, 1]], which is not the supplied matrix",
+   "check_passed": true
+  },
+  {
+   "case": "timestamps disagree with the stated period",
+   "missing_or_conflicting": "(conflict) data recorded every 2 ms, request states 1 ms",
+   "consequence": "the gains and the certificate are period-specific",
+   "disposition": "INVALID_INPUT",
+   "selected": null,
+   "question": null,
+   "ask_path": null,
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "the release for 1 ms is withdrawn for these data (timing_conflict); the same records with matching 1 ms timestamps are processed",
+   "check_passed": true
+  },
+  {
+   "case": "transient cap below the later tolerance",
+   "missing_or_conflicting": "none (the cap applies at every sample, the tolerance after the deadline)",
+   "consequence": "at t = 0 one position reading carries no velocity information",
+   "disposition": "PROVED_IMPOSSIBLE",
+   "selected": null,
+   "question": null,
+   "ask_path": null,
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "independent: the admissible initial velocities span +-2.0 rad/s around the initial estimate, so every estimate is at least 2.0 rad/s from one of them at t = 0, above the cap 0.1",
+   "check_passed": true
+  },
+  {
+   "case": "total and additive disturbance bounds both stated",
+   "missing_or_conflicting": "none (two statements bound the same acceleration error)",
+   "consequence": "the smaller bound applies",
+   "disposition": "RELEASE",
+   "selected": "high_gain_observer",
+   "question": null,
+   "ask_path": null,
+   "threshold": null,
+   "harmless": [],
+   "independent_check": "with the exact nominal model the acceleration error is the additive disturbance, bounded by 5; the released design has independent worst case 0.0521 rad/s at 0.1 s with that bound",
+   "check_passed": true
+  }
+ ],
+ "all_checks_passed": true,
+ "_meta": {
+  "script": "exp_incomplete.py",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "created_utc": "2026-11-18T14:17:48Z",
+  "hardware": "2 CPU cores, no GPU (build machine)"
+ }
+}

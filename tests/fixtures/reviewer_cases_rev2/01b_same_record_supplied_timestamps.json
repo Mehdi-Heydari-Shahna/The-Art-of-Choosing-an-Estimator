@@ -1,0 +1,145 @@
+{
+  "public_api": "heros.api.solve",
+  "arguments": {
+    "spec": {
+      "schema": "heros-spec/1",
+      "plant": {
+        "family": null,
+        "kind": "second_order",
+        "states": [],
+        "inputs": [],
+        "outputs": [],
+        "linear": null,
+        "second_order": {
+          "f": "0",
+          "f0": "0",
+          "output": "x1",
+          "params": {}
+        },
+        "flags": []
+      },
+      "target": {
+        "state": 1
+      },
+      "time": {
+        "Ts": 0.001,
+        "input_hold": "zoh",
+        "t_end": 0.003,
+        "irregular": true
+      },
+      "initial": {
+        "x0_hat": [
+          0,
+          1
+        ],
+        "P0": null,
+        "E": [
+          0,
+          0
+        ],
+        "policy": null
+      },
+      "stochastic": {
+        "distribution": null,
+        "Q": null,
+        "Q_kind": null,
+        "G": null,
+        "R": null,
+        "white": null,
+        "cross_cov": null
+      },
+      "deterministic": {
+        "V": 0,
+        "D": 0,
+        "d_bound": null,
+        "domain": null,
+        "domain_evidence": null
+      },
+      "objective": {
+        "kind": "hard_bound",
+        "tolerance": 0.01,
+        "deadline": 0,
+        "peak_cap": null,
+        "prob": null,
+        "mse_target": null,
+        "horizon": null
+      },
+      "evidence": {
+        "target.state": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.Ts": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.t_end": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.V": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.D": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.E": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.x0_hat": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.irregular": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.kind": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.tolerance": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.deadline": {
+          "status": "supplied",
+          "source": "structured input"
+        }
+      },
+      "ranges": {},
+      "constraints": []
+    },
+    "y": [
+      0,
+      0.002,
+      0.003
+    ],
+    "u": [
+      0,
+      0,
+      0
+    ],
+    "t": [
+      0,
+      0.002,
+      0.003
+    ]
+  },
+  "audit_notes": {
+    "expected": "Withhold. Positive control for the revision."
+  },
+  "actual_true_velocity_if_given": [
+    1,
+    1,
+    1
+  ],
+  "observed_rev2_result": {
+    "disposition": "OUT_OF_SCOPE",
+    "claim": null,
+    "impossibility": null
+  }
+}

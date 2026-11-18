@@ -1,0 +1,10 @@
+== Wed Nov 18 09:27:09 UTC 2026 venv
+install exit 0 (6 s)
+torch installed: False | spacy installed: False
+data/test_structured.jsonl absent (as shipped in the light archive)
+== Wed Nov 18 09:27:15 UTC 2026 tests
+........................................................................ [ 72%]
+...........................                                              [100%]
+99 passed in 157.06s (0:02:37)
+tests (158 s)
+== Wed Nov 18 09:29:53 UTC 2026 end

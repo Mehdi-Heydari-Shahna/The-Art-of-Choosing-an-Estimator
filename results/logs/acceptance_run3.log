@@ -1,0 +1,47 @@
+Tue Nov 17 18:01:39 UTC 2026
+structured done in 899 s
+structured ok 900 s
+Tue Nov 17 18:16:39 UTC 2026
+evaluable authored test requests: 229
+nl done in 1571 s
+nl ok 1572 s
+Tue Nov 17 18:42:51 UTC 2026
+null                         roles 0.091 exact 0.000 edits 6.38 proposal None
+rules                        roles 0.764 exact 0.231 edits 1.78 proposal None
+select_neural_frozen_s0      roles 0.673 exact 0.192 edits 2.65 proposal 0.35807860262008734
+final_neural_scratch_s0      roles 0.909 exact 0.472 edits 1.00 proposal 0.5502183406113537
+final_neural_scratch_s1      roles 0.900 exact 0.493 edits 1.13 proposal 0.5502183406113537
+final_neural_scratch_s2      roles 0.899 exact 0.498 edits 1.00 proposal 0.5633187772925764
+wrote results/test_reading.json
+reading ok
+wrote results/test_summary.json
+structured coordinator                                          n=600 inc=  0 cov=1.0 q=0.32 edits=0.00 unnec=0 unres=0 err=0
+structured kalman_only                                          n=600 inc=  0 cov=0.47 q=0.14 edits=0.00 unnec=196 unres=0 err=0
+structured khalil_only                                          n=600 inc=  0 cov=0.573 q=0.26 edits=0.00 unnec=158 unres=0 err=0
+structured selector                                             n=600 inc=  0 cov=1.0 q=0.32 edits=0.00 unnec=0 unres=0 err=0
+structured ask_all                                              n=600 inc=  0 cov=1.0 q=1.53 edits=0.00 unnec=0 unres=0 err=0
+structured default_fill                                         n=600 inc=158 cov=0.486 q=0.00 edits=0.00 unnec=9 unres=41 err=0
+structured coordinator_limited_user                             n=600 inc=  0 cov=0.876 q=0.32 edits=0.00 unnec=46 unres=0 err=0
+nl         final_neural_scratch_s0|attentive|ask_all            n=229 inc=  0 cov=1.0 q=1.47 edits=1.00 unnec=0 unres=0 err=0
+nl         final_neural_scratch_s0|attentive|coordinator        n=229 inc=  0 cov=1.0 q=0.42 edits=1.00 unnec=0 unres=0 err=0
+nl         final_neural_scratch_s0|attentive|single_model       n=229 inc=  9 cov=0.69 q=0.49 edits=1.00 unnec=36 unres=0 err=0
+nl         final_neural_scratch_s0|blind|coordinator            n=229 inc= 14 cov=0.841 q=0.69 edits=0.00 unnec=16 unres=0 err=0
+nl         final_neural_scratch_s0|blind|single_model           n=229 inc= 20 cov=0.552 q=0.57 edits=0.00 unnec=48 unres=0 err=0
+nl         final_neural_scratch_s1|attentive|coordinator        n=229 inc=  0 cov=1.0 q=0.40 edits=1.13 unnec=0 unres=0 err=0
+nl         final_neural_scratch_s1|blind|coordinator            n=229 inc= 23 cov=0.772 q=0.75 edits=0.00 unnec=20 unres=0 err=0
+nl         final_neural_scratch_s2|attentive|coordinator        n=229 inc=  0 cov=1.0 q=0.36 edits=1.00 unnec=0 unres=0 err=0
+nl         final_neural_scratch_s2|blind|coordinator            n=229 inc= 19 cov=0.8 q=0.59 edits=0.00 unnec=20 unres=0 err=0
+nl         null|attentive|coordinator                           n=229 inc=  0 cov=1.0 q=0.54 edits=6.38 unnec=0 unres=0 err=0
+nl         null|blind|coordinator                               n=229 inc= 27 cov=0.952 q=3.71 edits=0.00 unnec=6 unres=1 err=0
+nl         rules|attentive|coordinator                          n=229 inc=  0 cov=1.0 q=0.50 edits=1.78 unnec=0 unres=0 err=0
+nl         rules|blind|coordinator                              n=229 inc= 28 cov=0.71 q=1.14 edits=0.00 unnec=21 unres=0 err=0
+nl         select_neural_frozen_s0|attentive|coordinator        n=229 inc=  0 cov=1.0 q=0.43 edits=2.65 unnec=0 unres=0 err=0
+nl         select_neural_frozen_s0|blind|coordinator            n=229 inc= 46 cov=0.579 q=1.04 edits=0.00 unnec=35 unres=0 err=0
+summarise ok
+wrote results/criterion_effect.json
+test-00204 both_hard high_gain_observer kalman_filter {'high_gain_observer': 0.02027428940201767, 'kalman_filter': 0.021453651765218316} 1.0581703427338507
+test-00291 both_hard high_gain_observer kalman_filter {'high_gain_observer': 0.0011629887419104775, 'kalman_filter': 0.0013291996886222557} 1.1429170728159743
+test-00462 both_hard high_gain_observer kalman_filter {'high_gain_observer': 0.018508104970159825, 'kalman_filter': 0.019514200630507923} 1.05435973385553
+test-00463 complete_prob high_gain_observer kalman_filter {'high_gain_observer': 0.0, 'kalman_filter': 0.03987485971788485} None
+criterion ok
+Tue Nov 17 18:43:50 UTC 2026

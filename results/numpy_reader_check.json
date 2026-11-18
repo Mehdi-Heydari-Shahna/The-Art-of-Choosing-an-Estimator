@@ -1,0 +1,25 @@
+{
+ "n_requests": 869,
+ "final_neural_scratch_s0": {
+  "requests_with_any_difference": [],
+  "n_quantities": 5284,
+  "max_confidence_difference": 3.3889302910594665e-06
+ },
+ "final_neural_scratch_s1": {
+  "requests_with_any_difference": [],
+  "n_quantities": 5284,
+  "max_confidence_difference": 2.8652105895643487e-06
+ },
+ "final_neural_scratch_s2": {
+  "requests_with_any_difference": [],
+  "n_quantities": 5284,
+  "max_confidence_difference": 1.7040174526972152e-06
+ },
+ "_meta": {
+  "script": "check_numpy_reader.py",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "created_utc": "2026-11-17T15:32:31Z",
+  "hardware": "2 CPU cores, no GPU (build machine)"
+ }
+}

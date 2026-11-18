@@ -1,0 +1,379 @@
+{
+ "code_root": "old_rev1",
+ "label": "previous",
+ "has_timestamp_argument": false,
+ "findings": [
+  {
+   "id": "F1",
+   "title": "A fixed-period certificate is released only when the stated period and the timestamps agree",
+   "cases": [
+    {
+     "case": "timestamps agree with the stated 1 ms period",
+     "command": "python -m heros solve --spec servo.json --data data.csv",
+     "result": {
+      "returncode": 0,
+      "first_line": "Disposition: RELEASE",
+      "estimates_line": "Estimates: 1001 samples; last value of the target = 0.879812",
+      "n_estimates": 1001,
+      "record_has_timestamps": false,
+      "stderr_tail": ""
+     }
+    },
+    {
+     "case": "data recorded every 2 ms (every second sample kept), request states 1 ms",
+     "command": "python -m heros solve --spec servo.json --data data.csv",
+     "result": {
+      "returncode": 0,
+      "first_line": "Disposition: RELEASE",
+      "estimates_line": "Estimates: 501 samples; last value of the target = 1.77273",
+      "n_estimates": 501,
+      "record_has_timestamps": false,
+      "stderr_tail": ""
+     }
+    },
+    {
+     "case": "one sample missing (a 2 ms gap at t = 0.5 s)",
+     "command": "python -m heros solve --spec servo.json --data data.csv",
+     "result": {
+      "returncode": 0,
+      "first_line": "Disposition: RELEASE",
+      "estimates_line": "Estimates: 1000 samples; last value of the target = 0.879812",
+      "n_estimates": 1000,
+      "record_has_timestamps": false,
+      "stderr_tail": ""
+     }
+    }
+   ]
+  },
+  {
+   "id": "F2",
+   "title": "Samples used to establish or disprove a requirement lie inside the requested window",
+   "cases": [
+    {
+     "case": "Kalman filter, record ends at t = 3.5 s (samples t = 0..3 s), mean-square-error level 0.616808",
+     "independent": {
+      "filtered_variance_by_sample": [
+       0.090909,
+       0.521739,
+       0.603448,
+       0.615894,
+       0.617722
+      ],
+      "max_over_t_0_to_3": 0.615894,
+      "value_at_t_4_outside_window": 0.617722
+     },
+     "result": {
+      "disposition": "PROVED_IMPOSSIBLE",
+      "selected": null,
+      "explanation": "the optimal (time-varying) Kalman filter attains the minimum mean-square error over any estimator of the same data under the stated model (mmse) at every sample; its error variance at every sample from t = 0 s to the end of the record t = 3.5 s reaches 0.617722 > 0.616808, so any estimator exceeds the requested level at that sample as well",
+      "impossibility": "the optimal (time-varying) Kalman filter attains the minimum mean-square error over any estimator of the same data under the stated model (mmse) at every sample; its error variance at every sample from t = 0 s to the end of the record t = 3.5 s reaches 0.617722 > 0.616808, so any estimator exceeds the requested level at that sample as well"
+     }
+    },
+    {
+     "case": "observer, velocity error <= 0.075 rad/s on the record from 0.05 s to its end at 0.06 s",
+     "result": {
+      "disposition": "RELEASE",
+      "selected": "high_gain_observer",
+      "claim": "|error| <= 0.0566298 at every sample instant t_k >= 0.05 s for every admissible initial error, measurement error and disturbance",
+      "claim_value": 0.056629712317189225
+     }
+    },
+    {
+     "case": "100 Hz encoder, requirement on t in [0.01 s, 0.0165 s]; the two-signal argument needs a sample at or after 0.01633 s",
+     "result": {
+      "disposition": "PROVED_IMPOSSIBLE",
+      "selected": null,
+      "explanation": "no causal estimator of the velocity can guarantee a worst-case error below 2 sqrt(D V) = 0.0489898 at times t >= 4 sqrt(V/D) = 0.0163299 s when the unmodelled acceleration may be any signal bounded by 6 and |v| <= 0.0001 (two admissible signals with identical measurements whose velocities differ by 4 sqrt(D V); the stated velocity range admits them and the requirement applies at such times)",
+      "impossibility": "no causal estimator of the velocity can guarantee a worst-case error below 2 sqrt(D V) = 0.0489898 at times t >= 4 sqrt(V/D) = 0.0163299 s when the unmodelled acceleration may be any signal bounded by 6 and |v| <= 0.0001 (two admissible signals with identical measurements whose velocities differ by 4 sqrt(D V); the stated velocity range admits them and the requirement applies at such times)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "F3",
+   "title": "Kalman filter start-up: estimate, exported covariance and explanation agree",
+   "cases": [
+    {
+     "case": "scalar random walk, Q = R = 1, P0 = 100, constant (steady-state) gain",
+     "independent": {
+      "first_filtered_variance_closed_form": 14.971769,
+      "monte_carlo_400k": 14.9946
+     },
+     "result": {
+      "disposition": "RELEASE",
+      "selected": "kalman_filter",
+      "claim": "constant (steady-state) Kalman gain: in the limit k -> infinity its error covariance equals that of the optimal filter, whose estimate is the conditional mean of the state given the measurements and inputs; minimum mean-square error among all estimators measurable with respect to the same information (jointly Gaussian initial state and noises); at finite times the time-varying filter is better (horizon 'finite'); error variance of the target in steady state (the limit as k -> infinity): at most 0.618034",
+      "claim_value": 0.6180339887498949,
+      "exported_P_filt_first": 0.6180339887498949,
+      "exported_P_filt_last": 0.6180339887498949,
+      "gain_first": 0.6180339887498948,
+      "uncertainty_type": "error covariance (second-order statistic); not a deterministic error bound",
+      "covariance_basis": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "F4",
+   "title": "The decision uses all supplied constraints together",
+   "cases": [
+    {
+     "case": "total disturbance bound D = 6 and, for the exactly known model, additive bound d = 1.5; ultimate velocity limit 0.045 rad/s (two-signal limits 2 sqrt(DV) = 0.0490, 2 sqrt(dV) = 0.0245)",
+     "result": {
+      "disposition": "PROVED_IMPOSSIBLE",
+      "selected": null,
+      "explanation": "no causal estimator of the velocity can guarantee a worst-case error below 2 sqrt(D V) = 0.0489898 at times t >= 4 sqrt(V/D) = 0.0163299 s when the unmodelled acceleration may be any signal bounded by 6 and |v| <= 0.0001 (two admissible signals with identical measurements whose velocities differ by 4 sqrt(D V); the stated velocity range admits them and the requirement applies at such times)",
+      "impossibility": "no causal estimator of the velocity can guarantee a worst-case error below 2 sqrt(D V) = 0.0489898 at times t >= 4 sqrt(V/D) = 0.0163299 s when the unmodelled acceleration may be any signal bounded by 6 and |v| <= 0.0001 (two admissible signals with identical measurements whose velocities differ by 4 sqrt(D V); the stated velocity range admits them and the requirement applies at such times)"
+     }
+    },
+    {
+     "case": "smallest mean-square error of the speed; nominal input gain b = 4 but the true value lies in [3.6, 4.4]",
+     "result": {
+      "disposition": "RELEASE",
+      "selected": "kalman_filter",
+      "claim": "constant (steady-state) Kalman gain: in the limit k -> infinity its error covariance equals that of the optimal filter, whose estimate is the minimum mean-square error among linear (affine) estimators of the same measurements and inputs (only means and covariances are assumed; no claim against nonlinear estimators); at finite times the time-varying filter is better (horizon 'finite'); error variance of the target in steady state (the limit as k -> infinity): at most 6.34109e-05",
+      "claim_value": 6.341087237014561e-05
+     }
+    }
+   ]
+  },
+  {
+   "id": "F5",
+   "title": "A worst-case limit does not show that a probability requirement is impossible",
+   "cases": [
+    {
+     "case": "speed error within 0.04 rad/s with probability 0.9 (bounded noise; worst-case limit 2 sqrt(DV) = 0.049)",
+     "result": {
+      "disposition": "RELEASE",
+      "selected": "kalman_filter",
+      "claim": "in steady state (the limit as k -> infinity), |error| <= 0.04 with probability at least 0.960368 (Chebyshev inequality with error variance P (distribution-free): P(|e| <= r) >= 1 - P / r^2); the statement is per time instant, not simultaneous over the window",
+      "claim_value": 0.960368204768659
+     }
+    },
+    {
+     "case": "speed error within 0.02 rad/s with probability 0.9 (bounded noise; worst-case limit 2 sqrt(DV) = 0.049)",
+     "result": {
+      "disposition": "PROVED_IMPOSSIBLE",
+      "selected": null,
+      "explanation": "no causal estimator of the velocity can guarantee a worst-case error below 2 sqrt(D V) = 0.0489898 at times t >= 4 sqrt(V/D) = 0.0163299 s when the unmodelled acceleration may be any signal bounded by 6 and |v| <= 0.0001 (two admissible signals with identical measurements whose velocities differ by 4 sqrt(D V); the stated velocity range admits them and the requirement applies at such times)",
+      "impossibility": "no causal estimator of the velocity can guarantee a worst-case error below 2 sqrt(D V) = 0.0489898 at times t >= 4 sqrt(V/D) = 0.0163299 s when the unmodelled acceleration may be any signal bounded by 6 and |v| <= 0.0001 (two admissible signals with identical measurements whose velocities differ by 4 sqrt(D V); the stated velocity range admits them and the requirement applies at such times)"
+     },
+     "independent": {
+      "monte_carlo_share_within_0.02_after_3_s": 0.9905,
+      "records": 4000
+     }
+    }
+   ]
+  },
+  {
+   "id": "F6",
+   "title": "Worst-case envelope with initialisation from the first encoder reading",
+   "cases": [
+    {
+     "case": "servo axis, velocity estimate initialised from the first reading (position) and zero (velocity)",
+     "independent": {
+      "exact_worst_case_at_k0": 3.0,
+      "independent_box_value_at_k0": 3.022222222218221
+     },
+     "result": {
+      "disposition": "RELEASE",
+      "exported_envelope_k0": 3.022222222218221,
+      "exported_envelope_k1": 2.70196296301904,
+      "exported_envelope_at_deadline": 0.05662971231718922,
+      "claim": "|error| <= 0.0566298 at every sample instant t_k >= 0.05 s for every admissible initial error, measurement error and disturbance"
+     }
+    }
+   ]
+  },
+  {
+   "id": "F7",
+   "title": "Transient cap tighter than the later tolerance (20 test requests)",
+   "counts": {
+    "INVALID_INPUT": 20
+   },
+   "cases": [
+    {
+     "case": "test-00004",
+     "family": "duffing_stage",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.00396 is smaller than the post-deadline tolerance 0.00791"
+     }
+    },
+    {
+     "case": "test-00015",
+     "family": "mass_spring_damper",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.0121 is smaller than the post-deadline tolerance 0.0243"
+     }
+    },
+    {
+     "case": "test-00026",
+     "family": "rotary_joint",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.0555 is smaller than the post-deadline tolerance 0.111"
+     }
+    },
+    {
+     "case": "test-00088",
+     "family": "gantry_axis",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.0018 is smaller than the post-deadline tolerance 0.0036"
+     }
+    },
+    {
+     "case": "test-00116",
+     "family": "duffing_stage",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.0041 is smaller than the post-deadline tolerance 0.0082"
+     }
+    },
+    {
+     "case": "test-00154",
+     "family": "servo_axis",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.018 is smaller than the post-deadline tolerance 0.0359"
+     }
+    },
+    {
+     "case": "test-00178",
+     "family": "rotary_joint",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.0242 is smaller than the post-deadline tolerance 0.0484"
+     }
+    },
+    {
+     "case": "test-00180",
+     "family": "mass_spring_damper",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.0267 is smaller than the post-deadline tolerance 0.0534"
+     }
+    },
+    {
+     "case": "test-00237",
+     "family": "duffing_stage",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.00131 is smaller than the post-deadline tolerance 0.00263"
+     }
+    },
+    {
+     "case": "test-00262",
+     "family": "gantry_axis",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.0068 is smaller than the post-deadline tolerance 0.0136"
+     }
+    },
+    {
+     "case": "test-00330",
+     "family": "rotary_joint",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.0376 is smaller than the post-deadline tolerance 0.0751"
+     }
+    },
+    {
+     "case": "test-00343",
+     "family": "duffing_stage",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.00865 is smaller than the post-deadline tolerance 0.0173"
+     }
+    },
+    {
+     "case": "test-00351",
+     "family": "mass_spring_damper",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.00349 is smaller than the post-deadline tolerance 0.00699"
+     }
+    },
+    {
+     "case": "test-00413",
+     "family": "servo_axis",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.137 is smaller than the post-deadline tolerance 0.274"
+     }
+    },
+    {
+     "case": "test-00440",
+     "family": "gantry_axis",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.00196 is smaller than the post-deadline tolerance 0.00391"
+     }
+    },
+    {
+     "case": "test-00458",
+     "family": "duffing_stage",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.00188 is smaller than the post-deadline tolerance 0.00377"
+     }
+    },
+    {
+     "case": "test-00503",
+     "family": "rotary_joint",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.063 is smaller than the post-deadline tolerance 0.126"
+     }
+    },
+    {
+     "case": "test-00520",
+     "family": "mass_spring_damper",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.00152 is smaller than the post-deadline tolerance 0.00303"
+     }
+    },
+    {
+     "case": "test-00572",
+     "family": "duffing_stage",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.00293 is smaller than the post-deadline tolerance 0.00585"
+     }
+    },
+    {
+     "case": "test-00599",
+     "family": "gantry_axis",
+     "result": {
+      "disposition": "INVALID_INPUT",
+      "selected": null,
+      "explanation": "transient cap 0.00201 is smaller than the post-deadline tolerance 0.00403"
+     }
+    }
+   ]
+  }
+ ],
+ "code_commit": "dbc415a"
+}

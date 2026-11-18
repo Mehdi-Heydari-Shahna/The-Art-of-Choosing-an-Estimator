@@ -1,0 +1,8 @@
+train.jsonl                  regenerated == manifest; frozen file == manifest
+dev.jsonl                    regenerated == manifest; frozen file == manifest
+test_structured.jsonl        regenerated == manifest; frozen file == manifest
+dev_extra_cases.jsonl        regenerated == manifest; frozen file == manifest
+sheets_dev_author0.json      60 sheets, 0 differ
+sheets_test_author1.json     80 sheets, 1 differ: ['test-00182']
+sheets_test_author2.json     80 sheets, 0 differ
+sheets_test_author3.json     80 sheets, 0 differ

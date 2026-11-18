@@ -1,0 +1,167 @@
+{
+  "public_api": "heros.api.solve",
+  "arguments": {
+    "spec": {
+      "schema": "heros-spec/1",
+      "plant": {
+        "family": null,
+        "kind": "second_order",
+        "states": [],
+        "inputs": [],
+        "outputs": [],
+        "linear": null,
+        "second_order": {
+          "f": "0",
+          "f0": "0",
+          "output": "x1",
+          "params": {}
+        },
+        "flags": []
+      },
+      "target": {
+        "state": 1
+      },
+      "time": {
+        "Ts": 0.1,
+        "input_hold": "zoh",
+        "t_end": 1.0,
+        "irregular": false
+      },
+      "initial": {
+        "x0_hat": [
+          0,
+          1.5
+        ],
+        "P0": null,
+        "E": [
+          0,
+          0.5
+        ],
+        "policy": null
+      },
+      "stochastic": {
+        "distribution": null,
+        "Q": null,
+        "Q_kind": null,
+        "G": null,
+        "R": null,
+        "white": null,
+        "cross_cov": null
+      },
+      "deterministic": {
+        "V": 0.01,
+        "D": 5.0,
+        "d_bound": 5.0,
+        "domain": {
+          "x1": [
+            0,
+            1.001
+          ],
+          "x2": [
+            1,
+            2
+          ]
+        },
+        "domain_evidence": {
+          "kind": "mechanical_limit",
+          "statement": "Throughout the one-second operating window the carriage travels forward at 1 to 2 m/s and remains within 0 to 1.001 m."
+        }
+      },
+      "objective": {
+        "kind": "hard_bound",
+        "tolerance": 0.2,
+        "deadline": 0.0,
+        "peak_cap": null,
+        "prob": null,
+        "mse_target": null,
+        "horizon": null
+      },
+      "evidence": {
+        "target.state": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.Ts": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.V": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.D": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.d_bound": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.E": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.x0_hat": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.domain": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.domain_evidence": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.t_end": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.kind": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.tolerance": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.deadline": {
+          "status": "supplied",
+          "source": "structured input"
+        }
+      },
+      "ranges": {},
+      "constraints": []
+    }
+  },
+  "expected_engineering_outcome": "A universal impossibility verdict is false. A supported, verified answer or a refusal to certify the registered candidate is appropriate.",
+  "mathematical_basis": "Let h be the maximum excess of v over 1. Integral of v-1 over the 1 s record is at most 0.001 m. Since |v-prime| <= 5 and h <= 1, on the longer side of its maximum there is room for a triangle of unit-consistent area h^2/10 (duration h/5 <= 0.2 s). Thus h <= 0.1 m/s. Reporting 1 m/s at all times meets tolerance 0.2 throughout for every admissible motion. The purported witness stops even though v >= 1. The feasible set includes uniform velocity 1.",
+  "actual_true_velocity_if_applicable": null,
+  "observed_rev2b_result": {
+    "disposition": "PROVED_IMPOSSIBLE",
+    "claim": null,
+    "impossibility": {
+      "argument": "no estimator can keep the velocity error within the requested tolerance (deadline at the first sample) 0.2 at t = 0: the only measurement then is one position reading, which carries no information about the velocity.  Two admissible trajectories start at x1 = 0 with the velocities 2 and 1, inside the stated initial velocity bound and speed range; both hold the input u = 0 during the first sample interval, and keep it; their disturbances keep each within 1.001 of the start (guaranteed decelerations 5 on the boxes around their paths) and, where it stops inside the window, hold it at rest, so both stay inside the stated travel range [0, 1.001].  For any estimate one of them lies at least 0.5 away",
+      "class": "all causal estimators using the same measurements",
+      "bound": 0.5,
+      "level": 0.2,
+      "sample_time": 0.0,
+      "kind": "initial_sample",
+      "construction": {
+        "p": 0.0,
+        "u0": 0.0,
+        "r_up": 1.001,
+        "A_up": 5.0,
+        "u_up": 0.0,
+        "r_dn": 0.0,
+        "A_dn": null,
+        "u_dn": null
+      }
+    },
+    "timing": null,
+    "package_impossibility_checker": [
+      true,
+      "independent first-sample check: requirement 0.2 at t = 0 versus half-width 0.5 of the states one reading cannot distinguish"
+    ]
+  }
+}

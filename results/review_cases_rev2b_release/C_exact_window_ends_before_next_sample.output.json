@@ -1,0 +1,946 @@
+{
+ "decision": {
+  "coordinator_version": "1.0.0",
+  "spec_hash": "839d9215d26a686f",
+  "disposition": "RELEASE",
+  "selected": "kalman_filter",
+  "qualifying": [
+   "kalman_filter"
+  ],
+  "explanations": [
+   "kalman_filter selected for objective 'mse_bound': mean-square error of the target at every sample from t = 0 s to the last sample of the record, t = 3 s is at most 0.615895 <= 0.616808",
+   "high_gain_observer was not selected: the high-gain observer in the register applies to second-order chain-form plants with one measured output"
+  ],
+  "harmless": [],
+  "question": null,
+  "all_needs": [],
+  "claim": {
+   "type": "mse_bound",
+   "statement": "mean-square error of the target at every sample from t = 0 s to the last sample of the record, t = 3 s is at most 0.615895 <= 0.616808",
+   "value": 0.6158940397350994,
+   "conditions": [
+    "known linear model at one sample period",
+    "zero-mean white process and measurement noise, mutually uncorrelated and uncorrelated with the initial error",
+    "stated covariances are the true ones"
+   ],
+   "uncertainty": "error covariance P_{k|k}"
+  },
+  "config": {
+   "method": "kalman_filter",
+   "version": "1.0.0",
+   "Ts": 1.0,
+   "A": [
+    [
+     1.0
+    ]
+   ],
+   "B": [
+    [
+     0.0
+    ]
+   ],
+   "C": [
+    [
+     1.0
+    ]
+   ],
+   "Qd": [
+    [
+     1.0
+    ]
+   ],
+   "R": [
+    [
+     1.0
+    ]
+   ],
+   "horizon": "finite",
+   "derivations": [
+    {
+     "field": "model",
+     "how": "discrete model used at its native period",
+     "Ts": 1.0
+    },
+    {
+     "field": "Qd",
+     "how": "per-step covariance used as stated",
+     "conditions": "valid at period 1.0 s only"
+    }
+   ],
+   "target": 0,
+   "x0_hat": [
+    0.0
+   ],
+   "x0_provenance": "supplied",
+   "mode": "time_varying",
+   "P0": [
+    [
+     0.1
+    ]
+   ],
+   "P0_provenance": "supplied",
+   "N": 3
+  },
+  "alternatives": [],
+  "tradeoff": null,
+  "assessments": {
+   "kalman_filter": {
+    "method": "kalman_filter",
+    "status": "qualifies",
+    "reasons": [],
+    "needs": [],
+    "config": {
+     "method": "kalman_filter",
+     "version": "1.0.0",
+     "Ts": 1.0,
+     "A": [
+      [
+       1.0
+      ]
+     ],
+     "B": [
+      [
+       0.0
+      ]
+     ],
+     "C": [
+      [
+       1.0
+      ]
+     ],
+     "Qd": [
+      [
+       1.0
+      ]
+     ],
+     "R": [
+      [
+       1.0
+      ]
+     ],
+     "horizon": "finite",
+     "derivations": [
+      {
+       "field": "model",
+       "how": "discrete model used at its native period",
+       "Ts": 1.0
+      },
+      {
+       "field": "Qd",
+       "how": "per-step covariance used as stated",
+       "conditions": "valid at period 1.0 s only"
+      }
+     ],
+     "target": 0,
+     "x0_hat": [
+      0.0
+     ],
+     "x0_provenance": "supplied",
+     "mode": "time_varying",
+     "P0": [
+      [
+       0.1
+      ]
+     ],
+     "P0_provenance": "supplied",
+     "N": 3
+    },
+    "claim": {
+     "type": "mse_bound",
+     "statement": "mean-square error of the target at every sample from t = 0 s to the last sample of the record, t = 3 s is at most 0.615895 <= 0.616808",
+     "value": 0.6158940397350994,
+     "conditions": [
+      "known linear model at one sample period",
+      "zero-mean white process and measurement noise, mutually uncorrelated and uncorrelated with the initial error",
+      "stated covariances are the true ones"
+     ],
+     "uncertainty": "error covariance P_{k|k}"
+    },
+    "metrics": {
+     "mse_steady": 0.6180339887498949,
+     "Ts": 1.0,
+     "mse_post_deadline_max": 0.6158940397350994,
+     "window_steps": 3,
+     "window": "at every sample from t = 0 s to the last sample of the record, t = 3 s"
+    },
+    "limits": [],
+    "harmless": [],
+    "impossibility": null,
+    "checks": [
+     {
+      "name": "observability of (A, C)",
+      "passed": true
+     },
+     {
+      "name": "detectability of (A, C)",
+      "passed": true
+     }
+    ]
+   },
+   "high_gain_observer": {
+    "method": "high_gain_observer",
+    "status": "not_applicable",
+    "reasons": [
+     "the high-gain observer in the register applies to second-order chain-form plants with one measured output"
+    ],
+    "needs": [],
+    "config": null,
+    "claim": null,
+    "metrics": {},
+    "limits": [],
+    "harmless": [],
+    "impossibility": null,
+    "checks": []
+   }
+  },
+  "impossibility": null,
+  "accepted_choices": [],
+  "policy": {
+   "methods": null,
+   "ranking": "criterion"
+  },
+  "limits": [],
+  "checks": [
+   {
+    "name": "observability of (A, C)",
+    "passed": true
+   },
+   {
+    "name": "detectability of (A, C)",
+    "passed": true
+   }
+  ],
+  "display": "Verified design released."
+ },
+ "estimates": {
+  "t": [
+   0.0,
+   1.0,
+   2.0,
+   3.0
+  ],
+  "x_filt": [
+   [
+    0.0
+   ],
+   [
+    0.0
+   ],
+   [
+    0.0
+   ],
+   [
+    0.0
+   ]
+  ],
+  "P_filt": [
+   [
+    [
+     0.09090909090909091
+    ]
+   ],
+   [
+    [
+     0.5217391304347826
+    ]
+   ],
+   [
+    [
+     0.603448275862069
+    ]
+   ],
+   [
+    [
+     0.6158940397350994
+    ]
+   ]
+  ],
+  "x_pred": [
+   [
+    0.0
+   ],
+   [
+    0.0
+   ],
+   [
+    0.0
+   ],
+   [
+    0.0
+   ]
+  ],
+  "P_pred": [
+   [
+    [
+     0.1
+    ]
+   ],
+   [
+    [
+     1.0909090909090908
+    ]
+   ],
+   [
+    [
+     1.5217391304347827
+    ]
+   ],
+   [
+    [
+     1.603448275862069
+    ]
+   ]
+  ],
+  "gain": [
+   [
+    [
+     0.0909090909090909
+    ]
+   ],
+   [
+    [
+     0.5217391304347826
+    ]
+   ],
+   [
+    [
+     0.603448275862069
+    ]
+   ],
+   [
+    [
+     0.6158940397350993
+    ]
+   ]
+  ],
+  "innovation": [
+   [
+    0.0
+   ],
+   [
+    0.0
+   ],
+   [
+    0.0
+   ],
+   [
+    0.0
+   ]
+  ],
+  "nis": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "covariance_basis": "Riccati recursion of the time-varying gain from the stated initial covariance",
+  "uncertainty_type": "error covariance (second-order statistic); not a deterministic error bound"
+ },
+ "timing": {
+  "ok": true,
+  "code": null,
+  "n": 4,
+  "Ts_stated": 1.0,
+  "label_resolution": null,
+  "dt_min": 1.0,
+  "dt_max": 1.0,
+  "dt_median": 1.0,
+  "t0": 0.0,
+  "label_precision": 1.7763568394002505e-15,
+  "tolerance": 1.7763568394002505e-15,
+  "max_deviation": 0.0,
+  "message": "the recorded times equal the instants t_0 + k Ts of the stated period 1 s to within the precision of the stored times (1.78e-15 s)"
+ },
+ "inputs": null,
+ "record": {
+  "schema": "heros-record/1",
+  "created_utc": "2026-11-18T17:08:18+00:00",
+  "build": {
+   "package": "heros-estimation",
+   "version": "1.0.0",
+   "coordinator": "1.0.0",
+   "kalman": "1.0.0",
+   "khalil": "1.0.0",
+   "python": "3.13.18",
+   "numpy": "2.5.3"
+  },
+  "interpretation_model": {
+   "used": false
+  },
+  "spec": {
+   "schema": "heros-spec/1",
+   "plant": {
+    "family": null,
+    "kind": "linear",
+    "states": [],
+    "inputs": [],
+    "outputs": [],
+    "linear": {
+     "clock": "discrete",
+     "A": [
+      [
+       1.0
+      ]
+     ],
+     "B": [
+      [
+       0.0
+      ]
+     ],
+     "C": [
+      [
+       1.0
+      ]
+     ],
+     "Ts_native": 1.0
+    },
+    "second_order": null,
+    "flags": []
+   },
+   "target": {
+    "state": 0
+   },
+   "time": {
+    "Ts": 1.0,
+    "input_hold": "zoh",
+    "t_end": 3.9999999995343387,
+    "irregular": false
+   },
+   "initial": {
+    "x0_hat": [
+     0.0
+    ],
+    "P0": [
+     [
+      0.1
+     ]
+    ],
+    "E": null,
+    "policy": null
+   },
+   "stochastic": {
+    "distribution": "gaussian",
+    "Q": [
+     [
+      1.0
+     ]
+    ],
+    "Q_kind": "discrete_cov",
+    "G": null,
+    "R": [
+     [
+      1.0
+     ]
+    ],
+    "white": true,
+    "cross_cov": null
+   },
+   "deterministic": {
+    "V": null,
+    "D": null,
+    "d_bound": null,
+    "domain": null,
+    "domain_evidence": null
+   },
+   "objective": {
+    "kind": "mse_bound",
+    "tolerance": null,
+    "deadline": null,
+    "peak_cap": null,
+    "prob": null,
+    "mse_target": 0.6168077794,
+    "horizon": "finite"
+   },
+   "evidence": {
+    "target.state": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "time.Ts": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "stochastic.Q": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "stochastic.Q_kind": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "stochastic.R": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "initial.P0": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "initial.x0_hat": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "stochastic.white": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "stochastic.distribution": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "time.t_end": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "objective.kind": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "objective.mse_target": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "objective.horizon": {
+     "status": "supplied",
+     "source": "structured input"
+    }
+   },
+   "ranges": {},
+   "constraints": []
+  },
+  "spec_hash": "839d9215d26a686f",
+  "evidence": {
+   "target.state": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "time.Ts": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "stochastic.Q": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "stochastic.Q_kind": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "stochastic.R": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "initial.P0": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "initial.x0_hat": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "stochastic.white": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "stochastic.distribution": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "time.t_end": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "objective.kind": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "objective.mse_target": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "objective.horizon": {
+    "status": "supplied",
+    "source": "structured input"
+   }
+  },
+  "accepted_choices": [],
+  "decision": {
+   "coordinator_version": "1.0.0",
+   "spec_hash": "839d9215d26a686f",
+   "disposition": "RELEASE",
+   "selected": "kalman_filter",
+   "qualifying": [
+    "kalman_filter"
+   ],
+   "explanations": [
+    "kalman_filter selected for objective 'mse_bound': mean-square error of the target at every sample from t = 0 s to the last sample of the record, t = 3 s is at most 0.615895 <= 0.616808",
+    "high_gain_observer was not selected: the high-gain observer in the register applies to second-order chain-form plants with one measured output"
+   ],
+   "harmless": [],
+   "question": null,
+   "all_needs": [],
+   "claim": {
+    "type": "mse_bound",
+    "statement": "mean-square error of the target at every sample from t = 0 s to the last sample of the record, t = 3 s is at most 0.615895 <= 0.616808",
+    "value": 0.6158940397350994,
+    "conditions": [
+     "known linear model at one sample period",
+     "zero-mean white process and measurement noise, mutually uncorrelated and uncorrelated with the initial error",
+     "stated covariances are the true ones"
+    ],
+    "uncertainty": "error covariance P_{k|k}"
+   },
+   "config": {
+    "method": "kalman_filter",
+    "version": "1.0.0",
+    "Ts": 1.0,
+    "A": [
+     [
+      1.0
+     ]
+    ],
+    "B": [
+     [
+      0.0
+     ]
+    ],
+    "C": [
+     [
+      1.0
+     ]
+    ],
+    "Qd": [
+     [
+      1.0
+     ]
+    ],
+    "R": [
+     [
+      1.0
+     ]
+    ],
+    "horizon": "finite",
+    "derivations": [
+     {
+      "field": "model",
+      "how": "discrete model used at its native period",
+      "Ts": 1.0
+     },
+     {
+      "field": "Qd",
+      "how": "per-step covariance used as stated",
+      "conditions": "valid at period 1.0 s only"
+     }
+    ],
+    "target": 0,
+    "x0_hat": [
+     0.0
+    ],
+    "x0_provenance": "supplied",
+    "mode": "time_varying",
+    "P0": [
+     [
+      0.1
+     ]
+    ],
+    "P0_provenance": "supplied",
+    "N": 3
+   },
+   "alternatives": [],
+   "tradeoff": null,
+   "assessments": {
+    "kalman_filter": {
+     "method": "kalman_filter",
+     "status": "qualifies",
+     "reasons": [],
+     "needs": [],
+     "config": {
+      "method": "kalman_filter",
+      "version": "1.0.0",
+      "Ts": 1.0,
+      "A": [
+       [
+        1.0
+       ]
+      ],
+      "B": [
+       [
+        0.0
+       ]
+      ],
+      "C": [
+       [
+        1.0
+       ]
+      ],
+      "Qd": [
+       [
+        1.0
+       ]
+      ],
+      "R": [
+       [
+        1.0
+       ]
+      ],
+      "horizon": "finite",
+      "derivations": [
+       {
+        "field": "model",
+        "how": "discrete model used at its native period",
+        "Ts": 1.0
+       },
+       {
+        "field": "Qd",
+        "how": "per-step covariance used as stated",
+        "conditions": "valid at period 1.0 s only"
+       }
+      ],
+      "target": 0,
+      "x0_hat": [
+       0.0
+      ],
+      "x0_provenance": "supplied",
+      "mode": "time_varying",
+      "P0": [
+       [
+        0.1
+       ]
+      ],
+      "P0_provenance": "supplied",
+      "N": 3
+     },
+     "claim": {
+      "type": "mse_bound",
+      "statement": "mean-square error of the target at every sample from t = 0 s to the last sample of the record, t = 3 s is at most 0.615895 <= 0.616808",
+      "value": 0.6158940397350994,
+      "conditions": [
+       "known linear model at one sample period",
+       "zero-mean white process and measurement noise, mutually uncorrelated and uncorrelated with the initial error",
+       "stated covariances are the true ones"
+      ],
+      "uncertainty": "error covariance P_{k|k}"
+     },
+     "metrics": {
+      "mse_steady": 0.6180339887498949,
+      "Ts": 1.0,
+      "mse_post_deadline_max": 0.6158940397350994,
+      "window_steps": 3,
+      "window": "at every sample from t = 0 s to the last sample of the record, t = 3 s"
+     },
+     "limits": [],
+     "harmless": [],
+     "impossibility": null,
+     "checks": [
+      {
+       "name": "observability of (A, C)",
+       "passed": true
+      },
+      {
+       "name": "detectability of (A, C)",
+       "passed": true
+      }
+     ]
+    },
+    "high_gain_observer": {
+     "method": "high_gain_observer",
+     "status": "not_applicable",
+     "reasons": [
+      "the high-gain observer in the register applies to second-order chain-form plants with one measured output"
+     ],
+     "needs": [],
+     "config": null,
+     "claim": null,
+     "metrics": {},
+     "limits": [],
+     "harmless": [],
+     "impossibility": null,
+     "checks": []
+    }
+   },
+   "impossibility": null,
+   "accepted_choices": [],
+   "policy": {
+    "methods": null,
+    "ranking": "criterion"
+   },
+   "limits": [],
+   "checks": [
+    {
+     "name": "observability of (A, C)",
+     "passed": true
+    },
+    {
+     "name": "detectability of (A, C)",
+     "passed": true
+    }
+   ],
+   "display": "Verified design released."
+  },
+  "history": [],
+  "notes": "",
+  "inputs": {
+   "y_sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+   "n_measurements": 4,
+   "u_sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+   "t_sha256": "9392b85eaba90b4aa6f39e1f269927b4bd6bec47cd2e34a80cf3ed914c26dc7e",
+   "timing_check": {
+    "ok": true,
+    "code": null,
+    "n": 4,
+    "Ts_stated": 1.0,
+    "label_resolution": null,
+    "dt_min": 1.0,
+    "dt_max": 1.0,
+    "dt_median": 1.0,
+    "t0": 0.0,
+    "label_precision": 1.7763568394002505e-15,
+    "tolerance": 1.7763568394002505e-15,
+    "max_deviation": 0.0,
+    "message": "the recorded times equal the instants t_0 + k Ts of the stated period 1 s to within the precision of the stored times (1.78e-15 s)"
+   },
+   "y": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "u": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "t": [
+    0.0,
+    1.0,
+    2.0,
+    3.0
+   ]
+  },
+  "outputs": {
+   "t": [
+    0.0,
+    1.0,
+    2.0,
+    3.0
+   ],
+   "x_filt": [
+    [
+     0.0
+    ],
+    [
+     0.0
+    ],
+    [
+     0.0
+    ],
+    [
+     0.0
+    ]
+   ],
+   "P_filt": [
+    [
+     [
+      0.09090909090909091
+     ]
+    ],
+    [
+     [
+      0.5217391304347826
+     ]
+    ],
+    [
+     [
+      0.603448275862069
+     ]
+    ],
+    [
+     [
+      0.6158940397350994
+     ]
+    ]
+   ],
+   "x_pred": [
+    [
+     0.0
+    ],
+    [
+     0.0
+    ],
+    [
+     0.0
+    ],
+    [
+     0.0
+    ]
+   ],
+   "P_pred": [
+    [
+     [
+      0.1
+     ]
+    ],
+    [
+     [
+      1.0909090909090908
+     ]
+    ],
+    [
+     [
+      1.5217391304347827
+     ]
+    ],
+    [
+     [
+      1.603448275862069
+     ]
+    ]
+   ],
+   "gain": [
+    [
+     [
+      0.0909090909090909
+     ]
+    ],
+    [
+     [
+      0.5217391304347826
+     ]
+    ],
+    [
+     [
+      0.603448275862069
+     ]
+    ],
+    [
+     [
+      0.6158940397350993
+     ]
+    ]
+   ],
+   "innovation": [
+    [
+     0.0
+    ],
+    [
+     0.0
+    ],
+    [
+     0.0
+    ],
+    [
+     0.0
+    ]
+   ],
+   "nis": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "covariance_basis": "Riccati recursion of the time-varying gain from the stated initial covariance",
+   "uncertainty_type": "error covariance (second-order statistic); not a deterministic error bound"
+  }
+ }
+}

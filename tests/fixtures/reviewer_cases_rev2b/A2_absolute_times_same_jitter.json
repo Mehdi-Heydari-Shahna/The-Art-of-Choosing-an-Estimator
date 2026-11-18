@@ -1,0 +1,173 @@
+{
+  "public_api": "heros.api.solve",
+  "arguments": {
+    "spec": {
+      "schema": "heros-spec/1",
+      "plant": {
+        "family": null,
+        "kind": "second_order",
+        "states": [],
+        "inputs": [],
+        "outputs": [],
+        "linear": null,
+        "second_order": {
+          "f": "0",
+          "f0": "0",
+          "output": "x1",
+          "params": {}
+        },
+        "flags": []
+      },
+      "target": {
+        "state": 1
+      },
+      "time": {
+        "Ts": 0.0009765625,
+        "input_hold": "zoh",
+        "t_end": 0.001953125,
+        "irregular": false
+      },
+      "initial": {
+        "x0_hat": [
+          0,
+          1
+        ],
+        "P0": null,
+        "E": [
+          0,
+          0
+        ],
+        "policy": null
+      },
+      "stochastic": {
+        "distribution": null,
+        "Q": null,
+        "Q_kind": null,
+        "G": null,
+        "R": null,
+        "white": null,
+        "cross_cov": null
+      },
+      "deterministic": {
+        "V": 0,
+        "D": 0,
+        "d_bound": null,
+        "domain": null,
+        "domain_evidence": null
+      },
+      "objective": {
+        "kind": "hard_bound",
+        "tolerance": 1e-07,
+        "deadline": 0.0,
+        "peak_cap": null,
+        "prob": null,
+        "mse_target": null,
+        "horizon": null
+      },
+      "evidence": {
+        "target.state": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.Ts": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.t_end": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.V": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.D": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.E": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.x0_hat": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.kind": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.tolerance": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.deadline": {
+          "status": "supplied",
+          "source": "structured input"
+        }
+      },
+      "ranges": {},
+      "constraints": []
+    },
+    "y": [
+      0.0,
+      0.00098419189453125,
+      0.001953125
+    ],
+    "u": [
+      0,
+      0,
+      0
+    ],
+    "t": [
+      1073741824.0,
+      1073741824.0009842,
+      1073741824.0019531
+    ]
+  },
+  "expected_engineering_outcome": "A real timing deviation above the claimed error budget excludes the zero-error fixed-grid guarantee.",
+  "mathematical_basis": "The physical motion is position equal to elapsed time, velocity one. All timestamps are exactly representable binary rationals. Adding an exactly representable common offset preserves the intervals and measurements.",
+  "actual_true_velocity_if_applicable": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "observed_rev2b_result": {
+    "disposition": "RELEASE",
+    "claim": {
+      "type": "hard_bound",
+      "statement": "|error| <= 0 at every sample instant from t = 0 s to t = 0.00195312 s for every admissible initial error, measurement error and disturbance",
+      "value": 0.0,
+      "conditions": [
+        "plant in second-order chain form with measured first state",
+        "|measurement error| <= 0",
+        "|x2' - nominal model| <= 0 on each sample interval (D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories)",
+        "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E",
+        "applied input held constant on each sample interval",
+        "observer updated every 0.000976562 s with the stated binary gains; the bound is the exact worst case of this recursion in exact arithmetic (Proposition 1), certified from above by interval arithmetic; rounding of the float64 implementation is not included"
+      ],
+      "uncertainty": "deterministic error envelope"
+    },
+    "impossibility": null,
+    "timing": {
+      "ok": true,
+      "code": null,
+      "n": 3,
+      "Ts_stated": 0.0009765625,
+      "label_resolution": null,
+      "dt_min": 0.00096893310546875,
+      "dt_max": 0.00098419189453125,
+      "dt_median": 0.0009765625,
+      "t0": 1073741824.0,
+      "tolerance": 1.5258789062527756e-05,
+      "max_deviation": 7.62939453125e-06,
+      "message": "the recorded times equal the instants t_0 + k Ts of the stated period 0.000976562 s to within the binary rounding of the labels"
+    },
+    "returned_velocity": [
+      1.0,
+      1.0072650363055222,
+      0.9932533094081393
+    ],
+    "max_abs_velocity_error": 0.007265036305522221
+  }
+}

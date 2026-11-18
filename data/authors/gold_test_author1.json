@@ -1,0 +1,5792 @@
+[
+ {
+  "id": "test-00309",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "load torque bias",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": null,
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "load torque bias"
+  }
+ },
+ {
+  "id": "test-00002",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "meas_bound#0",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "23.4 \u00b5rad"
+   },
+   {
+    "key": "acc_bound#1",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "1.54 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#2",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "10.4 mrad"
+   },
+   {
+    "key": "init_vel_bound#3",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "945 mrad/s"
+   },
+   {
+    "key": "tolerance#4",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "22.5 mrad/s"
+   },
+   {
+    "key": "deadline#5",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "86 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "meas_bound",
+     "value": 2.34e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 1.54,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.0104,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.945,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0225,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.086,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00160",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "2 kHz"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "203 urad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.301 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "1.58 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "753 mrad/s"
+   },
+   {
+    "key": "vel_limit#5",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "146 mrad/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.1485 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 2000.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.000203,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.301,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00158,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.753,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.146,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.1485,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ },
+ {
+  "id": "test-00244",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "shaft angle",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.1 kHz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine",
+   "samples arrive irregularly and some are missing"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 100.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [
+    "irregular_sampling"
+   ],
+   "evidence": null,
+   "target": "shaft angle"
+  }
+ },
+ {
+  "id": "test-00118",
+  "system": "mass spring damper; states: mass position [m], mass velocity [m/s]; measured: position sensor; input: actuator force",
+  "estimate": "mass velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "2 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "7.31 um"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "9.81 \u00b5m"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.23 m/s^2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "179 um"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "95.7 mm/s"
+   },
+   {
+    "key": "vel_limit#6",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "0.913 m/s"
+   },
+   {
+    "key": "tolerance#7",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "7.13 mm/s"
+   },
+   {
+    "key": "deadline#8",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.274 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.002,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 7.31e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "meas_bound",
+     "value": 9.81e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.23,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.000179,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0957,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.913,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00713,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.274,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "mass velocity"
+  }
+ },
+ {
+  "id": "test-00105",
+  "system": "two mass; states: motor position [m], motor velocity [m/s], load position [m], load velocity [m/s]; measured: motor encoder, load encoder; input: motor force",
+  "estimate": "motor velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "50 Hz"
+   },
+   {
+    "key": "tolerance#1",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "0.1 m/s"
+   },
+   {
+    "key": "deadline#2",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.4 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "all noises are Gaussian"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 50.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "tolerance",
+     "value": 0.1,
+     "dim": "other",
+     "family": "m/s"
+    },
+    {
+     "role": "deadline",
+     "value": 0.4,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": "gaussian",
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "motor velocity"
+  }
+ },
+ {
+  "id": "test-00561",
+  "system": "thermal; states: zone one temperature [K], zone two temperature [K], ambient offset [K]; measured: zone one thermocouple; input: heater power",
+  "estimate": "zone two temperature",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.5 Hz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 0.5,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "zone two temperature"
+  }
+ },
+ {
+  "id": "test-00356",
+  "system": "two mass; states: motor position [m], motor velocity [m/s], load position [m], load velocity [m/s]; measured: motor encoder, load encoder; input: motor force",
+  "estimate": "motor position",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "20 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.02,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "motor position"
+  }
+ },
+ {
+  "id": "test-00312",
+  "system": "two mass; states: motor position [m], motor velocity [m/s], load position [m], load velocity [m/s]; measured: motor encoder, load encoder; input: motor force",
+  "estimate": "load position",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "20 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted",
+   "the measurement noise is correlated in time (not white)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.02,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [
+    "coloured_noise"
+   ],
+   "evidence": null,
+   "target": "load position"
+  }
+ },
+ {
+  "id": "test-00255",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "armature current",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "5 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.005,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "armature current"
+  }
+ },
+ {
+  "id": "test-00386",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "boom angle",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "5 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.005,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "boom angle"
+  }
+ },
+ {
+  "id": "test-00490",
+  "system": "gantry axis; states: carriage position [m], carriage velocity [m/s]; measured: linear scale reading; input: drive force",
+  "estimate": "carriage velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.25 kHz"
+   },
+   {
+    "key": "acc_bound#1",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.129 m/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#2",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "0.657 mm"
+   },
+   {
+    "key": "init_vel_bound#3",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "78.4 mm/s"
+   },
+   {
+    "key": "tolerance#4",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "1.53 mm/s"
+   },
+   {
+    "key": "deadline#5",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "404 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 250.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.129,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.000657,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0784,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00153,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.404,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "carriage velocity"
+  }
+ },
+ {
+  "id": "test-00218",
+  "system": "mass spring damper; states: mass position [m], mass velocity [m/s]; measured: position sensor; input: actuator force",
+  "estimate": "mass velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "500 \u00b5s"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "31.4 \u00b5m"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.204 m/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "282 um"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "50.9 mm/s"
+   },
+   {
+    "key": "vel_limit#5",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "519 mm/s"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "29.7 mm/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "120 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.0005,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 3.14e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.204,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.000282,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0509,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.519,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0297,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.12,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "mass velocity"
+  }
+ },
+ {
+  "id": "test-00242",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "armature current",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine",
+   "the measurement noise is correlated in time (not white)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [
+    "coloured_noise"
+   ],
+   "evidence": null,
+   "target": "armature current"
+  }
+ },
+ {
+  "id": "test-00241",
+  "system": "gantry axis; states: carriage position [m], carriage velocity [m/s]; measured: linear scale reading; input: drive force",
+  "estimate": "carriage velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "250 \u00b5s"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "25.5 \u00b5m"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.955 m/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "750 \u00b5m"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "0.115 m/s"
+   },
+   {
+    "key": "meas_std#5",
+    "what": "standard deviation (RMS) of the measurement noise",
+    "value": "14.7 \u00b5m"
+   },
+   {
+    "key": "acc_std#6",
+    "what": "standard deviation of the random disturbance acceleration (white, constant within one sample)",
+    "value": "0.551 m/s\u00b2"
+   },
+   {
+    "key": "init_pos_std#7",
+    "what": "standard deviation of the initial uncertainty of the first state",
+    "value": "433 \u00b5m"
+   },
+   {
+    "key": "init_vel_std#8",
+    "what": "standard deviation of the initial uncertainty of the second state",
+    "value": "66.4 mm/s"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "only steady-state behaviour matters / a constant-gain estimator is fine",
+   "samples arrive irregularly and some are missing"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.00025,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 2.55e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.955,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00075,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.115,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "meas_std",
+     "value": 1.47e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_std",
+     "value": 0.551,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_std",
+     "value": 0.000433,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_std",
+     "value": 0.0664,
+     "dim": "vel",
+     "family": "lin"
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "steady_state",
+   "flags": [
+    "irregular_sampling"
+   ],
+   "evidence": null,
+   "target": "carriage velocity"
+  }
+ },
+ {
+  "id": "test-00202",
+  "system": "thermal; states: zone one temperature [K], zone two temperature [K], ambient offset [K]; measured: zone one thermocouple; input: heater power",
+  "estimate": "zone one temperature",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.5 Hz"
+   },
+   {
+    "key": "mse_target#1",
+    "what": "largest allowed mean-square estimation error",
+    "value": "0.091809 K^2"
+   }
+  ],
+  "success_means": "a mean-square (average) accuracy level",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 0.5,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "mse_target",
+     "value": 0.091809,
+     "dim": "other2",
+     "family": "K"
+    }
+   ],
+   "objective": "mse_bound",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "zone one temperature"
+  }
+ },
+ {
+  "id": "test-00126",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "2 kHz"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "74.5 \u00b5rad"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "3.58 mrad"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.114 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "4.95 mrad"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "0.934 rad/s"
+   },
+   {
+    "key": "vel_limit#6",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "tolerance#7",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "0.352 rad/s"
+   },
+   {
+    "key": "deadline#8",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "127 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 2000.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 7.45e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.00358,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.114,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00495,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.934,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.352,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.127,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ },
+ {
+  "id": "test-00353",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "1 kHz"
+   },
+   {
+    "key": "acc_bound#1",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "1.1 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#2",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "3.13 mrad"
+   },
+   {
+    "key": "init_vel_bound#3",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "0.697 rad/s"
+   },
+   {
+    "key": "vel_limit#4",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "meas_std#5",
+    "what": "standard deviation (RMS) of the measurement noise",
+    "value": "17.7 \u00b5rad"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "0.112 rad/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "77 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 1000.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "acc_bound",
+     "value": 1.1,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00313,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.697,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "meas_std",
+     "value": 1.77e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.112,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.077,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ },
+ {
+  "id": "test-00445",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "armature current",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "5 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.005,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "armature current"
+  }
+ },
+ {
+  "id": "test-00086",
+  "system": "duffing stage; states: stage displacement [m], stage velocity [m/s]; measured: capacitive probe; input: voice-coil force",
+  "estimate": "stage velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "1 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "1.08 um"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "179 mm/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "19.5 \u00b5m"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "28.1 mm/s"
+   },
+   {
+    "key": "vel_limit#5",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "0.169 m/s"
+   },
+   {
+    "key": "meas_std#6",
+    "what": "standard deviation (RMS) of the measurement noise",
+    "value": "0.624 um"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "only steady-state behaviour matters / a constant-gain estimator is fine",
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.001,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 1.08e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.179,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 1.95e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0281,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.169,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "meas_std",
+     "value": 6.24e-07,
+     "dim": "pos",
+     "family": "lin"
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "stage velocity"
+  }
+ },
+ {
+  "id": "test-00557",
+  "system": "two mass; states: motor position [m], motor velocity [m/s], load position [m], load velocity [m/s]; measured: motor encoder, load encoder; input: motor force",
+  "estimate": "motor velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "50 Hz"
+   },
+   {
+    "key": "rms_target#1",
+    "what": "largest allowed RMS estimation error",
+    "value": "0.000937 m/s"
+   }
+  ],
+  "success_means": "a mean-square (average) accuracy level",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 50.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "rms_target",
+     "value": 0.000937,
+     "dim": "other",
+     "family": "m/s"
+    }
+   ],
+   "objective": "mse_bound",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "motor velocity"
+  }
+ },
+ {
+  "id": "test-00006",
+  "system": "duffing stage; states: stage displacement [m], stage velocity [m/s]; measured: capacitive probe; input: voice-coil force",
+  "estimate": "stage velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "2 kHz"
+   },
+   {
+    "key": "acc_bound#1",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "52.7 mm/s^2"
+   },
+   {
+    "key": "init_pos_bound#2",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "14.1 um"
+   },
+   {
+    "key": "init_vel_bound#3",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "40.5 mm/s"
+   },
+   {
+    "key": "vel_limit#4",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "0.183 m/s"
+   },
+   {
+    "key": "meas_var#5",
+    "what": "variance of the measurement noise (per sample)",
+    "value": "0.147456 \u00b5m^2"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "1.86 mm/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.117 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 2000.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.0527,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 1.41e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0405,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.183,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "meas_var",
+     "value": 1.47456e-13,
+     "dim": "pos2",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00186,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.117,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "stage velocity"
+  }
+ },
+ {
+  "id": "test-00214",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.5 kHz"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "0.482 mrad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.642 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "1.56 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "1.24 rad/s"
+   },
+   {
+    "key": "meas_std#5",
+    "what": "standard deviation (RMS) of the measurement noise",
+    "value": "278 \u00b5rad"
+   },
+   {
+    "key": "acc_std#6",
+    "what": "standard deviation of the random disturbance acceleration (white, constant within one sample)",
+    "value": "0.371 rad/s^2"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 500.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.000482,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.642,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00156,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 1.24,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "meas_std",
+     "value": 0.000278,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_std",
+     "value": 0.37099999999999994,
+     "dim": "acc",
+     "family": "ang"
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00446",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "boom rate",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "NOT STATED - do not say what success means beyond a vague wish for good accuracy (or say nothing)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "unspecified",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "boom rate"
+  }
+ },
+ {
+  "id": "test-00226",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "2 kHz"
+   },
+   {
+    "key": "acc_bound#1",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.15 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#2",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "8.62 mrad"
+   },
+   {
+    "key": "init_vel_bound#3",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "563 mrad/s"
+   },
+   {
+    "key": "vel_limit#4",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "tolerance#5",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "0.171 rad/s"
+   },
+   {
+    "key": "deadline#6",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.1535 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 2000.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.15,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00862,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.563,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.171,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.1535,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ },
+ {
+  "id": "test-00539",
+  "system": "duffing stage; states: stage displacement [m], stage velocity [m/s]; measured: capacitive probe; input: voice-coil force",
+  "estimate": "stage velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "4 kHz"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "0.316 \u00b5m"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "25.2 \u00b5m"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.12 m/s^2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "18.4 \u00b5m"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "21.8 mm/s"
+   },
+   {
+    "key": "vel_limit#6",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "0.14 m/s"
+   },
+   {
+    "key": "tolerance#7",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "6.42 mm/s"
+   },
+   {
+    "key": "deadline#8",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "71.25 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 4000.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 3.16e-07,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "meas_bound",
+     "value": 2.52e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.12,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 1.84e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0218,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.14,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00642,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.07125,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "stage velocity"
+  }
+ },
+ {
+  "id": "test-00154",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.2 kHz"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "150 urad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.602 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "5.09 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "208 mrad/s"
+   },
+   {
+    "key": "tolerance#5",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "35.9 mrad/s"
+   },
+   {
+    "key": "deadline#6",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "1.79 s"
+   },
+   {
+    "key": "peak_cap#7",
+    "what": "largest allowed estimation error during the initial transient",
+    "value": "18 mrad/s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 200.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.00015,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.602,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00509,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.208,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0359,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 1.79,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "peak_cap",
+     "value": 0.018,
+     "dim": "vel",
+     "family": "ang"
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00496",
+  "system": "mass spring damper; states: mass position [m], mass velocity [m/s]; measured: position sensor; input: actuator force",
+  "estimate": "mass velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "500 \u00b5s"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "5.15 \u00b5m"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.421 m/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "0.618 mm"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "0.284 m/s"
+   },
+   {
+    "key": "vel_limit#5",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "0.444 m/s"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "7.97 mm/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "60 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)",
+   "there are actuator dynamics (a lag) that the model does not include"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.0005,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 5.15e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.421,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.000618,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.284,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.444,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00797,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.06,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [
+    "hidden_dynamics"
+   ],
+   "evidence": "mechanical_limit",
+   "target": "mass velocity"
+  }
+ },
+ {
+  "id": "test-00466",
+  "system": "mass spring damper; states: mass position [m], mass velocity [m/s]; measured: position sensor; input: actuator force",
+  "estimate": "mass velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "1 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "1.77 um"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "3.46 \u00b5m"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "374 mm/s^2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "0.24 mm"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "66.7 mm/s"
+   },
+   {
+    "key": "vel_limit#6",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "0.234 m/s"
+   },
+   {
+    "key": "tolerance#7",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "5.98 mm/s"
+   },
+   {
+    "key": "deadline#8",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "245 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.001,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 1.77e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "meas_bound",
+     "value": 3.46e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.374,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00024,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0667,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.234,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00598,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.245,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "mass velocity"
+  }
+ },
+ {
+  "id": "test-00305",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "shaft angle",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "shaft angle"
+  }
+ },
+ {
+  "id": "test-00119",
+  "system": "bearing only; states: target east position [m], target north position [m], target east velocity [m/s], target north velocity [m/s]; measured: bearing angle",
+  "estimate": "target north position",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "1 s"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 1.0,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": null,
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "target north position"
+  }
+ },
+ {
+  "id": "test-00010",
+  "system": "two mass; states: motor position [m], motor velocity [m/s], load position [m], load velocity [m/s]; measured: motor encoder, load encoder; input: motor force",
+  "estimate": "load velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "50 Hz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 50.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "load velocity"
+  }
+ },
+ {
+  "id": "test-00055",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted",
+   "samples arrive irregularly and some are missing"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [
+    "irregular_sampling"
+   ],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00264",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00367",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "boom rate",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted",
+   "process noise and measurement noise are correlated with each other"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [
+    "correlated_noise"
+   ],
+   "evidence": null,
+   "target": "boom rate"
+  }
+ },
+ {
+  "id": "test-00201",
+  "system": "mass spring damper; states: mass position [m], mass velocity [m/s]; measured: position sensor; input: actuator force",
+  "estimate": "mass velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "2 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.002,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "mass velocity"
+  }
+ },
+ {
+  "id": "test-00502",
+  "system": "thermal; states: zone one temperature [K], zone two temperature [K], ambient offset [K]; measured: zone one thermocouple; input: heater power",
+  "estimate": "zone two temperature",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.5 Hz"
+   },
+   {
+    "key": "tolerance#1",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "0.1 K"
+   },
+   {
+    "key": "deadline#2",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "40 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "all noises are Gaussian"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 0.5,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "tolerance",
+     "value": 0.1,
+     "dim": "other",
+     "family": "K"
+    },
+    {
+     "role": "deadline",
+     "value": 40.0,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": "gaussian",
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "zone two temperature"
+  }
+ },
+ {
+  "id": "test-00254",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "5 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "20.2 urad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.527 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "11.4 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "1.08 rad/s"
+   },
+   {
+    "key": "acc_std#5",
+    "what": "standard deviation of the random disturbance acceleration (white, constant within one sample)",
+    "value": "0.304 rad/s^2"
+   },
+   {
+    "key": "init_pos_std#6",
+    "what": "standard deviation of the initial uncertainty of the first state",
+    "value": "6.58 mrad"
+   },
+   {
+    "key": "init_vel_std#7",
+    "what": "standard deviation of the initial uncertainty of the second state",
+    "value": "0.624 rad/s"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.005,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 2.02e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.527,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.0114,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 1.08,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "acc_std",
+     "value": 0.304,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_std",
+     "value": 0.00658,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_std",
+     "value": 0.624,
+     "dim": "vel",
+     "family": "ang"
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00239",
+  "system": "gantry axis; states: carriage position [m], carriage velocity [m/s]; measured: linear scale reading; input: drive force",
+  "estimate": "carriage velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "0.25 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "1.28 \u00b5m"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.284 m/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "0.277 mm"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "21.8 mm/s"
+   },
+   {
+    "key": "meas_std#5",
+    "what": "standard deviation (RMS) of the measurement noise",
+    "value": "0.739 \u00b5m"
+   },
+   {
+    "key": "acc_std#6",
+    "what": "standard deviation of the random disturbance acceleration (white, constant within one sample)",
+    "value": "0.164 m/s^2"
+   },
+   {
+    "key": "init_pos_std#7",
+    "what": "standard deviation of the initial uncertainty of the first state",
+    "value": "0.16 mm"
+   },
+   {
+    "key": "init_vel_std#8",
+    "what": "standard deviation of the initial uncertainty of the second state",
+    "value": "12.6 mm/s"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "the start-up transient matters / the time-varying gain is wanted",
+   "process noise and measurement noise are correlated with each other"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.00025,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 1.28e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.284,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.000277,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0218,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "meas_std",
+     "value": 7.39e-07,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_std",
+     "value": 0.164,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_std",
+     "value": 0.00016,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_std",
+     "value": 0.0126,
+     "dim": "vel",
+     "family": "lin"
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "finite",
+   "flags": [
+    "correlated_noise"
+   ],
+   "evidence": null,
+   "target": "carriage velocity"
+  }
+ },
+ {
+  "id": "test-00419",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "load torque bias",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   },
+   {
+    "key": "tolerance#1",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "5.51 kN m"
+   },
+   {
+    "key": "prob#2",
+    "what": "probability with which the accuracy requirement must hold",
+    "value": "0.95"
+   }
+  ],
+  "success_means": "an accuracy level that holds with a stated probability",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "tolerance",
+     "value": 5.51,
+     "dim": "other",
+     "family": "kN m"
+    },
+    {
+     "role": "prob",
+     "value": 0.95,
+     "dim": "frac",
+     "family": ""
+    }
+   ],
+   "objective": "probability",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "load torque bias"
+  }
+ },
+ {
+  "id": "test-00092",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "armature current",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "100 Hz"
+   },
+   {
+    "key": "mse_target#1",
+    "what": "largest allowed mean-square estimation error",
+    "value": "1.1449e-08 A^2"
+   }
+  ],
+  "success_means": "a mean-square (average) accuracy level",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 100.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "mse_target",
+     "value": 1.1449e-08,
+     "dim": "other2",
+     "family": "A"
+    }
+   ],
+   "objective": "mse_bound",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "armature current"
+  }
+ },
+ {
+  "id": "test-00547",
+  "system": "mass spring damper; states: mass position [m], mass velocity [m/s]; measured: position sensor; input: actuator force",
+  "estimate": "mass velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "1 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.001,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "mass velocity"
+  }
+ },
+ {
+  "id": "test-00187",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "load pressure",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "100 Hz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 100.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "load pressure"
+  }
+ },
+ {
+  "id": "test-00174",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "2 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "396 urad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "1.14 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "7.84 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "1.35 rad/s"
+   },
+   {
+    "key": "meas_var#5",
+    "what": "variance of the measurement noise (per sample)",
+    "value": "5.2441e-8 rad^2"
+   },
+   {
+    "key": "acc_std#6",
+    "what": "standard deviation of the random disturbance acceleration (white, constant within one sample)",
+    "value": "0.658 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_std#7",
+    "what": "standard deviation of the initial uncertainty of the first state",
+    "value": "4.53 mrad"
+   },
+   {
+    "key": "init_vel_std#8",
+    "what": "standard deviation of the initial uncertainty of the second state",
+    "value": "0.779 rad/s"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.002,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.000396,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 1.14,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00784,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 1.35,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "meas_var",
+     "value": 5.2441000000000006e-08,
+     "dim": "pos2",
+     "family": "ang"
+    },
+    {
+     "role": "acc_std",
+     "value": 0.6579999999999999,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_std",
+     "value": 0.00453,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_std",
+     "value": 0.779,
+     "dim": "vel",
+     "family": "ang"
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00381",
+  "system": "two mass; states: motor position [m], motor velocity [m/s], load position [m], load velocity [m/s]; measured: motor encoder, load encoder; input: motor force",
+  "estimate": "motor position",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "20 ms"
+   },
+   {
+    "key": "tolerance#1",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "0.000176 m"
+   },
+   {
+    "key": "prob#2",
+    "what": "probability with which the accuracy requirement must hold",
+    "value": "95%"
+   }
+  ],
+  "success_means": "an accuracy level that holds with a stated probability",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.02,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "tolerance",
+     "value": 0.000176,
+     "dim": "other",
+     "family": "m"
+    },
+    {
+     "role": "prob",
+     "value": 0.95,
+     "dim": "frac",
+     "family": ""
+    }
+   ],
+   "objective": "probability",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "motor position"
+  }
+ },
+ {
+  "id": "test-00245",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "boom rate",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine",
+   "the measurement noise is correlated in time (not white)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [
+    "coloured_noise"
+   ],
+   "evidence": null,
+   "target": "boom rate"
+  }
+ },
+ {
+  "id": "test-00116",
+  "system": "duffing stage; states: stage displacement [m], stage velocity [m/s]; measured: capacitive probe; input: voice-coil force",
+  "estimate": "stage velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "0.25 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "1.99 um"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.314 m/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "77.5 um"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "41.3 mm/s"
+   },
+   {
+    "key": "vel_limit#5",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "195 mm/s"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "8.2 mm/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "99 ms"
+   },
+   {
+    "key": "peak_cap#8",
+    "what": "largest allowed estimation error during the initial transient",
+    "value": "4.1 mm/s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.00025,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 1.99e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.314,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 7.75e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0413,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.195,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0082,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.099,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "peak_cap",
+     "value": 0.0041,
+     "dim": "vel",
+     "family": "lin"
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "stage velocity"
+  }
+ },
+ {
+  "id": "test-00495",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "boom rate",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.1 kHz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted",
+   "the measurement noise is correlated in time (not white)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 100.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [
+    "coloured_noise"
+   ],
+   "evidence": null,
+   "target": "boom rate"
+  }
+ },
+ {
+  "id": "test-00425",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "5 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "38.4 \u00b5rad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "4.77 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "12.1 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "4.35 rad/s"
+   },
+   {
+    "key": "tolerance#5",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "62.5 mrad/s"
+   },
+   {
+    "key": "deadline#6",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.795 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.005,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 3.84e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 4.77,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.0121,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 4.35,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0625,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.795,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00221",
+  "system": "gantry axis; states: carriage position [m], carriage velocity [m/s]; measured: linear scale reading; input: drive force",
+  "estimate": "carriage velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "0.25 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "14.6 um"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "2.37 m/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "195 um"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "0.214 m/s"
+   },
+   {
+    "key": "meas_std#5",
+    "what": "standard deviation (RMS) of the measurement noise",
+    "value": "8.43 um"
+   },
+   {
+    "key": "acc_std#6",
+    "what": "standard deviation of the random disturbance acceleration (white, constant within one sample)",
+    "value": "1.37 m/s\u00b2"
+   },
+   {
+    "key": "init_pos_std#7",
+    "what": "standard deviation of the initial uncertainty of the first state",
+    "value": "113 um"
+   },
+   {
+    "key": "init_vel_std#8",
+    "what": "standard deviation of the initial uncertainty of the second state",
+    "value": "124 mm/s"
+   },
+   {
+    "key": "rms_target#9",
+    "what": "largest allowed RMS estimation error",
+    "value": "1.06 mm/s"
+   }
+  ],
+  "success_means": "a mean-square (average) accuracy level",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.00025,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 1.46e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 2.37,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.000195,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.214,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "meas_std",
+     "value": 8.43e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_std",
+     "value": 1.37,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_std",
+     "value": 0.000113,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_std",
+     "value": 0.124,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "rms_target",
+     "value": 0.00106,
+     "dim": "vel",
+     "family": "lin"
+    }
+   ],
+   "objective": "mse_bound",
+   "distribution": "bounded",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "carriage velocity"
+  }
+ },
+ {
+  "id": "test-00144",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.1 kHz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 100.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00064",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "1 ms"
+   },
+   {
+    "key": "Ts#1",
+    "what": "sample period",
+    "value": "2 ms"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "80.5 \u00b5rad"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "5.92 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "1.62 mrad"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "2.68 rad/s"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "0.109 rad/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "383 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.001,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "Ts",
+     "value": 0.002,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 8.05e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 5.92,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00162,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 2.68,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.109,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.383,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00139",
+  "system": "gantry axis; states: carriage position [m], carriage velocity [m/s]; measured: linear scale reading; input: drive force",
+  "estimate": "carriage velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "250 Hz"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "11.5 \u00b5m"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "1.57 m/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "648 \u00b5m"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "0.136 m/s"
+   },
+   {
+    "key": "meas_var#5",
+    "what": "variance of the measurement noise (per sample)",
+    "value": "44.0896 \u00b5m^2"
+   },
+   {
+    "key": "acc_std#6",
+    "what": "standard deviation of the random disturbance acceleration (white, constant within one sample)",
+    "value": "906 mm/s^2"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 250.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 1.15e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 1.57,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.000648,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.136,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "meas_var",
+     "value": 4.40896e-11,
+     "dim": "pos2",
+     "family": "lin"
+    },
+    {
+     "role": "acc_std",
+     "value": 0.906,
+     "dim": "acc",
+     "family": "lin"
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "carriage velocity"
+  }
+ },
+ {
+  "id": "test-00131",
+  "system": "two mass; states: motor position [m], motor velocity [m/s], load position [m], load velocity [m/s]; measured: motor encoder, load encoder; input: motor force",
+  "estimate": "motor position",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "50 Hz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted",
+   "the measurement noise is correlated in time (not white)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 50.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [
+    "coloured_noise"
+   ],
+   "evidence": null,
+   "target": "motor position"
+  }
+ },
+ {
+  "id": "test-00540",
+  "system": "duffing stage; states: stage displacement [m], stage velocity [m/s]; measured: capacitive probe; input: voice-coil force",
+  "estimate": "stage velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "250 \u00b5s"
+   },
+   {
+    "key": "Ts#1",
+    "what": "sample period",
+    "value": "500 \u00b5s"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "0.287 um"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.261 m/s^2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "18.9 \u00b5m"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "47.5 mm/s"
+   },
+   {
+    "key": "vel_limit#6",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "0.141 m/s"
+   },
+   {
+    "key": "tolerance#7",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "2.32 mm/s"
+   },
+   {
+    "key": "deadline#8",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "43.5 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.00025,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "Ts",
+     "value": 0.0005,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 2.87e-07,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.261,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 1.89e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0475,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.141,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00232,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.0435,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "stage velocity"
+  }
+ },
+ {
+  "id": "test-00584",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "boom angle",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "NOT STATED - do not say what success means beyond a vague wish for good accuracy (or say nothing)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "unspecified",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "boom angle"
+  }
+ },
+ {
+  "id": "test-00071",
+  "system": "duffing stage; states: stage displacement [m], stage velocity [m/s]; measured: capacitive probe; input: voice-coil force",
+  "estimate": "stage velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "500 \u00b5s"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "0.183 um"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "8.58 um"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.872 m/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "19.2 um"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "120 mm/s"
+   },
+   {
+    "key": "vel_limit#6",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "0.146 m/s"
+   },
+   {
+    "key": "tolerance#7",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "3.45 mm/s"
+   },
+   {
+    "key": "deadline#8",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.151 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.0005,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 1.83e-07,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "meas_bound",
+     "value": 8.58e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.872,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 1.92e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.12,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.146,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00345,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.151,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "stage velocity"
+  }
+ },
+ {
+  "id": "test-00057",
+  "system": "two mass; states: motor position [m], motor velocity [m/s], load position [m], load velocity [m/s]; measured: motor encoder, load encoder; input: motor force",
+  "estimate": "motor velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "20 ms"
+   }
+  ],
+  "success_means": "NOT STATED - do not say what success means beyond a vague wish for good accuracy (or say nothing)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.02,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "unspecified",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "motor velocity"
+  }
+ },
+ {
+  "id": "test-00430",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "2 kHz"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "32.8 urad"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "2.52 mrad"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "1.04 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "7.12 mrad"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "2.84 rad/s"
+   },
+   {
+    "key": "vel_limit#6",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "tolerance#7",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "143 mrad/s"
+   },
+   {
+    "key": "deadline#8",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.1875 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 2000.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 3.28e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.00252,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 1.04,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00712,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 2.84,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.143,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.1875,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ },
+ {
+  "id": "test-00261",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "meas_bound#0",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "0.148 mrad"
+   },
+   {
+    "key": "acc_bound#1",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "4.13 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#2",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "6.65 mrad"
+   },
+   {
+    "key": "init_vel_bound#3",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "1.96 rad/s"
+   },
+   {
+    "key": "tolerance#4",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "99.1 mrad/s"
+   },
+   {
+    "key": "deadline#5",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "49.5 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "meas_bound",
+     "value": 0.000148,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 4.13,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00665,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 1.96,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0991,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.0495,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00165",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "0.5 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "127 urad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.845 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "5.96 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "1.68 rad/s"
+   },
+   {
+    "key": "tolerance#5",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "54.4 mrad/s"
+   },
+   {
+    "key": "deadline#6",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.11 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.0005,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.000127,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.845,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00596,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 1.68,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0544,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.11,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00182",
+  "system": "two mass; states: motor position [m], motor velocity [m/s], load position [m], load velocity [m/s]; measured: motor encoder, load encoder; input: motor force",
+  "estimate": "motor velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "20 ms"
+   },
+   {
+    "key": "mse_target#1",
+    "what": "largest allowed mean-square estimation error",
+    "value": "2.4025e-06 m/s^2"
+   }
+  ],
+  "success_means": "a mean-square (average) accuracy level",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.02,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "mse_target",
+     "value": 2.4025e-06,
+     "dim": "other2",
+     "family": "m/s"
+    }
+   ],
+   "objective": "mse_bound",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "motor velocity"
+  }
+ },
+ {
+  "id": "test-00204",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "1 kHz"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "0.108 mrad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.667 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "2.25 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "1.33 rad/s"
+   },
+   {
+    "key": "meas_std#5",
+    "what": "standard deviation (RMS) of the measurement noise",
+    "value": "62.4 urad"
+   },
+   {
+    "key": "acc_std#6",
+    "what": "standard deviation of the random disturbance acceleration (white, constant within one sample)",
+    "value": "0.385 rad/s^2"
+   },
+   {
+    "key": "init_pos_std#7",
+    "what": "standard deviation of the initial uncertainty of the first state",
+    "value": "1.3 mrad"
+   },
+   {
+    "key": "init_vel_std#8",
+    "what": "standard deviation of the initial uncertainty of the second state",
+    "value": "0.768 rad/s"
+   },
+   {
+    "key": "tolerance#9",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "38.6 mrad/s"
+   },
+   {
+    "key": "deadline#10",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.352 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 1000.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.000108,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.667,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00225,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 1.33,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "meas_std",
+     "value": 6.24e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_std",
+     "value": 0.38499999999999995,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_std",
+     "value": 0.0013,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_std",
+     "value": 0.768,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0386,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.352,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": "bounded",
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00574",
+  "system": "cart pole; states: cart position [m], cart velocity [m/s], pole angle [rad], pole rate [rad/s]; measured: cart encoder, pole encoder; input: cart force",
+  "estimate": "pole angle",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.2 kHz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 200.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": null,
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "pole angle"
+  }
+ },
+ {
+  "id": "test-00537",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "boom angle",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.1 kHz"
+   },
+   {
+    "key": "rms_target#1",
+    "what": "largest allowed RMS estimation error",
+    "value": "0.000373 rad"
+   }
+  ],
+  "success_means": "a mean-square (average) accuracy level",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 100.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "rms_target",
+     "value": 0.000373,
+     "dim": "other",
+     "family": "rad"
+    }
+   ],
+   "objective": "mse_bound",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "boom angle"
+  }
+ },
+ {
+  "id": "test-00316",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "armature current",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "100 Hz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 100.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": null,
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "armature current"
+  }
+ },
+ {
+  "id": "test-00267",
+  "system": "hydraulic boom; states: boom angle [rad], boom rate [rad/s], load pressure [MPa], load torque bias [kN m]; measured: inclinometer, pressure transducer; input: valve command",
+  "estimate": "load torque bias",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "5 ms"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.005,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "load torque bias"
+  }
+ },
+ {
+  "id": "test-00238",
+  "system": "duffing stage; states: stage displacement [m], stage velocity [m/s]; measured: capacitive probe; input: voice-coil force",
+  "estimate": "stage velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "2 kHz"
+   },
+   {
+    "key": "acc_bound#1",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "254 mm/s^2"
+   },
+   {
+    "key": "init_pos_bound#2",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "22.1 um"
+   },
+   {
+    "key": "init_vel_bound#3",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "0.177 m/s"
+   },
+   {
+    "key": "vel_limit#4",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "110 mm/s"
+   },
+   {
+    "key": "meas_std#5",
+    "what": "standard deviation (RMS) of the measurement noise",
+    "value": "0.427 \u00b5m"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "5.78 mm/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "35.5 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 2000.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.254,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 2.21e-05,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.177,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "vel_limit",
+     "value": 0.11,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "meas_std",
+     "value": 4.27e-07,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00578,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 0.0355,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "stage velocity"
+  }
+ },
+ {
+  "id": "test-00079",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "500 \u00b5s"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "142 urad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.262 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "3.93 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "1.38 rad/s"
+   },
+   {
+    "key": "vel_limit#5",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "309 mrad/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "163.5 ms"
+   }
+  ],
+  "success_means": "NOT STATED - do not say what success means beyond a vague wish for good accuracy (or say nothing)",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.0005,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.000142,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.262,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00393,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 1.38,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.309,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.1635,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "unspecified",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ },
+ {
+  "id": "test-00453",
+  "system": "thermal; states: zone one temperature [K], zone two temperature [K], ambient offset [K]; measured: zone one thermocouple; input: heater power",
+  "estimate": "ambient offset",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "2 s"
+   }
+  ],
+  "success_means": "NOT STATED - do not say what success means beyond a vague wish for good accuracy (or say nothing)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 2.0,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "unspecified",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "ambient offset"
+  }
+ },
+ {
+  "id": "test-00280",
+  "system": "servo axis; states: shaft angle [rad], shaft speed [rad/s]; measured: encoder angle; input: motor torque",
+  "estimate": "shaft speed",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "2 ms"
+   },
+   {
+    "key": "acc_bound#1",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "2.71 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#2",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "6.33 mrad"
+   },
+   {
+    "key": "init_vel_bound#3",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "4.46 rad/s"
+   },
+   {
+    "key": "meas_var#4",
+    "what": "variance of the measurement noise (per sample)",
+    "value": "0.00318096 mrad^2"
+   },
+   {
+    "key": "tolerance#5",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "67.5 mrad/s"
+   },
+   {
+    "key": "deadline#6",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "252 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.002,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "acc_bound",
+     "value": 2.71,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00633,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 4.46,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "meas_var",
+     "value": 3.18096e-09,
+     "dim": "pos2",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0675,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.252,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "shaft speed"
+  }
+ },
+ {
+  "id": "test-00344",
+  "system": "dc motor; states: shaft angle [rad], shaft speed [rad/s], armature current [A]; measured: shaft encoder, current sensor; input: armature voltage",
+  "estimate": "shaft angle",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "10 ms"
+   }
+  ],
+  "success_means": "NOT STATED - do not say what success means beyond a vague wish for good accuracy (or say nothing)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.01,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "unspecified",
+   "distribution": "gaussian",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "shaft angle"
+  }
+ },
+ {
+  "id": "test-00553",
+  "system": "thermal; states: zone one temperature [K], zone two temperature [K], ambient offset [K]; measured: zone one thermocouple; input: heater power",
+  "estimate": "ambient offset",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "1 s"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "all noises are Gaussian",
+   "only steady-state behaviour matters / a constant-gain estimator is fine"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 1.0,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "gaussian",
+   "horizon": "steady_state",
+   "flags": [],
+   "evidence": null,
+   "target": "ambient offset"
+  }
+ },
+ {
+  "id": "test-00087",
+  "system": "gantry axis; states: carriage position [m], carriage velocity [m/s]; measured: linear scale reading; input: drive force",
+  "estimate": "carriage velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "4 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "8.2 \u00b5m"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "2.05 um"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.247 m/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "252 \u00b5m"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "25.6 mm/s"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "4.65 mm/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "1.508 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.004,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 8.2e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "meas_bound",
+     "value": 2.05e-06,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.247,
+     "dim": "acc",
+     "family": "lin"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.000252,
+     "dim": "pos",
+     "family": "lin"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.0256,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.00465,
+     "dim": "vel",
+     "family": "lin"
+    },
+    {
+     "role": "deadline",
+     "value": 1.508,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": null,
+   "target": "carriage velocity"
+  }
+ },
+ {
+  "id": "test-00219",
+  "system": "bearing only; states: target east position [m], target north position [m], target east velocity [m/s], target north velocity [m/s]; measured: bearing angle",
+  "estimate": "target east position",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "1 Hz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 1.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": null,
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "target east position"
+  }
+ },
+ {
+  "id": "test-00008",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "2 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "544 urad"
+   },
+   {
+    "key": "meas_bound#2",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "136 \u00b5rad"
+   },
+   {
+    "key": "acc_bound#3",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "1.7 rad/s\u00b2"
+   },
+   {
+    "key": "init_pos_bound#4",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "5.8 mrad"
+   },
+   {
+    "key": "init_vel_bound#5",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "1.19 rad/s"
+   },
+   {
+    "key": "vel_limit#6",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "tolerance#7",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "200 mrad/s"
+   },
+   {
+    "key": "deadline#8",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "516 ms"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.002,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.000544,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "meas_bound",
+     "value": 0.000136,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 1.7,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.0058,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 1.19,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.2,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.516,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ },
+ {
+  "id": "test-00029",
+  "system": "mass spring damper; states: mass position [m], mass velocity [m/s]; measured: position sensor; input: actuator force",
+  "estimate": "mass velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "2 kHz"
+   }
+  ],
+  "success_means": "the estimate with the smallest mean-square error (statistically optimal)",
+  "also_convey": [
+   "the noises are not Gaussian (bounded/uniform); only means and variances are known",
+   "the start-up transient matters / the time-varying gain is wanted"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 2000.0,
+     "dim": "freq",
+     "family": ""
+    }
+   ],
+   "objective": "mse_optimal",
+   "distribution": "bounded",
+   "horizon": "finite",
+   "flags": [],
+   "evidence": null,
+   "target": "mass velocity"
+  }
+ },
+ {
+  "id": "test-00028",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "1 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "27.8 \u00b5rad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "1.52 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "1.53 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "717 mrad/s"
+   },
+   {
+    "key": "vel_limit#5",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "0.172 rad/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.105 s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.001,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 2.78e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 1.52,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00153,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 0.717,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.172,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.105,
+     "dim": "time",
+     "family": ""
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ },
+ {
+  "id": "test-00376",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "fs#0",
+    "what": "sampling rate",
+    "value": "0.5 kHz"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "29.1 urad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.143 rad/s\u00b2"
+   },
+   {
+    "key": "vel_limit#3",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "tolerance#4",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "61.3 mrad/s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "fs",
+     "value": 500.0,
+     "dim": "freq",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 2.91e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.143,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.0613,
+     "dim": "vel",
+     "family": "ang"
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ },
+ {
+  "id": "test-00503",
+  "system": "rotary joint; states: joint angle [rad], joint velocity [rad/s]; measured: joint encoder; input: joint torque",
+  "estimate": "joint velocity",
+  "facts_to_state": [
+   {
+    "key": "Ts#0",
+    "what": "sample period",
+    "value": "2 ms"
+   },
+   {
+    "key": "meas_bound#1",
+    "what": "hard worst-case bound on the measurement error of the sensor",
+    "value": "52.6 urad"
+   },
+   {
+    "key": "acc_bound#2",
+    "what": "hard bound on the unmodelled / disturbance acceleration",
+    "value": "0.915 rad/s^2"
+   },
+   {
+    "key": "init_pos_bound#3",
+    "what": "hard bound on the initial error of the first state (position/angle)",
+    "value": "3.25 mrad"
+   },
+   {
+    "key": "init_vel_bound#4",
+    "what": "hard bound on the initial error of the second state (velocity)",
+    "value": "3.68 rad/s"
+   },
+   {
+    "key": "vel_limit#5",
+    "what": "largest magnitude the second state (velocity) can reach during operation",
+    "value": "4 rad/s"
+   },
+   {
+    "key": "tolerance#6",
+    "what": "required accuracy (largest allowed estimation error) of the estimated quantity",
+    "value": "0.126 rad/s"
+   },
+   {
+    "key": "deadline#7",
+    "what": "time after start from which the accuracy requirement applies",
+    "value": "0.68 s"
+   },
+   {
+    "key": "peak_cap#8",
+    "what": "largest allowed estimation error during the initial transient",
+    "value": "63 mrad/s"
+   }
+  ],
+  "success_means": "a guaranteed (worst-case, for every admissible noise and disturbance) error limit",
+  "also_convey": [
+   "the stated velocity range is enforced by hardware (limiter / mechanical limit)"
+  ],
+  "model_attached": true,
+  "gold": {
+   "facts": [
+    {
+     "role": "Ts",
+     "value": 0.002,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "meas_bound",
+     "value": 5.26e-05,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "acc_bound",
+     "value": 0.915,
+     "dim": "acc",
+     "family": "ang"
+    },
+    {
+     "role": "init_pos_bound",
+     "value": 0.00325,
+     "dim": "pos",
+     "family": "ang"
+    },
+    {
+     "role": "init_vel_bound",
+     "value": 3.68,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "vel_limit",
+     "value": 4.0,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "tolerance",
+     "value": 0.126,
+     "dim": "vel",
+     "family": "ang"
+    },
+    {
+     "role": "deadline",
+     "value": 0.68,
+     "dim": "time",
+     "family": ""
+    },
+    {
+     "role": "peak_cap",
+     "value": 0.063,
+     "dim": "vel",
+     "family": "ang"
+    }
+   ],
+   "objective": "hard_bound",
+   "distribution": null,
+   "horizon": null,
+   "flags": [],
+   "evidence": "mechanical_limit",
+   "target": "joint velocity"
+  }
+ }
+]

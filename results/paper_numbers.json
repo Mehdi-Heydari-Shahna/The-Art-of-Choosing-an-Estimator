@@ -1,0 +1,1678 @@
+{
+ "BoomCovG": {
+  "value": "95.4",
+  "source": "linear_stochastic.json:gaussian.coverage_2sigma_target"
+ },
+ "BoomCovU": {
+  "value": "95.9",
+  "source": "linear_stochastic.json:bounded.coverage_2sigma_target"
+ },
+ "BoomMistune": {
+  "value": "2.8",
+  "source": "linear_stochastic.json:gaussian.exact_mse_ratio_mistuned_R_x10_target"
+ },
+ "BoomNeesG": {
+  "value": "3.94",
+  "source": "linear_stochastic.json:gaussian.mean_nees"
+ },
+ "BoomNeesU": {
+  "value": "3.97",
+  "source": "linear_stochastic.json:bounded.mean_nees"
+ },
+ "BoomNisG": {
+  "value": "2.00",
+  "source": "linear_stochastic.json:gaussian.mean_nis"
+ },
+ "BoomNisU": {
+  "value": "2.00",
+  "source": "linear_stochastic.json:bounded.mean_nis"
+ },
+ "BoomRefDiff": {
+  "value": "6.7\\times 10^{-15}",
+  "source": "linear_stochastic.json:{gaussian,bounded}.independent_reference_run0.max_estimate_diff (max)"
+ },
+ "BoomRuns": {
+  "value": "200",
+  "source": "linear_stochastic.json:n_runs"
+ },
+ "ComBoxExcess": {
+  "value": "0.74",
+  "source": "common_domain.json:exact.hgo_worst_case_tuned.independent_box_max_rel_excess (percent)"
+ },
+ "ComEmpHw": {
+  "value": "8.54\\times 10^{-5}",
+  "source": "common_domain.json:empirical.hgo_worst_case_tuned"
+ },
+ "ComEmpK": {
+  "value": "6.37\\times 10^{-5}",
+  "source": "common_domain.json:empirical.kalman_steady_state"
+ },
+ "ComEmpMaxH": {
+  "value": "0.035",
+  "source": "common_domain.json:empirical.hgo_worst_case_tuned.max_abs_error_post_deadline"
+ },
+ "ComEmpMaxK": {
+  "value": "0.033",
+  "source": "common_domain.json:empirical.kalman_steady_state.max_abs_error_post_deadline"
+ },
+ "ComLimit": {
+  "value": "0.0490",
+  "source": "common_domain.json:two_signal_limit"
+ },
+ "ComMseHm": {
+  "value": "6.61\\times 10^{-5}",
+  "source": "common_domain.json:exact.hgo_mse_tuned.mse_steady"
+ },
+ "ComMseHw": {
+  "value": "8.51\\times 10^{-5}",
+  "source": "common_domain.json:exact.hgo_worst_case_tuned.mse_steady"
+ },
+ "ComMseK": {
+  "value": "6.35\\times 10^{-5}",
+  "source": "common_domain.json:exact.kalman_steady_state.mse_steady"
+ },
+ "ComMseRatioM": {
+  "value": "1.04",
+  "source": "common_domain.json:exact (ratio)"
+ },
+ "ComMseRatioW": {
+  "value": "1.34",
+  "source": "common_domain.json:exact (ratio)"
+ },
+ "ComRecords": {
+  "value": "200",
+  "source": "common_domain.json:setting.n_records"
+ },
+ "ComTolHard": {
+  "value": "0.0906",
+  "source": "common_domain.json:decisions"
+ },
+ "ComTolImp": {
+  "value": "0.0392",
+  "source": "common_domain.json:decisions"
+ },
+ "ComWH": {
+  "value": "0.0566",
+  "source": "common_domain.json:exact.hgo_worst_case_tuned.certified_post_deadline"
+ },
+ "ComWHm": {
+  "value": "0.0607",
+  "source": "common_domain.json:exact.hgo_mse_tuned.certified_post_deadline"
+ },
+ "ComWK": {
+  "value": "0.0603",
+  "source": "common_domain.json:exact.kalman_steady_state.certified_post_deadline"
+ },
+ "ComWRatio": {
+  "value": "1.06",
+  "source": "common_domain.json:exact (ratio)"
+ },
+ "CritMax": {
+  "value": "14",
+  "source": "criterion_effect.json:ratio_selector_over_coordinator (max, percent above 1)"
+ },
+ "CritMin": {
+  "value": "5",
+  "source": "criterion_effect.json:ratio_selector_over_coordinator (min, percent above 1)"
+ },
+ "CritNDiff": {
+  "value": "4",
+  "source": "criterion_effect.json:n_different_choice"
+ },
+ "CritNHard": {
+  "value": "3",
+  "source": "criterion_effect.json:cases with a ratio (hard-bound objective)"
+ },
+ "CritProbCo": {
+  "value": "1.00",
+  "source": "criterion_effect.json:test-00463 (one minus the coordinator's criterion value)"
+ },
+ "CritProbSel": {
+  "value": "0.96",
+  "source": "criterion_effect.json:test-00463 (one minus the selector's criterion value)"
+ },
+ "EulerUnstableFrom": {
+  "value": "2.1",
+  "source": "joint.json:sampling[*].forward_euler.stable"
+ },
+ "EvalNNl": {
+  "value": "229",
+  "source": "test_summary.json:nl.*.n"
+ },
+ "EvalNNlAuthored": {
+  "value": "240",
+  "source": "data/manifest.json:counts.test_nl"
+ },
+ "EvalNNlReleasable": {
+  "value": "145",
+  "source": "test_summary.json:nl.*.n_releasable"
+ },
+ "EvalNNotReleasable": {
+  "value": "230",
+  "source": "test_summary.json:structured.coordinator.n_not_releasable"
+ },
+ "EvalNReleasable": {
+  "value": "370",
+  "source": "test_summary.json:structured.coordinator.n_releasable"
+ },
+ "EvalNStruct": {
+  "value": "600",
+  "source": "test_summary.json:structured.coordinator.n"
+ },
+ "FidCtLimit": {
+  "value": "7.1\\times 10^{-5}",
+  "source": "fidelity.json:continuous_limit"
+ },
+ "FidDisc": {
+  "value": "1.3\\times 10^{-15}",
+  "source": "fidelity.json:summary.kalman_max_discretisation_diff"
+ },
+ "FidFamilies": {
+  "value": "7",
+  "source": "fidelity.json:kalman[*].family"
+ },
+ "FidFrHgo": {
+  "value": "2.2\\times 10^{-13}",
+  "source": "fidelity.json:summary.hgo_first_reading_max_rel_diff"
+ },
+ "FidFrN": {
+  "value": "20",
+  "source": "fidelity.json:summary.n_hgo_first_reading_cases"
+ },
+ "FidHgo": {
+  "value": "8.6\\times 10^{-14}",
+  "source": "fidelity.json:summary.hgo_max_rel_diff"
+ },
+ "FidKalCov": {
+  "value": "6.5\\times 10^{-15}",
+  "source": "fidelity.json:summary.kalman_max_cov_diff"
+ },
+ "FidKalEst": {
+  "value": "2.2\\times 10^{-14}",
+  "source": "fidelity.json:summary.kalman_max_estimate_diff"
+ },
+ "FidNHgo": {
+  "value": "20",
+  "source": "fidelity.json:summary.n_hgo_cases"
+ },
+ "FidNKal": {
+  "value": "21",
+  "source": "fidelity.json:summary.n_kalman_cases"
+ },
+ "FidSteady": {
+  "value": "3.4\\times 10^{-11}",
+  "source": "fidelity.json:summary.kalman_max_steady_gain_diff"
+ },
+ "FidTightGap": {
+  "value": "3.1\\times 10^{-13}",
+  "source": "fidelity.json:tightness.ratio (one minus)"
+ },
+ "FidTightGapFr": {
+  "value": "3.1\\times 10^{-13}",
+  "source": "fidelity.json:tightness_first_reading.ratio (one minus)"
+ },
+ "IncN": {
+  "value": "16",
+  "source": "incomplete.json:rows"
+ },
+ "IncPassed": {
+  "value": "16",
+  "source": "incomplete.json:rows[*].check_passed"
+ },
+ "JointBound": {
+  "value": "0.120",
+  "source": "joint.json:certified_post_deadline"
+ },
+ "JointCons": {
+  "value": "1.73",
+  "source": "joint.json:estimation.conservatism_post_deadline"
+ },
+ "JointCt": {
+  "value": "0.130",
+  "source": "joint.json:ct_ultimate_same_eps"
+ },
+ "JointD": {
+  "value": "27.96",
+  "source": "joint.json:D"
+ },
+ "JointDadd": {
+  "value": "0.5",
+  "source": "joint.json:D_detail.additive"
+ },
+ "JointDeadlineMs": {
+  "value": "100",
+  "source": "joint.json:deadline"
+ },
+ "JointDmis": {
+  "value": "27.26",
+  "source": "joint.json:D_detail.model_mismatch"
+ },
+ "JointDsh": {
+  "value": "0.20",
+  "source": "joint.json:D_detail.sample_hold_and_noise"
+ },
+ "JointEpsMs": {
+  "value": "1.366",
+  "source": "joint.json:eps"
+ },
+ "JointMone": {
+  "value": "0.7687",
+  "source": "joint.json:M[0]"
+ },
+ "JointMtwo": {
+  "value": "269.4",
+  "source": "joint.json:M[1]"
+ },
+ "JointPeak": {
+  "value": "2.00",
+  "source": "joint.json:certified_peak"
+ },
+ "JointRatio": {
+  "value": "0.73",
+  "source": "joint.json:Ts/eps"
+ },
+ "JointRuns": {
+  "value": "100",
+  "source": "joint.json:estimation.n_runs"
+ },
+ "JointSimMax": {
+  "value": "0.069",
+  "source": "joint.json:estimation.simulated_post_deadline_max"
+ },
+ "JointSimMed": {
+  "value": "0.063",
+  "source": "joint.json:estimation.simulated_post_deadline_median"
+ },
+ "JointTol": {
+  "value": "0.25",
+  "source": "joint.json:tolerance"
+ },
+ "JointViol": {
+  "value": "0",
+  "source": "joint.json:estimation.envelope_violations"
+ },
+ "JointVmax": {
+  "value": "2.91",
+  "source": "joint.json:estimation.max_abs_velocity"
+ },
+ "KalStartFirst": {
+  "value": "14.9718",
+  "source": "review_findings_current.json:F3.exported_P_filt_first"
+ },
+ "KalStartGain": {
+  "value": "0.618",
+  "source": "review_findings_current.json:F3.gain_first"
+ },
+ "KalStartSteady": {
+  "value": "0.618",
+  "source": "review_findings_current.json:F3.exported_P_filt_last"
+ },
+ "LatDecide": {
+  "value": "4",
+  "source": "latency.json:decision_complete_spec.median_ms"
+ },
+ "LatDecideP": {
+  "value": "525",
+  "source": "latency.json:decision_complete_spec.p95_ms"
+ },
+ "LatJoint": {
+  "value": "1.1",
+  "source": "latency.json:deployed_fresh_process.seconds"
+ },
+ "LatKalStep": {
+  "value": "82",
+  "source": "latency.json:kalman_runtime.microseconds_per_step"
+ },
+ "LatObsStep": {
+  "value": "6",
+  "source": "latency.json:observer_runtime.microseconds_per_step"
+ },
+ "LatRead": {
+  "value": "4",
+  "source": "latency.json:reading.deployed_numpy.median_ms"
+ },
+ "LatReadBytes": {
+  "value": "0.5",
+  "source": "latency.json:reading.final_neural_scratch_s0.file_bytes"
+ },
+ "LatReadRules": {
+  "value": "0.2",
+  "source": "latency.json:reading.rules.median_ms"
+ },
+ "LatReplay": {
+  "value": "0.5",
+  "source": "latency.json:replay_seconds"
+ },
+ "LatReplayN": {
+  "value": "1\\,682",
+  "source": "latency.json:replay_quantities_compared"
+ },
+ "LatRss": {
+  "value": "110",
+  "source": "latency.json:deployed_fresh_process.peak_rss_mb"
+ },
+ "LegDeadlineFactor": {
+  "value": "18",
+  "source": "regressions/legacy_defects.json:khalil_scenario_deadline"
+ },
+ "LegDefects": {
+  "value": "7",
+  "source": "baseline_reproduction.json:legacy_defects_reproduced"
+ },
+ "LegDesigns": {
+  "value": "393",
+  "source": "baseline_reproduction.json:khalil_trained_interface_rerun.designs_issued"
+ },
+ "LegFindings": {
+  "value": "15",
+  "source": "docs/LEGACY_FINDINGS.md: rows of the findings table"
+ },
+ "LegHidden": {
+  "value": "38",
+  "source": "baseline_reproduction.json:khalil_trained_interface_rerun.hidden_dynamics_requests"
+ },
+ "LegHiddenAcc": {
+  "value": "10",
+  "source": "baseline_reproduction.json:khalil_trained_interface_rerun.hidden_dynamics_accepted"
+ },
+ "LegInvalid": {
+  "value": "29",
+  "source": "baseline_reproduction.json:khalil_trained_interface_rerun.invalid_designs"
+ },
+ "LegReproduced": {
+  "value": "7",
+  "source": "docs/LEGACY_FINDINGS.md: rows reproduced on the supplied code"
+ },
+ "LegReq": {
+  "value": "900",
+  "source": "baseline_reproduction.json:khalil_trained_interface_rerun"
+ },
+ "LegUnsupported": {
+  "value": "181",
+  "source": "baseline_reproduction.json:khalil_trained_interface_rerun.unsupported_designs"
+ },
+ "LoopRmsFd": {
+  "value": "34.5",
+  "source": "joint.json:closed_loop.filtered_difference.rms_tracking_error"
+ },
+ "LoopRmsObs": {
+  "value": "36.5",
+  "source": "joint.json:closed_loop.observer.rms_tracking_error"
+ },
+ "LoopRmsSf": {
+  "value": "34.5",
+  "source": "joint.json:closed_loop.state_feedback.rms_tracking_error"
+ },
+ "LoopSatFd": {
+  "value": "0",
+  "source": "joint.json:closed_loop.filtered_difference.saturated_samples"
+ },
+ "LoopSatObs": {
+  "value": "0",
+  "source": "joint.json:closed_loop.observer.saturated_samples"
+ },
+ "LoopSatSf": {
+  "value": "0",
+  "source": "joint.json:closed_loop.state_feedback.saturated_samples"
+ },
+ "LoopTrMaxFd": {
+  "value": "60.2",
+  "source": "joint.json:closed_loop_errors.filtered_difference.tracking_max_after_deadline"
+ },
+ "LoopTrMaxObs": {
+  "value": "64.7",
+  "source": "joint.json:closed_loop_errors.observer.tracking_max_after_deadline"
+ },
+ "LoopTrMaxSf": {
+  "value": "61.4",
+  "source": "joint.json:closed_loop_errors.state_feedback.tracking_max_after_deadline"
+ },
+ "LoopTvFd": {
+  "value": "28.9",
+  "source": "joint.json:closed_loop.filtered_difference.input_total_variation"
+ },
+ "LoopTvObs": {
+  "value": "61.6",
+  "source": "joint.json:closed_loop.observer.input_total_variation"
+ },
+ "LoopTvSf": {
+  "value": "5.9",
+  "source": "joint.json:closed_loop.state_feedback.input_total_variation"
+ },
+ "LoopUmax": {
+  "value": "6",
+  "source": "joint.json:controller.u_max"
+ },
+ "LoopVmaxFd": {
+  "value": "0.086",
+  "source": "joint.json:closed_loop.filtered_difference.velocity_estimate_error_post_deadline_max"
+ },
+ "LoopVmaxObs": {
+  "value": "0.061",
+  "source": "joint.json:closed_loop.observer.velocity_estimate_error_post_deadline_max"
+ },
+ "LoopVrmsFd": {
+  "value": "0.028",
+  "source": "joint.json:closed_loop.filtered_difference.velocity_estimate_error_rms"
+ },
+ "LoopVrmsObs": {
+  "value": "0.021",
+  "source": "joint.json:closed_loop.observer.velocity_estimate_error_rms"
+ },
+ "NlAskAttQ": {
+  "value": "1.47",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|attentive|ask_all.questions_per_request"
+ },
+ "NlCatTotal": {
+  "value": "33",
+  "source": "test_summary.json:nl_seed_overlap.n_categories_total"
+ },
+ "NlFiAudN": {
+  "value": "20",
+  "source": "blind_impossibility_audit.json:n_false_impossibility"
+ },
+ "NlFiCapTol": {
+  "value": "16",
+  "source": "blind_impossibility_audit.json:first_sample_cap_equals_stated_tolerance"
+ },
+ "NlFiFirstCap": {
+  "value": "18",
+  "source": "blind_impossibility_audit.json:first_sample_with_misread_cap"
+ },
+ "NlFiTotal": {
+  "value": "43",
+  "source": "test_summary.json:nl.*.false_impossibility (sum over configurations)"
+ },
+ "NlFrozenAttAns": {
+  "value": "0.43",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|attentive|coordinator.answers_per_request"
+ },
+ "NlFrozenAttCov": {
+  "value": "100.0",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|attentive|coordinator.useful_coverage"
+ },
+ "NlFrozenAttEdits": {
+  "value": "2.65",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|attentive|coordinator.edits_per_request"
+ },
+ "NlFrozenAttFi": {
+  "value": "0",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|attentive|coordinator.false_impossibility"
+ },
+ "NlFrozenAttInc": {
+  "value": "0",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|attentive|coordinator.incorrect_releases"
+ },
+ "NlFrozenBlAns": {
+  "value": "0.98",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|blind|coordinator.answers_per_request"
+ },
+ "NlFrozenBlCov": {
+  "value": "58.6",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|blind|coordinator.useful_coverage"
+ },
+ "NlFrozenBlEdits": {
+  "value": "0.00",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|blind|coordinator.edits_per_request"
+ },
+ "NlFrozenBlFi": {
+  "value": "12",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|blind|coordinator.false_impossibility"
+ },
+ "NlFrozenBlInc": {
+  "value": "47",
+  "source": "test_summary.json:nl.select_neural_frozen_s0|blind|coordinator.incorrect_releases"
+ },
+ "NlFrozenHeldBlInc": {
+  "value": "18",
+  "source": "test_summary.json:nl_family_split.select_neural_frozen_s0|blind|coordinator.held_out.incorrect_releases"
+ },
+ "NlFrozenHeldBlPct": {
+  "value": "18.6",
+  "source": "test_summary.json:nl_family_split.select_neural_frozen_s0|blind|coordinator.held_out.incorrect_per_request"
+ },
+ "NlFrozenTrainBlInc": {
+  "value": "29",
+  "source": "test_summary.json:nl_family_split.select_neural_frozen_s0|blind|coordinator.training.incorrect_releases"
+ },
+ "NlFrozenTrainBlPct": {
+  "value": "22.0",
+  "source": "test_summary.json:nl_family_split.select_neural_frozen_s0|blind|coordinator.training.incorrect_per_request"
+ },
+ "NlHeldBlIncList": {
+  "value": "5, 12, 12",
+  "source": "test_summary.json:nl_family_split.final_*|blind|coordinator.held_out.incorrect_releases"
+ },
+ "NlHeldBlPctList": {
+  "value": "5.2, 12.4, 12.4",
+  "source": "test_summary.json:nl_family_split.final_*|blind|coordinator.held_out.incorrect_per_request"
+ },
+ "NlHeldN": {
+  "value": "97",
+  "source": "test_summary.json:nl_family_split.final_neural_scratch_s0|blind|coordinator.held_out.n"
+ },
+ "NlNullAttAns": {
+  "value": "0.54",
+  "source": "test_summary.json:nl.null|attentive|coordinator.answers_per_request"
+ },
+ "NlNullAttCov": {
+  "value": "100.0",
+  "source": "test_summary.json:nl.null|attentive|coordinator.useful_coverage"
+ },
+ "NlNullAttEdits": {
+  "value": "6.38",
+  "source": "test_summary.json:nl.null|attentive|coordinator.edits_per_request"
+ },
+ "NlNullAttFi": {
+  "value": "0",
+  "source": "test_summary.json:nl.null|attentive|coordinator.false_impossibility"
+ },
+ "NlNullAttInc": {
+  "value": "0",
+  "source": "test_summary.json:nl.null|attentive|coordinator.incorrect_releases"
+ },
+ "NlNullBlAns": {
+  "value": "5.11",
+  "source": "test_summary.json:nl.null|blind|coordinator.answers_per_request"
+ },
+ "NlNullBlCov": {
+  "value": "96.6",
+  "source": "test_summary.json:nl.null|blind|coordinator.useful_coverage"
+ },
+ "NlNullBlEdits": {
+  "value": "0.00",
+  "source": "test_summary.json:nl.null|blind|coordinator.edits_per_request"
+ },
+ "NlNullBlFi": {
+  "value": "0",
+  "source": "test_summary.json:nl.null|blind|coordinator.false_impossibility"
+ },
+ "NlNullBlInc": {
+  "value": "27",
+  "source": "test_summary.json:nl.null|blind|coordinator.incorrect_releases"
+ },
+ "NlNullBlQ": {
+  "value": "3.73",
+  "source": "test_summary.json:nl.null|blind|coordinator.questions_per_request"
+ },
+ "NlNullHeldBlInc": {
+  "value": "14",
+  "source": "test_summary.json:nl_family_split.null|blind|coordinator.held_out.incorrect_releases"
+ },
+ "NlNullHeldBlPct": {
+  "value": "14.4",
+  "source": "test_summary.json:nl_family_split.null|blind|coordinator.held_out.incorrect_per_request"
+ },
+ "NlNullTrainBlInc": {
+  "value": "13",
+  "source": "test_summary.json:nl_family_split.null|blind|coordinator.training.incorrect_releases"
+ },
+ "NlNullTrainBlPct": {
+  "value": "9.8",
+  "source": "test_summary.json:nl_family_split.null|blind|coordinator.training.incorrect_per_request"
+ },
+ "NlOracleCov": {
+  "value": "100.0",
+  "source": "test_summary.json:nl_oracle_structured.useful_coverage"
+ },
+ "NlOracleInc": {
+  "value": "0",
+  "source": "test_summary.json:nl_oracle_structured.incorrect_releases"
+ },
+ "NlRulesAttAns": {
+  "value": "0.50",
+  "source": "test_summary.json:nl.rules|attentive|coordinator.answers_per_request"
+ },
+ "NlRulesAttCov": {
+  "value": "100.0",
+  "source": "test_summary.json:nl.rules|attentive|coordinator.useful_coverage"
+ },
+ "NlRulesAttEdits": {
+  "value": "1.78",
+  "source": "test_summary.json:nl.rules|attentive|coordinator.edits_per_request"
+ },
+ "NlRulesAttFi": {
+  "value": "0",
+  "source": "test_summary.json:nl.rules|attentive|coordinator.false_impossibility"
+ },
+ "NlRulesAttInc": {
+  "value": "0",
+  "source": "test_summary.json:nl.rules|attentive|coordinator.incorrect_releases"
+ },
+ "NlRulesBlAns": {
+  "value": "1.06",
+  "source": "test_summary.json:nl.rules|blind|coordinator.answers_per_request"
+ },
+ "NlRulesBlCov": {
+  "value": "71.0",
+  "source": "test_summary.json:nl.rules|blind|coordinator.useful_coverage"
+ },
+ "NlRulesBlEdits": {
+  "value": "0.00",
+  "source": "test_summary.json:nl.rules|blind|coordinator.edits_per_request"
+ },
+ "NlRulesBlFi": {
+  "value": "1",
+  "source": "test_summary.json:nl.rules|blind|coordinator.false_impossibility"
+ },
+ "NlRulesBlInc": {
+  "value": "28",
+  "source": "test_summary.json:nl.rules|blind|coordinator.incorrect_releases"
+ },
+ "NlRulesHeldBlInc": {
+  "value": "17",
+  "source": "test_summary.json:nl_family_split.rules|blind|coordinator.held_out.incorrect_releases"
+ },
+ "NlRulesHeldBlPct": {
+  "value": "17.5",
+  "source": "test_summary.json:nl_family_split.rules|blind|coordinator.held_out.incorrect_per_request"
+ },
+ "NlRulesTrainBlInc": {
+  "value": "11",
+  "source": "test_summary.json:nl_family_split.rules|blind|coordinator.training.incorrect_releases"
+ },
+ "NlRulesTrainBlPct": {
+  "value": "8.3",
+  "source": "test_summary.json:nl_family_split.rules|blind|coordinator.training.incorrect_per_request"
+ },
+ "NlSeedExactAll": {
+  "value": "64",
+  "source": "test_summary.json:nl_seed_overlap.exact_reading_all_seeds"
+ },
+ "NlSeedExactAny": {
+  "value": "160",
+  "source": "test_summary.json:nl_seed_overlap.exact_reading_any_seed"
+ },
+ "NlSeedFailAll": {
+  "value": "3",
+  "source": "test_summary.json:nl_seed_overlap.blind_incorrect_all_seeds"
+ },
+ "NlSeedFailOne": {
+  "value": "23",
+  "source": "test_summary.json:nl_seed_overlap.blind_incorrect_one_seed_only"
+ },
+ "NlSeedFailUnion": {
+  "value": "38",
+  "source": "test_summary.json:nl_seed_overlap.blind_incorrect_union"
+ },
+ "NlSingleAttCov": {
+  "value": "69.0",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|attentive|single_model.useful_coverage"
+ },
+ "NlSingleAttFi": {
+  "value": "3",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|attentive|single_model.false_impossibility"
+ },
+ "NlSingleAttInc": {
+  "value": "9",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|attentive|single_model.incorrect_releases"
+ },
+ "NlSingleAttRel": {
+  "value": "109",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|attentive|single_model.released"
+ },
+ "NlSingleBlCov": {
+  "value": "55.2",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|blind|single_model.useful_coverage"
+ },
+ "NlSingleBlFi": {
+  "value": "7",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|blind|single_model.false_impossibility"
+ },
+ "NlSingleBlInc": {
+  "value": "20",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|blind|single_model.incorrect_releases"
+ },
+ "NlSingleBlRel": {
+  "value": "100",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|blind|single_model.released"
+ },
+ "NlTrAttCorrected": {
+  "value": "51",
+  "source": "test_summary.json:nl_seed_variability.attentive.corrected_requests_share.mean"
+ },
+ "NlTrAttCovMax": {
+  "value": "100.0",
+  "source": "test_summary.json:nl_seed_variability.attentive.useful_coverage.max"
+ },
+ "NlTrAttCovMean": {
+  "value": "100.0",
+  "source": "test_summary.json:nl_seed_variability.attentive.useful_coverage.mean"
+ },
+ "NlTrAttCovMin": {
+  "value": "100.0",
+  "source": "test_summary.json:nl_seed_variability.attentive.useful_coverage.min"
+ },
+ "NlTrAttEditsCorr": {
+  "value": "2.0",
+  "source": "test_summary.json:nl_seed_variability.attentive.edits_per_corrected_request.mean"
+ },
+ "NlTrAttEditsMean": {
+  "value": "1.04",
+  "source": "test_summary.json:nl_seed_variability.attentive.edits_per_request.mean"
+ },
+ "NlTrAttFiSum": {
+  "value": "0",
+  "source": "test_summary.json:nl.final_*|attentive|coordinator.false_impossibility (sum)"
+ },
+ "NlTrAttIncList": {
+  "value": "0, 0, 0",
+  "source": "test_summary.json:nl.final_*|attentive|coordinator.incorrect_releases"
+ },
+ "NlTrAttIncMax": {
+  "value": "0",
+  "source": "test_summary.json:nl.final_*|attentive|coordinator.incorrect_releases (max)"
+ },
+ "NlTrAttIncSum": {
+  "value": "0",
+  "source": "test_summary.json:nl.final_*|attentive|coordinator.incorrect_releases (sum over seeds)"
+ },
+ "NlTrAttQ": {
+  "value": "0.42",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|attentive|coordinator.questions_per_request"
+ },
+ "NlTrAttZeroEdit": {
+  "value": "49",
+  "source": "test_summary.json:nl_seed_variability.attentive.zero_edit_requests.mean"
+ },
+ "NlTrAttZeroEditMax": {
+  "value": "50",
+  "source": "test_summary.json:nl_seed_variability.attentive.zero_edit_requests.max"
+ },
+ "NlTrAttZeroEditMin": {
+  "value": "47",
+  "source": "test_summary.json:nl_seed_variability.attentive.zero_edit_requests.min"
+ },
+ "NlTrBlCatSeedZero": {
+  "value": "10",
+  "source": "test_summary.json:nl_seed_overlap.blind_incorrect_categories.final_neural_scratch_s0 (count)"
+ },
+ "NlTrBlCatUnion": {
+  "value": "16",
+  "source": "test_summary.json:nl_seed_overlap.blind_incorrect_categories_union (count)"
+ },
+ "NlTrBlCorrected": {
+  "value": "0",
+  "source": "test_summary.json:nl_seed_variability.blind.corrected_requests_share.mean"
+ },
+ "NlTrBlCovMax": {
+  "value": "84.8",
+  "source": "test_summary.json:nl_seed_variability.blind.useful_coverage.max"
+ },
+ "NlTrBlCovMean": {
+  "value": "80.9",
+  "source": "test_summary.json:nl_seed_variability.blind.useful_coverage.mean"
+ },
+ "NlTrBlCovMin": {
+  "value": "77.9",
+  "source": "test_summary.json:nl_seed_variability.blind.useful_coverage.min"
+ },
+ "NlTrBlEditsCorr": {
+  "value": "0.0",
+  "source": "test_summary.json:nl_seed_variability.blind.edits_per_corrected_request.mean"
+ },
+ "NlTrBlEditsMean": {
+  "value": "0.00",
+  "source": "test_summary.json:nl_seed_variability.blind.edits_per_request.mean"
+ },
+ "NlTrBlFiList": {
+  "value": "6, 8, 6",
+  "source": "test_summary.json:nl.final_*|blind|coordinator.false_impossibility"
+ },
+ "NlTrBlFiListRunFive": {
+  "value": "1, 2, 2",
+  "source": "run5/rescored_revision2/rescore_report.json:totals (final_*|blind|coordinator, false impossibility, per seed)"
+ },
+ "NlTrBlFiListRunSix": {
+  "value": "6, 11, 6",
+  "source": "run6/test_summary.json:nl.final_*|blind|coordinator.false_impossibility"
+ },
+ "NlTrBlIncList": {
+  "value": "14, 23, 19",
+  "source": "test_summary.json:nl.final_*|blind|coordinator.incorrect_releases"
+ },
+ "NlTrBlIncListFirst": {
+  "value": "10, 13, 12",
+  "source": "results/before_change/test_summary.json:nl.final_*|blind|coordinator.incorrect_releases (first run, earlier judge)"
+ },
+ "NlTrBlIncMax": {
+  "value": "23",
+  "source": "test_summary.json:nl.final_*|blind|coordinator.incorrect_releases (max)"
+ },
+ "NlTrBlIncSum": {
+  "value": "56",
+  "source": "test_summary.json:nl.final_*|blind|coordinator.incorrect_releases (sum over seeds)"
+ },
+ "NlTrBlQ": {
+  "value": "0.68",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|blind|coordinator.questions_per_request"
+ },
+ "NlTrBlZeroEdit": {
+  "value": "100",
+  "source": "test_summary.json:nl_seed_variability.blind.zero_edit_requests.mean"
+ },
+ "NlTrBlZeroEditMax": {
+  "value": "100",
+  "source": "test_summary.json:nl_seed_variability.blind.zero_edit_requests.max"
+ },
+ "NlTrBlZeroEditMin": {
+  "value": "100",
+  "source": "test_summary.json:nl_seed_variability.blind.zero_edit_requests.min"
+ },
+ "NlTrHeldEdits": {
+  "value": "1.41",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|attentive|coordinator.held_out_families.edits_per_request"
+ },
+ "NlTrHeldInc": {
+  "value": "0",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|attentive|coordinator.held_out_families.incorrect_releases"
+ },
+ "NlTrHeldN": {
+  "value": "97",
+  "source": "test_summary.json:nl.final_neural_scratch_s0|attentive|coordinator.held_out_families.n"
+ },
+ "NlTrainBlIncList": {
+  "value": "9, 11, 7",
+  "source": "test_summary.json:nl_family_split.final_*|blind|coordinator.training.incorrect_releases"
+ },
+ "NlTrainBlPctList": {
+  "value": "6.8, 8.3, 5.3",
+  "source": "test_summary.json:nl_family_split.final_*|blind|coordinator.training.incorrect_per_request"
+ },
+ "NlTrainN": {
+  "value": "132",
+  "source": "test_summary.json:nl_family_split.final_neural_scratch_s0|blind|coordinator.training.n"
+ },
+ "PairNullCovLessMax": {
+  "value": "18.6",
+  "source": "test_summary.json:nl_paired.final_*-null|blind.d_useful_coverage (largest reduction, points)"
+ },
+ "PairNullCovLessMin": {
+  "value": "11.7",
+  "source": "test_summary.json:nl_paired.final_*-null|blind.d_useful_coverage (smallest reduction, points)"
+ },
+ "PairNullCovSig": {
+  "value": "3",
+  "source": "test_summary.json:nl_paired.final_*-null|blind.ci_coverage (seeds whose interval excludes zero)"
+ },
+ "PairNullEditsLessMax": {
+  "value": "5.38",
+  "source": "test_summary.json:nl_paired.final_*-null|attentive.d_edits_per_request (largest reduction)"
+ },
+ "PairNullEditsLessMin": {
+  "value": "5.25",
+  "source": "test_summary.json:nl_paired.final_*-null|attentive.d_edits_per_request (smallest reduction)"
+ },
+ "PairNullEditsSig": {
+  "value": "3",
+  "source": "test_summary.json:nl_paired.final_*-null|attentive.ci_edits (seeds whose interval excludes zero)"
+ },
+ "PairNullEditsSigText": {
+  "value": "intervals excluding zero for 3 of 3 seeds",
+  "source": "test_summary.json:nl_paired.final_*-null|attentive.ci_edits (wording)"
+ },
+ "PairNullIncLessMax": {
+  "value": "5.7",
+  "source": "test_summary.json:nl_paired.final_*-null|blind.d_incorrect_per_request (largest reduction, percentage points)"
+ },
+ "PairNullIncLessMin": {
+  "value": "1.7",
+  "source": "test_summary.json:nl_paired.final_*-null|blind.d_incorrect_per_request (smallest reduction, percentage points)"
+ },
+ "PairNullIncSig": {
+  "value": "1",
+  "source": "test_summary.json:nl_paired.final_*-null|blind.ci_incorrect (seeds whose interval excludes zero)"
+ },
+ "PairNullIncSigText": {
+  "value": "intervals excluding zero for 1 of 3 seeds",
+  "source": "test_summary.json:nl_paired.final_*-null|blind.ci_incorrect (wording)"
+ },
+ "PairRulesEditsLessMax": {
+  "value": "0.79",
+  "source": "test_summary.json:nl_paired.final_*-rules|attentive.d_edits_per_request (largest reduction)"
+ },
+ "PairRulesEditsLessMin": {
+  "value": "0.65",
+  "source": "test_summary.json:nl_paired.final_*-rules|attentive.d_edits_per_request (smallest reduction)"
+ },
+ "PairRulesEditsSig": {
+  "value": "3",
+  "source": "test_summary.json:nl_paired.final_*-rules|attentive.ci_edits (seeds whose interval excludes zero)"
+ },
+ "PairRulesEditsSigText": {
+  "value": "intervals excluding zero for 3 of 3 seeds",
+  "source": "test_summary.json:nl_paired.final_*-rules|attentive.ci_edits (wording)"
+ },
+ "PairRulesIncLessMax": {
+  "value": "6.1",
+  "source": "test_summary.json:nl_paired.final_*-rules|blind.d_incorrect_per_request (largest reduction, percentage points)"
+ },
+ "PairRulesIncLessMin": {
+  "value": "2.2",
+  "source": "test_summary.json:nl_paired.final_*-rules|blind.d_incorrect_per_request (smallest reduction, percentage points)"
+ },
+ "PairRulesIncSig": {
+  "value": "0",
+  "source": "test_summary.json:nl_paired.final_*-rules|blind.ci_incorrect (seeds whose interval excludes zero)"
+ },
+ "PairRulesIncSigText": {
+  "value": "no interval excludes zero",
+  "source": "test_summary.json:nl_paired.final_*-rules|blind.ci_incorrect (wording)"
+ },
+ "PostHocExactAfter": {
+  "value": "47",
+  "source": "posthoc_prefix_effect.json:final_neural_scratch_s0.exact_reading (post hoc)"
+ },
+ "PostHocExactBefore": {
+  "value": "41",
+  "source": "posthoc_prefix_effect.json:posthoc_prefix_s0.exact_reading (post hoc)"
+ },
+ "RdFrozenExact": {
+  "value": "19",
+  "source": "test_reading.json:select_neural_frozen_s0.exact_reading"
+ },
+ "RdFrozenRole": {
+  "value": "67",
+  "source": "test_reading.json:select_neural_frozen_s0.role_accuracy"
+ },
+ "RdNullExact": {
+  "value": "0",
+  "source": "test_reading.json:null.exact_reading"
+ },
+ "RdNullRole": {
+  "value": "9",
+  "source": "test_reading.json:null.role_accuracy"
+ },
+ "RdRulesExact": {
+  "value": "23",
+  "source": "test_reading.json:rules.exact_reading"
+ },
+ "RdRulesRole": {
+  "value": "76",
+  "source": "test_reading.json:rules.role_accuracy"
+ },
+ "RdTrExact": {
+  "value": "49",
+  "source": "test_reading.json:final_*.exact_reading (mean over seeds)"
+ },
+ "RdTrExactAuthorOne": {
+  "value": "56",
+  "source": "test_reading.json:final_*.by_author.author1.exact_reading (mean)"
+ },
+ "RdTrExactAuthorThree": {
+  "value": "46",
+  "source": "test_reading.json:final_*.by_author.author3.exact_reading (mean)"
+ },
+ "RdTrExactAuthorTwo": {
+  "value": "44",
+  "source": "test_reading.json:final_*.by_author.author2.exact_reading (mean)"
+ },
+ "RdTrExactMax": {
+  "value": "50",
+  "source": "test_reading.json:final_*.exact_reading (max)"
+ },
+ "RdTrExactMin": {
+  "value": "47",
+  "source": "test_reading.json:final_*.exact_reading (min)"
+ },
+ "RdTrExactSeedZero": {
+  "value": "47",
+  "source": "test_reading.json:final_neural_scratch_s0.exact_reading"
+ },
+ "RdTrHeldExact": {
+  "value": "38",
+  "source": "test_reading.json:final_*.held_out_families.exact_reading (mean)"
+ },
+ "RdTrHeldExactSeedZero": {
+  "value": "34",
+  "source": "test_reading.json:final_neural_scratch_s0.held_out_families.exact_reading"
+ },
+ "RdTrProposal": {
+  "value": "52",
+  "source": "test_reading.json:final_*.proposal_accuracy (mean)"
+ },
+ "RdTrRole": {
+  "value": "90",
+  "source": "test_reading.json:final_*.role_accuracy (mean over seeds)"
+ },
+ "ReaderHidden": {
+  "value": "96",
+  "source": "models/final_neural_scratch_s0/config.json:hidden"
+ },
+ "ReaderTrainQty": {
+  "value": "23\\,273",
+  "source": "models/final_neural_scratch_s0/config.json:n_train_quantities"
+ },
+ "ReaderTrainReq": {
+  "value": "3\\,600",
+  "source": "models/final_neural_scratch_s0/config.json:n_train_requests"
+ },
+ "RelabelN": {
+  "value": "20",
+  "source": "data/revision2_relabel.json:summary.cases"
+ },
+ "RelabelRestrictedN": {
+  "value": "14",
+  "source": "data/revision2_relabel.json: cases decided with a travel or speed range"
+ },
+ "RescoreFiNl": {
+  "value": "8",
+  "source": "run5/rescored_revision2/rescore_report.json: language rows re-scored as false impossibility"
+ },
+ "RescoreFiStruct": {
+  "value": "4",
+  "source": "run5/rescored_revision2/rescore_report.json: structured rows re-scored as false impossibility"
+ },
+ "RescoreOtherStruct": {
+  "value": "140",
+  "source": "run5/rescored_revision2/rescore_report.json: structured rows re-scored as refusals for another reason"
+ },
+ "RunChangedNl": {
+  "value": "146",
+  "source": "run_history/run5_to_run6.json:files.test_nl_rows.jsonl.changed"
+ },
+ "RunChangedProb": {
+  "value": "4",
+  "source": "run_history/run5_to_run6.json: khalil_only rows that were PROVED_IMPOSSIBLE in run 5"
+ },
+ "RunChangedStruct": {
+  "value": "144",
+  "source": "run_history/run5_to_run6.json:files.test_structured_rows.jsonl.changed"
+ },
+ "RunEightChangedNl": {
+  "value": "0",
+  "source": "run_history/run7_to_run8.json:files.test_nl_rows.jsonl.changed"
+ },
+ "RunEightChangedStruct": {
+  "value": "0",
+  "source": "run_history/run7_to_run8.json:files.test_structured_rows.jsonl.changed"
+ },
+ "RunSevenChangedNl": {
+  "value": "3",
+  "source": "run_history/run6_to_run7.json:files.test_nl_rows.jsonl.changed"
+ },
+ "RunSevenChangedStruct": {
+  "value": "0",
+  "source": "run_history/run6_to_run7.json:files.test_structured_rows.jsonl.changed"
+ },
+ "RunSevenFiToRefusal": {
+  "value": "3",
+  "source": "run_history/run6_to_run7.json: language rows from false impossibility to unneeded refusal"
+ },
+ "SampFeOne": {
+  "value": "0.242",
+  "source": "joint.json:sampling[Ts/eps=1].forward_euler"
+ },
+ "SampPmOne": {
+  "value": "0.126",
+  "source": "joint.json:sampling[Ts/eps=1].pole_matched"
+ },
+ "SelFrozenExactA": {
+  "value": "20",
+  "source": "dev_selection.json:select_neural_frozen_s0.authored_dev.exact_reading"
+ },
+ "SelFrozenExactT": {
+  "value": "12",
+  "source": "dev_selection.json:select_neural_frozen_s0.templated_D.exact_reading"
+ },
+ "SelFrozenParams": {
+  "value": "66\\,103",
+  "source": "dev_selection.json:select_neural_frozen_s0.n_trainable_parameters"
+ },
+ "SelFrozenRoleA": {
+  "value": "65",
+  "source": "dev_selection.json:select_neural_frozen_s0.authored_dev.role_accuracy"
+ },
+ "SelFrozenRoleT": {
+  "value": "64",
+  "source": "dev_selection.json:select_neural_frozen_s0.templated_D.role_accuracy"
+ },
+ "SelFrozenScore": {
+  "value": "0.16",
+  "source": "dev_selection.json:select_neural_frozen_s0.selection_score"
+ },
+ "SelFrozenTrain": {
+  "value": "39\\unit{s}",
+  "source": "dev_selection.json:select_neural_frozen_s0.train_seconds"
+ },
+ "SelLegKaExactA": {
+  "value": "0",
+  "source": "dev_selection.json:supplied_kalman_roberta_lora.authored_dev.exact_reading"
+ },
+ "SelLegKaExactT": {
+  "value": "0",
+  "source": "dev_selection.json:supplied_kalman_roberta_lora.templated_D.exact_reading"
+ },
+ "SelLegKaExprA": {
+  "value": "38",
+  "source": "dev_selection.json:supplied_kalman_roberta_lora.authored_dev.per_role (share of numbers whose role the model can output, 'other' included)"
+ },
+ "SelLegKaExprAccA": {
+  "value": "80",
+  "source": "dev_selection.json:supplied_kalman_roberta_lora.authored_dev.per_role (role accuracy on those numbers)"
+ },
+ "SelLegKaExprAccT": {
+  "value": "72",
+  "source": "dev_selection.json:supplied_kalman_roberta_lora.templated_D.per_role (role accuracy on those numbers)"
+ },
+ "SelLegKaExprT": {
+  "value": "43",
+  "source": "dev_selection.json:supplied_kalman_roberta_lora.templated_D.per_role (share of numbers whose role the model can output, 'other' included)"
+ },
+ "SelLegKaRoleA": {
+  "value": "30",
+  "source": "dev_selection.json:supplied_kalman_roberta_lora.authored_dev.role_accuracy"
+ },
+ "SelLegKaRoleT": {
+  "value": "31",
+  "source": "dev_selection.json:supplied_kalman_roberta_lora.templated_D.role_accuracy"
+ },
+ "SelLegKaScore": {
+  "value": "0.00",
+  "source": "dev_selection.json:supplied_kalman_roberta_lora.selection_score"
+ },
+ "SelLegKhExactA": {
+  "value": "0",
+  "source": "dev_selection.json:supplied_khalil_spacy_finetuned.authored_dev.exact_reading"
+ },
+ "SelLegKhExactT": {
+  "value": "0",
+  "source": "dev_selection.json:supplied_khalil_spacy_finetuned.templated_D.exact_reading"
+ },
+ "SelLegKhExprA": {
+  "value": "81",
+  "source": "dev_selection.json:supplied_khalil_spacy_finetuned.authored_dev.per_role (share of numbers whose role the model can output, 'other' included)"
+ },
+ "SelLegKhExprAccA": {
+  "value": "67",
+  "source": "dev_selection.json:supplied_khalil_spacy_finetuned.authored_dev.per_role (role accuracy on those numbers)"
+ },
+ "SelLegKhExprAccT": {
+  "value": "82",
+  "source": "dev_selection.json:supplied_khalil_spacy_finetuned.templated_D.per_role (role accuracy on those numbers)"
+ },
+ "SelLegKhExprT": {
+  "value": "83",
+  "source": "dev_selection.json:supplied_khalil_spacy_finetuned.templated_D.per_role (share of numbers whose role the model can output, 'other' included)"
+ },
+ "SelLegKhRoleA": {
+  "value": "54",
+  "source": "dev_selection.json:supplied_khalil_spacy_finetuned.authored_dev.role_accuracy"
+ },
+ "SelLegKhRoleT": {
+  "value": "68",
+  "source": "dev_selection.json:supplied_khalil_spacy_finetuned.templated_D.role_accuracy"
+ },
+ "SelLegKhScore": {
+  "value": "0.00",
+  "source": "dev_selection.json:supplied_khalil_spacy_finetuned.selection_score"
+ },
+ "SelLinearExactA": {
+  "value": "36",
+  "source": "dev_selection.json:select_linear_s0.authored_dev.exact_reading"
+ },
+ "SelLinearExactT": {
+  "value": "40",
+  "source": "dev_selection.json:select_linear_s0.templated_D.exact_reading"
+ },
+ "SelLinearParams": {
+  "value": "96\\,839",
+  "source": "dev_selection.json:select_linear_s0.n_trainable_parameters"
+ },
+ "SelLinearRoleA": {
+  "value": "81",
+  "source": "dev_selection.json:select_linear_s0.authored_dev.role_accuracy"
+ },
+ "SelLinearRoleT": {
+  "value": "84",
+  "source": "dev_selection.json:select_linear_s0.templated_D.role_accuracy"
+ },
+ "SelLinearScore": {
+  "value": "0.38",
+  "source": "dev_selection.json:select_linear_s0.selection_score"
+ },
+ "SelLinearTrain": {
+  "value": "4\\unit{s}",
+  "source": "dev_selection.json:select_linear_s0.train_seconds"
+ },
+ "SelNA": {
+  "value": "59",
+  "source": "dev_selection.json:rules.authored_dev.n_requests"
+ },
+ "SelNT": {
+  "value": "581",
+  "source": "dev_selection.json:rules.templated_D.n_requests"
+ },
+ "SelNullExactA": {
+  "value": "0",
+  "source": "dev_selection.json:null.authored_dev.exact_reading"
+ },
+ "SelNullExactT": {
+  "value": "0",
+  "source": "dev_selection.json:null.templated_D.exact_reading"
+ },
+ "SelNullRoleA": {
+  "value": "11",
+  "source": "dev_selection.json:null.authored_dev.role_accuracy"
+ },
+ "SelNullRoleT": {
+  "value": "18",
+  "source": "dev_selection.json:null.templated_D.role_accuracy"
+ },
+ "SelNullScore": {
+  "value": "0.00",
+  "source": "dev_selection.json:null.selection_score"
+ },
+ "SelPreExactA": {
+  "value": "42",
+  "source": "dev_selection.json:select_neural_pretrained_s0.authored_dev.exact_reading"
+ },
+ "SelPreExactT": {
+  "value": "49",
+  "source": "dev_selection.json:select_neural_pretrained_s0.templated_D.exact_reading"
+ },
+ "SelPreParams": {
+  "value": "169\\,748",
+  "source": "dev_selection.json:select_neural_pretrained_s0.n_trainable_parameters"
+ },
+ "SelPreRoleA": {
+  "value": "86",
+  "source": "dev_selection.json:select_neural_pretrained_s0.authored_dev.role_accuracy"
+ },
+ "SelPreRoleT": {
+  "value": "89",
+  "source": "dev_selection.json:select_neural_pretrained_s0.templated_D.role_accuracy"
+ },
+ "SelPreScore": {
+  "value": "0.46",
+  "source": "dev_selection.json:select_neural_pretrained_s0.selection_score"
+ },
+ "SelPreTrain": {
+  "value": "31\\unit{min}",
+  "source": "dev_selection.json:select_neural_pretrained_s0.train_seconds"
+ },
+ "SelQPerReq": {
+  "value": "6",
+  "source": "dev_selection.json:rules.authored_dev.n_quantities / n_requests"
+ },
+ "SelRulesExactA": {
+  "value": "25",
+  "source": "dev_selection.json:rules.authored_dev.exact_reading"
+ },
+ "SelRulesExactT": {
+  "value": "5",
+  "source": "dev_selection.json:rules.templated_D.exact_reading"
+ },
+ "SelRulesRoleA": {
+  "value": "72",
+  "source": "dev_selection.json:rules.authored_dev.role_accuracy"
+ },
+ "SelRulesRoleT": {
+  "value": "71",
+  "source": "dev_selection.json:rules.templated_D.role_accuracy"
+ },
+ "SelRulesScore": {
+  "value": "0.15",
+  "source": "dev_selection.json:rules.selection_score"
+ },
+ "SelScratchExactA": {
+  "value": "51",
+  "source": "dev_selection.json:select_neural_scratch_s0.authored_dev.exact_reading"
+ },
+ "SelScratchExactT": {
+  "value": "51",
+  "source": "dev_selection.json:select_neural_scratch_s0.templated_D.exact_reading"
+ },
+ "SelScratchMs": {
+  "value": "8",
+  "source": "dev_selection.json:select_neural_scratch_s0.authored_dev.ms_per_request"
+ },
+ "SelScratchParams": {
+  "value": "113\\,620",
+  "source": "dev_selection.json:select_neural_scratch_s0.n_trainable_parameters"
+ },
+ "SelScratchRoleA": {
+  "value": "92",
+  "source": "dev_selection.json:select_neural_scratch_s0.authored_dev.role_accuracy"
+ },
+ "SelScratchRoleT": {
+  "value": "94",
+  "source": "dev_selection.json:select_neural_scratch_s0.templated_D.role_accuracy"
+ },
+ "SelScratchScore": {
+  "value": "0.51",
+  "source": "dev_selection.json:select_neural_scratch_s0.selection_score"
+ },
+ "SelScratchTrain": {
+  "value": "34\\unit{min}",
+  "source": "dev_selection.json:select_neural_scratch_s0.train_seconds"
+ },
+ "StAskCov": {
+  "value": "100.0",
+  "source": "test_summary.json:structured.ask_all.useful_coverage"
+ },
+ "StAskErr": {
+  "value": "0",
+  "source": "test_summary.json:structured.ask_all.errors"
+ },
+ "StAskInc": {
+  "value": "0",
+  "source": "test_summary.json:structured.ask_all.incorrect_releases"
+ },
+ "StAskOther": {
+  "value": "0",
+  "source": "test_summary.json:structured.ask_all.nonrelease_other_reason"
+ },
+ "StAskQ": {
+  "value": "1.53",
+  "source": "test_summary.json:structured.ask_all.questions_per_request"
+ },
+ "StAskQTotal": {
+  "value": "920",
+  "source": "test_summary.json:structured.ask_all.questions_per_request * n"
+ },
+ "StAskRel": {
+  "value": "370",
+  "source": "test_summary.json:structured.ask_all.released"
+ },
+ "StAskUnknown": {
+  "value": "698",
+  "source": "test_summary.json:structured.ask_all.answers_unknown_total"
+ },
+ "StAskUnnec": {
+  "value": "0",
+  "source": "test_summary.json:structured.ask_all.unnecessary_refusals"
+ },
+ "StAskUnres": {
+  "value": "0",
+  "source": "test_summary.json:structured.ask_all.unresolved"
+ },
+ "StCoCorrectNon": {
+  "value": "230",
+  "source": "test_summary.json:structured.coordinator.correct_nonrelease"
+ },
+ "StCoCov": {
+  "value": "100.0",
+  "source": "test_summary.json:structured.coordinator.useful_coverage"
+ },
+ "StCoErr": {
+  "value": "0",
+  "source": "test_summary.json:structured.coordinator.errors"
+ },
+ "StCoFamN": {
+  "value": "11",
+  "source": "test_summary.json:structured.coordinator.by_family (count)"
+ },
+ "StCoFamNoInc": {
+  "value": "11",
+  "source": "test_summary.json:structured.coordinator.by_family (families without an incorrect release)"
+ },
+ "StCoFi": {
+  "value": "0",
+  "source": "test_summary.json:structured.coordinator.false_impossibility"
+ },
+ "StCoHeldCov": {
+  "value": "100.0",
+  "source": "test_summary.json:structured.coordinator.held_out_families.useful_coverage"
+ },
+ "StCoHeldInc": {
+  "value": "0",
+  "source": "test_summary.json:structured.coordinator.held_out_families.incorrect_releases"
+ },
+ "StCoHeldN": {
+  "value": "266",
+  "source": "test_summary.json:structured.coordinator.held_out_families.n"
+ },
+ "StCoInc": {
+  "value": "0",
+  "source": "test_summary.json:structured.coordinator.incorrect_releases"
+ },
+ "StCoIncCiHi": {
+  "value": "0.64",
+  "source": "test_summary.json:structured.coordinator.incorrect_per_request_ci[1]"
+ },
+ "StCoOther": {
+  "value": "0",
+  "source": "test_summary.json:structured.coordinator.nonrelease_other_reason"
+ },
+ "StCoOverOneS": {
+  "value": "32",
+  "source": "test_summary.json:structured.coordinator.requests_over_1s"
+ },
+ "StCoQ": {
+  "value": "0.32",
+  "source": "test_summary.json:structured.coordinator.questions_per_request"
+ },
+ "StCoRel": {
+  "value": "370",
+  "source": "test_summary.json:structured.coordinator.released"
+ },
+ "StCoSecMax": {
+  "value": "8.4",
+  "source": "test_summary.json:structured.coordinator.seconds_per_request_max"
+ },
+ "StCoUnnec": {
+  "value": "0",
+  "source": "test_summary.json:structured.coordinator.unnecessary_refusals"
+ },
+ "StCoUnres": {
+  "value": "0",
+  "source": "test_summary.json:structured.coordinator.unresolved"
+ },
+ "StDefCov": {
+  "value": "48.6",
+  "source": "test_summary.json:structured.default_fill.useful_coverage"
+ },
+ "StDefErr": {
+  "value": "0",
+  "source": "test_summary.json:structured.default_fill.errors"
+ },
+ "StDefInc": {
+  "value": "158",
+  "source": "test_summary.json:structured.default_fill.incorrect_releases"
+ },
+ "StDefOther": {
+  "value": "0",
+  "source": "test_summary.json:structured.default_fill.nonrelease_other_reason"
+ },
+ "StDefQ": {
+  "value": "0.00",
+  "source": "test_summary.json:structured.default_fill.questions_per_request"
+ },
+ "StDefRel": {
+  "value": "338",
+  "source": "test_summary.json:structured.default_fill.released"
+ },
+ "StDefUnnec": {
+  "value": "9",
+  "source": "test_summary.json:structured.default_fill.unnecessary_refusals"
+ },
+ "StDefUnres": {
+  "value": "41",
+  "source": "test_summary.json:structured.default_fill.unresolved"
+ },
+ "StFiAll": {
+  "value": "0",
+  "source": "test_summary.json:structured.*.false_impossibility (sum over policies)"
+ },
+ "StKaCov": {
+  "value": "47.0",
+  "source": "test_summary.json:structured.kalman_only.useful_coverage"
+ },
+ "StKaErr": {
+  "value": "0",
+  "source": "test_summary.json:structured.kalman_only.errors"
+ },
+ "StKaInc": {
+  "value": "0",
+  "source": "test_summary.json:structured.kalman_only.incorrect_releases"
+ },
+ "StKaOther": {
+  "value": "6",
+  "source": "test_summary.json:structured.kalman_only.nonrelease_other_reason"
+ },
+ "StKaQ": {
+  "value": "0.14",
+  "source": "test_summary.json:structured.kalman_only.questions_per_request"
+ },
+ "StKaRel": {
+  "value": "174",
+  "source": "test_summary.json:structured.kalman_only.released"
+ },
+ "StKaUnnec": {
+  "value": "196",
+  "source": "test_summary.json:structured.kalman_only.unnecessary_refusals"
+ },
+ "StKaUnres": {
+  "value": "0",
+  "source": "test_summary.json:structured.kalman_only.unresolved"
+ },
+ "StKhCov": {
+  "value": "57.3",
+  "source": "test_summary.json:structured.khalil_only.useful_coverage"
+ },
+ "StKhErr": {
+  "value": "0",
+  "source": "test_summary.json:structured.khalil_only.errors"
+ },
+ "StKhInc": {
+  "value": "0",
+  "source": "test_summary.json:structured.khalil_only.incorrect_releases"
+ },
+ "StKhOther": {
+  "value": "21",
+  "source": "test_summary.json:structured.khalil_only.nonrelease_other_reason"
+ },
+ "StKhQ": {
+  "value": "0.26",
+  "source": "test_summary.json:structured.khalil_only.questions_per_request"
+ },
+ "StKhRel": {
+  "value": "212",
+  "source": "test_summary.json:structured.khalil_only.released"
+ },
+ "StKhUnnec": {
+  "value": "158",
+  "source": "test_summary.json:structured.khalil_only.unnecessary_refusals"
+ },
+ "StKhUnres": {
+  "value": "0",
+  "source": "test_summary.json:structured.khalil_only.unresolved"
+ },
+ "StLimCov": {
+  "value": "87.6",
+  "source": "test_summary.json:structured.coordinator_limited_user.useful_coverage"
+ },
+ "StLimInc": {
+  "value": "0",
+  "source": "test_summary.json:structured.coordinator_limited_user.incorrect_releases"
+ },
+ "StLimUnknown": {
+  "value": "46",
+  "source": "test_summary.json:structured.coordinator_limited_user.answers_unknown_total"
+ },
+ "StLimUnnec": {
+  "value": "46",
+  "source": "test_summary.json:structured.coordinator_limited_user.unnecessary_refusals"
+ },
+ "StQSaving": {
+  "value": "79",
+  "source": "test_summary.json:structured_question_saving.relative_reduction"
+ },
+ "StSelCov": {
+  "value": "100.0",
+  "source": "test_summary.json:structured.selector.useful_coverage"
+ },
+ "StSelErr": {
+  "value": "0",
+  "source": "test_summary.json:structured.selector.errors"
+ },
+ "StSelInc": {
+  "value": "0",
+  "source": "test_summary.json:structured.selector.incorrect_releases"
+ },
+ "StSelOther": {
+  "value": "0",
+  "source": "test_summary.json:structured.selector.nonrelease_other_reason"
+ },
+ "StSelQ": {
+  "value": "0.32",
+  "source": "test_summary.json:structured.selector.questions_per_request"
+ },
+ "StSelRel": {
+  "value": "370",
+  "source": "test_summary.json:structured.selector.released"
+ },
+ "StSelUnnec": {
+  "value": "0",
+  "source": "test_summary.json:structured.selector.unnecessary_refusals"
+ },
+ "StSelUnres": {
+  "value": "0",
+  "source": "test_summary.json:structured.selector.unresolved"
+ },
+ "SweepKalUltBetter": {
+  "value": "3",
+  "source": "common_domain.json:sweep (count of ultimate ratio < 1)"
+ },
+ "SweepMseMax": {
+  "value": "18.7",
+  "source": "common_domain.json:sweep[*].mse_ratio_hgo_over_kalman"
+ },
+ "SweepMseMin": {
+  "value": "1.09",
+  "source": "common_domain.json:sweep[*].mse_ratio_hgo_over_kalman"
+ },
+ "SweepN": {
+  "value": "15",
+  "source": "common_domain.json:sweep"
+ },
+ "SweepObsBetter": {
+  "value": "14",
+  "source": "common_domain.json:sweep (count of ratio > 1)"
+ },
+ "SweepWMax": {
+  "value": "10.0",
+  "source": "common_domain.json:sweep[*].worst_ratio_kalman_over_hgo"
+ },
+ "SweepWMin": {
+  "value": "0.97",
+  "source": "common_domain.json:sweep[*].worst_ratio_kalman_over_hgo"
+ },
+ "SweepWUltMax": {
+  "value": "1.06",
+  "source": "common_domain.json:sweep[*].kalman_worst_ultimate / hgo_worst_ultimate (max)"
+ },
+ "SweepWUltMin": {
+  "value": "0.66",
+  "source": "common_domain.json:sweep[*].kalman_worst_ultimate / hgo_worst_ultimate (min)"
+ },
+ "ValAgree": {
+  "value": "12",
+  "source": "validation.json:agree"
+ },
+ "ValAsk": {
+  "value": "3",
+  "source": "validation.json:rows (expected answers starting with ask)"
+ },
+ "ValChebyLevel": {
+  "value": "0.84",
+  "source": "validation.json:rows[V11].expected_value (Chebyshev level)"
+ },
+ "ValDec": {
+  "value": "5",
+  "source": "validation.json:rows (expected answers starting with decline)"
+ },
+ "ValN": {
+  "value": "12",
+  "source": "validation.json:n"
+ },
+ "ValRel": {
+  "value": "4",
+  "source": "validation.json:rows (expected answers starting with release)"
+ },
+ "ValTwoSignal": {
+  "value": "0.049",
+  "source": "two-signal limit 2 sqrt(DV) for D = 6, V = 1e-4 (validation V11)"
+ }
+}

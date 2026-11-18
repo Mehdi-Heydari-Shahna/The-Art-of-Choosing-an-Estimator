@@ -1,0 +1,141 @@
+{
+ "hardware": "2 CPU cores, no GPU (build machine); single process",
+ "note": "wall-clock times of this machine; no human effort is measured",
+ "reading": {
+  "rules": {
+   "median_ms": 0.2381130000230769,
+   "p95_ms": 0.4030198501141055,
+   "n": 200
+  },
+  "final_neural_scratch_s0": {
+   "median_ms": 4.650425000136238,
+   "p95_ms": 8.351959449964852,
+   "n": 200,
+   "n_trainable_parameters": 113620,
+   "train_seconds": 1970.6,
+   "file_bytes": 469369
+  },
+  "select_linear_s0": {
+   "median_ms": 4.520613500062609,
+   "p95_ms": 6.760455100288709,
+   "n": 200,
+   "n_trainable_parameters": 96839,
+   "train_seconds": 4.5,
+   "file_bytes": 915223
+  },
+  "select_neural_frozen_s0": {
+   "median_ms": 0.7798374999765656,
+   "p95_ms": 1.27807500016388,
+   "n": 200,
+   "n_trainable_parameters": 66103,
+   "train_seconds": 39.4,
+   "file_bytes": 46254809
+  },
+  "select_neural_pretrained_s0": {
+   "median_ms": 4.292513500104178,
+   "p95_ms": 7.962898850087184,
+   "n": 200,
+   "n_trainable_parameters": 169748,
+   "train_seconds": 1854.1,
+   "file_bytes": 46671665
+  },
+  "select_neural_scratch_s0": {
+   "median_ms": 4.806522499848143,
+   "p95_ms": 8.144817100264843,
+   "n": 200,
+   "n_trainable_parameters": 113620,
+   "train_seconds": 2011.1,
+   "file_bytes": 469369
+  },
+  "deployed_numpy": {
+   "median_ms": 4.085780499963221,
+   "p95_ms": 7.61837425006888,
+   "n": 200
+  }
+ },
+ "decision_incomplete_spec": {
+  "median_ms": 1.9596235001699824,
+  "p95_ms": 820.2547509501518,
+  "n": 100
+ },
+ "decision_complete_spec": {
+  "median_ms": 3.532994000124745,
+  "p95_ms": 525.3901590999249,
+  "n": 100
+ },
+ "kalman_runtime": {
+  "steps": 301,
+  "microseconds_per_step": 82.38881395318397,
+  "states": 4,
+  "outputs": 2,
+  "note": "median of 7 runs of the whole record, time-varying gains computed in the run"
+ },
+ "joint_request_end_to_end": {
+  "seconds_compute": 0.9333763839999847,
+  "questions": 1,
+  "disposition": "RELEASE",
+  "operations": "3 answers, 1 attached model, 1 data file, 1 confirmation, 1 clarification answer(s)",
+  "includes": "reading, readback, decisions, interval certificate, estimation over 1501 samples, record"
+ },
+ "observer_runtime": {
+  "steps": 1501,
+  "microseconds_per_step": 6.138837441753377,
+  "note": "median of 7 runs"
+ },
+ "replay_seconds": 0.505063181999958,
+ "replay_match": true,
+ "replay_quantities_compared": 1682,
+ "decision_peak_python_allocation_mb": 0.010889,
+ "process_peak_rss_mb": 3080.65234375,
+ "process_peak_rss_note": "this measurement process also loaded the 300-dimensional pretrained vectors of two candidate readers",
+ "deployed_fresh_process": {
+  "reader": "NumpyGRUReader",
+  "seconds": 1.1339629140002216,
+  "disposition": "RELEASE",
+  "peak_rss_mb": 109.9765625
+ },
+ "scripted_interaction_cost": {
+  "coordinator": {
+   "questions_per_request": 0.32166666666666666,
+   "seconds_per_request_median": 0.01640842149981836,
+   "seconds_per_request_p95": 1.0586602355495398
+  },
+  "kalman_only": {
+   "questions_per_request": 0.13833333333333334,
+   "seconds_per_request_median": 0.00036396600035004667,
+   "seconds_per_request_p95": 0.03768734489990475
+  },
+  "khalil_only": {
+   "questions_per_request": 0.26,
+   "seconds_per_request_median": 0.0005578059999606921,
+   "seconds_per_request_p95": 0.8545769245500193
+  },
+  "selector": {
+   "questions_per_request": 0.32166666666666666,
+   "seconds_per_request_median": 0.0037590515003103064,
+   "seconds_per_request_p95": 0.8599901846012469
+  },
+  "ask_all": {
+   "questions_per_request": 1.5333333333333334,
+   "seconds_per_request_median": 0.0036247210000510677,
+   "seconds_per_request_p95": 0.548439452898492
+  },
+  "default_fill": {
+   "questions_per_request": 0.0,
+   "seconds_per_request_median": 0.002258548500321922,
+   "seconds_per_request_p95": 0.4940932765491196
+  },
+  "coordinator_limited_user": {
+   "questions_per_request": 0.32166666666666666,
+   "seconds_per_request_median": 0.002865639999981795,
+   "seconds_per_request_p95": 0.9288786511993748
+  }
+ },
+ "_meta": {
+  "script": "exp_latency.py",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "created_utc": "2026-11-18T14:38:51Z",
+  "hardware": "2 CPU cores, no GPU (build machine)"
+ }
+}

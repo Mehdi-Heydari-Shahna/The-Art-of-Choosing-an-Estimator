@@ -1,0 +1,157 @@
+{
+  "public_api": "heros.api.solve",
+  "arguments": {
+    "spec": {
+      "schema": "heros-spec/1",
+      "plant": {
+        "family": null,
+        "kind": "second_order",
+        "states": [],
+        "inputs": [],
+        "outputs": [],
+        "linear": null,
+        "second_order": {
+          "f": "0",
+          "f0": "0",
+          "output": "x1",
+          "params": {}
+        },
+        "flags": []
+      },
+      "target": {
+        "state": 1
+      },
+      "time": {
+        "Ts": 0.1,
+        "input_hold": "zoh",
+        "t_end": 1.0,
+        "irregular": false
+      },
+      "initial": {
+        "x0_hat": [
+          0,
+          0
+        ],
+        "P0": null,
+        "E": [
+          0,
+          1
+        ],
+        "policy": null
+      },
+      "stochastic": {
+        "distribution": null,
+        "Q": null,
+        "Q_kind": null,
+        "G": null,
+        "R": null,
+        "white": null,
+        "cross_cov": null
+      },
+      "deterministic": {
+        "V": 0.01,
+        "D": 0,
+        "d_bound": 0,
+        "domain": {
+          "x1": [
+            -0.1,
+            0.1
+          ],
+          "x2": [
+            -1,
+            1
+          ]
+        },
+        "domain_evidence": {
+          "kind": "invariant_set",
+          "statement": "Every admissible trajectory stays within the travel range for the full one-second operating window."
+        }
+      },
+      "objective": {
+        "kind": "hard_bound",
+        "tolerance": 0.2,
+        "deadline": 0,
+        "peak_cap": null,
+        "prob": null,
+        "mse_target": null,
+        "horizon": null
+      },
+      "evidence": {
+        "target.state": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.Ts": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.V": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.D": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.d_bound": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.E": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.x0_hat": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.domain": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.domain_evidence": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.t_end": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.kind": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.tolerance": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.deadline": {
+          "status": "supplied",
+          "source": "structured input"
+        }
+      },
+      "ranges": {},
+      "constraints": []
+    }
+  },
+  "audit_notes": {
+    "expected": "Universal impossibility is false. Starting at position zero and moving at constant velocity on [0,1], terminal position equals velocity numerically in SI units. The travel limit implies |v|<=0.1 m/s. Returning zero satisfies the 0.2 m/s tolerance at every sample. This argument uses the prior mechanical guarantee and no future measurement."
+  },
+  "actual_true_velocity_if_given": null,
+  "observed_rev2_result": {
+    "disposition": "PROVED_IMPOSSIBLE",
+    "claim": null,
+    "impossibility": {
+      "argument": "no estimator can keep the velocity error within the requested tolerance (deadline at the first sample) 0.2 at t = 0: the only measurement then is one position reading, which carries no information about the velocity, and the stated initial velocity bound together with the stated speed range admits every velocity in [-1, 1], so for any estimate one admissible velocity lies at least 1 away",
+      "class": "all causal estimators using the same measurements",
+      "bound": 1.0,
+      "level": 0.2,
+      "sample_time": 0.0,
+      "kind": "initial_sample"
+    },
+    "package_impossibility_check": [
+      true,
+      "independent first-sample check: requirement 0.2 at t = 0 versus half-width 1 of the states one reading cannot distinguish"
+    ]
+  }
+}

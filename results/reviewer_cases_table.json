@@ -1,0 +1,119 @@
+[
+ {
+  "case": "01a_declared_irregular_no_timestamps",
+  "revision2": "release, claim |error| <= 0; error on the record 0.93",
+  "revised": "no verified design",
+  "revision2_disposition": "RELEASE",
+  "revised_disposition": "NO_VERIFIED_CANDIDATE",
+  "revision2_matches_review_record": true,
+  "justification": "The request declares irregular sampling. The observer's gains and its bound are computed for samples at t_k = k Ts, Ts = 0.001 s; the physical instants 0, 0.002, 0.003 s deviate from that grid by up to 0.001 s, so the zero bound does not apply (the released estimate has error 0.93 on this record). Revised: the observer, like the Kalman filter, is not applicable when irregular sampling is declared, so no method applies.",
+  "checks": {
+   "judge_on_revision2_release": {
+    "correct": false,
+    "why": "a design was released although the samples are irregular (outside the method register)"
+   },
+   "deviation_from_grid_s": 0.001
+  }
+ },
+ {
+  "case": "01b_same_record_supplied_timestamps",
+  "revision2": "out of scope",
+  "revised": "out of scope",
+  "revision2_disposition": "OUT_OF_SCOPE",
+  "revised_disposition": "OUT_OF_SCOPE",
+  "revision2_matches_review_record": true,
+  "justification": "The supplied instants deviate from t_0 + k Ts by up to 0.001 s; the record check withdraws the fixed-period release in both revisions. Kept unchanged (the message now names the deviation).",
+  "checks": {
+   "deviation_from_grid_s": 0.001
+  }
+ },
+ {
+  "case": "01c_exact_timestamps_within_acceptance_tolerance",
+  "revision2": "release, claim |error| <= 0; error on the record 4.65e-07",
+  "revised": "out of scope",
+  "revision2_disposition": "RELEASE",
+  "revised_disposition": "OUT_OF_SCOPE",
+  "revision2_matches_review_record": true,
+  "justification": "Timestamps are the actual sample instants. Sample 1 is taken 5e-10 s late; at speed 1 the reading differs by 5e-10 from the fixed-period model, and the observer gain 929.9 turns this into a velocity error 4.65e-07, matching the error 4.65e-07 on the record; the zero bound does not cover it. Revision 2 accepted intervals within a relative 1e-6 of Ts. Revised: each instant must equal t_0 + k Ts within the rounding of the labels (2.8e-17 s here) or, if the request states a label resolution r, within r/2, which then becomes a condition of the claim.",
+  "checks": {
+   "judge_on_revision2_release": {
+    "correct": true,
+    "why": "independent worst case within the claimed bound and the tolerance"
+   },
+   "deviation_from_grid_s": 4.999999999536625e-10,
+   "rounding_allowance_s": 2.842170943040401e-17,
+   "gain_times_offset": 4.649623235103271e-07
+  }
+ },
+ {
+  "case": "02_true_gain_two_nominal_gain_one",
+  "revision2": "release, claim |error| <= 0; error on the record 0.0574",
+  "revised": "no verified design",
+  "revision2_disposition": "RELEASE",
+  "revised_disposition": "NO_VERIFIED_CANDIDATE",
+  "revision2_matches_review_record": true,
+  "justification": "The range b in [2, 2] states the true gain, so x2' - f0 = (2 - 1) u = 1 with u = 1 (the judge's own search finds 1). Revision 2 put the nominal b = 1 into the true model, used D = 0 and claimed 0; the error on the record for t >= 0.5 s is 0.0574. Revised: D = 1 is derived from the stated true value. With D = 1 the exact worst case of the Revision 2 gains is 0.0574 (independent computation; the constant mismatch of this record attains it), and the best bound of the observer family is 0.0574 > 0.001, so no design is released. Not impossible: with the exact initial state and V = 0, the estimate 2 t_k of the true model has zero error.",
+  "checks": {
+   "judge_on_revision2_release": {
+    "correct": false,
+    "why": "released disturbance bound 0.0 is below a sampled value 1 of the true mismatch"
+   },
+   "mismatch": 1.0,
+   "judge_sampled_mismatch": 1.0,
+   "revised_best_bound": 0.0573987,
+   "revision2_gains_exact_worst_case": 0.05739874131800962
+  }
+ },
+ {
+  "case": "03a_first_sample_known_travel",
+  "revision2": "proved impossible, lower limit 1 > 0.2",
+  "revised": "no verified design",
+  "revision2_disposition": "PROVED_IMPOSSIBLE",
+  "revised_disposition": "NO_VERIFIED_CANDIDATE",
+  "revision2_matches_review_record": true,
+  "justification": "x2' = 0 and x1(0) = 0, so x1(t) = v t; the travel |x1| <= 0.1 holds up to t = 1 s, hence |v| <= 0.1. The estimate 0 has error <= 0.1 < 0.2 at every sample, so the claim of impossibility (which used [-1, 1]) is false. Revised: the first-sample limit uses only initial velocities whose trajectories stay inside the stated ranges for the whole window, here [-0.1, 0.1] (independent construction [-0.1, 0.1]); half-width 0.1 < 0.2, so no claim. The observer's certificate does not use the travel range (best bound 1 > 0.2), so it is not released.",
+  "checks": {
+   "judge_on_revision2_impossibility": {
+    "confirmed": false,
+    "why": "independent checks do not confirm the claim: requirement 0.2 at t = 0 versus half-width 0.1 of the states one reading cannot distinguish; no free acceleration error or no measurement error: the two-signal construction does not apply"
+   },
+   "exact_speed_limit": 0.1,
+   "package_inner_velocities": [
+    -0.0999999999994543,
+    0.0999999999994543
+   ],
+   "independent_inner_velocities": [
+    -0.09999999999999432,
+    0.09999999999999432
+   ],
+   "revised_best_bound": 1.0
+  }
+ },
+ {
+  "case": "03b_first_sample_known_travel_acceleration",
+  "revision2": "proved impossible, lower limit 1 > 0.1",
+  "revised": "no verified design",
+  "revision2_disposition": "PROVED_IMPOSSIBLE",
+  "revised_disposition": "NO_VERIFIED_CANDIDATE",
+  "revision2_matches_review_record": true,
+  "justification": "|x2'| <= D = 1 and the travel width is 0.001 m for the whole window, so every admissible velocity has |v| <= sqrt(2 D w) = 0.0447 (the review's interval argument gives 0.06); the estimate 0 meets the cap 0.1 and the tolerance at every sample, so the claim of impossibility (which used [-1, 1]) is false. Revised: inner set of admissible initial velocities [-0.0316, 0.0316] (independent [-0.0316, 0.0316]), half-width below the cap; the two-signal construction needs travel +-3 m for V = 1 and the travel is +-0.0005 m, so no claim. The observer's best bound 2.43 > 0.1, so it is not released.",
+  "checks": {
+   "judge_on_revision2_impossibility": {
+    "confirmed": false,
+    "why": "independent checks do not confirm the claim: requirement 0.1 at t = 0 versus half-width 0.0316228 of the states one reading cannot distinguish; the stated travel range is narrower than the construction needs"
+   },
+   "speed_bound_from_travel": 0.044721359549995794,
+   "review_interval_bound": 0.060000000000000005,
+   "package_inner_velocities": [
+    -0.03162277660157997,
+    0.03162277660157997
+   ],
+   "independent_inner_velocities": [
+    -0.03162277660166524,
+    0.03162277660166524
+   ],
+   "two_signal_travel_room": 3.0,
+   "revised_best_bound": 2.43483
+  }
+ }
+]

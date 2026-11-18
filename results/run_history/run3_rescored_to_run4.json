@@ -1,0 +1,26 @@
+{
+ "a": "results/run3/rescored",
+ "b": "results",
+ "files": {
+  "test_structured_rows.jsonl": {
+   "rows_a": 4200,
+   "rows_b": 4200,
+   "matched": 4200,
+   "only_a": 0,
+   "only_b": 0,
+   "changed": 0,
+   "summary": [],
+   "rows": []
+  },
+  "test_nl_rows.jsonl": {
+   "rows_a": 3435,
+   "rows_b": 3435,
+   "matched": 3435,
+   "only_a": 0,
+   "only_b": 0,
+   "changed": 0,
+   "summary": [],
+   "rows": []
+  }
+ }
+}

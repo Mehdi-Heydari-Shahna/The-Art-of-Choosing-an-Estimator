@@ -1,0 +1,76 @@
+{
+ "plant": {
+  "family": "rotary_joint",
+  "kind": "second_order",
+  "states": [
+   {
+    "name": "joint angle",
+    "unit": "rad"
+   },
+   {
+    "name": "joint velocity",
+    "unit": "rad/s"
+   }
+  ],
+  "inputs": [
+   {
+    "name": "joint torque",
+    "unit": "N m"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "joint encoder",
+    "unit": "rad"
+   }
+  ],
+  "linear": null,
+  "second_order": {
+   "f": "(u - mgl*sin(x1) - bv*x2 - Fc*tanh(x2/vs))/J",
+   "f0": "(u - mgl*sin(y))/J",
+   "params": {
+    "J": 0.05,
+    "mgl": 2.45,
+    "bv": 0.1,
+    "Fc": 0.1,
+    "vs": 0.05
+   },
+   "param_ranges": {
+    "J": [
+     0.0475,
+     0.0525
+    ],
+    "mgl": [
+     2.3275,
+     2.5725
+    ],
+    "bv": [
+     0.05,
+     0.15
+    ],
+    "Fc": [
+     0.05,
+     0.15
+    ],
+    "vs": [
+     0.05,
+     0.05
+    ]
+   },
+   "output": "x1"
+  },
+  "flags": []
+ },
+ "deterministic": {
+  "domain": {
+   "x1": [
+    -3.2,
+    3.2
+   ],
+   "u": [
+    -6.0,
+    6.0
+   ]
+  }
+ }
+}

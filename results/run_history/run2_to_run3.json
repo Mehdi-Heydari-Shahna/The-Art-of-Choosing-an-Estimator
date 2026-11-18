@@ -1,0 +1,350 @@
+{
+ "a": "results/run2_structured_reconstructed",
+ "b": "results/run3",
+ "files": {
+  "test_structured_rows.jsonl": {
+   "rows_a": 4200,
+   "rows_b": 4200,
+   "matched": 4200,
+   "only_a": 0,
+   "only_b": 0,
+   "changed": 18,
+   "summary": [
+    {
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "before": "unresolved",
+     "after": "unnecessary_refusal",
+     "n": 18
+    }
+   ],
+   "rows": [
+    {
+     "id": "test-00039",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.001 to 0.002 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00064",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.001 to 0.002 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00085",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.001 to 0.002 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00127",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.002 to 0.004 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00146",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.002 to 0.004 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00193",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.0005 to 0.001 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is ver"
+    },
+    {
+     "id": "test-00199",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.00025 to 0.0005 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is v"
+    },
+    {
+     "id": "test-00278",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.0005 to 0.001 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is ver"
+    },
+    {
+     "id": "test-00308",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.00025 to 0.0005 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is v"
+    },
+    {
+     "id": "test-00317",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.001 to 0.002 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00325",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.0005 to 0.001 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is ver"
+    },
+    {
+     "id": "test-00383",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.004 to 0.008 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00422",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.001 to 0.002 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00454",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.002 to 0.004 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00479",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.002 to 0.004 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is veri"
+    },
+    {
+     "id": "test-00540",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.00025 to 0.0005 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is v"
+    },
+    {
+     "id": "test-00548",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.0005 to 0.001 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is ver"
+    },
+    {
+     "id": "test-00582",
+     "policy": "coordinator_limited_user",
+     "reader": null,
+     "user": null,
+     "author": null,
+     "before": [
+      "unresolved",
+      "CLARIFY",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "the sample period is known only as the range 0.0005 to 0.001 s and the exact value is not available; the discrete model, the gains and every certificate depend on the exact period, so no design is ver"
+    }
+   ]
+  }
+ }
+}

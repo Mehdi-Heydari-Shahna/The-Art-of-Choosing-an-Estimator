@@ -1,0 +1,18 @@
+{
+ "title": "Rotary joint: guaranteed velocity-error limit (high-gain observer)",
+ "answers": [
+  "I need the joint velocity.",
+  "We only have the joint encoder, sampled at 1 kHz; the model is attached. The encoder error never exceeds 0.1 mrad. Unmodelled disturbance accelerations are bounded by 0.5 rad/s^2. The joint never moves faster than 4 rad/s, which is enforced by a hardware limiter in the drive. At start-up the angle is known to within 1 mrad.",
+  "The velocity estimate must be guaranteed to stay within 0.25 rad/s of the true velocity from 100 ms after start-up onward, for every admissible disturbance and noise."
+ ],
+ "clarifications": {
+  "initial.E": [
+   0.001,
+   2.0
+  ]
+ },
+ "replies": [
+  "[0.001, 2.0]"
+ ],
+ "note": "the request deliberately omits the bound on the initial velocity error; the coordinator asks for it because a deadline is stated"
+}

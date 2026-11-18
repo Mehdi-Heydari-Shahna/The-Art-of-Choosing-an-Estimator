@@ -1,0 +1,94 @@
+{
+ "scope": "supplied packages (development baselines); legacy denominators and scope retained",
+ "khalil_trained_interface_stored": {
+  "n_requests": 900,
+  "designs_issued": 393,
+  "unsupported_designs": 181,
+  "invalid_designs": 29,
+  "hidden_dynamics_requests": 38,
+  "hidden_dynamics_accepted": 10,
+  "spurious_declines": 209,
+  "exact_binding": 139
+ },
+ "khalil_trained_interface_rerun": {
+  "n_requests": 900,
+  "designs_issued": 393,
+  "unsupported_designs": 181,
+  "invalid_designs": 29,
+  "hidden_dynamics_requests": 38,
+  "hidden_dynamics_accepted": 10,
+  "spurious_declines": 209,
+  "exact_binding": 139
+ },
+ "khalil_counts_confirmed_by_fresh_inference": true,
+ "khalil_expected_from_inventory": {
+  "designs_issued": 393,
+  "unsupported_designs": 181,
+  "invalid_designs": 29,
+  "hidden_dynamics_accepted": "10 of 38"
+ },
+ "khalil_joint_rerun": "certificate vs simulation: {'bound_violations': 0, 'certified_peak_bound': 5.236116683495719, 'simulated_peak': 1.5, 'certified_post_deadline_bound': 0.24836092393525852, 'requested_rho': 0.4, 'simulated_post_deadline': 0.0177775911131415, 'conservatism_post_deadline': 13.97044865947366}",
+ "khalil_sampling_rerun_tail": [
+  "   h=0.002   post-deadline e2 0.0203  tracking err 0.0771",
+  "   h=0.004   post-deadline e2 0.0394  tracking err 0.0771",
+  "   h=0.006   post-deadline e2 DIVERGED  tracking err -",
+  "   h=0.008   post-deadline e2 DIVERGED  tracking err -"
+ ],
+ "legacy_tests": {
+  "kalman": "54 tests passed (dots only in the quiet log)",
+  "khalil": "95 passed in 11.91s"
+ },
+ "kalman_stored_only": {
+  "note": "read from the stored result files; learned-parser inference of the Kalman package was NOT re-run on its own test sets (the adapter was loaded and run on new development requests only)",
+  "keys": [
+   "n",
+   "parser_accuracy",
+   "results",
+   "selected",
+   "split",
+   "truth_inconsistent"
+  ]
+ },
+ "legacy_defects_reproduced": {
+  "khalil_timing_claim": {
+   "decision": "CERTIFIED",
+   "gain": 1.0,
+   "earliest_certified_time": 0.0
+  },
+  "khalil_scenario_deadline": {
+   "with_deadline_scenario": "CERTIFIED",
+   "gain": 4.00000000000501,
+   "error_at_deadline_for_initial_error_100": 9.157819444330384
+  },
+  "khalil_initialisation_premise": {
+   "decision": "CERTIFIED"
+  },
+  "khalil_sample_period_range": {
+   "exception": "TypeError"
+  },
+  "khalil_feedthrough_output": {
+   "supported": true
+  },
+  "kalman_timing_conflict": {
+   "dt_native": 0.1,
+   "dt_requested": 0.05,
+   "disposition": "executed"
+  },
+  "kalman_inadmissible_witness": {
+   "disposition": "question",
+   "witness_a": [
+    1.0
+   ],
+   "witness_b": [
+    1.25
+   ]
+  }
+ },
+ "_meta": {
+  "script": "baseline_reproduction.py",
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "created_utc": "2026-11-17T13:01:09Z",
+  "hardware": "2 CPU cores, no GPU (build machine)"
+ }
+}

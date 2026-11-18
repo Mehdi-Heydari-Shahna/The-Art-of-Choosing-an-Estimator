@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+demo_output/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/figures/*.aux
+paper/figures/*.log
+models/vectors_en_core_web_md.npz
+data/train_examples.json
+.venv/
+local_replay/

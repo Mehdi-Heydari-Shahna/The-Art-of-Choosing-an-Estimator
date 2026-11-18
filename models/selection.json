@@ -1,0 +1,11 @@
+{
+ "selected_architecture": "neural_scratch",
+ "rule": "fewest trainable parameters among candidates within 0.02 of the best development score",
+ "scores": {
+  "select_linear_s0": 0.3802036232095452,
+  "select_neural_pretrained_s0": 0.4588523585868899,
+  "select_neural_scratch_s0": 0.5106916771201027,
+  "select_neural_frozen_s0": 0.1602147087137898
+ },
+ "best_score": 0.5106916771201027
+}

@@ -1,0 +1,16 @@
+\begin{table*}[tp]
+\caption{Acceptance test of the eighth run, with the protocol frozen before the first run.}
+\label{tab:eval}
+\scriptsize\centering
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.55cm} r r >{\raggedleft\arraybackslash}X r r r r r r r@{}}
+\toprule
+Policy or reader & $n$ & \multicolumn{3}{c}{Incorrect releases} & Useful & False & Unneeded & Open & Questions & Corrections \\
+\cmidrule(lr){3-5}
+ & & of releases & Wilson CI & cluster CI & coverage (\%) & impossible & refusals & & (answers) & per request \\
+\midrule
+\TableThreeBody
+\bottomrule
+\end{tabularx}
+\tablenote{``Incorrect releases'' are judged against the hidden complete specification with the independent references and given as a count out of the released designs. Intervals (CI) are 95\% confidence intervals for the share of incorrect releases per request, in percent of $n$: Wilson intervals~\cite{wilson1927} over requests, and for the natural-language rows a cluster bootstrap over groups of requests with the same plant family and request set. With attentive review the scripted user corrects every field to the stated facts, so the coordinator rows of that group reproduce the oracle by construction and their intervals are omitted. Useful coverage is the share of requests that admit a verified design and ended with a correct release. ``False impossible'' counts impossibility claims refuted by the independent check. ``Unneeded refusals'' are requests that admit a verified design but were refused; ``open'' counts dialogues that ended with an unanswered question. Questions (with the values answered: one question can ask for several, and a question about a field the case does not have gets none) and readback corrections are counted per request. Per-family, per-set and per-category results, coverage intervals and refusals for reasons other than the designed one are in the results files.}
+\end{table*}

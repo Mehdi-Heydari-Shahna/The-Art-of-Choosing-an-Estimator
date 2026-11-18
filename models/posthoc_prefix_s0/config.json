@@ -1,0 +1,24 @@
+{
+ "name": "posthoc_prefix_s0",
+ "class": "NeuralReader",
+ "n_trainable_parameters": 113620,
+ "train_seconds": 1683.2,
+ "n_train_requests": 3600,
+ "n_train_quantities": 23273,
+ "data_sha256": {
+  "train.jsonl": "578c22613405ebe4b6b72c54364fd2b23c4a08d26f65a9949e2f92a9fc07e094",
+  "dev.jsonl": "1fb6d3900e6f76fa50505ea22c9664b41854c64dfda96fa0d130809906cdc48c",
+  "test_structured.jsonl": "4f2fa743ff2ab6bf42d5098d437c4f6e6d3c34903cc1ea2f9d9cb79a988f01d4",
+  "dev_extra_cases.jsonl": "008edd3159e8c25c8756c10046b588cdeed6043a8dd5713a050c7ea5d22c0a83"
+ },
+ "hardware": "2 CPU cores, no GPU",
+ "python": "3.13.18",
+ "sha256": "2ab6c6c106911beaea6d1f96af754db0f73132c8ec3eba9e17db8f8b3f4b5650",
+ "file": "reader.pt",
+ "note": "post-hoc: training file before the display fix (dab7b09)",
+ "seed": 0,
+ "variant": "scratch",
+ "hidden": 96,
+ "epochs": 14,
+ "lr": 0.002
+}

@@ -1,0 +1,1137 @@
+[
+ {
+  "id": "test-00309",
+  "q1": "I want an estimate of the load torque bias acting on our hydraulic boom.",
+  "q2": "The boom carries an inclinometer and a pressure transducer, and the valve command is known. Both sensor signals are sampled with a period of 10 ms. The model is in the attached file.",
+  "q3": "Success for me is the estimate with the lowest achievable mean-square error. Only the steady-state behaviour is of interest, so a constant-gain estimator is perfectly acceptable.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00002",
+  "q1": "The shaft speed of a servo axis, reconstructed from the encoder angle.",
+  "q2": "The only measurement is the encoder angle on a 48 V servo axis; the motor torque is the known input and the model is in the attached file. The encoder error never exceeds 23.4 µrad in magnitude (a hard worst-case figure, not an RMS value). Disturbance acceleration that the model does not capture is bounded by 1.54 rad/s² in absolute value. At start-up my initial guess of the angle is off by at most 10.4 mrad and that of the speed by at most 945 mrad/s.",
+  "q3": "I need a guaranteed limit: from 86 ms after start onwards the speed estimation error must not exceed 22.5 mrad/s, for every admissible noise and disturbance realisation and not just on average.",
+  "stated": {
+   "meas_bound#0": "23.4 µrad",
+   "acc_bound#1": "1.54 rad/s²",
+   "init_pos_bound#2": "10.4 mrad",
+   "init_vel_bound#3": "945 mrad/s",
+   "tolerance#4": "22.5 mrad/s",
+   "deadline#5": "86 ms"
+  },
+  "extra_numbers": [
+   "48 V"
+  ]
+ },
+ {
+  "id": "test-00160",
+  "q1": "I am after the joint velocity of a rotary joint that only has an angle encoder.",
+  "q2": "A joint encoder read at 2 kHz is all I have, plus the commanded joint torque; the model file is attached. The encoder error is bounded in the worst case by 203 urad. Disturbance and unmodelled acceleration cannot exceed 0.301 rad/s² in magnitude. The initial angle error is no larger than 1.58 mrad and the initial velocity error no larger than 753 mrad/s. During operation the joint velocity stays within 4 rad/s in magnitude, and that range is enforced by a hardware limiter rather than by software.",
+  "q3": "I am asking for a worst-case guarantee: the velocity error has to be at most 146 mrad/s at every instant later than 0.1485 s after start, whatever the admissible noise and disturbance do.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "meas_bound#1": "203 urad",
+   "acc_bound#2": "0.301 rad/s²",
+   "init_pos_bound#3": "1.58 mrad",
+   "init_vel_bound#4": "753 mrad/s",
+   "vel_limit#5": "4 rad/s",
+   "tolerance#6": "146 mrad/s",
+   "deadline#7": "0.1485 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00244",
+  "q1": "I would like to estimate the shaft angle of a DC motor.",
+  "q2": "We measure with a shaft encoder and a current sensor, and the armature voltage is the input; the nominal sampling rate is 0.1 kHz. In practice the samples do not arrive on a regular time grid and some of them are dropped altogether. All noise sources can be taken as Gaussian. The model is attached.",
+  "q3": "The estimate should be optimal in the minimum mean-square-error sense. I am only interested in the steady-state behaviour, so a fixed-gain estimator would be fine.",
+  "stated": {
+   "fs#0": "0.1 kHz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00118",
+  "q1": "Mass velocity of a mass-spring-damper axis, for which we only have a position signal.",
+  "q2": "A position sensor (24 V supply) is sampled every 2 ms and the actuator force is known; the model is attached. I do not have a single figure for the sensor accuracy: its hard worst-case error lies somewhere between 7.31 um and 9.81 µm. Unmodelled acceleration is bounded by 0.23 m/s^2. Initially the position is known to within 179 um and the velocity to within 95.7 mm/s, both being hard bounds on the initial error. The mass can never move faster than 0.913 m/s in either direction, because a mechanical limiter enforces this.",
+  "q3": "Starting 0.274 s after switch-on, the velocity estimate must be within 7.13 mm/s of the true value, and this must be guaranteed for all admissible noise and disturbance signals.",
+  "stated": {
+   "Ts#0": "2 ms",
+   "meas_bound#1": "7.31 um",
+   "meas_bound#2": "9.81 µm",
+   "acc_bound#3": "0.23 m/s^2",
+   "init_pos_bound#4": "179 um",
+   "init_vel_bound#5": "95.7 mm/s",
+   "vel_limit#6": "0.913 m/s",
+   "tolerance#7": "7.13 mm/s",
+   "deadline#8": "0.274 s"
+  },
+  "extra_numbers": [
+   "24 V"
+  ]
+ },
+ {
+  "id": "test-00105",
+  "q1": "The motor velocity of a two-mass drive train.",
+  "q2": "The motor encoder and the load encoder are both available at 50 Hz, and the motor force is the input. The attached file contains the model. All the noises involved are Gaussian.",
+  "q3": "What I am after is a hard guarantee rather than an average figure: once 0.4 s have passed since start, the motor velocity error may never be larger than 0.1 m/s, for any noise or disturbance realisation.",
+  "stated": {
+   "fs#0": "50 Hz",
+   "tolerance#1": "0.1 m/s",
+   "deadline#2": "0.4 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00561",
+  "q1": "I need the zone two temperature of a thermal process, which has no sensor of its own.",
+  "q2": "Only zone one has a thermocouple; it is logged at 0.5 Hz and the heater power is known. The model is attached. Process and sensor noise are all Gaussian.",
+  "q3": "I want the minimum mean-square-error estimate. The heat-up phase right after start matters to me, so please give me the time-varying gain rather than just its steady-state value.",
+  "stated": {
+   "fs#0": "0.5 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00356",
+  "q1": "Motor position on a two-mass test rig.",
+  "q2": "The rig (commissioned in 2018) has an encoder on the motor and one on the load, both read every 20 ms; the motor force command is known. Every noise source may be treated as Gaussian, and the model is in the attachment.",
+  "q3": "The estimate should have the smallest possible mean-square error. I care about the behaviour during start-up as well, so I want the time-varying filter gain and not only the converged one.",
+  "stated": {
+   "Ts#0": "20 ms"
+  },
+  "extra_numbers": [
+   "2018"
+  ]
+ },
+ {
+  "id": "test-00312",
+  "q1": "I am looking for an estimate of the load position in a two-mass system.",
+  "q2": "Both the motor encoder and the load encoder are sampled with a 20 ms period, and the motor force is the input. The noises are Gaussian, but the measurement noise is not white: it is correlated from one sample to the next. The model file is attached.",
+  "q3": "I want statistically optimal estimation, meaning minimum mean-square error. The initial transient is important, hence I would like the time-varying gain.",
+  "stated": {
+   "Ts#0": "20 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00255",
+  "q1": "The armature current of a DC motor (a model-based estimate rather than the raw sensor reading).",
+  "q2": "The shaft encoder and the current sensor are read once every 5 ms; the armature voltage is the input. I am attaching the model. All disturbances and sensor noises are Gaussian.",
+  "q3": "I want the best estimate in the mean-square sense. A constant-gain estimator is sufficient, because only the steady-state performance counts for this application.",
+  "stated": {
+   "Ts#0": "5 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00386",
+  "q1": "Boom angle of a hydraulic boom.",
+  "q2": "The boom sits on a 20 t machine and is instrumented with an inclinometer and a pressure transducer, sampled at intervals of 5 ms; the valve command is the known input. The noise on both the process and the sensors is Gaussian. Please see the attached model.",
+  "q3": "I am asking for the angle estimate with minimum mean-square error. Steady-state performance is all that matters here, so a filter with a fixed gain is acceptable.",
+  "stated": {
+   "Ts#0": "5 ms"
+  },
+  "extra_numbers": [
+   "20 t"
+  ]
+ },
+ {
+  "id": "test-00490",
+  "q1": "I want to estimate the carriage velocity of a gantry axis.",
+  "q2": "The linear scale is read at 0.25 kHz and the drive force is known; the model is attached. Disturbance acceleration not captured by the model is limited to 0.129 m/s² in magnitude. My initial knowledge of the carriage position is accurate to within 0.657 mm and of its velocity to within 78.4 mm/s; both are strict bounds on the initial error.",
+  "q3": "The carriage velocity error must be no greater than 1.53 mm/s from 404 ms after start onwards. This has to be a worst-case guarantee covering every admissible noise and disturbance, not a statistical statement.",
+  "stated": {
+   "fs#0": "0.25 kHz",
+   "acc_bound#1": "0.129 m/s²",
+   "init_pos_bound#2": "0.657 mm",
+   "init_vel_bound#3": "78.4 mm/s",
+   "tolerance#4": "1.53 mm/s",
+   "deadline#5": "404 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00218",
+  "q1": "The mass velocity in a mass-spring-damper station.",
+  "q2": "On each of our 3 identical stations a position sensor is read with a sample period of 500 µs, and the actuator force is known. The sensor error is at most 31.4 µm in the worst case, and the unmodelled acceleration is at most 0.204 m/s^2 in magnitude. The initial position error cannot exceed 282 um and the initial velocity error cannot exceed 50.9 mm/s. The velocity is physically limited to 519 mm/s in magnitude by a hardware limiter. The model is attached.",
+  "q3": "I need guaranteed accuracy: after the first 120 ms the estimated velocity may deviate from the true one by no more than 29.7 mm/s, for all noise and disturbance signals within the bounds I have given.",
+  "stated": {
+   "Ts#0": "500 µs",
+   "meas_bound#1": "31.4 µm",
+   "acc_bound#2": "0.204 m/s^2",
+   "init_pos_bound#3": "282 um",
+   "init_vel_bound#4": "50.9 mm/s",
+   "vel_limit#5": "519 mm/s",
+   "tolerance#6": "29.7 mm/s",
+   "deadline#7": "120 ms"
+  },
+  "extra_numbers": [
+   "3"
+  ]
+ },
+ {
+  "id": "test-00242",
+  "q1": "I want to estimate the armature current of a DC motor.",
+  "q2": "I measure the shaft angle with an encoder and the armature current with a current sensor, each at a 10 ms sample period, and I know the applied armature voltage. The noises are Gaussian. One complication is that the measurement noise is coloured, that is, correlated in time instead of white. The model is in the attached file.",
+  "q3": "The current estimate should be optimal in the mean-square-error sense. Only the stationary regime is relevant, so a constant gain will do.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00241",
+  "q1": "Carriage velocity of a gantry axis.",
+  "q2": "The linear scale is nominally read every 250 µs, although in reality the readings come in irregularly and a fraction of them is lost; the drive force is known and the model is attached. The scale error has a hard limit of 25.5 µm and a standard deviation of 14.7 µm. The disturbance acceleration is bounded by 0.955 m/s^2 in the worst case and, seen as a white sequence held constant over each sample, has a standard deviation of 0.551 m/s². For the initial state, the position error is bounded by 750 µm with a standard deviation of 433 µm, and the velocity error is bounded by 0.115 m/s with a standard deviation of 66.4 mm/s. These noises are not Gaussian (they are bounded, roughly uniform), so all I really know are their means and variances.",
+  "q3": "I want the estimate with the lowest mean-square error. Only the steady state matters, and a constant-gain estimator is fine.",
+  "stated": {
+   "Ts#0": "250 µs",
+   "meas_bound#1": "25.5 µm",
+   "acc_bound#2": "0.955 m/s^2",
+   "init_pos_bound#3": "750 µm",
+   "init_vel_bound#4": "0.115 m/s",
+   "meas_std#5": "14.7 µm",
+   "acc_std#6": "0.551 m/s²",
+   "init_pos_std#7": "433 µm",
+   "init_vel_std#8": "66.4 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00202",
+  "q1": "A cleaner estimate of the zone one temperature in a thermal process.",
+  "q2": "This is one of 8 ovens of the same design. A thermocouple in zone one is sampled at 0.5 Hz and the heater power is known; the model is attached. All noise terms are Gaussian.",
+  "q3": "Accuracy is specified on average: the mean-square estimation error must not exceed 0.091809 K^2. I only look at steady-state operation, so a constant-gain solution is acceptable.",
+  "stated": {
+   "fs#0": "0.5 Hz",
+   "mse_target#1": "0.091809 K^2"
+  },
+  "extra_numbers": [
+   "8"
+  ]
+ },
+ {
+  "id": "test-00126",
+  "q1": "Joint velocity of a rotary joint.",
+  "q2": "The joint encoder is sampled at 2 kHz and the joint torque is known; the model is attached. The worst-case error of the encoder is poorly documented, and all I can say is that the hard bound is somewhere from 74.5 µrad up to 3.58 mrad. Unmodelled acceleration stays below 0.114 rad/s^2 in magnitude. The initial estimate is wrong by at most 4.95 mrad in angle and by at most 0.934 rad/s in velocity. A hardware velocity limiter keeps the joint speed within 4 rad/s in magnitude at all times.",
+  "q3": "I require that, from 127 ms after start, the joint velocity error is guaranteed not to exceed 0.352 rad/s under any admissible combination of noise and disturbance.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "meas_bound#1": "74.5 µrad",
+   "meas_bound#2": "3.58 mrad",
+   "acc_bound#3": "0.114 rad/s^2",
+   "init_pos_bound#4": "4.95 mrad",
+   "init_vel_bound#5": "0.934 rad/s",
+   "vel_limit#6": "4 rad/s",
+   "tolerance#7": "0.352 rad/s",
+   "deadline#8": "127 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00353",
+  "q1": "I need the joint velocity of one rotary joint of a robot arm.",
+  "q2": "This is one joint of an arm with 7 joints; its encoder is read at 1 kHz and the joint torque is the input, with the model attached. For the encoder I only have a statistical figure: the measurement noise has a standard deviation of 17.7 µrad. The unmodelled acceleration, on the other hand, has a hard bound of 1.1 rad/s^2. The initial errors are strictly limited to 3.13 mrad for the angle and 0.697 rad/s for the velocity. The joint velocity cannot exceed 4 rad/s in magnitude, because the drive hardware limits it.",
+  "q3": "The velocity estimate must be accurate to 0.112 rad/s or better from 77 ms after start, and I need that as a worst-case guarantee over all admissible noise and disturbances.",
+  "stated": {
+   "fs#0": "1 kHz",
+   "acc_bound#1": "1.1 rad/s^2",
+   "init_pos_bound#2": "3.13 mrad",
+   "init_vel_bound#3": "0.697 rad/s",
+   "vel_limit#4": "4 rad/s",
+   "meas_std#5": "17.7 µrad",
+   "tolerance#6": "0.112 rad/s",
+   "deadline#7": "77 ms"
+  },
+  "extra_numbers": [
+   "7"
+  ]
+ },
+ {
+  "id": "test-00445",
+  "q1": "Armature current in a DC motor drive.",
+  "q2": "The available signals are the shaft encoder and the current sensor, both sampled with a period of 5 ms, together with the commanded armature voltage. The model is attached and the noise can be assumed Gaussian throughout.",
+  "q3": "Minimum mean-square error is the criterion. Because the estimator is used right from power-up, the transient matters and I want the time-varying gain sequence.",
+  "stated": {
+   "Ts#0": "5 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00086",
+  "q1": "The stage velocity of a nonlinear (Duffing-type) positioning stage.",
+  "q2": "A capacitive probe measures the stage displacement once every 1 ms, and the voice-coil force is known; the model is attached. The probe error is limited to 1.08 um in the worst case, with an RMS value of 0.624 um. Unmodelled acceleration is bounded by 179 mm/s^2. The initial displacement error is at most 19.5 µm and the initial velocity error at most 28.1 mm/s. The stage velocity is kept within 0.169 m/s in magnitude by a hardware limit. The noises are bounded and not Gaussian; only their means and variances are known to me.",
+  "q3": "I would like the estimate that minimises the mean-square error. Steady-state behaviour is what counts, so a constant-gain estimator suffices.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "1.08 um",
+   "acc_bound#2": "179 mm/s^2",
+   "init_pos_bound#3": "19.5 µm",
+   "init_vel_bound#4": "28.1 mm/s",
+   "vel_limit#5": "0.169 m/s",
+   "meas_std#6": "0.624 um"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00557",
+  "q1": "Motor velocity in a two-mass servo system.",
+  "q2": "The drive is a 400 V unit with encoders on both the motor and the load, read at 50 Hz, and the motor force is known. The model is attached, and all noise is Gaussian.",
+  "q3": "The requirement is on the average error: the RMS error of the motor velocity estimate must be no larger than 0.000937 m/s. This applies in steady state only, so I am happy with a constant-gain estimator.",
+  "stated": {
+   "fs#0": "50 Hz",
+   "rms_target#1": "0.000937 m/s"
+  },
+  "extra_numbers": [
+   "400 V"
+  ]
+ },
+ {
+  "id": "test-00006",
+  "q1": "I want the stage velocity of a Duffing-type stage, which we cannot measure directly.",
+  "q2": "The capacitive probe is sampled at 2 kHz and the voice-coil force is the input; the model is attached. About the probe noise I know only its per-sample variance, which is 0.147456 µm^2. Disturbance acceleration that the model does not explain is bounded by 52.7 mm/s^2. The initial error is bounded by 14.1 um in displacement and by 40.5 mm/s in velocity. The stage cannot move faster than 0.183 m/s in magnitude, which is enforced mechanically.",
+  "q3": "I need a guaranteed error limit: the stage velocity error shall not exceed 1.86 mm/s at any time later than 0.117 s after start, for every admissible noise and disturbance.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "acc_bound#1": "52.7 mm/s^2",
+   "init_pos_bound#2": "14.1 um",
+   "init_vel_bound#3": "40.5 mm/s",
+   "vel_limit#4": "0.183 m/s",
+   "meas_var#5": "0.147456 µm^2",
+   "tolerance#6": "1.86 mm/s",
+   "deadline#7": "0.117 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00214",
+  "q1": "Shaft speed of a servo axis.",
+  "q2": "On this 5 kW servo axis the encoder angle is sampled at 0.5 kHz and the motor torque is known; the model is attached. The encoder error is bounded by 0.482 mrad and has a standard deviation of 278 µrad. The disturbance acceleration never exceeds 0.642 rad/s^2 in magnitude. I model the random part of that disturbance as a white sequence that is constant within a sample, with a standard deviation of 0.371 rad/s^2. The initial errors are bounded by 1.56 mrad for the angle and 1.24 rad/s for the speed. These noises are bounded, non-Gaussian signals, and I know nothing beyond their means and variances.",
+  "q3": "The speed estimate should have the smallest mean-square error. Only steady-state operation is of interest, so a fixed gain is fine.",
+  "stated": {
+   "fs#0": "0.5 kHz",
+   "meas_bound#1": "0.482 mrad",
+   "acc_bound#2": "0.642 rad/s^2",
+   "init_pos_bound#3": "1.56 mrad",
+   "init_vel_bound#4": "1.24 rad/s",
+   "meas_std#5": "278 µrad",
+   "acc_std#6": "0.371 rad/s^2"
+  },
+  "extra_numbers": [
+   "5 kW"
+  ]
+ },
+ {
+  "id": "test-00446",
+  "q1": "I want to estimate the boom rate of a hydraulic boom.",
+  "q2": "The measurements come from an inclinometer and a pressure transducer, each sampled every 10 ms, and the valve command is known. The noises are Gaussian and the model is attached. I only care about steady-state behaviour, so a constant-gain estimator is acceptable.",
+  "q3": "I simply want a good, usable estimate of the rate.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00226",
+  "q1": "The joint velocity of a rotary joint, derived from its encoder.",
+  "q2": "I have the joint encoder at 2 kHz and the applied joint torque, and the model is attached. Unmodelled and disturbance acceleration is limited to 0.15 rad/s^2 in magnitude. The initial state is known up to a hard error bound of 8.62 mrad on the angle and 563 mrad/s on the velocity. A mechanical speed limiter guarantees that the joint velocity never goes beyond 4 rad/s in magnitude.",
+  "q3": "From 0.1535 s after start onwards, the error of the joint velocity estimate must stay within 0.171 rad/s. I need this as a strict worst-case guarantee for all admissible noise and disturbance signals.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "acc_bound#1": "0.15 rad/s^2",
+   "init_pos_bound#2": "8.62 mrad",
+   "init_vel_bound#3": "563 mrad/s",
+   "vel_limit#4": "4 rad/s",
+   "tolerance#5": "0.171 rad/s",
+   "deadline#6": "0.1535 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00539",
+  "q1": "Stage velocity of a Duffing stage driven by a voice coil.",
+  "q2": "A capacitive probe (12 V electronics) gives the stage displacement at 4 kHz and the voice-coil force is known; the model is attached. I can only bracket the worst-case error of the probe: the hard bound is between 0.316 µm and 25.2 µm. The unmodelled acceleration is bounded by 0.12 m/s^2. At start the displacement error is at most 18.4 µm and the velocity error at most 21.8 mm/s. The velocity magnitude cannot go above 0.14 m/s, and this limit is enforced in hardware.",
+  "q3": "The requirement is guaranteed, not statistical: later than 71.25 ms after start the velocity estimate has to be within 6.42 mm/s of the truth, whatever the admissible noise and disturbance.",
+  "stated": {
+   "fs#0": "4 kHz",
+   "meas_bound#1": "0.316 µm",
+   "meas_bound#2": "25.2 µm",
+   "acc_bound#3": "0.12 m/s^2",
+   "init_pos_bound#4": "18.4 µm",
+   "init_vel_bound#5": "21.8 mm/s",
+   "vel_limit#6": "0.14 m/s",
+   "tolerance#7": "6.42 mm/s",
+   "deadline#8": "71.25 ms"
+  },
+  "extra_numbers": [
+   "12 V"
+  ]
+ },
+ {
+  "id": "test-00154",
+  "q1": "I need to estimate the shaft speed of a servo axis.",
+  "q2": "The encoder angle is acquired at 0.2 kHz, the motor torque is known and the model is attached. The worst-case encoder error is 150 urad. The disturbance acceleration is bounded in magnitude by 0.602 rad/s². The initial angle error does not exceed 5.09 mrad and the initial speed error does not exceed 208 mrad/s.",
+  "q3": "There are two worst-case limits, and both must hold for every admissible noise and disturbance. From 1.79 s after start the speed error must be at most 35.9 mrad/s. In addition, during the initial transient before that point the error is not allowed to exceed 18 mrad/s.",
+  "stated": {
+   "fs#0": "0.2 kHz",
+   "meas_bound#1": "150 urad",
+   "acc_bound#2": "0.602 rad/s²",
+   "init_pos_bound#3": "5.09 mrad",
+   "init_vel_bound#4": "208 mrad/s",
+   "tolerance#5": "35.9 mrad/s",
+   "deadline#6": "1.79 s",
+   "peak_cap#7": "18 mrad/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00496",
+  "q1": "The mass velocity of a mass-spring-damper system.",
+  "q2": "The position sensor is sampled with a period of 500 µs, the actuator force command is known and the model is attached. Be aware that the actuator has its own dynamics (a lag between command and force) which the model does not include. The sensor error is bounded by 5.15 µm and the unmodelled acceleration by 0.421 m/s^2, both as hard limits. The initial errors are at most 0.618 mm in position and 0.284 m/s in velocity. The velocity magnitude cannot exceed 0.444 m/s; a hardware limiter takes care of that.",
+  "q3": "The mass velocity error must be guaranteed to stay at or below 7.97 mm/s from 60 ms after start, in the worst case over all admissible noise and disturbances.",
+  "stated": {
+   "Ts#0": "500 µs",
+   "meas_bound#1": "5.15 µm",
+   "acc_bound#2": "0.421 m/s^2",
+   "init_pos_bound#3": "0.618 mm",
+   "init_vel_bound#4": "0.284 m/s",
+   "vel_limit#5": "0.444 m/s",
+   "tolerance#6": "7.97 mm/s",
+   "deadline#7": "60 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00466",
+  "q1": "I would like the mass velocity of a mass-spring-damper setup.",
+  "q2": "The setup dates from 2022: a position sensor is read every 1 ms and the actuator force is known, with the model in the attached file. I do not have a single trustworthy figure for the worst-case sensor error, so I can only state that the hard bound lies between 1.77 um and 3.46 µm. Unmodelled acceleration has a hard bound of 374 mm/s^2. The initial position is uncertain by at most 0.24 mm and the initial velocity by at most 66.7 mm/s. A hardware limiter restricts the velocity to 0.234 m/s in magnitude.",
+  "q3": "I am asking for a worst-case guarantee that the velocity error is no more than 5.98 mm/s once 245 ms have elapsed since start, for any admissible noise and disturbance.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "1.77 um",
+   "meas_bound#2": "3.46 µm",
+   "acc_bound#3": "374 mm/s^2",
+   "init_pos_bound#4": "0.24 mm",
+   "init_vel_bound#5": "66.7 mm/s",
+   "vel_limit#6": "0.234 m/s",
+   "tolerance#7": "5.98 mm/s",
+   "deadline#8": "245 ms"
+  },
+  "extra_numbers": [
+   "2022"
+  ]
+ },
+ {
+  "id": "test-00305",
+  "q1": "Shaft angle of a DC motor.",
+  "q2": "The encoder and the current sensor are both sampled every 10 ms; the armature voltage is the input. Gaussian noise can be assumed on everything. The model is attached.",
+  "q3": "I want the angle estimate that is optimal in the mean-square sense, and since only stationary operation matters a constant-gain filter is all I need.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00119",
+  "q1": "The north position of a target tracked with bearing-only measurements.",
+  "q2": "The sensor delivers one bearing angle every 1 s and nothing else. The target motion and measurement model is attached, and I have 40 recorded runs to test against.",
+  "q3": "The estimate should minimise the mean-square error. The early phase of the track is the critical part, so I want the time-varying gain rather than a steady-state approximation.",
+  "stated": {
+   "Ts#0": "1 s"
+  },
+  "extra_numbers": [
+   "40"
+  ]
+ },
+ {
+  "id": "test-00010",
+  "q1": "I need the load velocity of a two-mass system.",
+  "q2": "There is an encoder on the motor side and another on the load side, both sampled at 50 Hz, and the motor force is known. The model is attached. The noise sources are all Gaussian.",
+  "q3": "The estimate should be optimal in the statistical sense, that is, have the lowest mean-square error. A stationary, constant-gain estimator is fine, because only the steady-state behaviour matters.",
+  "stated": {
+   "fs#0": "50 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00055",
+  "q1": "Shaft speed of a DC motor.",
+  "q2": "The shaft encoder and the current sensor are polled with a nominal period of 10 ms, and the armature voltage is known. The sample timing is irregular, however, and some samples go missing. The noise is Gaussian on all channels. The model is attached.",
+  "q3": "I want minimum mean-square-error estimation of the speed. The start-up transient is relevant, so I need the time-varying gain.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00264",
+  "q1": "I would like a shaft speed estimate for a DC motor.",
+  "q2": "It is a 24 V motor with a shaft encoder and a current sensor, both sampled every 10 ms, and the armature voltage is the known input. I attach the model. All noises are Gaussian.",
+  "q3": "The goal is the statistically optimal estimate with the smallest mean-square error. I want the time-varying gain, because the behaviour immediately after start-up matters to us.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": [
+   "24 V"
+  ]
+ },
+ {
+  "id": "test-00367",
+  "q1": "Boom rate, meaning the angular rate of a hydraulic boom.",
+  "q2": "I have an inclinometer and a pressure transducer, sampled every 10 ms, plus the known valve command. The noises are Gaussian, but process noise and measurement noise are correlated with each other, so they cannot be treated as independent. The model is attached.",
+  "q3": "The target is the smallest mean-square error. The start-up transient has to be handled properly, so the time-varying gain is what I am after.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00201",
+  "q1": "The velocity of the mass in a mass-spring-damper setup.",
+  "q2": "A position sensor is sampled with a period of 2 ms and the actuator force is known; the model is attached. The noises are not Gaussian (they are bounded, uniform-like), and only their means and variances are available.",
+  "q3": "I want the mass velocity estimate with the lowest mean-square error. Only the steady state matters, so a constant-gain estimator is fine.",
+  "stated": {
+   "Ts#0": "2 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00502",
+  "q1": "Zone two temperature of a thermal plant.",
+  "q2": "The plant was installed in 2017 and has a single thermocouple in zone one, read at 0.5 Hz; the heater power is known. The model is attached. All noises are Gaussian.",
+  "q3": "I need a guaranteed error limit, valid for every noise and disturbance realisation: from 40 s after start the zone two estimate must be within 0.1 K of the true temperature.",
+  "stated": {
+   "fs#0": "0.5 Hz",
+   "tolerance#1": "0.1 K",
+   "deadline#2": "40 s"
+  },
+  "extra_numbers": [
+   "2017"
+  ]
+ },
+ {
+  "id": "test-00254",
+  "q1": "I want to estimate the shaft speed of a servo axis from its encoder.",
+  "q2": "The encoder angle arrives every 5 ms, the motor torque is known and the model is attached. The encoder error is bounded by 20.2 urad, which is a hard limit. The random disturbance acceleration, white and constant over each sample interval, has a standard deviation of 0.304 rad/s^2 and never exceeds 0.527 rad/s² in magnitude. The initial angle error is at most 11.4 mrad with a standard deviation of 6.58 mrad; the initial speed error is at most 1.08 rad/s with a standard deviation of 0.624 rad/s. All of these are bounded, non-Gaussian quantities for which I only know means and variances.",
+  "q3": "The speed estimate should be the one with minimum mean-square error. A constant-gain estimator is adequate, because only the steady state matters.",
+  "stated": {
+   "Ts#0": "5 ms",
+   "meas_bound#1": "20.2 urad",
+   "acc_bound#2": "0.527 rad/s²",
+   "init_pos_bound#3": "11.4 mrad",
+   "init_vel_bound#4": "1.08 rad/s",
+   "acc_std#5": "0.304 rad/s^2",
+   "init_pos_std#6": "6.58 mrad",
+   "init_vel_std#7": "0.624 rad/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00239",
+  "q1": "Carriage velocity of a gantry axis with a linear scale.",
+  "q2": "The linear scale is sampled every 0.25 ms and the drive force is known; the model is attached. The scale error has a hard bound of 1.28 µm and a standard deviation of 0.739 µm. The random disturbance acceleration (white, constant within a sample) has a hard bound of 0.284 m/s² and a standard deviation of 0.164 m/s^2. The initial position uncertainty is bounded by 0.277 mm with a standard deviation of 0.16 mm, and the initial velocity uncertainty is bounded by 21.8 mm/s with a standard deviation of 12.6 mm/s. The noises are bounded rather than Gaussian, and I know only their means and variances. Process noise and measurement noise are also correlated with each other.",
+  "q3": "I want minimum mean-square error for the carriage velocity. The start-up transient matters, so I want the time-varying gain.",
+  "stated": {
+   "Ts#0": "0.25 ms",
+   "meas_bound#1": "1.28 µm",
+   "acc_bound#2": "0.284 m/s²",
+   "init_pos_bound#3": "0.277 mm",
+   "init_vel_bound#4": "21.8 mm/s",
+   "meas_std#5": "0.739 µm",
+   "acc_std#6": "0.164 m/s^2",
+   "init_pos_std#7": "0.16 mm",
+   "init_vel_std#8": "12.6 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00419",
+  "q1": "Load torque bias on a hydraulic boom.",
+  "q2": "We run a fleet of 14 machines with this boom; each has an inclinometer and a pressure transducer sampled every 10 ms, and the valve command is known. The noise is Gaussian throughout. The model is attached.",
+  "q3": "The bias estimate must be within 5.51 kN m of the true value with a probability of 0.95. This is a steady-state requirement, and a constant-gain estimator is fine.",
+  "stated": {
+   "Ts#0": "10 ms",
+   "tolerance#1": "5.51 kN m",
+   "prob#2": "0.95"
+  },
+  "extra_numbers": [
+   "14"
+  ]
+ },
+ {
+  "id": "test-00092",
+  "q1": "I want to estimate the armature current of a DC motor.",
+  "q2": "The shaft encoder and the current sensor are sampled at 100 Hz, and the armature voltage is the input. All the noises are Gaussian. The model file is attached.",
+  "q3": "The mean-square error of the current estimate must not be larger than 1.1449e-08 A^2; this is an average accuracy requirement, not a worst-case one. Only steady-state performance matters, so the gain may be constant.",
+  "stated": {
+   "fs#0": "100 Hz",
+   "mse_target#1": "1.1449e-08 A^2"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00547",
+  "q1": "Mass velocity in a mass-spring-damper system.",
+  "q2": "I measure the mass position once every 1 ms and I know the actuator force. The noise is bounded and not Gaussian, and I have only its mean and variance. Please see the attached model.",
+  "q3": "I want the lowest possible mean-square error, including during start-up: I need the time-varying gain, not just the steady-state one.",
+  "stated": {
+   "Ts#0": "1 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00187",
+  "q1": "The load pressure of a hydraulic boom.",
+  "q2": "Since a retrofit in 2021 the boom has an inclinometer and a pressure transducer, both logged at 100 Hz; the valve command is known. All noises are Gaussian, and the model is attached.",
+  "q3": "I want the minimum mean-square-error estimate of the load pressure. Steady state is all I care about, and a constant-gain estimator is fine.",
+  "stated": {
+   "fs#0": "100 Hz"
+  },
+  "extra_numbers": [
+   "2021"
+  ]
+ },
+ {
+  "id": "test-00174",
+  "q1": "Shaft speed of a servo axis.",
+  "q2": "The encoder angle is sampled every 2 ms and the motor torque is known; the model is attached. The encoder error is bounded by 396 urad and its per-sample variance is 5.2441e-8 rad^2. The disturbance acceleration is bounded by 1.14 rad/s^2; as a white sequence held constant over a sample it has a standard deviation of 0.658 rad/s². The initial angle error has a hard bound of 7.84 mrad and a standard deviation of 4.53 mrad, and the initial speed error has a hard bound of 1.35 rad/s and a standard deviation of 0.779 rad/s. The noises are not Gaussian; they are bounded and I know only their means and variances.",
+  "q3": "I am looking for the estimate with the smallest mean-square error. Only steady-state behaviour matters, so a constant gain is fine.",
+  "stated": {
+   "Ts#0": "2 ms",
+   "meas_bound#1": "396 urad",
+   "acc_bound#2": "1.14 rad/s^2",
+   "init_pos_bound#3": "7.84 mrad",
+   "init_vel_bound#4": "1.35 rad/s",
+   "meas_var#5": "5.2441e-8 rad^2",
+   "acc_std#6": "0.658 rad/s²",
+   "init_pos_std#7": "4.53 mrad",
+   "init_vel_std#8": "0.779 rad/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00381",
+  "q1": "Motor position of a two-mass axis.",
+  "q2": "This is one of 6 axes on the machine. The motor and load encoders are sampled every 20 ms and the motor force is known; all noises are Gaussian and the model is attached.",
+  "q3": "The position error should be no larger than 0.000176 m with a probability of 95%. I am looking at steady-state operation only, so a constant-gain estimator is acceptable.",
+  "stated": {
+   "Ts#0": "20 ms",
+   "tolerance#1": "0.000176 m",
+   "prob#2": "95%"
+  },
+  "extra_numbers": [
+   "6"
+  ]
+ },
+ {
+  "id": "test-00245",
+  "q1": "I need an estimate of the boom rate on a hydraulic boom.",
+  "q2": "The sensors are an inclinometer and a pressure transducer with a 10 ms sample period, and the valve command is available. The noise is Gaussian; the measurement noise, however, is correlated in time and therefore not white. The model is attached.",
+  "q3": "I want minimum mean-square error in steady state, and a constant-gain estimator is fine.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00116",
+  "q1": "The stage velocity of a Duffing stage measured with a capacitive probe.",
+  "q2": "The capacitive probe is sampled every 0.25 ms and the voice-coil force is known; the model is attached. I have hard bounds of 1.99 um on the probe error and 0.314 m/s² on the unmodelled acceleration. The initial displacement error is bounded by 77.5 um and the initial velocity error by 41.3 mm/s. The stage velocity is limited by hardware to 195 mm/s in magnitude.",
+  "q3": "I need worst-case guarantees that hold for all admissible noise and disturbances. The stage velocity error must not exceed 8.2 mm/s from 99 ms after start onwards, and during the initial transient the error must never be larger than 4.1 mm/s.",
+  "stated": {
+   "Ts#0": "0.25 ms",
+   "meas_bound#1": "1.99 um",
+   "acc_bound#2": "0.314 m/s²",
+   "init_pos_bound#3": "77.5 um",
+   "init_vel_bound#4": "41.3 mm/s",
+   "vel_limit#5": "195 mm/s",
+   "tolerance#6": "8.2 mm/s",
+   "deadline#7": "99 ms",
+   "peak_cap#8": "4.1 mm/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00495",
+  "q1": "Boom rate of a hydraulic boom.",
+  "q2": "Both sensors (an inclinometer and a pressure transducer, fed from the 24 V machine supply) are sampled at 0.1 kHz, and the valve command is known. The noises are Gaussian, but the measurement noise is coloured rather than white, with clear correlation over time. The model is attached.",
+  "q3": "I want the statistically optimal (minimum mean-square-error) estimate. The transient after start matters, so the time-varying gain is required.",
+  "stated": {
+   "fs#0": "0.1 kHz"
+  },
+  "extra_numbers": [
+   "24 V"
+  ]
+ },
+ {
+  "id": "test-00425",
+  "q1": "I want the shaft speed of a servo axis.",
+  "q2": "I read the encoder angle every 5 ms and know the motor torque; the model is attached. The encoder error is at most 38.4 µrad, as a hard worst-case limit. Disturbance acceleration outside the model is bounded by 4.77 rad/s^2. The initial angle may be wrong by up to 12.1 mrad and the initial speed by up to 4.35 rad/s.",
+  "q3": "From 0.795 s after start the shaft speed error has to be guaranteed to be at most 62.5 mrad/s, in the worst case over every admissible noise and disturbance.",
+  "stated": {
+   "Ts#0": "5 ms",
+   "meas_bound#1": "38.4 µrad",
+   "acc_bound#2": "4.77 rad/s^2",
+   "init_pos_bound#3": "12.1 mrad",
+   "init_vel_bound#4": "4.35 rad/s",
+   "tolerance#5": "62.5 mrad/s",
+   "deadline#6": "0.795 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00221",
+  "q1": "Carriage velocity on a gantry axis.",
+  "q2": "The gantry runs on a 560 V DC link; its linear scale is read every 0.25 ms and the drive force is known, with the model attached. The scale error is bounded by 14.6 um and has an RMS value of 8.43 um. The disturbance acceleration is bounded by 2.37 m/s² and, treated as white noise that is constant within each sample, has a standard deviation of 1.37 m/s². The initial position error is at most 195 um (standard deviation 113 um) and the initial velocity error at most 0.214 m/s (standard deviation 124 mm/s). The noises are bounded and non-Gaussian; I know their means and variances only.",
+  "q3": "The RMS error of the carriage velocity estimate must not exceed 1.06 mm/s, as an average measure. Only the steady state is of interest and a constant-gain estimator is fine.",
+  "stated": {
+   "Ts#0": "0.25 ms",
+   "meas_bound#1": "14.6 um",
+   "acc_bound#2": "2.37 m/s²",
+   "init_pos_bound#3": "195 um",
+   "init_vel_bound#4": "0.214 m/s",
+   "meas_std#5": "8.43 um",
+   "acc_std#6": "1.37 m/s²",
+   "init_pos_std#7": "113 um",
+   "init_vel_std#8": "124 mm/s",
+   "rms_target#9": "1.06 mm/s"
+  },
+  "extra_numbers": [
+   "560 V"
+  ]
+ },
+ {
+  "id": "test-00144",
+  "q1": "The shaft speed of a DC motor.",
+  "q2": "I have a shaft encoder and a current sensor, sampled at 0.1 kHz, and the armature voltage that I apply. Process and measurement noise are Gaussian. The model is attached.",
+  "q3": "I want the best possible estimate in the mean-square sense. I am interested in the steady state only, so the gain can be constant.",
+  "stated": {
+   "fs#0": "0.1 kHz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00064",
+  "q1": "Shaft speed of a servo axis, to be used in the speed loop.",
+  "q2": "The encoder angle is the measurement and the motor torque the input; the model is attached. The sample period is not fixed yet and will be somewhere between 1 ms and 2 ms. The encoder error has a hard bound of 80.5 µrad and the disturbance acceleration a hard bound of 5.92 rad/s². At start the angle is known to within 1.62 mrad and the speed to within 2.68 rad/s.",
+  "q3": "I need a worst-case guarantee on the shaft speed error: no more than 0.109 rad/s from 383 ms after start, for all admissible noise and disturbance signals.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "Ts#1": "2 ms",
+   "meas_bound#2": "80.5 µrad",
+   "acc_bound#3": "5.92 rad/s²",
+   "init_pos_bound#4": "1.62 mrad",
+   "init_vel_bound#5": "2.68 rad/s",
+   "tolerance#6": "0.109 rad/s",
+   "deadline#7": "383 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00139",
+  "q1": "I would like to estimate the carriage velocity of a gantry axis.",
+  "q2": "We have 3 gantries of this type; on each, the linear scale is sampled at 250 Hz and the drive force is known. The scale error is bounded by 11.5 µm and its variance per sample is 44.0896 µm^2. The disturbance acceleration cannot exceed 1.57 m/s^2, and as a white sequence constant within one sample its standard deviation is 906 mm/s^2. The initial errors are bounded by 648 µm in position and 0.136 m/s in velocity. The noise is bounded and non-Gaussian, with only means and variances known; the model is attached.",
+  "q3": "I want minimum mean-square error for the carriage velocity, in steady state. A constant-gain estimator is fine.",
+  "stated": {
+   "fs#0": "250 Hz",
+   "meas_bound#1": "11.5 µm",
+   "acc_bound#2": "1.57 m/s^2",
+   "init_pos_bound#3": "648 µm",
+   "init_vel_bound#4": "0.136 m/s",
+   "meas_var#5": "44.0896 µm^2",
+   "acc_std#6": "906 mm/s^2"
+  },
+  "extra_numbers": [
+   "3"
+  ]
+ },
+ {
+  "id": "test-00131",
+  "q1": "I want to estimate the motor position in a two-mass drive.",
+  "q2": "The motor encoder and the load encoder are read at 50 Hz and the motor force is known. All noises are Gaussian; the measurement noise is correlated in time, so it is not white. The model is attached.",
+  "q3": "The estimate should minimise the mean-square error, and because the start-up phase matters I want the time-varying gain.",
+  "stated": {
+   "fs#0": "50 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00540",
+  "q1": "Stage velocity of a Duffing stage.",
+  "q2": "A capacitive probe measures the displacement and the voice-coil force is known; the model is attached. The sample period has not been settled and will lie between 250 µs and 500 µs. The worst-case probe error is 0.287 um and the unmodelled acceleration is bounded by 0.261 m/s^2. The initial displacement error is no more than 18.9 µm and the initial velocity error no more than 47.5 mm/s. The stage velocity is confined to 0.141 m/s in magnitude by a hardware limit.",
+  "q3": "I need a guaranteed stage velocity error of at most 2.32 mm/s from 43.5 ms after start, for every admissible noise and disturbance.",
+  "stated": {
+   "Ts#0": "250 µs",
+   "Ts#1": "500 µs",
+   "meas_bound#2": "0.287 um",
+   "acc_bound#3": "0.261 m/s^2",
+   "init_pos_bound#4": "18.9 µm",
+   "init_vel_bound#5": "47.5 mm/s",
+   "vel_limit#6": "0.141 m/s",
+   "tolerance#7": "2.32 mm/s",
+   "deadline#8": "43.5 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00584",
+  "q1": "Boom angle of a hydraulic boom.",
+  "q2": "The inclinometer and the pressure transducer are sampled every 10 ms; the valve command is known and the model is attached. The noises are Gaussian. The start-up transient matters to me, so I would like the time-varying gain.",
+  "q3": "I just want an accurate angle estimate.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00071",
+  "q1": "I need the stage velocity of a Duffing-type stage.",
+  "q2": "This is one of 2 stages in the tool. The capacitive probe is sampled with a period of 500 µs and the voice-coil force is known; the model is attached. I can only give a range for the worst-case error of the probe: the hard bound is between 0.183 um and 8.58 um. The unmodelled acceleration is bounded by 0.872 m/s². The initial displacement and velocity errors are bounded by 19.2 um and 120 mm/s respectively, and a hardware limiter keeps the velocity within 0.146 m/s in magnitude.",
+  "q3": "The stage velocity error must be at most 3.45 mm/s at all times later than 0.151 s after start. This has to be guaranteed in the worst case for all admissible noise and disturbances.",
+  "stated": {
+   "Ts#0": "500 µs",
+   "meas_bound#1": "0.183 um",
+   "meas_bound#2": "8.58 um",
+   "acc_bound#3": "0.872 m/s²",
+   "init_pos_bound#4": "19.2 um",
+   "init_vel_bound#5": "120 mm/s",
+   "vel_limit#6": "0.146 m/s",
+   "tolerance#7": "3.45 mm/s",
+   "deadline#8": "0.151 s"
+  },
+  "extra_numbers": [
+   "2"
+  ]
+ },
+ {
+  "id": "test-00057",
+  "q1": "Motor velocity of a two-mass system.",
+  "q2": "I have encoders on the motor and on the load, sampled every 20 ms, and I know the motor force. All noise is Gaussian. The model is attached. Only steady-state behaviour matters, and a constant-gain estimator would be fine.",
+  "q3": "I have no formal criterion; I just want a good velocity estimate.",
+  "stated": {
+   "Ts#0": "20 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00430",
+  "q1": "The joint velocity of a rotary joint.",
+  "q2": "The joint encoder is read at 2 kHz, the joint torque is known and the model is attached. The hard error bound of the encoder is uncertain: it is at least 32.8 urad and could be as large as 2.52 mrad. Disturbance acceleration is bounded by 1.04 rad/s². The initial angle error is at most 7.12 mrad and the initial velocity error at most 2.84 rad/s. The joint velocity cannot exceed 4 rad/s in magnitude; this is a hardware-enforced limit.",
+  "q3": "I require a guaranteed limit of 143 mrad/s on the joint velocity error from 0.1875 s after start, valid for every admissible noise and disturbance.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "meas_bound#1": "32.8 urad",
+   "meas_bound#2": "2.52 mrad",
+   "acc_bound#3": "1.04 rad/s²",
+   "init_pos_bound#4": "7.12 mrad",
+   "init_vel_bound#5": "2.84 rad/s",
+   "vel_limit#6": "4 rad/s",
+   "tolerance#7": "143 mrad/s",
+   "deadline#8": "0.1875 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00261",
+  "q1": "I want to estimate the shaft speed of a servo axis.",
+  "q2": "The encoder angle is measured and the motor torque is known; the model is attached. The encoder is accurate to 0.148 mrad in the worst case. Disturbance acceleration that is not in the model is bounded by 4.13 rad/s^2. The initial angle error is bounded by 6.65 mrad and the initial speed error by 1.96 rad/s.",
+  "q3": "The shaft speed error must be guaranteed not to exceed 99.1 mrad/s once 49.5 ms have passed after start, in the worst case over all admissible noise and disturbance signals.",
+  "stated": {
+   "meas_bound#0": "0.148 mrad",
+   "acc_bound#1": "4.13 rad/s^2",
+   "init_pos_bound#2": "6.65 mrad",
+   "init_vel_bound#3": "1.96 rad/s",
+   "tolerance#4": "99.1 mrad/s",
+   "deadline#5": "49.5 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00165",
+  "q1": "Shaft speed of a servo axis.",
+  "q2": "This is a 48 V servo axis with the encoder angle sampled every 0.5 ms and the motor torque known; the model is attached. The encoder error stays within 127 urad (a hard bound) and the unmodelled acceleration within 0.845 rad/s^2. I know the initial angle to within 5.96 mrad and the initial speed to within 1.68 rad/s.",
+  "q3": "From 0.11 s after start onwards the speed estimate must be within 54.4 mrad/s of the true speed. I need that as a guarantee for every admissible noise and disturbance, not as a typical value.",
+  "stated": {
+   "Ts#0": "0.5 ms",
+   "meas_bound#1": "127 urad",
+   "acc_bound#2": "0.845 rad/s^2",
+   "init_pos_bound#3": "5.96 mrad",
+   "init_vel_bound#4": "1.68 rad/s",
+   "tolerance#5": "54.4 mrad/s",
+   "deadline#6": "0.11 s"
+  },
+  "extra_numbers": [
+   "48 V"
+  ]
+ },
+ {
+  "id": "test-00182",
+  "q1": "I need an estimate of the motor velocity in a two-mass system.",
+  "q2": "The motor encoder and the load encoder are sampled with a period of 20 ms, and the motor force is known. All noises are Gaussian. The model is attached.",
+  "q3": "The mean-square error of the motor velocity estimate may be at most 2.4025e-06 m/s^2 (I mean metres per second, squared). That is an average accuracy requirement for steady-state operation, and a constant-gain estimator is acceptable.",
+  "stated": {
+   "Ts#0": "20 ms",
+   "mse_target#1": "2.4025e-06 m/s^2"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00204",
+  "q1": "The shaft speed of a servo axis.",
+  "q2": "The encoder angle is sampled at 1 kHz and the motor torque is known; the model is attached. The encoder error is bounded by 0.108 mrad with a standard deviation of 62.4 urad. The disturbance acceleration is bounded by 0.667 rad/s² and, as a white sequence constant within each sample, has a standard deviation of 0.385 rad/s^2. The initial angle error is at most 2.25 mrad (standard deviation 1.3 mrad) and the initial speed error at most 1.33 rad/s (standard deviation 0.768 rad/s). The noises are bounded, not Gaussian, and beyond the bounds I know only their means and variances.",
+  "q3": "I need a worst-case guarantee: from 0.352 s after start the shaft speed error must not exceed 38.6 mrad/s for any admissible noise and disturbance.",
+  "stated": {
+   "fs#0": "1 kHz",
+   "meas_bound#1": "0.108 mrad",
+   "acc_bound#2": "0.667 rad/s²",
+   "init_pos_bound#3": "2.25 mrad",
+   "init_vel_bound#4": "1.33 rad/s",
+   "meas_std#5": "62.4 urad",
+   "acc_std#6": "0.385 rad/s^2",
+   "init_pos_std#7": "1.3 mrad",
+   "init_vel_std#8": "0.768 rad/s",
+   "tolerance#9": "38.6 mrad/s",
+   "deadline#10": "0.352 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00574",
+  "q1": "The pole angle of a cart-pole rig.",
+  "q2": "The rig has a 12 V cart drive, an encoder on the cart and an encoder on the pole, both read at 0.2 kHz; the cart force is the known input. The model is attached.",
+  "q3": "I want the estimate with the smallest mean-square error. The first moments after start are important, so please provide the time-varying gain.",
+  "stated": {
+   "fs#0": "0.2 kHz"
+  },
+  "extra_numbers": [
+   "12 V"
+  ]
+ },
+ {
+  "id": "test-00537",
+  "q1": "I want to estimate the boom angle of a hydraulic boom.",
+  "q2": "An inclinometer and a pressure transducer are sampled at 0.1 kHz and the valve command is known. The noise is Gaussian in all channels, and the model is attached.",
+  "q3": "On average, the angle estimate must have an RMS error of no more than 0.000373 rad. The requirement concerns steady state, so a constant-gain estimator is fine.",
+  "stated": {
+   "fs#0": "0.1 kHz",
+   "rms_target#1": "0.000373 rad"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00316",
+  "q1": "Armature current of a DC motor.",
+  "q2": "The shaft encoder and the current sensor are sampled at 100 Hz; the armature voltage is the input. The model is attached.",
+  "q3": "The current estimate should have the minimum mean-square error. Start-up behaviour matters, so I want the time-varying gain rather than a constant one.",
+  "stated": {
+   "fs#0": "100 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00267",
+  "q1": "The load torque bias of a hydraulic boom.",
+  "q2": "The data come from a measurement campaign in 2023: an inclinometer and a pressure transducer were sampled every 5 ms, with the valve command recorded as input. All noises are Gaussian and the model is attached.",
+  "q3": "I am after the statistically optimal estimate (lowest mean-square error). The convergence phase after start matters, so I want the time-varying gain.",
+  "stated": {
+   "Ts#0": "5 ms"
+  },
+  "extra_numbers": [
+   "2023"
+  ]
+ },
+ {
+  "id": "test-00238",
+  "q1": "I would like the stage velocity of a Duffing stage.",
+  "q2": "The capacitive probe is read at 2 kHz and the voice-coil force is known; the model is attached. The probe noise has an RMS value of 0.427 µm, which is the only figure I have for it. The unmodelled acceleration has a hard bound of 254 mm/s^2. The initial displacement error is bounded by 22.1 um and the initial velocity error by 0.177 m/s. In operation the stage velocity is held within 110 mm/s in magnitude by a hardware limiter.",
+  "q3": "The stage velocity error must be guaranteed to be at most 5.78 mm/s from 35.5 ms after start, whatever admissible noise and disturbance occur.",
+  "stated": {
+   "fs#0": "2 kHz",
+   "acc_bound#1": "254 mm/s^2",
+   "init_pos_bound#2": "22.1 um",
+   "init_vel_bound#3": "0.177 m/s",
+   "vel_limit#4": "110 mm/s",
+   "meas_std#5": "0.427 µm",
+   "tolerance#6": "5.78 mm/s",
+   "deadline#7": "35.5 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00079",
+  "q1": "Joint velocity of a rotary joint.",
+  "q2": "The joint encoder is sampled with a period of 500 µs and the joint torque is known; the model is attached. The encoder error is bounded by 142 urad in the worst case, and the unmodelled acceleration by 0.262 rad/s². The initial angle error is at most 3.93 mrad and the initial velocity error at most 1.38 rad/s. The joint velocity is restricted to 4 rad/s in magnitude, and this restriction is enforced by hardware.",
+  "q3": "The velocity estimation error should be no larger than 309 mrad/s, and this should apply from 163.5 ms after start onwards.",
+  "stated": {
+   "Ts#0": "500 µs",
+   "meas_bound#1": "142 urad",
+   "acc_bound#2": "0.262 rad/s²",
+   "init_pos_bound#3": "3.93 mrad",
+   "init_vel_bound#4": "1.38 rad/s",
+   "vel_limit#5": "4 rad/s",
+   "tolerance#6": "309 mrad/s",
+   "deadline#7": "163.5 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00453",
+  "q1": "The ambient offset in the model of a thermal process.",
+  "q2": "A thermocouple in zone one is read every 2 s, and the heater power is known; the model is attached. The noises are Gaussian. The warm-up transient matters, so I would like the time-varying gain.",
+  "q3": "A reliable estimate of the offset is all I am asking for.",
+  "stated": {
+   "Ts#0": "2 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00280",
+  "q1": "I want the shaft speed of a servo axis.",
+  "q2": "The axis is a 3 kW servo; its encoder angle is sampled every 2 ms and the motor torque is known, with the model attached. For the encoder noise I have a per-sample variance of 0.00318096 mrad^2. Disturbance acceleration is bounded by 2.71 rad/s², which is a hard limit. The initial angle error cannot be larger than 6.33 mrad and the initial speed error cannot be larger than 4.46 rad/s.",
+  "q3": "I need guaranteed accuracy in the worst case: the shaft speed error must not exceed 67.5 mrad/s from 252 ms after start, for all admissible noise and disturbance.",
+  "stated": {
+   "Ts#0": "2 ms",
+   "acc_bound#1": "2.71 rad/s²",
+   "init_pos_bound#2": "6.33 mrad",
+   "init_vel_bound#3": "4.46 rad/s",
+   "meas_var#4": "0.00318096 mrad^2",
+   "tolerance#5": "67.5 mrad/s",
+   "deadline#6": "252 ms"
+  },
+  "extra_numbers": [
+   "3 kW"
+  ]
+ },
+ {
+  "id": "test-00344",
+  "q1": "Shaft angle of a DC motor.",
+  "q2": "I measure with a shaft encoder and a current sensor every 10 ms and apply a known armature voltage. The noises are Gaussian and the model is attached. I do care about the start-up transient and therefore want the time-varying gain.",
+  "q3": "Nothing formal; the angle estimate should simply be good.",
+  "stated": {
+   "Ts#0": "10 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00553",
+  "q1": "I would like to estimate the ambient offset of a thermal system.",
+  "q2": "The zone one thermocouple is sampled once every 1 s, and the heater power is known. The noises are Gaussian. I attach the model.",
+  "q3": "The offset estimate should have the lowest mean-square error in steady state; a constant-gain estimator is sufficient.",
+  "stated": {
+   "Ts#0": "1 s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00087",
+  "q1": "Carriage velocity of a gantry axis.",
+  "q2": "The linear scale of this carriage (one of 2 on the gantry) is sampled every 4 ms and the drive force is known; the model is attached. The worst-case scale error is only known as a range, from 2.05 um to 8.2 µm. The unmodelled acceleration is bounded by 0.247 m/s². The initial position error is at most 252 µm and the initial velocity error at most 25.6 mm/s.",
+  "q3": "I need a worst-case guarantee: from 1.508 s after start the carriage velocity error must not be larger than 4.65 mm/s under any admissible noise and disturbance.",
+  "stated": {
+   "Ts#0": "4 ms",
+   "meas_bound#1": "8.2 µm",
+   "meas_bound#2": "2.05 um",
+   "acc_bound#3": "0.247 m/s²",
+   "init_pos_bound#4": "252 µm",
+   "init_vel_bound#5": "25.6 mm/s",
+   "tolerance#6": "4.65 mm/s",
+   "deadline#7": "1.508 s"
+  },
+  "extra_numbers": [
+   "2"
+  ]
+ },
+ {
+  "id": "test-00219",
+  "q1": "East position of a target observed by a bearing-only sensor.",
+  "q2": "I receive bearing angles at 1 Hz and no other measurement. The model is attached.",
+  "q3": "I want the minimum mean-square-error estimate, with the time-varying gain, since the initial transient of the track matters.",
+  "stated": {
+   "fs#0": "1 Hz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00008",
+  "q1": "I need the joint velocity of a rotary joint.",
+  "q2": "The joint encoder is read every 2 ms and the joint torque is known; the model is attached. The hard bound on the encoder error is not known exactly; it lies between 136 µrad and 544 urad. The unmodelled acceleration is bounded by 1.7 rad/s². The initial angle error is bounded by 5.8 mrad and the initial velocity error by 1.19 rad/s. A hardware limiter keeps the joint velocity within 4 rad/s in magnitude.",
+  "q3": "The joint velocity error must be guaranteed to stay within 200 mrad/s from 516 ms after start, for every admissible noise and disturbance.",
+  "stated": {
+   "Ts#0": "2 ms",
+   "meas_bound#1": "544 urad",
+   "meas_bound#2": "136 µrad",
+   "acc_bound#3": "1.7 rad/s²",
+   "init_pos_bound#4": "5.8 mrad",
+   "init_vel_bound#5": "1.19 rad/s",
+   "vel_limit#6": "4 rad/s",
+   "tolerance#7": "200 mrad/s",
+   "deadline#8": "516 ms"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00029",
+  "q1": "The mass velocity of a mass-spring-damper rig.",
+  "q2": "The position sensor is sampled at 2 kHz and the actuator force is known; the model is attached. The noise is bounded and non-Gaussian, and only its mean and variance are known.",
+  "q3": "I want the smallest mean-square error. The start-up transient matters, so the time-varying gain is wanted.",
+  "stated": {
+   "fs#0": "2 kHz"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00028",
+  "q1": "Joint velocity of a rotary joint on a robot.",
+  "q2": "This is a joint of a robot with 6 joints. Its encoder is sampled every 1 ms and the joint torque is known; the model is attached. The encoder error is bounded by 27.8 µrad and the unmodelled acceleration by 1.52 rad/s^2, both in the worst case. The initial angle error is at most 1.53 mrad and the initial velocity error at most 717 mrad/s. The joint velocity magnitude cannot exceed 4 rad/s owing to a hardware limiter.",
+  "q3": "From 0.105 s after start the joint velocity error must be no larger than 0.172 rad/s, guaranteed for all admissible noise and disturbance.",
+  "stated": {
+   "Ts#0": "1 ms",
+   "meas_bound#1": "27.8 µrad",
+   "acc_bound#2": "1.52 rad/s^2",
+   "init_pos_bound#3": "1.53 mrad",
+   "init_vel_bound#4": "717 mrad/s",
+   "vel_limit#5": "4 rad/s",
+   "tolerance#6": "0.172 rad/s",
+   "deadline#7": "0.105 s"
+  },
+  "extra_numbers": [
+   "6"
+  ]
+ },
+ {
+  "id": "test-00376",
+  "q1": "I want to estimate the joint velocity of a rotary joint.",
+  "q2": "The joint encoder is sampled at 0.5 kHz and the joint torque is known; the model is attached. The encoder error has a hard bound of 29.1 urad and the unmodelled acceleration a hard bound of 0.143 rad/s². The joint velocity is limited to 4 rad/s in magnitude by the hardware.",
+  "q3": "The joint velocity error must be guaranteed not to exceed 61.3 mrad/s, in the worst case over every admissible noise and disturbance.",
+  "stated": {
+   "fs#0": "0.5 kHz",
+   "meas_bound#1": "29.1 urad",
+   "acc_bound#2": "0.143 rad/s²",
+   "vel_limit#3": "4 rad/s",
+   "tolerance#4": "61.3 mrad/s"
+  },
+  "extra_numbers": []
+ },
+ {
+  "id": "test-00503",
+  "q1": "The joint velocity of a rotary joint.",
+  "q2": "The joint encoder is read every 2 ms, the joint torque is known and the model is attached. I have hard bounds of 52.6 urad on the encoder error and 0.915 rad/s^2 on the unmodelled acceleration. The initial angle error is bounded by 3.25 mrad and the initial velocity error by 3.68 rad/s. The joint velocity can never exceed 4 rad/s in magnitude because of a hardware limiter.",
+  "q3": "Worst-case guarantees for every admissible noise and disturbance are required. From 0.68 s after start the joint velocity error must not exceed 0.126 rad/s; in the initial transient before that, the error must stay at or below 63 mrad/s.",
+  "stated": {
+   "Ts#0": "2 ms",
+   "meas_bound#1": "52.6 urad",
+   "acc_bound#2": "0.915 rad/s^2",
+   "init_pos_bound#3": "3.25 mrad",
+   "init_vel_bound#4": "3.68 rad/s",
+   "vel_limit#5": "4 rad/s",
+   "tolerance#6": "0.126 rad/s",
+   "deadline#7": "0.68 s",
+   "peak_cap#8": "63 mrad/s"
+  },
+  "extra_numbers": []
+ }
+]

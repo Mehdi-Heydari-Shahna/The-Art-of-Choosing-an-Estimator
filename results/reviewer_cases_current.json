@@ -1,0 +1,634 @@
+{
+ "label": "current",
+ "code_tree": "this checkout",
+ "code_digest": "431b8c31b526a127ef5c08d02dc855eb16f497913efc625656b2d2a95ed449a5",
+ "package_version": "1.0.0",
+ "coordinator_version": "1.0.0",
+ "interface": "heros.api.solve(**arguments)",
+ "cases": [
+  {
+   "file": "01a_declared_irregular_no_timestamps.json",
+   "sha256": "4f4da48fca472782ec0b84791e92bafa1cee2cae5fe4d02c360d32d15c554266",
+   "arguments": [
+    "spec",
+    "u",
+    "y"
+   ],
+   "decision": {
+    "disposition": "NO_VERIFIED_CANDIDATE",
+    "selected": null,
+    "display": "No verified design found.",
+    "explanations": [
+     "the request states irregular sampling; every method in the register computes its gains and its certificate for samples at one fixed period, so no fixed-period guarantee is given",
+     "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant",
+     "high_gain_observer not applicable: irregular sampling is outside the supported method register: the gains and the certificate of the sampled observer are computed for samples at one fixed period"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "3ae4b000803d2636",
+    "disposition": "NO_VERIFIED_CANDIDATE",
+    "selected": null,
+    "qualifying": [],
+    "explanations": [
+     "the request states irregular sampling; every method in the register computes its gains and its certificate for samples at one fixed period, so no fixed-period guarantee is given",
+     "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant",
+     "high_gain_observer not applicable: irregular sampling is outside the supported method register: the gains and the certificate of the sampled observer are computed for samples at one fixed period"
+    ],
+    "harmless": [],
+    "question": null,
+    "all_needs": [],
+    "claim": null,
+    "config": null,
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {
+     "kalman_filter": {
+      "method": "kalman_filter",
+      "status": "not_applicable",
+      "reasons": [
+       "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     },
+     "high_gain_observer": {
+      "method": "high_gain_observer",
+      "status": "not_applicable",
+      "reasons": [
+       "irregular sampling is outside the supported method register: the gains and the certificate of the sampled observer are computed for samples at one fixed period"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     }
+    },
+    "impossibility": null,
+    "accepted_choices": [],
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "display": "No verified design found."
+   },
+   "timing": null,
+   "same_outcome_as_review_record": false
+  },
+  {
+   "file": "01b_same_record_supplied_timestamps.json",
+   "sha256": "c6a5c3133b4cac5b9af2783da57fc0c6352fa1e7ecb27b517d13dc4169903593",
+   "arguments": [
+    "spec",
+    "t",
+    "u",
+    "y"
+   ],
+   "decision": {
+    "disposition": "OUT_OF_SCOPE",
+    "selected": null,
+    "display": "The data are not sampled at a fixed period; no fixed-period certificate applies.",
+    "explanations": [
+     "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 0.001 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "3ae4b000803d2636",
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "accepted_choices": [],
+    "disposition": "OUT_OF_SCOPE",
+    "selected": null,
+    "qualifying": [],
+    "claim": null,
+    "config": null,
+    "question": null,
+    "all_needs": [],
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {},
+    "impossibility": null,
+    "harmless": [],
+    "explanations": [
+     "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 0.001 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+    ],
+    "issues": [
+     {
+      "code": "irregular_sampling",
+      "path": "time.Ts",
+      "message": "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 0.001 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+     }
+    ],
+    "display": "The data are not sampled at a fixed period; no fixed-period certificate applies.",
+    "request_outcome": {
+     "disposition": "NO_VERIFIED_CANDIDATE",
+     "display": "No verified design found."
+    }
+   },
+   "timing": {
+    "ok": false,
+    "code": "irregular_sampling",
+    "n": 3,
+    "Ts_stated": 0.001,
+    "label_resolution": null,
+    "dt_min": 0.001,
+    "dt_max": 0.002,
+    "dt_median": 0.0015,
+    "t0": 0.0,
+    "label_precision": 1.734723475976807e-18,
+    "tolerance": 1.734723475976807e-18,
+    "max_deviation": 0.001,
+    "message": "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 0.001 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+   },
+   "same_outcome_as_review_record": true
+  },
+  {
+   "file": "01c_exact_timestamps_within_acceptance_tolerance.json",
+   "sha256": "41f8ceb1238d18a03ff501fc60acee1f5e57d56712299b730da0a9d0a71c4d19",
+   "arguments": [
+    "spec",
+    "t",
+    "u",
+    "y"
+   ],
+   "decision": {
+    "disposition": "OUT_OF_SCOPE",
+    "selected": null,
+    "display": "The data are not sampled at a fixed period; no fixed-period certificate applies.",
+    "explanations": [
+     "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 5e-10 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "053b6c99b630cdfa",
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "accepted_choices": [],
+    "disposition": "OUT_OF_SCOPE",
+    "selected": null,
+    "qualifying": [],
+    "claim": null,
+    "config": null,
+    "question": null,
+    "all_needs": [],
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {},
+    "impossibility": null,
+    "harmless": [],
+    "explanations": [
+     "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 5e-10 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+    ],
+    "issues": [
+     {
+      "code": "irregular_sampling",
+      "path": "time.Ts",
+      "message": "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 5e-10 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+     }
+    ],
+    "display": "The data are not sampled at a fixed period; no fixed-period certificate applies.",
+    "withdrawn_release": {
+     "selected": "high_gain_observer",
+     "claim": "|error| <= 0 at every sample instant from t = 0 s to t = 0.003 s for every admissible initial error, measurement error and disturbance"
+    }
+   },
+   "timing": {
+    "ok": false,
+    "code": "irregular_sampling",
+    "n": 3,
+    "Ts_stated": 0.001,
+    "label_resolution": null,
+    "dt_min": 0.0009999995,
+    "dt_max": 0.0010000005,
+    "dt_median": 0.001,
+    "t0": 0.0,
+    "label_precision": 1.734723475976807e-18,
+    "tolerance": 1.734723475976807e-18,
+    "max_deviation": 4.999999999536625e-10,
+    "message": "the recorded sample instants deviate from the instants t_0 + k Ts of the stated period by up to 5e-10 s (largest at sample 1); the certificate is computed for samples exactly at those instants and does not cover sampling deviations; if the deviations are only the rounding of the time labels, state the label resolution"
+   },
+   "same_outcome_as_review_record": false
+  },
+  {
+   "file": "02_true_gain_two_nominal_gain_one.json",
+   "sha256": "878e3d492de0d34a2709d8f8857c226c4839b64ba7b759e5ca0ccc2e243a82e0",
+   "arguments": [
+    "spec",
+    "t",
+    "u",
+    "y"
+   ],
+   "decision": {
+    "disposition": "NO_VERIFIED_CANDIDATE",
+    "selected": null,
+    "display": "No verified design found.",
+    "explanations": [
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0573987 > 0.001); this is the limit of this certificate family, not a proof that no estimator can meet it",
+     "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "c471e34c951b940b",
+    "disposition": "NO_VERIFIED_CANDIDATE",
+    "selected": null,
+    "qualifying": [],
+    "explanations": [
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0573987 > 0.001); this is the limit of this certificate family, not a proof that no estimator can meet it",
+     "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ],
+    "harmless": [],
+    "question": null,
+    "all_needs": [],
+    "claim": null,
+    "config": null,
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {
+     "kalman_filter": {
+      "method": "kalman_filter",
+      "status": "not_applicable",
+      "reasons": [
+       "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     },
+     "high_gain_observer": {
+      "method": "high_gain_observer",
+      "status": "fails",
+      "reasons": [],
+      "needs": [],
+      "config": {
+       "method": "high_gain_observer",
+       "version": "1.0.0",
+       "pattern": [
+        2.0,
+        1.0
+       ],
+       "Ts": 0.1,
+       "V": 0.0,
+       "D": 1.0,
+       "D_detail": {
+        "how": "derived by outward-rounded interval arithmetic: sup|f - f0| + d_bound + Ly (V + |x2|max Ts), Ly over the x1 range widened by V",
+        "model_mismatch": 1.0,
+        "additive": 0.0,
+        "sample_hold_and_noise": 0.0,
+        "Ly": 0.0,
+        "domain_used": [
+         "u"
+        ],
+        "domain_evidence": {
+         "kind": "mechanical_limit",
+         "statement": "Known held input fixed at one"
+        },
+        "conditions": "valid while the trajectory remains in the operating domain {'u': [1.0, 1.0]}"
+       },
+       "target": 1,
+       "init": {
+        "policy": "given",
+        "x0_hat": [
+         0.0,
+         0.0
+        ],
+        "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+       },
+       "E_eff": [
+        0.0,
+        0.0
+       ],
+       "eps": null,
+       "domain": {
+        "u": [
+         1,
+         1
+        ]
+       },
+       "f0": "b*u",
+       "params": {
+        "b": 1.0
+       },
+       "form": "current"
+      },
+      "claim": null,
+      "metrics": {
+       "Ts": 0.1,
+       "D": 1.0,
+       "V": 0.0,
+       "E_eff": [
+        0.0,
+        0.0
+       ],
+       "init": "box",
+       "window": [
+        5,
+        null
+       ],
+       "lower_limit_velocity": 0.0,
+       "best_float_bound": 0.0573987413180071,
+       "two_signal_not_applied": "the stated class does not let the acceleration error be an arbitrary bounded signal"
+      },
+      "limits": [
+       "no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0573987 > 0.001); this is the limit of this certificate family, not a proof that no estimator can meet it"
+      ],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     }
+    },
+    "impossibility": null,
+    "accepted_choices": [],
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "display": "No verified design found."
+   },
+   "timing": {
+    "ok": true,
+    "code": null,
+    "n": 100,
+    "Ts_stated": 0.1,
+    "label_resolution": null,
+    "dt_min": 0.09999999999999964,
+    "dt_max": 0.10000000000000142,
+    "dt_median": 0.09999999999999998,
+    "t0": 0.0,
+    "label_precision": 7.105427357601002e-15,
+    "tolerance": 7.105427357601002e-15,
+    "max_deviation": 0.0,
+    "message": "the recorded times equal the instants t_0 + k Ts of the stated period 0.1 s to within the precision of the stored times (7.11e-15 s)"
+   },
+   "same_outcome_as_review_record": false
+  },
+  {
+   "file": "03a_first_sample_known_travel.json",
+   "sha256": "c7631c20a1a4aece31214957b18f0d53c232709ef9dfae14fea37b8615675509",
+   "arguments": [
+    "spec"
+   ],
+   "decision": {
+    "disposition": "NO_VERIFIED_CANDIDATE",
+    "selected": null,
+    "display": "No verified design found.",
+    "explanations": [
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 1 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it",
+     "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "a33f2649d691b099",
+    "disposition": "NO_VERIFIED_CANDIDATE",
+    "selected": null,
+    "qualifying": [],
+    "explanations": [
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 1 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it",
+     "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ],
+    "harmless": [],
+    "question": null,
+    "all_needs": [],
+    "claim": null,
+    "config": null,
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {
+     "kalman_filter": {
+      "method": "kalman_filter",
+      "status": "not_applicable",
+      "reasons": [
+       "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     },
+     "high_gain_observer": {
+      "method": "high_gain_observer",
+      "status": "fails",
+      "reasons": [],
+      "needs": [],
+      "config": {
+       "method": "high_gain_observer",
+       "version": "1.0.0",
+       "pattern": [
+        2.0,
+        1.0
+       ],
+       "Ts": 0.1,
+       "V": 0.01,
+       "D": 0.0,
+       "D_detail": {
+        "how": "supplied total-disturbance bound used as stated (the bound derived from the stated model, 0, is not smaller)",
+        "supplied_D": 0.0,
+        "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories",
+        "model_bound": 0.0
+       },
+       "target": 1,
+       "init": {
+        "policy": "given",
+        "x0_hat": [
+         0.0,
+         0.0
+        ],
+        "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+       },
+       "E_eff": [
+        0.0,
+        1.0
+       ],
+       "eps": null,
+       "domain": {},
+       "f0": "0",
+       "params": {},
+       "form": "current"
+      },
+      "claim": null,
+      "metrics": {
+       "Ts": 0.1,
+       "D": 0.0,
+       "V": 0.01,
+       "E_eff": [
+        0.0,
+        1.0
+       ],
+       "init": "box",
+       "window": [
+        0,
+        10
+       ],
+       "lower_limit_velocity": 0.0,
+       "best_float_bound": 1.000000011107408,
+       "two_signal_not_applied": "the stated class does not let the acceleration error be an arbitrary bounded signal"
+      },
+      "limits": [
+       "no gain of the pole-matched sampled observer family meets the requirement (best bound found 1 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it"
+      ],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     }
+    },
+    "impossibility": null,
+    "accepted_choices": [],
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "display": "No verified design found."
+   },
+   "timing": null,
+   "same_outcome_as_review_record": false
+  },
+  {
+   "file": "03b_first_sample_known_travel_acceleration.json",
+   "sha256": "534fc325bc227d7fbadb9f12a11f6cbb6c717b54dde2b40831753894460b1bd3",
+   "arguments": [
+    "spec"
+   ],
+   "decision": {
+    "disposition": "NO_VERIFIED_CANDIDATE",
+    "selected": null,
+    "display": "No verified design found.",
+    "explanations": [
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 2.43483 > 0.1, or none keeps the transient below the cap 0.1); this is the limit of this certificate family, not a proof that no estimator can meet it",
+     "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ]
+   },
+   "decision_full": {
+    "coordinator_version": "1.0.0",
+    "spec_hash": "ec3a02cd2f18f4ed",
+    "disposition": "NO_VERIFIED_CANDIDATE",
+    "selected": null,
+    "qualifying": [],
+    "explanations": [
+     "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 2.43483 > 0.1, or none keeps the transient below the cap 0.1); this is the limit of this certificate family, not a proof that no estimator can meet it",
+     "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ],
+    "harmless": [],
+    "question": null,
+    "all_needs": [],
+    "claim": null,
+    "config": null,
+    "alternatives": [],
+    "tradeoff": null,
+    "assessments": {
+     "kalman_filter": {
+      "method": "kalman_filter",
+      "status": "not_applicable",
+      "reasons": [
+       "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+      ],
+      "needs": [],
+      "config": null,
+      "claim": null,
+      "metrics": {},
+      "limits": [],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     },
+     "high_gain_observer": {
+      "method": "high_gain_observer",
+      "status": "fails",
+      "reasons": [],
+      "needs": [],
+      "config": {
+       "method": "high_gain_observer",
+       "version": "1.0.0",
+       "pattern": [
+        2.0,
+        1.0
+       ],
+       "Ts": 0.1,
+       "V": 1.0,
+       "D": 1.0,
+       "D_detail": {
+        "how": "supplied total-disturbance bound used as stated",
+        "supplied_D": 1.0,
+        "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories"
+       },
+       "target": 1,
+       "init": {
+        "policy": "first_measurement",
+        "x2_hat0": 0.0,
+        "E1_effective": 1.0,
+        "premise": "xh1(0) is set to the first measurement, so e1(0) = -v(0) exactly (the same measurement error, not an independent one); a supplied position-error bound is not used (supplied E1 = 1.0); xh2(0) = 0 with |x2(0) - xh2(0)| <= E2"
+       },
+       "E_eff": [
+        1.0,
+        1.0
+       ],
+       "eps": null,
+       "domain": {},
+       "f0": "0",
+       "params": {},
+       "form": "current"
+      },
+      "claim": null,
+      "metrics": {
+       "Ts": 0.1,
+       "D": 1.0,
+       "V": 1.0,
+       "E_eff": [
+        1.0,
+        1.0
+       ],
+       "init": "first_measurement",
+       "window": [
+        10,
+        60
+       ],
+       "lower_limit_velocity": 2.0,
+       "best_float_bound": 2.4348263685613554,
+       "two_signal_not_applied": "the stated travel range is narrower than the 6 that the two signals of the construction need, including their braking after the sample"
+      },
+      "limits": [
+       "no gain of the pole-matched sampled observer family meets the requirement (best bound found 2.43483 > 0.1, or none keeps the transient below the cap 0.1); this is the limit of this certificate family, not a proof that no estimator can meet it"
+      ],
+      "harmless": [],
+      "impossibility": null,
+      "checks": []
+     }
+    },
+    "impossibility": null,
+    "accepted_choices": [],
+    "policy": {
+     "methods": null,
+     "ranking": "criterion"
+    },
+    "display": "No verified design found."
+   },
+   "timing": null,
+   "same_outcome_as_review_record": false
+  }
+ ]
+}

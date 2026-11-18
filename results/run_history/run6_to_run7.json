@@ -1,0 +1,90 @@
+{
+ "a": "results/run6",
+ "b": "results",
+ "files": {
+  "test_structured_rows.jsonl": {
+   "rows_a": 4200,
+   "rows_b": 4200,
+   "matched": 4200,
+   "only_a": 0,
+   "only_b": 0,
+   "changed": 0,
+   "summary": [],
+   "rows": []
+  },
+  "test_nl_rows.jsonl": {
+   "rows_a": 3435,
+   "rows_b": 3435,
+   "matched": 3435,
+   "only_a": 0,
+   "only_b": 0,
+   "changed": 3,
+   "summary": [
+    {
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "before": "false_impossibility",
+     "after": "unnecessary_refusal",
+     "n": 3
+    }
+   ],
+   "rows": [
+    {
+     "id": "test-00079",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author1",
+     "before": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.171957 > 0.309, or none keeps the transient below the cap 0.309); this is the limit of"
+    },
+    {
+     "id": "test-00403",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "even the most favourable admissible completion fails the test; high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.0439935 > 0.096, or non"
+    },
+    {
+     "id": "test-00554",
+     "policy": "coordinator",
+     "reader": "final_neural_scratch_s1",
+     "user": "blind",
+     "author": "author2",
+     "before": [
+      "false_impossibility",
+      "PROVED_IMPOSSIBLE",
+      null
+     ],
+     "after": [
+      "unnecessary_refusal",
+      "NO_VERIFIED_CANDIDATE",
+      null
+     ],
+     "why_after": "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.121276 > 0.247, or none keeps the transient below the cap 0.247); this is the limit of"
+    }
+   ]
+  }
+ }
+}

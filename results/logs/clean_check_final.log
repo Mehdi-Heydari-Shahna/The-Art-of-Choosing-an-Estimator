@@ -1,0 +1,38 @@
+== Tue Nov 17 23:04:52 UTC 2026 venv
+install exit 0 (15 s)
+torch installed: False | spacy installed: False
+== Tue Nov 17 23:05:07 UTC 2026 tests
+........................................................................ [ 90%]
+........                                                                 [100%]
+80 passed in 144.82s (0:02:24)
+tests (146 s)
+== Tue Nov 17 23:07:33 UTC 2026 demo
+demo exit 0 (3 s)
+11:Reader: neural final_neural_scratch_s0
+23:Disposition: CLARIFY
+28:Disposition: RELEASE
+45:replay of the exported record: True
+50:Disposition: RELEASE
+61:replay of the exported record: True
+67:Disposition: RELEASE
+80:Disposition: RELEASE
+== Tue Nov 17 23:07:36 UTC 2026 verify_data --install
+sheets_dev_author0.json      60 sheets, 0 differ
+sheets_test_author1.json     80 sheets, 1 differ: ['test-00182']
+sheets_test_author2.json     80 sheets, 0 differ
+sheets_test_author3.json     80 sheets, 0 differ
+verify_data (525 s)
+== Tue Nov 17 23:16:21 UTC 2026 quick
+structured done in 286 s
+evaluable authored test requests: 229
+nl done in 114 s
+test_structured_rows.jsonl: 4200 reference rows, 600 re-run, 0 with a different outcome, disposition, method, question count or correction count
+test_nl_rows.jsonl: 3435 reference rows, 229 re-run, 0 with a different outcome, disposition, method, question count or correction count
+quick exit 0 (401 s)
+== Tue Nov 17 23:23:02 UTC 2026 done
+== Tue Nov 17 23:23:02 UTC 2026 assets + paper from the light archive
+assets exit 0
+generated.tex identical
+Output written on main.pdf (15 pages, 467456 bytes).
+assets+paper (9 s)
+== Tue Nov 17 23:23:11 UTC 2026 end

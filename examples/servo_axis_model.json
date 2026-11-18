@@ -1,0 +1,66 @@
+{
+ "plant": {
+  "family": "servo_axis",
+  "kind": "second_order",
+  "states": [
+   {
+    "name": "shaft angle",
+    "unit": "rad"
+   },
+   {
+    "name": "shaft speed",
+    "unit": "rad/s"
+   }
+  ],
+  "inputs": [
+   {
+    "name": "motor torque",
+    "unit": "N m"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "encoder angle",
+    "unit": "rad"
+   }
+  ],
+  "linear": {
+   "clock": "continuous",
+   "A": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.0
+    ]
+   ],
+   "B": [
+    [
+     0.0
+    ],
+    [
+     4.0
+    ]
+   ],
+   "C": [
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "Ts_native": null
+  },
+  "second_order": {
+   "f": "b*u",
+   "f0": "b*u",
+   "params": {
+    "b": 4.0
+   },
+   "param_ranges": {},
+   "output": "x1"
+  },
+  "flags": []
+ }
+}

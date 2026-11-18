@@ -1,0 +1,9 @@
+{
+ "title": "Servo axis: smallest mean-square error (Kalman filter); change the third answer to a guaranteed limit to see the selection change",
+ "answers": [
+  "The shaft speed.",
+  "Encoder angle only, sampled every 1 ms, model attached. The encoder noise is white with standard deviation 57.7 µrad, and the encoder error never exceeds 0.1 mrad. The unmodelled acceleration is white with standard deviation 3.46 rad/s^2, constant within a sample, and bounded by 6 rad/s^2. The noises are bounded, not Gaussian; only their variances are reliable. Initial angle error at most 2 mrad, initial speed error at most 3 rad/s.",
+  "I want the estimate with the smallest mean-square error; steady state is what matters."
+ ],
+ "replies": []
+}

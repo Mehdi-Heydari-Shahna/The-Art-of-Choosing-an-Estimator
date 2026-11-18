@@ -1,0 +1,215 @@
+{
+  "public_api": "heros.api.solve",
+  "arguments": {
+    "spec": {
+      "schema": "heros-spec/1",
+      "plant": {
+        "family": null,
+        "kind": "second_order",
+        "states": [],
+        "inputs": [],
+        "outputs": [],
+        "linear": null,
+        "second_order": {
+          "f": "u",
+          "f0": "u",
+          "params": {},
+          "output": "x1"
+        },
+        "flags": []
+      },
+      "target": {
+        "state": 1
+      },
+      "time": {
+        "Ts": 0.1,
+        "input_hold": "zoh",
+        "t_end": 1.0,
+        "irregular": false
+      },
+      "initial": {
+        "x0_hat": [
+          0.0,
+          0.0
+        ],
+        "P0": null,
+        "E": [
+          0.0,
+          0.0
+        ],
+        "policy": null
+      },
+      "stochastic": {
+        "distribution": null,
+        "Q": null,
+        "Q_kind": null,
+        "G": null,
+        "R": null,
+        "white": null,
+        "cross_cov": null
+      },
+      "deterministic": {
+        "V": 0.0,
+        "D": null,
+        "d_bound": 0.0,
+        "domain": {
+          "u": [
+            1.0,
+            1.0
+          ]
+        },
+        "domain_evidence": {
+          "kind": "mechanical_limit",
+          "statement": "The applied input is fixed at 1 over the entire experiment."
+        }
+      },
+      "objective": {
+        "kind": "hard_bound",
+        "tolerance": 0.001,
+        "deadline": 0.5,
+        "peak_cap": null,
+        "prob": null,
+        "mse_target": null,
+        "horizon": null
+      },
+      "evidence": {
+        "target.state": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.Ts": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.V": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.d_bound": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.E": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "initial.x0_hat": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.domain": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "deterministic.domain_evidence": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "time.t_end": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.kind": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.tolerance": {
+          "status": "supplied",
+          "source": "structured input"
+        },
+        "objective.deadline": {
+          "status": "supplied",
+          "source": "structured input"
+        }
+      },
+      "ranges": {},
+      "constraints": []
+    },
+    "y": [
+      0.0,
+      0.005000000000000001,
+      0.020000000000000004,
+      0.04500000000000001,
+      0.08000000000000002,
+      0.125,
+      0.18000000000000005,
+      0.24500000000000005,
+      0.32000000000000006,
+      0.405,
+      0.5
+    ],
+    "t": [
+      0.0,
+      0.1,
+      0.2,
+      0.30000000000000004,
+      0.4,
+      0.5,
+      0.6000000000000001,
+      0.7000000000000001,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "u": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "expected_engineering_outcome": "Give a supported result using the stated constant input, or request the missing sample vector before certifying the run. With a correct vector the benchmark trajectory is estimated to floating-point accuracy.",
+  "mathematical_basis": "The plant and observer models are both acceleration u, and the specification guarantees u=1 throughout. From the known zero initial state, position=t^2/2 and velocity=t. Zero acceleration would contradict the supplied facts.",
+  "actual_true_velocity_if_applicable": [
+    0.0,
+    0.1,
+    0.2,
+    0.30000000000000004,
+    0.4,
+    0.5,
+    0.6000000000000001,
+    0.7000000000000001,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "observed_rev2b_result": {
+    "disposition": "RELEASE",
+    "claim": {
+      "type": "hard_bound",
+      "statement": "|error| <= 0 at every sample instant from t = 0.5 s to t = 1 s for every admissible initial error, measurement error and disturbance",
+      "value": 0.0,
+      "conditions": [
+        "plant in second-order chain form with measured first state",
+        "|measurement error| <= 0",
+        "|x2' - nominal model| <= 0 on each sample interval (global bound (no domain restriction used))",
+        "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E",
+        "applied input held constant on each sample interval",
+        "observer updated every 0.1 s with the stated binary gains; the bound is the exact worst case of this recursion in exact arithmetic (Proposition 1), certified from above by interval arithmetic; rounding of the float64 implementation is not included"
+      ],
+      "uncertainty": "deterministic error envelope"
+    },
+    "returned_velocity": [
+      0.0,
+      0.1,
+      0.2,
+      0.30000000000000004,
+      0.4,
+      0.4999999999999997,
+      0.6000000000000003,
+      0.7000000000000001,
+      0.8,
+      0.8999999999999995,
+      0.9999999999999994
+    ],
+    "at_deadline_t_0p5": 0.4999999999999997,
+    "max_abs_velocity_error_after_deadline": 5.551115123125783e-16
+  }
+}

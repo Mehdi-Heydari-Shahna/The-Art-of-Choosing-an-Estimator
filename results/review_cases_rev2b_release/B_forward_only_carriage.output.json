@@ -1,0 +1,425 @@
+{
+ "decision": {
+  "coordinator_version": "1.0.0",
+  "spec_hash": "f2c4ef455be66be7",
+  "disposition": "NO_VERIFIED_CANDIDATE",
+  "selected": null,
+  "qualifying": [],
+  "explanations": [
+   "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.573715 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it",
+   "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+  ],
+  "harmless": [],
+  "question": null,
+  "all_needs": [],
+  "claim": null,
+  "config": null,
+  "alternatives": [],
+  "tradeoff": null,
+  "assessments": {
+   "kalman_filter": {
+    "method": "kalman_filter",
+    "status": "not_applicable",
+    "reasons": [
+     "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+    ],
+    "needs": [],
+    "config": null,
+    "claim": null,
+    "metrics": {},
+    "limits": [],
+    "harmless": [],
+    "impossibility": null,
+    "checks": []
+   },
+   "high_gain_observer": {
+    "method": "high_gain_observer",
+    "status": "fails",
+    "reasons": [],
+    "needs": [],
+    "config": {
+     "method": "high_gain_observer",
+     "version": "1.0.0",
+     "pattern": [
+      2.0,
+      1.0
+     ],
+     "Ts": 0.1,
+     "V": 0.01,
+     "D": 5.0,
+     "D_detail": {
+      "how": "supplied total-disturbance bound used as stated (the bound derived from the stated model, 5, is not smaller)",
+      "supplied_D": 5.0,
+      "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories",
+      "model_bound": 5.0
+     },
+     "target": 1,
+     "init": {
+      "policy": "given",
+      "x0_hat": [
+       0.0,
+       1.5
+      ],
+      "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+     },
+     "E_eff": [
+      0.0,
+      0.5
+     ],
+     "eps": null,
+     "domain": {},
+     "f0": "0",
+     "params": {},
+     "form": "current"
+    },
+    "claim": null,
+    "metrics": {
+     "Ts": 0.1,
+     "D": 5.0,
+     "V": 0.01,
+     "E_eff": [
+      0.0,
+      0.5
+     ],
+     "init": "box",
+     "window": [
+      0,
+      10
+     ],
+     "lower_limit_velocity": 0.4472135954999579,
+     "best_float_bound": 0.5737153584871222,
+     "two_signal_not_applied": "the stated speed range [1, 2] does not contain the velocities +-0.447214 of the construction"
+    },
+    "limits": [
+     "no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.573715 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it"
+    ],
+    "harmless": [],
+    "impossibility": null,
+    "checks": []
+   }
+  },
+  "impossibility": null,
+  "accepted_choices": [],
+  "policy": {
+   "methods": null,
+   "ranking": "criterion"
+  },
+  "display": "No verified design found."
+ },
+ "estimates": null,
+ "timing": null,
+ "inputs": null,
+ "record": {
+  "schema": "heros-record/1",
+  "created_utc": "2026-11-18T17:08:18+00:00",
+  "build": {
+   "package": "heros-estimation",
+   "version": "1.0.0",
+   "coordinator": "1.0.0",
+   "kalman": "1.0.0",
+   "khalil": "1.0.0",
+   "python": "3.13.18",
+   "numpy": "2.5.3"
+  },
+  "interpretation_model": {
+   "used": false
+  },
+  "spec": {
+   "schema": "heros-spec/1",
+   "plant": {
+    "family": null,
+    "kind": "second_order",
+    "states": [],
+    "inputs": [],
+    "outputs": [],
+    "linear": null,
+    "second_order": {
+     "f": "0",
+     "f0": "0",
+     "output": "x1",
+     "params": {}
+    },
+    "flags": []
+   },
+   "target": {
+    "state": 1
+   },
+   "time": {
+    "Ts": 0.1,
+    "input_hold": "zoh",
+    "t_end": 1.0,
+    "irregular": false
+   },
+   "initial": {
+    "x0_hat": [
+     0,
+     1.5
+    ],
+    "P0": null,
+    "E": [
+     0,
+     0.5
+    ],
+    "policy": null
+   },
+   "stochastic": {
+    "distribution": null,
+    "Q": null,
+    "Q_kind": null,
+    "G": null,
+    "R": null,
+    "white": null,
+    "cross_cov": null
+   },
+   "deterministic": {
+    "V": 0.01,
+    "D": 5.0,
+    "d_bound": 5.0,
+    "domain": {
+     "x1": [
+      0,
+      1.001
+     ],
+     "x2": [
+      1,
+      2
+     ]
+    },
+    "domain_evidence": {
+     "kind": "mechanical_limit",
+     "statement": "Throughout the one-second operating window the carriage travels forward at 1 to 2 m/s and remains within 0 to 1.001 m."
+    }
+   },
+   "objective": {
+    "kind": "hard_bound",
+    "tolerance": 0.2,
+    "deadline": 0.0,
+    "peak_cap": null,
+    "prob": null,
+    "mse_target": null,
+    "horizon": null
+   },
+   "evidence": {
+    "target.state": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "time.Ts": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "deterministic.V": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "deterministic.D": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "deterministic.d_bound": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "initial.E": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "initial.x0_hat": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "deterministic.domain": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "deterministic.domain_evidence": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "time.t_end": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "objective.kind": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "objective.tolerance": {
+     "status": "supplied",
+     "source": "structured input"
+    },
+    "objective.deadline": {
+     "status": "supplied",
+     "source": "structured input"
+    }
+   },
+   "ranges": {},
+   "constraints": []
+  },
+  "spec_hash": "f2c4ef455be66be7",
+  "evidence": {
+   "target.state": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "time.Ts": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "deterministic.V": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "deterministic.D": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "deterministic.d_bound": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "initial.E": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "initial.x0_hat": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "deterministic.domain": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "deterministic.domain_evidence": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "time.t_end": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "objective.kind": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "objective.tolerance": {
+    "status": "supplied",
+    "source": "structured input"
+   },
+   "objective.deadline": {
+    "status": "supplied",
+    "source": "structured input"
+   }
+  },
+  "accepted_choices": [],
+  "decision": {
+   "coordinator_version": "1.0.0",
+   "spec_hash": "f2c4ef455be66be7",
+   "disposition": "NO_VERIFIED_CANDIDATE",
+   "selected": null,
+   "qualifying": [],
+   "explanations": [
+    "high_gain_observer: no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.573715 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it",
+    "kalman_filter not applicable: the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+   ],
+   "harmless": [],
+   "question": null,
+   "all_needs": [],
+   "claim": null,
+   "config": null,
+   "alternatives": [],
+   "tradeoff": null,
+   "assessments": {
+    "kalman_filter": {
+     "method": "kalman_filter",
+     "status": "not_applicable",
+     "reasons": [
+      "the Kalman filter needs a known linear state-space model; none is supplied for this plant"
+     ],
+     "needs": [],
+     "config": null,
+     "claim": null,
+     "metrics": {},
+     "limits": [],
+     "harmless": [],
+     "impossibility": null,
+     "checks": []
+    },
+    "high_gain_observer": {
+     "method": "high_gain_observer",
+     "status": "fails",
+     "reasons": [],
+     "needs": [],
+     "config": {
+      "method": "high_gain_observer",
+      "version": "1.0.0",
+      "pattern": [
+       2.0,
+       1.0
+      ],
+      "Ts": 0.1,
+      "V": 0.01,
+      "D": 5.0,
+      "D_detail": {
+       "how": "supplied total-disturbance bound used as stated (the bound derived from the stated model, 5, is not smaller)",
+       "supplied_D": 5.0,
+       "conditions": "D bounds |x2'(t) - f0(y_k, u_k)| on every sample interval for all admissible trajectories",
+       "model_bound": 5.0
+      },
+      "target": 1,
+      "init": {
+       "policy": "given",
+       "x0_hat": [
+        0.0,
+        1.5
+       ],
+       "premise": "the supplied initial estimate is used; |e(0)| is bounded componentwise by the supplied E"
+      },
+      "E_eff": [
+       0.0,
+       0.5
+      ],
+      "eps": null,
+      "domain": {},
+      "f0": "0",
+      "params": {},
+      "form": "current"
+     },
+     "claim": null,
+     "metrics": {
+      "Ts": 0.1,
+      "D": 5.0,
+      "V": 0.01,
+      "E_eff": [
+       0.0,
+       0.5
+      ],
+      "init": "box",
+      "window": [
+       0,
+       10
+      ],
+      "lower_limit_velocity": 0.4472135954999579,
+      "best_float_bound": 0.5737153584871222,
+      "two_signal_not_applied": "the stated speed range [1, 2] does not contain the velocities +-0.447214 of the construction"
+     },
+     "limits": [
+      "no gain of the pole-matched sampled observer family meets the requirement (best bound found 0.573715 > 0.2); this is the limit of this certificate family, not a proof that no estimator can meet it"
+     ],
+     "harmless": [],
+     "impossibility": null,
+     "checks": []
+    }
+   },
+   "impossibility": null,
+   "accepted_choices": [],
+   "policy": {
+    "methods": null,
+    "ranking": "criterion"
+   },
+   "display": "No verified design found."
+  },
+  "history": [],
+  "notes": ""
+ }
+}

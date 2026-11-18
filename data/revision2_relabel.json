@@ -1,0 +1,332 @@
+{
+ "revision": 2,
+ "finding": 7,
+ "rule": "first-sample limit: cap < half-width of the admissible initial velocities -> PROVED_IMPOSSIBLE; with a stated travel or speed range only initial velocities from which the plant can stay inside it for the whole window count (review cases 03)",
+ "cases": {
+  "test-00004": {
+   "family": "duffing_stage",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.00396,
+   "tolerance": 0.00791,
+   "initial_velocity_half_width": 0.105999999894,
+   "admissible_initial_velocities": [
+    -0.105999999894,
+    0.105999999894
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.00396 < 0.106: at t = 0 one position reading leaves every velocity in [-0.106, 0.106] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00015": {
+   "family": "mass_spring_damper",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.0121,
+   "tolerance": 0.0243,
+   "initial_velocity_half_width": 0.383,
+   "admissible_initial_velocities": [
+    -0.383,
+    0.383
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.0121 < 0.383: at t = 0 one position reading leaves every velocity in [-0.383, 0.383] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00026": {
+   "family": "rotary_joint",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.0555,
+   "tolerance": 0.111,
+   "initial_velocity_half_width": 0.29597297173895276,
+   "admissible_initial_velocities": [
+    -0.29597297173895276,
+    0.29597297173895276
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.0555 < 0.295973: at t = 0 one position reading leaves every velocity in [-0.295973, 0.295973] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00088": {
+   "family": "gantry_axis",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.0018,
+   "tolerance": 0.0036,
+   "initial_velocity_half_width": 0.165,
+   "admissible_initial_velocities": [
+    -0.165,
+    0.165
+   ],
+   "travel_or_speed_range_used": false,
+   "reason": "cap 0.0018 < 0.165: at t = 0 one position reading leaves every velocity in [-0.165, 0.165] admissible"
+  },
+  "test-00116": {
+   "family": "duffing_stage",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.0041,
+   "tolerance": 0.0082,
+   "initial_velocity_half_width": 0.0413,
+   "admissible_initial_velocities": [
+    -0.0413,
+    0.0413
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.0041 < 0.0413: at t = 0 one position reading leaves every velocity in [-0.0413, 0.0413] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00154": {
+   "family": "servo_axis",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.018,
+   "tolerance": 0.0359,
+   "initial_velocity_half_width": 0.208,
+   "admissible_initial_velocities": [
+    -0.208,
+    0.208
+   ],
+   "travel_or_speed_range_used": false,
+   "reason": "cap 0.018 < 0.208: at t = 0 one position reading leaves every velocity in [-0.208, 0.208] admissible"
+  },
+  "test-00178": {
+   "family": "rotary_joint",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.0242,
+   "tolerance": 0.0484,
+   "initial_velocity_half_width": 0.0536190264737752,
+   "admissible_initial_velocities": [
+    -0.0536190264737752,
+    0.0536190264737752
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.0242 < 0.053619: at t = 0 one position reading leaves every velocity in [-0.053619, 0.053619] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00180": {
+   "family": "mass_spring_damper",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.0267,
+   "tolerance": 0.0534,
+   "initial_velocity_half_width": 0.156,
+   "admissible_initial_velocities": [
+    -0.156,
+    0.156
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.0267 < 0.156: at t = 0 one position reading leaves every velocity in [-0.156, 0.156] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00237": {
+   "family": "duffing_stage",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.00131,
+   "tolerance": 0.00263,
+   "initial_velocity_half_width": 0.0241,
+   "admissible_initial_velocities": [
+    -0.0241,
+    0.0241
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.00131 < 0.0241: at t = 0 one position reading leaves every velocity in [-0.0241, 0.0241] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00262": {
+   "family": "gantry_axis",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.0068,
+   "tolerance": 0.0136,
+   "initial_velocity_half_width": 0.185,
+   "admissible_initial_velocities": [
+    -0.185,
+    0.185
+   ],
+   "travel_or_speed_range_used": false,
+   "reason": "cap 0.0068 < 0.185: at t = 0 one position reading leaves every velocity in [-0.185, 0.185] admissible"
+  },
+  "test-00330": {
+   "family": "rotary_joint",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.0376,
+   "tolerance": 0.0751,
+   "initial_velocity_half_width": 0.18867962264106614,
+   "admissible_initial_velocities": [
+    -0.18867962264106614,
+    0.18867962264106614
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.0376 < 0.18868: at t = 0 one position reading leaves every velocity in [-0.18868, 0.18868] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00343": {
+   "family": "duffing_stage",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.00865,
+   "tolerance": 0.0173,
+   "initial_velocity_half_width": 0.166,
+   "admissible_initial_velocities": [
+    -0.166,
+    0.166
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.00865 < 0.166: at t = 0 one position reading leaves every velocity in [-0.166, 0.166] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00351": {
+   "family": "mass_spring_damper",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.00349,
+   "tolerance": 0.00699,
+   "initial_velocity_half_width": 0.263,
+   "admissible_initial_velocities": [
+    -0.263,
+    0.263
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.00349 < 0.263: at t = 0 one position reading leaves every velocity in [-0.263, 0.263] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00413": {
+   "family": "servo_axis",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.137,
+   "tolerance": 0.274,
+   "initial_velocity_half_width": 0.402,
+   "admissible_initial_velocities": [
+    -0.402,
+    0.402
+   ],
+   "travel_or_speed_range_used": false,
+   "reason": "cap 0.137 < 0.402: at t = 0 one position reading leaves every velocity in [-0.402, 0.402] admissible"
+  },
+  "test-00440": {
+   "family": "gantry_axis",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.00196,
+   "tolerance": 0.00391,
+   "initial_velocity_half_width": 0.203,
+   "admissible_initial_velocities": [
+    -0.203,
+    0.203
+   ],
+   "travel_or_speed_range_used": false,
+   "reason": "cap 0.00196 < 0.203: at t = 0 one position reading leaves every velocity in [-0.203, 0.203] admissible"
+  },
+  "test-00458": {
+   "family": "duffing_stage",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.00188,
+   "tolerance": 0.00377,
+   "initial_velocity_half_width": 0.112,
+   "admissible_initial_velocities": [
+    -0.112,
+    0.112
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.00188 < 0.112: at t = 0 one position reading leaves every velocity in [-0.112, 0.112] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00503": {
+   "family": "rotary_joint",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.063,
+   "tolerance": 0.126,
+   "initial_velocity_half_width": 0.3024896692449921,
+   "admissible_initial_velocities": [
+    -0.3024896692449921,
+    0.3024896692449921
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.063 < 0.30249: at t = 0 one position reading leaves every velocity in [-0.30249, 0.30249] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00520": {
+   "family": "mass_spring_damper",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.00152,
+   "tolerance": 0.00303,
+   "initial_velocity_half_width": 0.193,
+   "admissible_initial_velocities": [
+    -0.193,
+    0.193
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.00152 < 0.193: at t = 0 one position reading leaves every velocity in [-0.193, 0.193] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00572": {
+   "family": "duffing_stage",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.00293,
+   "tolerance": 0.00585,
+   "initial_velocity_half_width": 0.112,
+   "admissible_initial_velocities": [
+    -0.112,
+    0.112
+   ],
+   "travel_or_speed_range_used": true,
+   "reason": "cap 0.00293 < 0.112: at t = 0 one position reading leaves every velocity in [-0.112, 0.112] admissible (velocities from which the plant can stay inside the stated ranges for the whole window)"
+  },
+  "test-00599": {
+   "family": "gantry_axis",
+   "old_final": "INVALID_INPUT",
+   "old_expected": "INVALID_INPUT",
+   "new_final": "PROVED_IMPOSSIBLE",
+   "new_expected": "PROVED_IMPOSSIBLE",
+   "cap": 0.00201,
+   "tolerance": 0.00403,
+   "initial_velocity_half_width": 0.0232,
+   "admissible_initial_velocities": [
+    -0.0232,
+    0.0232
+   ],
+   "travel_or_speed_range_used": false,
+   "reason": "cap 0.00201 < 0.0232: at t = 0 one position reading leaves every velocity in [-0.0232, 0.0232] admissible"
+  }
+ },
+ "summary": {
+  "cases": 20,
+  "proved_impossible": 20,
+  "undecided": 0
+ }
+}

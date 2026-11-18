@@ -1,0 +1,92 @@
+Tue Nov 17 20:16:42 UTC 2026
+wrote results/fidelity.json
+{'kalman_max_estimate_diff': 2.2455967326560612e-14, 'kalman_max_cov_diff': 6.465938895416912e-15, 'kalman_max_discretisation_diff': 1.2575341702873929e-15, 'kalman_max_steady_gain_diff': 7.345897882041309e-10, 'n_kalman_cases': 21, 'hgo_max_rel_diff': 8.658078549394451e-14, 'n_hgo_cases': 20, 'hgo_certificate_below_float': 0} {'attained_error': 0.06992988542695877, 'exact_worst_case': 0.06992988542698038, 'ratio': 0.999999999999691, 'note': 'piecewise-constant disturbance on 64 sub-intervals per sample (lower bound, O(1/64^2))'} {'max_rel_diff_sampled_vs_closed_form_after_10ms': 7.064335924956405e-05, 'Ts': 2e-06, 'max_rel_diff_closed_form_vs_quadrature': 5.5590829013347415e-15}
+wrote results/linear_stochastic.json
+gaussian {'claim_type': 'mmse', 'empirical_over_reported_variance': [0.9431704891629322, 0.9882352100479871, 1.0032704188209929, 1.0136462947680416], 'mean_nees': 3.9406678525260204, 'mean_nis': 1.9972331193722932, 'coverage_2sigma_target': 0.9542231075697211, 'independent_reference_run0': {'max_estimate_diff': 6.661338147750939e-15, 'max_cov_diff_rel': 2.1119585227504792e-16}}
+bounded {'claim_type': 'lmmse', 'empirical_over_reported_variance': [1.010095677752098, 0.9808370226559714, 0.9950333086289518, 0.9729279347448546], 'mean_nees': 3.974395216111664, 'mean_nis': 1.9963347257210393, 'coverage_2sigma_target': 0.9586454183266933, 'independent_reference_run0': {'max_estimate_diff': 5.88418203051333e-15, 'max_cov_diff_rel': 2.1119585227504792e-16}}
+selected: high_gain_observer eps 0.0013662239172349876 claim: |error| <= 0.119688 at every sample instant t_k >= 0.1 s for every admissible initial error, measurement error and disturbance
+wrote results/joint.json
+{'envelope_violations': 0, 'simulated_post_deadline_max': 0.06917020249645045, 'conservatism_post_deadline': 1.730331999842484, 'max_abs_velocity': 2.9125171793618834}
+{'observer': (0.03648289192069287, 0.06081210312417973, 0, 61.553805563517344), 'filtered_difference': (0.03450924323114354, 0.0861263065644986, 0, 28.87619566033293), 'state_feedback': (0.03454863563225839, 0.0, 0, 5.924734994058726)}
+smallest mean-square error                    -> RELEASE                kalman_filter None
+mean-square error below a level               -> RELEASE                kalman_filter {'kalman_filter': 6.35413546028303e-05, 'high_gain_observer': 6.606951151825739e-05}
+error within r with probability 0.9           -> RELEASE                kalman_filter None
+guaranteed error limit after the deadline     -> RELEASE                high_gain_observer {'high_gain_observer': 0.056629712317189225, 'kalman_filter': 0.060263449280189396}
+guaranteed ultimate error limit               -> RELEASE                high_gain_observer {'high_gain_observer': 0.05662962963020315, 'kalman_filter': 0.06001848737370706}
+guaranteed limit below the two-signal limit   -> PROVED_IMPOSSIBLE      None None
+wrote results/common_domain.json
+{'mse_preferred': 'kalman_steady_state', 'hard_bound_preferred': 'hgo_worst_case_tuned', 'mse_ratio_hgo_worstcase_tuned_over_kalman': 1.3398098585112916, 'worst_case_ratio_kalman_over_hgo': 1.0641666152680984}
+kalman_time_varying {'mse_steady': 6.4e-05, 'mse_at_deadline': 6.4e-05, 'worst_case_at_deadline': 0.060011, 'worst_case_post_deadline_max_evaluated': 0.060018, 'worst_case_peak_evaluated': 3.0} {'mse_steady_empirical': 6.366903402678354e-05, 'max_abs_error_post_deadline': 0.03267138112849155, 'max_abs_error_overall': 2.9935740125268397, 'rmse_at_deadline': 0.007561309109903834}
+kalman_steady_state {'mse_steady': 6.4e-05, 'mse_at_deadline': 6.4e-05, 'worst_case_at_deadline': 0.060095, 'worst_case_post_deadline_max_evaluated': 0.060263, 'worst_case_peak_evaluated': 3.010094, 'certified_post_deadline': 0.060263, 'certified_ultimate': 0.060018, 'certified_peak': 3.010094, 'independent_worst_case_at_deadline': 0.060095, 'independent_mse_steady': 6.4e-05} {'mse_steady_empirical': 6.366903402678629e-05, 'max_abs_error_post_deadline': 0.03267138109226142, 'max_abs_error_overall': 2.9935740125268397, 'rmse_at_deadline': 0.007563185413758309}
+hgo_worst_case_tuned {'mse_steady': 8.5e-05, 'mse_at_deadline': 8.5e-05, 'worst_case_at_deadline': 0.05663, 'worst_case_post_deadline_max_evaluated': 0.05663, 'worst_case_peak_evaluated': 3.022222, 'certified_post_deadline': 0.05663, 'certified_ultimate': 0.05663, 'certified_peak': 3.022222, 'independent_worst_case_at_deadline': 0.05663, 'independent_mse_steady': 8.5e-05} {'mse_steady_empirical': 8.541277401837733e-05, 'max_abs_error_post_deadline': 0.035296114103418375, 'max_abs_error_overall': 2.9935740125268397, 'rmse_at_deadline': 0.009194032229145234}
+hgo_mse_tuned {'mse_steady': 6.6e-05, 'mse_at_deadline': 6.6e-05, 'worst_case_at_deadline': 0.060738, 'worst_case_post_deadline_max_evaluated': 0.060738, 'worst_case_peak_evaluated': 3.011954, 'certified_post_deadline': 0.060738, 'certified_ultimate': 0.060705, 'certified_peak': 3.011954, 'independent_worst_case_at_deadline': 0.060738, 'independent_mse_steady': 6.6e-05} {'mse_steady_empirical': 6.631086835112936e-05, 'max_abs_error_post_deadline': 0.033639742754372426, 'max_abs_error_overall': 2.9935740125268397, 'rmse_at_deadline': 0.007747886600130658}
+Gaussian variance ambiguity            CLARIFY    ask=stochastic.R check_passed=True
+variance ambiguity, error level requested RELEASE    ask=None check_passed=True
+no initial-error bound, ultimate limit RELEASE    ask=None check_passed=True
+no initial covariance, steady-state filter RELEASE    ask=None check_passed=True
+noise distribution not stated          RELEASE    ask=None check_passed=True
+missing hard bound on the measurement error CLARIFY    ask=deterministic.V check_passed=True
+RMS noise level given, guaranteed limit requested CLARIFY    ask=deterministic.V check_passed=True
+measurement bound known only as a range CLARIFY    ask=deterministic.V check_passed=True
+sample period stated as a range        CLARIFY    ask=time.Ts check_passed=True
+deadline added after an omission was harmless CLARIFY    ask=initial.E check_passed=True
+operating range without evidence       CLARIFY    ask=deterministic.domain_evidence check_passed=True
+process noise without its meaning      CLARIFY    ask=stochastic.Q_kind check_passed=True
+discrete model and a different stated period INVALID_INPUT ask=None check_passed=True
+wrote results/incomplete.json
+all passed: True
+wrote results/latency.json
+{
+ "hardware": "2 CPU cores, no GPU (build machine); single process",
+ "note": "wall-clock times of this machine; no human effort is measured",
+ "decision_incomplete_spec": {
+  "median_ms": 1.429775500582764,
+  "p95_ms": 484.4199833987655,
+  "n": 100
+ },
+ "decision_complete_spec": {
+  "median_ms": 2.8923740010213805,
+  "p95_ms": 492.79190584784374,
+  "n": 100
+ },
+ "kalman_runtime": {
+  "steps": 301,
+  "microseconds_per_step": 73.84284053297955,
+  "states": 4,
+  "outputs": 2,
+  "note": "median of 7 runs of the whole record, time-varying gains computed in the run"
+ },
+ "joint_request_end_to_end": {
+  "seconds_compute": 1.1749926709999272,
+  "questions": 1,
+  "disposition": "RELEASE",
+  "operations": "3 answers, 1 attached model, 1 data file, 1 confirmation, 1 clarification answer(s)",
+  "includes": "reading, readback, decisions, interval certificate, estimation over 1501 samples, record"
+ },
+ "observer_runtime": {
+  "steps": 1501,
+  "microseconds_per_step": 11.404223848799111,
+  "note": "median of 7 runs"
+ },
+ "replay_seconds": 0.7851837380003417,
+ "replay_match": true,
+ "replay_quantities_compared": 1675,
+ "decision_peak_python_allocation_mb": 0.015392,
+ "process_peak_rss_mb": 3073.1953125,
+ "process_peak_rss_note": "this measurement process also loaded the 300-dimensional pretrained vectors of two candidate readers",
+ "deployed_fresh_process": {
+  "reader": "NumpyGRUReader",
+  "seconds": 1.1161465799996222,
+  "disposition": "RELEASE",
+  "peak_rss_mb": 107.6640625
+ },
+ "script
+rules {'median_ms': 0.24322649915120564, 'p95_ms': 0.4364527987490874, 'n': 200}
+final_neural_scratch_s0 {'median_ms': 4.567681500702747, 'p95_ms': 7.993719399928523, 'n': 200, 'n_trainable_parameters': 113620, 'train_seconds': 1970.6, 'file_bytes': 469369}
+select_linear_s0 {'median_ms': 5.4067535002104705, 'p95_ms': 6.522447201678004, 'n': 200, 'n_trainable_parameters': 96839, 'train_seconds': 4.5, 'file_bytes': 915223}
+select_neural_frozen_s0 {'median_ms': 1.1236384998483118, 'p95_ms': 1.7571184011103467, 'n': 200, 'n_trainable_parameters': 66103, 'train_seconds': 39.4, 'file_bytes': 46254809}
+select_neural_pretrained_s0 {'median_ms': 5.336915501175099, 'p95_ms': 10.859703697860821, 'n': 200, 'n_trainable_parameters': 169748, 'train_seconds': 1854.1, 'file_bytes': 46671665}
+select_neural_scratch_s0 {'median_ms': 5.3021620005893055, 'p95_ms': 10.810710400619422, 'n': 200, 'n_trainable_parameters': 113620, 'train_seconds': 2011.1, 'file_bytes': 469369}
+deployed_numpy {'median_ms': 4.259515000740066, 'p95_ms': 7.3257553023722695, 'n': 200}
+exit 0
+Tue Nov 17 20:21:25 UTC 2026
